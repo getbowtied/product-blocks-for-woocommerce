@@ -95,11 +95,11 @@ body {
             .gbt_18_container.gbt_18_default_slider .gbt_18_content .gbt_18_content_wrapper .gbt_18_slide_controls span.gbt_18_prev_slide {
               transition: 0.3s ease-in-out; }
               .gbt_18_container.gbt_18_default_slider .gbt_18_content .gbt_18_content_wrapper .gbt_18_slide_controls span.gbt_18_prev_slide:hover {
-                transform: rotate(90deg); }
+                transform: rotate(-90deg); }
             .gbt_18_container.gbt_18_default_slider .gbt_18_content .gbt_18_content_wrapper .gbt_18_slide_controls span.gbt_18_next_slide {
               transition: 0.3s ease-in-out; }
               .gbt_18_container.gbt_18_default_slider .gbt_18_content .gbt_18_content_wrapper .gbt_18_slide_controls span.gbt_18_next_slide:hover {
-                transform: rotate(90deg); }
+                transform: rotate(-90deg); }
     .gbt_18_container.gbt_18_default_slider .gbt_18_img {
       width: 50%;
       position: relative; }

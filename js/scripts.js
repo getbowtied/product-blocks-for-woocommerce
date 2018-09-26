@@ -17,8 +17,8 @@
 				var slideImage = '.gbt_18_img .gbt_18_image-link'; // ALL IMAGE SELECTOR
 				var slideLength = $('.gbt_18_img-wrapper a', this).length < 10 ? '0' + ($('.gbt_18_img-wrapper a', this).length) : $('.gbt_18_img-wrapper a', this).length; //ADD 0 BEFORE SLIDE COUNT
 				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>'; //SLIDE COUNT ELEMENT
-				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON LEFT
-				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON RIGHT
+				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON LEFT
+				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON RIGHT
 				var slideIndex = '<span class="gbt_18_current_slide">01</span>'; 
 
 

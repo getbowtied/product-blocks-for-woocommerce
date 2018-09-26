@@ -114,13 +114,13 @@ body{
 						&.gbt_18_prev_slide{
 							transition: 0.3s ease-in-out;
 							&:hover{
-								transform: rotate(90deg);
+								transform: rotate(-90deg);
 							}
 						}
 						&.gbt_18_next_slide{
 							transition: 0.3s ease-in-out;
 							&:hover{
-								transform: rotate(90deg);
+								transform: rotate(-90deg);
 							}
 						}
 					}
