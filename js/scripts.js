@@ -17,9 +17,9 @@
 				var slideImage = '.gbt_18_img .gbt_18_image-link';
 				var slideLength = $('.gbt_18_img-wrapper a', this).length;
 				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>';
-				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_up"></i></span>';
-				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_down"></i></span>';
-				var slideIndex = '<span class="gbt_18_current_slide">01</span>';
+				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON LEFT
+				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON RIGHT
+				var slideIndex = '<span class="gbt_18_current_slide">01</span>'; 
 
 
 				//CURENT SLIDE INDEX
@@ -47,54 +47,63 @@
 					}, 300);
 				};
 
-				$(slideImage, $this).eq(-1).css({
-					transform: 'translateY(-100%)'
+				$(slideImage, $this).eq(-1).animate({ opacity: 0}, {delay: 400}).css({
+					transform: 'translateY(-100%)',
+					opacity: '0',
 				});
-				$(activeImage, $this).css({
-					transform: 'translateY(0)'
+				$(activeImage, $this).animate({opacity: 1},{duration: 0}).css({
+					transform: 'translateY(0)',
+					opacity: '1',
 				});
-				$(activeImage, $this).next().css({
-					transform: 'translateY(100%)'
+				$(activeImage, $this).next().animate({ opacity: 0}, {delay: 400}).css({
+					transform: 'translateY(100%)',
+					opacity: '0',
 				});
 				function infinitySlide(){
 					if ($(activeImage).next().length == 0) {
-						console.log($(activeImage).nextAll().length);
+						
 						$(slideImage, $this).removeAttr('style');
 
-						$(activeImage, $this).prev().css({
-							transform: 'translateY(-100%)'
+						$(activeImage, $this).prev().animate({ opacity: 0}, {delay: 400}).css({
+							transform: 'translateY(-100%)',
+							opacity: '0',
 						});
-						$(activeImage, $this).css({
-							transform: 'translateY(0)'
+						$(activeImage, $this).animate({opacity: 1},{duration: 0}).css({
+							transform: 'translateY(0)',
+							opacity: '1',
 						});
-						$(slideImage, $this).eq(0).css({
-							transform: 'translateY(100%)'
+						$(slideImage, $this).eq(0).animate({ opacity: 0}, {delay: 400}).css({
+							transform: 'translateY(100%)',
+							opacity: '0',
 						});
 					}
 					else if($(activeImage, $this).prev().length == 0){
 						$(slideImage, $this).removeAttr('style');
 
-						$(activeImage, $this).next().css({
-							transform: 'translateY(100%)'
+						$(activeImage, $this).next().animate({ opacity: 0}, {delay: 400}).css({
+							transform: 'translateY(100%)',
+							opacity: '0',
 						});
-						$(activeImage, $this).css({
-							transform: 'translateY(0)'
+						$(activeImage, $this).animate({opacity: 1},{duration: 0}).css({
+							transform: 'translateY(0)',
+							opacity: '1',
 						});
-						$(slideImage, $this).eq(-1).css({
-							transform: 'translateY(-100%)'
+						$(slideImage, $this).eq(-1).animate({ opacity: 0}, {delay: 400}).css({
+							transform: 'translateY(-100%)',
+							opacity: '0',
 						});
 					}
 					else{
 						$(slideImage, $this).removeAttr('style');
 
-						$(activeImage, $this).css({
-							transform: 'translateY(0)'
+						$(activeImage, $this).animate({opacity: 1},{duration: 0}).css({
+							transform: 'translateY(0)',
 						});
-						$(activeImage, $this).prev().css({
-							transform: 'translateY(-100%)'
+						$(activeImage, $this).prev().animate({ opacity: 0}, {delay: 400}).css({
+							transform: 'translateY(-100%)',
 						});
-						$(activeImage, $this).next().css({
-							transform: 'translateY(100%)'
+						$(activeImage, $this).next().animate({ opacity: 0}, {delay: 400}).css({
+							transform: 'translateY(100%)',
 						});
 					}
 				}
@@ -110,7 +119,7 @@
 					//INFINITY SLIDE
 					infinitySlide();
 
-					//SLIDE INDEX NUMBER
+					//SLIDE INDEX SHOW VALUE
 					showSlideIndex();
 
 					$('.gbt_18_content .gbt_18_current_slide', $this).addClass('gbt_18_slide_up');
@@ -132,7 +141,7 @@
 					//INFINITY SLIDE 
 					infinitySlide();
 
-					//SLIDE INDEX NUMBER
+					//SLIDE INDEX SHOW VALUE
 					showSlideIndex();
 
 					$('.gbt_18_content .gbt_18_current_slide', $this).addClass('gbt_18_slide_down');
@@ -142,7 +151,7 @@
 					    	$(this).removeClass('gbt_18_slide_down');
 					});
 				}
-				
+
 				//NEXT SLIDE
 				$('.gbt_18_slide_controls .gbt_18_next_slide', this).on('click', function(e){
 					if ($('.gbt_18_current_slide').hasClass('gbt_18_slide_up') || $('.gbt_18_current_slide').hasClass('gbt_18_slide_down')) {
