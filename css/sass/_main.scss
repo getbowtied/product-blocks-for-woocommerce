@@ -99,17 +99,30 @@ body{
 					display: flex;
 					width: 105px;
 					justify-content: space-between;
+					
 					span{
 						display: inline-block;
 						font-size: 16px;
 						width: 46px;
 						height: 46px;
 						border: 1px solid #000;
-						border-radius: 23px;
+						border-radius: 50px;
 						display: inline-flex;
 						align-items: center;
 						justify-content: center;
 						cursor: pointer;
+						&.gbt_18_prev_slide{
+							transition: 0.3s ease-in-out;
+							&:hover{
+								transform: rotate(90deg);
+							}
+						}
+						&.gbt_18_next_slide{
+							transition: 0.3s ease-in-out;
+							&:hover{
+								transform: rotate(90deg);
+							}
+						}
 					}
 				}
 			}

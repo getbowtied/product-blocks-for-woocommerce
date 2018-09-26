@@ -12,11 +12,11 @@
 
 			$(defaultSlide).each(function(){
 				//VARIABLES
-				var $this = this;
-				var activeImage = '.gbt_18_img .gbt_18_image-link.gbt_18_active';
-				var slideImage = '.gbt_18_img .gbt_18_image-link';
-				var slideLength = $('.gbt_18_img-wrapper a', this).length;
-				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>';
+				var $this = this; //THIS SLIDE SELECTOR
+				var activeImage = '.gbt_18_img .gbt_18_image-link.gbt_18_active'; // ACTIVE IMAGE SELECTOR
+				var slideImage = '.gbt_18_img .gbt_18_image-link'; // ALL IMAGE SELECTOR
+				var slideLength = $('.gbt_18_img-wrapper a', this).length < 10 ? '0' + ($('.gbt_18_img-wrapper a', this).length) : $('.gbt_18_img-wrapper a', this).length; //ADD 0 BEFORE SLIDE COUNT
+				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>'; //SLIDE COUNT ELEMENT
 				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON LEFT
 				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON RIGHT
 				var slideIndex = '<span class="gbt_18_current_slide">01</span>'; 
@@ -25,13 +25,14 @@
 				//CURENT SLIDE INDEX
 				$('.gbt_18_slide_header', this).prepend(slideIndex);
 
-				//SLIDE CONTROLS
+				//APPEND SLIDE CONTROLS
 				$('.gbt_18_slide_controls', this).append(slideLeft);
 				$('.gbt_18_slide_controls', this).append(slideRight);
-				//SLIDE HEADER
+
+				//APPEND SLIDE HEADER
 				$('.gbt_18_slide_header', this).append(slideCount);
 
-				//SET THE DEFAULT SLIDE
+				//SET THE FIRST SLIDE AS DEFAULT SLIDE
 				$('.gbt_18_image-link', this).eq(0).addClass('gbt_18_active');
 
 				//SLIDE INDEX NUMBER
@@ -47,6 +48,7 @@
 					}, 300);
 				};
 
+				//SET DEFAULT ANIMATION 
 				$(slideImage, $this).eq(-1).animate({ opacity: 0}, {delay: 400}).css({
 					transform: 'translateY(-100%)',
 					opacity: '0',
@@ -59,9 +61,11 @@
 					transform: 'translateY(100%)',
 					opacity: '0',
 				});
+
+				//INFINITY SLIDE AND ANIMATION CONTROL
 				function infinitySlide(){
 					if ($(activeImage).next().length == 0) {
-						
+
 						$(slideImage, $this).removeAttr('style');
 
 						$(activeImage, $this).prev().animate({ opacity: 0}, {delay: 400}).css({
@@ -107,6 +111,7 @@
 						});
 					}
 				}
+				//SLIDE RIGHT FUNCTION
 				function slideRightM(){
 					////////////////////////////////////////
 					if ($(activeImage, $this).next().length > 0) {
@@ -130,6 +135,8 @@
 						}
 					);
 				};
+
+				//SLIDE LEFT FUNCTION
 				function slideLeftM(){
 
 					if ($(activeImage, $this).prev().length > 0) {
@@ -152,7 +159,7 @@
 					});
 				}
 
-				//NEXT SLIDE
+				//CLICK NEXT SLIDE, STOP CLICK WHEN ANIMATION RUN
 				$('.gbt_18_slide_controls .gbt_18_next_slide', this).on('click', function(e){
 					if ($('.gbt_18_current_slide').hasClass('gbt_18_slide_up') || $('.gbt_18_current_slide').hasClass('gbt_18_slide_down')) {
 						return false;
@@ -163,7 +170,7 @@
 					
 				});
 
-				//PREV SLIDE
+				//CLICK PREV SLIDE, STOP CLICK WHEN ANIMATION RUN
 				$('.gbt_18_slide_controls .gbt_18_prev_slide', this).on('click', function(){
 					if ($('.gbt_18_current_slide').hasClass('gbt_18_slide_up') || $('.gbt_18_current_slide').hasClass('gbt_18_slide_down')) {
 						return false;
