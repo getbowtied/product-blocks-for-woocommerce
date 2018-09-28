@@ -4,6 +4,7 @@
 	var wooPlugin = {
 		init: function() {
 			this.wooSlidePlugin();
+			this.snapScroll();
 		},
 
 		wooSlidePlugin: function () {
@@ -231,8 +232,35 @@
 					}
 				});
 			});
-
 		},
+		snapScroll: function(){
+
+			// var scrollHeight = $('.gbt_18_product_lookbook_item').height();
+			// var lastScrollTop = 0;
+			var sh = 500;
+			$(document).on('scroll',function(){
+
+				// var currentScroll = $(this).scrollTop();
+				var st = $(this).scrollTop(); // 1040
+				var itemIndex = parseInt(st / 500); //CURENT ITEM INDEX 
+				var scrollToNextElement = (sh + st) - ((sh + st)-(itemIndex * sh));  
+				//var totalScroll = st + sh; // ex: 1540
+				//var mustValue = itemIndex * 500; // 1500
+				//var diference = totalScroll - mustValue; // 40
+				//var finalSum = totalScroll - diference // 1500 Ura :D
+				// (sh + st)- ((sh + st)-(itemIndex * sh)) = 1500 
+				console.log((sh + st)- ((sh + st)-(itemIndex * sh)))
+					// $('html, body').animate({
+					// 	scrollTop: currentScroll + $('.gbt_18_product_lookbook_item').offset().top
+					// }, 500);
+					
+
+		       	// lastScrollTop = currentScroll;
+			});
+
+
+
+		}
 	};
 	$( document ).ready( function(){
 		wooPlugin.init();		
