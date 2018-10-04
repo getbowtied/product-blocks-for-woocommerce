@@ -4,6 +4,7 @@
 	var wooPlugin = {
 		init: function() {
 			this.wooSlidePlugin();
+			this.expadingProduct();
 			// this.snapScroll();
 		},
 
@@ -232,6 +233,156 @@
 					}
 				});
 			});
+		},
+		expadingProduct: function(){
+			//PRODUCT SELECTORS
+			var itemSelector = $('.gbt_18_expanding_grid .gbt_18_expanding_grid_item')
+            var productTitle = $('.gbt_18_product-info .gbt_18_product_title span');
+            var productPrice = $('.gbt_18_product-info .gbt_18_product_price');
+            var productImg =  $('.gbt_18_feature_image img');
+
+            //EXPANDED SELECTORS
+            var expandedContainer = $('.gbt_18_expanded_content');
+            var productDetailsImg = $('.gbt_18_product_image img');
+            var productDetailsTitle = $('.gbt_18_details_title');
+            var productDetailsPrice = $('.gbt_18_details_price');
+            
+            //OPEN MODAL
+			$(itemSelector).on('click', function(){
+
+				$('.gbt_18_expanded_content').addClass('gbt_18_visible');
+				$('body').addClass('gbt_18_overflow');
+				//GET PRDUCT CONENT
+				//var getProductImgLink = $(this).find(productImg).attr('src');
+				var getProductTitle = $(this).find( productTitle).html();
+				var getProductPrice = $(this).find(productPrice).html();
+
+				expandedContainer.find(productDetailsTitle).html(getProductTitle);
+				expandedContainer.find(productDetailsPrice).html(getProductPrice);
+
+				$(this).find('.gbt_18_feature_image img').css('opacity', '0');
+            	
+				//PRODUCT IMG POSITION
+				var productImg = $(this).find('.gbt_18_feature_image img');
+				var offset = productImg.offset()
+				var photoOffsetTop = offset.top - $(document).scrollTop()
+				var photoOffsetLeft = offset.left - $(document).scrollLeft()
+
+				//PRODUCT IMG EXPANDED POSITION
+				var expandedImg = $('.gbt_18_expanded_content .gbt_18_product_image_item:first-child');
+				var expandedOffset = expandedImg.offset()
+				var expandedPhotoOffsetTop = expandedOffset.top - $(document).scrollTop()
+				var expandedPhotoOffsetLeft = expandedOffset.left - $(document).scrollLeft()
+
+				//PRODUCT BACKGROUND POSITION
+				var expandedBg = $('.gbt_18_expanded_bg');
+				var expandedBgOffset = expandedBg.offset();
+				var expandedBgOffsetTop = expandedBgOffset.top - $(document).scrollTop()
+				var expandedBgOffsetLeft = expandedBgOffset.left - $(document).scrollLeft()
+
+				//ANIMATION VALUES CALCULATE
+				
+				//EXPANDED BACKGROUND VALUES
+				var bgValLeft = (photoOffsetLeft - expandedBgOffsetLeft)
+				var bgValTop = (photoOffsetTop - expandedBgOffsetTop)
+
+				//BG SCALE VALUE
+				var bgScaleWidthVal = (productImg.width() / expandedBg.width())
+				var bgScaleHeightVal = (productImg.height() / expandedBg.height())
+
+				//PRODUCT IMG VALUES
+				var valLeft = (photoOffsetLeft - expandedPhotoOffsetLeft)
+				var valTop = (photoOffsetTop - expandedPhotoOffsetTop)
+
+				//PRDUCT IMAGE SCALE VALUE
+				var scaleWidthVal = (productImg.width() / expandedImg.width())
+				var scaleHeightVal = (productImg.height() / expandedImg.height())
+
+				//BG ANIMATION FUNCTION
+				var a,b,c,d;
+
+				$({moveX: bgValLeft, moveY: bgValTop, scaleX: bgScaleWidthVal.toFixed(2), scaleY: bgScaleHeightVal.toFixed(2)}).animate({
+				    moveX: 0,
+				    moveY: 0,
+				    scaleX: 1,
+				    scaleY:  1
+				}, {
+				    duration: 600,
+
+				    step: function (now, fx) {
+
+				        if (fx.prop == "moveX") {
+				            a = now;
+				        } else if (fx.prop == "moveY") {
+				            b = now;
+				        }
+				        else if (fx.prop == "scaleX") {
+				            c = now;
+				        }
+				        else if (fx.prop == "scaleY") {
+				            d = now;
+				        }
+				       	expandedBg.css({
+				        	transform: `translateX(${a}px) translateY(${b}px) scaleX(${c}) scaleY(${d})`,
+				        	opacity: 1
+				    	});
+				    }
+				});
+
+				//PRODUCT IMAGE ANIMATION FUNCTION
+				var x, y, z, w;
+
+				$({moveX: valLeft, moveY: valTop, scaleX: scaleWidthVal.toFixed(2), scaleY: scaleHeightVal.toFixed(2)}).animate({
+				    moveX: 0,
+				    moveY: 0,
+				    scaleX: 1,
+				    scaleY:  1
+				}, {
+				    duration: 600,
+
+				    step: function (now, fx) {
+
+				        if (fx.prop == "moveX") {
+				            x = now;
+				        } else if (fx.prop == "moveY") {
+				            y = now;
+				        }
+				        else if (fx.prop == "scaleX") {
+				            z = now;
+				        }
+				        else if (fx.prop == "scaleY") {
+				            w = now;
+				        }
+				        expandedImg.css({
+				        	transform: `translateX(${x}px) translateY(${y}px) scaleX(${z}) scaleY(${w})`,
+				        	opacity: 1
+				    	});
+				    }
+				});
+				$('.gbt_18_expanded_content .gbt_18_product_image_item:nth-child(n + 2)').each(function(i) {
+				   $(this).delay( (i + 1)* 300 ).animate({opacity:1}, 600);
+				});
+				$('.gbt_18_product_details, .gbt_18_close_content').stop().delay(600).animate({
+					opacity: 1
+				}, 600);
+			});
+			
+
+			
+			//CLOSE MODAL
+			$('.gbt_18_close_content').on('click', function(){
+				$('.gbt_18_expanded_content').removeClass('gbt_18_visible');
+				itemSelector.css('opacity', '1');
+            	productImg.css('opacity', '1');
+            	expandedContainer.scrollTop(0);
+            	$('.gbt_18_expanded_content .gbt_18_product_image_item,.gbt_18_product_details, .gbt_18_close_content').css({
+            		opacity: 0
+            	});	
+			});
+			//GET PRODUCT INFORMATION
+			
+			
+	        
 		},
 		// snapScroll: function(){
 		// 	if ($('.gbt_18_product_lookbook').length >= 1) {
