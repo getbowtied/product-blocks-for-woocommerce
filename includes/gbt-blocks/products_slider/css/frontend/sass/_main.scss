@@ -4,16 +4,16 @@ body{
 }
 //ICONS FONT
 @font-face {
-  font-family: "icomoon";
-  src: url("fonts/icomoon.eot?mto9c6");
-  src: url("fonts/icomoon.eot?mto9c6#iefix") format("embedded-opentype"), url("fonts/icomoon.ttf?mto9c6") format("truetype"), url("fonts/icomoon.woff?mto9c6") format("woff"), url("fonts/icomoon.svg?mto9c6#icomoon") format("svg");
+  font-family: "gbtblocks";
+  src: url("fonts/gbtblocks.eot?mto9c6");
+  src: url("fonts/gbtblocks.eot?mto9c6#iefix") format("embedded-opentype"), url("fonts/gbtblocks.ttf?mto9c6") format("truetype"), url("fonts/gbtblocks.woff?mto9c6") format("woff"), url("fonts/gbtblocks.svg?mto9c6#gbtblocks") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="gbt_18_icon"],
 [class*="gbt_18_icon"] {
-  font-family: "icomoon"  !important;
+  font-family: "gbtblocks"  !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -33,9 +33,12 @@ body{
 	align-items: stretch;
 	height: 100vh;
 	z-index: 0;
-	position: relative;
-	width: 100%;
 	overflow: hidden;
+	width: 100vw;
+    position: relative;
+	margin-left: -50vw;
+	left: 50%;
+    transform: translateX(0);
 	.gbt_18_content{
 		width: 50%;
 		overflow: auto;

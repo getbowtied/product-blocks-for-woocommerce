@@ -1,0 +1,38 @@
+.wp-block-gbt-products-slider .product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: solid 2px blue;
+  margin: 10px 0; }
+  .wp-block-gbt-products-slider .product > * {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+    text-indent: 10px; }
+  .wp-block-gbt-products-slider .product > .remove {
+    margin-left: auto;
+    cursor: pointer;
+    margin-right: 20px; }
+
+.wp-block-gbt-products-slider .search-results {
+  z-index: 1;
+  background: #FFF;
+  width: 100%;
+  border: solid 1px #ccc;
+  border-radius: 4px; }
+  .wp-block-gbt-products-slider .search-results .search-result {
+    display: block;
+    cursor: pointer;
+    margin: 5px 0; }
+    .wp-block-gbt-products-slider .search-results .search-result:hover {
+      background: rgba(0, 0, 0, 0.1); }
+    .wp-block-gbt-products-slider .search-results .search-result.selected {
+      background: green; }
