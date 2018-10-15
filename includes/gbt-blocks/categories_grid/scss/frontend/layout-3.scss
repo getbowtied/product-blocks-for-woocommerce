@@ -1,0 +1,30 @@
+.wp-block-getbowtied-categories-grid.gbt-grid
+{
+	&.is-style-layout-3
+	{
+		@media screen and (min-width: 768px) {
+
+			.gbt_categories_grid
+			{
+				.gbt-category-grid-item
+				{
+					float: left;
+					width: 33.33333333%;
+					padding: 0 8px;
+					margin-bottom: 16px;
+					height: 540px;
+
+					&:nth-child(4n+1)
+					{
+						width: 66.66666666%;
+					}
+
+					&:nth-child(4n+4)
+					{
+						width: 66.66666666%;
+					}
+				}
+			}
+		}
+	}
+}
