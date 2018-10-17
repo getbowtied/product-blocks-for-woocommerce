@@ -1,0 +1,52 @@
+.editor-block-preview
+{
+	.wp-block-getbowtied-categories-grid.gbt-editor
+	{
+		.gbt_editor_categories_grid
+		{
+			.gbt-category-grid-item
+			{
+				height: 70px !important;
+				padding: 0 4px;
+		    	margin-bottom: 8px;
+			}
+
+			.gbt-category-title
+			{
+			    font-size: 0.45rem;
+			    bottom: 3px;
+			    left: 11px;
+
+			    .gbt-count
+			    {
+			    	font-size: 0.40rem;
+			        margin-left: 3px;
+		    		margin-top: -2px;
+			    }
+			}
+		}
+	}
+}
+
+.editor-block-styles__item-preview
+{
+	.wp-block-getbowtied-categories-grid.gbt-editor
+	{
+		.gbt_editor_categories_grid
+		{
+			margin: -3px 0 0;
+
+			.gbt-category-grid-item
+			{
+				height: 30px !important;
+				padding: 0 4px;
+		    	margin-bottom: 8px;
+			}
+
+			.gbt-category-title
+			{
+			    display: none;
+			}
+		}
+	}
+}
