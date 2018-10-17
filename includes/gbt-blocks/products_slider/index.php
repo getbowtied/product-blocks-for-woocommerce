@@ -54,7 +54,7 @@ register_block_type( 'getbowtied/products-slider', array(
 		),
 		'align'			=> array(
 			'type'		=> 'string',
-			'default'	=> 'full',
+			'enum' 		=> array( 'wide', 'full', '' ),
 		),
 	),
 	'render_callback' => 'getbowtied_render_frontend_products_slider',
@@ -81,16 +81,40 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
                         <span class="gbt_18_line"></span>
                     </div>
 
-                    <div class="gbt_18_slide_content">
+                    <div class="gbt_18_slide_content product">
 						<?php foreach ( $products as $product ) { ?>
+
 						<div class="gbt_18_slide_content_item">
-						    <h5 class="gbt_18_slide_title">
+						    <h2 class="gbt_18_slide_title">
 						        <a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo $product->get_name(); ?></a>
-						    </h5>
-							<?php echo $product->get_price_html(); ?>
-						    <p class="gbt_18_slide_text">
+						    </h2>
+						    <p class="gbt_18_slide_text summary">
 						        <span class="gbt_18_p_wrapper">
-						           <?php echo $product->get_short_description(); ?>
+    								<?php echo $product->get_price_html(); ?>
+						        	<?php echo $product->get_short_description(); ?>
+						        	<?php if ( $product->get_type() == 'simple' ): ?>
+						        		<?php 
+						        		woocommerce_quantity_input( array(
+											'min_value'   => $product->get_min_purchase_quantity(),
+											'max_value'   => $product->get_max_purchase_quantity(),
+											'input_value' => $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+										), $product);
+										?>
+										<button type="submit" 
+												class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
+												value="<?php echo $product->get_id(); ?>"
+												data-product_id="<?php echo $product->get_id(); ?>"
+												data-quantity="1"
+												href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+												<?php echo $product->add_to_cart_text(); ?>
+										</button>
+						        	<?php else: ?>
+										<button type="submit" 
+												class="single_add_to_cart_button button alt" 
+												href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+												<?php echo $product->add_to_cart_text(); ?>
+										</button>
+						        	<?php endif; ?>
 						        </span>
 						    </p>
 						</div>
@@ -163,7 +187,7 @@ function getbowtied_render_backend_products_slider() {
 								key:"remove_product_'.$product->get_id().'", 
 								onClick: function(){
 									var arr = props.attributes.product_ids.split(",");
-									var remove = '.$product->get_id().';
+									var remove = "'.$product->get_id().'";
 									var index = arr.indexOf(remove);
 									if (index > -1) {
 									  arr.splice(index, 1);
@@ -232,9 +256,8 @@ function getbowtied_search_category() {
 						onClick: function(e) {
 							if ($("search-result-'.$id.'").hasClass("selected")) {
 								var arr = props.attributes.product_ids.split(",");
-								var remove = '.$id.';
+								var remove = "'.$id.'";
 								var index = arr.indexOf(remove);
-								console.log(index);
 								if (index > -1) {
 								  arr.splice(index, 1);
 								}

@@ -20,7 +20,7 @@
 		icon: 'layout',
 		category: 'product_blocks',
 		supports: {
-			align: [ 'center', 'wide', 'full' ],
+			align: [ 'wide', 'full' ],
 		},
 		attributes: {
 			product_ids: {
@@ -31,10 +31,6 @@
 				type: 'string',
 				default: ''
 			},
-			resultList: {
-				type: 'string',
-				default: ''
-			}
 		},
 		edit: function( props ) {
 
@@ -63,7 +59,7 @@
 						{
 							className: 'wp-block-gbt-products-slider'
 						},
-						el(
+						props.isSelected && el(
 							TextControl,
 							{
 								key: 'products-ids-option',
@@ -76,6 +72,7 @@
 		          					props.setAttributes( { query: newQuery } );
 		          					if (newQuery.length < 3) return;
 
+		          					props.setAttributes( { resultList: ''} );
 		          					var data = {
 		          						action: 'getbowtied_search_category',
 		          						attributes: {
@@ -108,7 +105,7 @@
 								},
 							},
 						),
-						el(
+						props.isSelected && el(
 							'div',
 							{
 								className: 'search-results-wrapper'
