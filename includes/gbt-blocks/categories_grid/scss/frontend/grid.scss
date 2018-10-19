@@ -4,26 +4,16 @@
 
 	&.full
 	{
-		width: 100vw;
-		margin-left: 50%;
-		transform: translateX(-50%);
-		padding-left: 0.8rem;
-    	padding-right: 0.8rem;
-
-    	@media all and (max-width: 640px) {
-
-    		padding-left: 20px;
-  			padding-right: 20px; 
-    	}
+		margin-left: calc( -100vw / 2 + 100% / 2 );
+	    margin-right: calc( -100vw / 2 + 100% / 2 );
+	    max-width: 100vw;
 	}
 
 	&.wide
 	{
-		@media all and (min-width: 1024px) {
-			width: 75vw;
-			margin-left: 50%;
-			transform: translateX(-50%);
-		}
+		margin-left: calc( -75vw / 2 + 100% / 2 );
+	    margin-right: calc( -75vw / 2 + 100% / 2 );
+	    max-width: 75vw;
 	}
 
 	.gbt_categories_grid
