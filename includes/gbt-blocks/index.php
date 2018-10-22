@@ -19,3 +19,4 @@ add_filter( 'block_categories', function( $categories, $post ) {
 
 require_once 'products_slider/index.php';
 require_once 'categories_grid/index.php';
+require_once 'products_carousel/index.php';
