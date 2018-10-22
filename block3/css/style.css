@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+.gbt_18_pagination {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  padding: 30px; }
+  .gbt_18_pagination a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+    display: inline-block; }
+  .gbt_18_pagination .gbt_18_snap_page {
+    position: relative; }
+    .gbt_18_pagination .gbt_18_snap_page a:hover + .gbt_18_hover_image {
+      opacity: 1;
+      visibility: visible; }
+    .gbt_18_pagination .gbt_18_snap_page .gbt_18_hover_image {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease-in-out; }
+      .gbt_18_pagination .gbt_18_snap_page .gbt_18_hover_image img {
+        width: 150px;
+        height: 192px; }
+
+.gbt_18_snap_look_book img {
+  max-width: 100%;
+  display: block; }
+.gbt_18_snap_look_book .gbt_18_hero_section_content {
+  max-width: 860px;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%); }
+  .gbt_18_snap_look_book .gbt_18_hero_section_content .gbt_18_hero_title {
+    font-size: 72px;
+    color: #000; }
+  .gbt_18_snap_look_book .gbt_18_hero_section_content .gbt_18_hero_subtitle {
+    text-transform: uppercase;
+    font-size: 14px; }
+.gbt_18_snap_look_book .gbt_18_scroll_down_button {
+  width: 46px;
+  height: 46px;
+  border: 1px solid #000;
+  position: relative;
+  display: inline-block;
+  border-radius: 46px;
+  position: absolute;
+  bottom: 150px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  cursor: pointer; }
+  .gbt_18_snap_look_book .gbt_18_scroll_down_button:before {
+    content: '';
+    border: solid black;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 6px;
+    position: absolute;
+    top: 32%;
+    transform: rotate(45deg);
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 0px; }
+.gbt_18_snap_look_book .gbt_18_look_book_item {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative; }
+  .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_shop_this_book {
+    position: absolute;
+    bottom: 120px;
+    left: 110px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_shop_this_book span {
+      color: #fff;
+      font-size: 72px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_shop_this_book h5 {
+      color: #fff;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin: 0; }
+  .gbt_18_snap_look_book .gbt_18_look_book_item:nth-child(2n + 2) {
+    flex-direction: row-reverse; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item:nth-child(2n + 2) .gbt_18_shop_this_book {
+      position: absolute;
+      top: 120px;
+      bottom: auto;
+      left: auto;
+      right: 110px; }
+  .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_image {
+    width: 50%; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_image img {
+      max-height: 100vh;
+      width: 100%;
+      object-fit: cover; }
+  .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item {
+      padding: 24px;
+      box-sizing: border-box;
+      /* two items */
+      /* three items */
+      /* four items */ }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(1) {
+        width: 558px; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(1) {
+        width: 432px; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(3), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(1) {
+        width: 280px; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(4), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(3), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(4):nth-last-child(1) {
+        width: 50%; }
+        .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(4):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(3):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(2):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(4):nth-last-child(1):nth-child(2n+1) .gbt_18_item_wrapper {
+          float: right; }
+        .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(4) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(3) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(2) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(4):nth-last-child(1) .gbt_18_item_wrapper {
+          width: 280px; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item .gbt_18_look_product_info {
+        text-align: center; }
+
+h1 {
+  margin: 0;
+  font-size: 100px;
+  display: block;
+  text-align: center; }
+
+/*# sourceMappingURL=style.css.map */
