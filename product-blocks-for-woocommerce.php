@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       		Product Blocks for WooCommerce
- * Plugin URI:        		https://github.com/getbowtied/shopkeeper-extender
+ * Plugin URI:        		https://github.com/getbowtied/product-blocks-for-woocommerce
  * Description:       		This is just the greatest.
  * Version:           		1.0
  * Author:            		GetBowtied
@@ -10,7 +10,7 @@
  * Requires at least: 		4.9
  * Tested up to: 			4.9.8
  *
- * @package  Shopkeeper Extender
+ * @package  Product Blocks for WooCommerce
  * @author   GetBowtied
  */
 
@@ -25,7 +25,7 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 add_action( 'init', 'product_blocks_updater' );
 function product_blocks_updater() {
 
-	if ( !class_exists('WP_GitHub_Updater')) include_once 'updater.php';
+	if ( !class_exists('WP_GitHub_Updater')) require_once 'core/class-updater.php';
 
 	if ( !defined('WP_GITHUB_FORCE_UPDATE')) define( 'WP_GITHUB_FORCE_UPDATE', true );
 
@@ -33,11 +33,11 @@ function product_blocks_updater() {
 
 		$config = array(
 			'slug' 				 => plugin_basename(__FILE__),
-			'proper_folder_name' => 'shopkeeper-extender',
-			'api_url' 			 => 'https://api.github.com/repos/getbowtied/shopkeeper-extender',
-			'raw_url' 			 => 'https://raw.github.com/getbowtied/shopkeeper-extender/master',
-			'github_url' 		 => 'https://github.com/getbowtied/shopkeeper-extender',
-			'zip_url' 			 => 'https://github.com/getbowtied/shopkeeper-extender/zipball/master',
+			'proper_folder_name' => 'product-blocks-for-woocommerce',
+			'api_url' 			 => 'https://api.github.com/repos/getbowtied/product-blocks-for-woocommerce',
+			'raw_url' 			 => 'https://raw.github.com/getbowtied/product-blocks-for-woocommerce/master',
+			'github_url' 		 => 'https://github.com/getbowtied/product-blocks-for-woocommerce',
+			'zip_url' 			 => 'https://github.com/getbowtied/product-blocks-for-woocommerce/zipball/master',
 			'sslverify'			 => true,
 			'requires'			 => '4.9',
 			'tested'			 => '4.9.8',

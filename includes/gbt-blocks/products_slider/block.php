@@ -1,65 +1,12 @@
 <?php
-
-// Categories Grid
-
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+require_once 'functions/function-setup.php';
+require_once 'functions/function-ajax.php';
 
-add_action( 'enqueue_block_editor_assets', 'getbowtied_products_slider_editor_assets' );
-
-if ( ! function_exists( 'getbowtied_products_slider_editor_assets' ) ) {
-	function getbowtied_products_slider_editor_assets() {
-
-		wp_enqueue_script(
-			'getbowtied-products-slider',
-			plugins_url( 'js/backend/block.js', __FILE__ ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
-		);
-
-		wp_enqueue_style(
-			'getbowtied-products-slider-styles',
-			plugins_url( 'css/backend/editor.css', __FILE__ ),
-			array( 'wp-edit-blocks' )
-		);
-
-		wp_localize_script( 'getbowtied-products-slider', 'ajax_object',
-	            array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
-	}
-}
-
-add_action( 'enqueue_block_assets', 'getbowtied_products_slider_assets' );
-
-if ( ! function_exists( 'getbowtied_products_slider_assets' ) ) {
-	function getbowtied_products_slider_assets() {
-		
-		wp_enqueue_style(
-			'getbowtied-products-slider-frontend-css',
-			plugins_url( 'css/frontend/style.css', __FILE__ ),
-			array()
-		);
-
-		wp_enqueue_script(
-			'getbowtied-products-slider-frontend-js',
-			plugins_url( 'js/frontend/scripts.js', __FILE__ ),
-			array( 'jquery' )
-		);
-	}
-}
-
-register_block_type( 'getbowtied/products-slider', array(
-	'attributes'      => array(
-		'product_ids'	=> array(
-			'type'		=> 'string',
-			'default'	=> '',
-		),
-		'align'			=> array(
-			'type'		=> 'string',
-			'enum' 		=> array( 'wide', 'full', '' ),
-		),
-	),
-	'render_callback' => 'getbowtied_render_frontend_products_slider',
-) );
-
+//==============================================================================
+//	Frontend output
+//==============================================================================
 function getbowtied_render_frontend_products_slider( $attributes ) {
 
 	extract( shortcode_atts( array(
@@ -149,6 +96,9 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 	return ob_get_clean();
 }
 
+//==============================================================================
+//	Backend output
+//==============================================================================
 add_action('wp_ajax_getbowtied_render_backend_products_slider', 'getbowtied_render_backend_products_slider');
 function getbowtied_render_backend_products_slider() {
 
@@ -207,80 +157,3 @@ function getbowtied_render_backend_products_slider() {
 	echo json_encode($output_final);
 	die();
 }
-
-
-function getbowtied_search_category() {
-
-	$keyword = isset($_POST['attributes']['query'])? $_POST['attributes']['query'] :'';
-	if (empty($keyword) || strlen($keyword) < 3) {
-		return;
-	} 
-
-	$tax_query = array(
-      	array(
-			'taxonomy' => 'product_visibility',
-			'field'    => 'name',
-			'terms'    => 'exclude-from-search',
-			'operator' => 'NOT IN',
-		)
-    );
-
-	$args = array(
-		's'						 => $keyword,
-		'posts_per_page'		 => 8,
-		'post_type'				 => 'product',
-		'post_status'			 => 'publish',
-		'ignore_sticky_posts'	 => 1,
-		'suppress_filters'		 => false,
-		'tax_query'				 => $tax_query
-	);
-
-	$args = apply_filters('search_products_args', $args);
-	$products = get_posts( $args );
-	$return = array("ids" => array(), "html" => '');
-
-	if ( !empty( $products ) ) {
-
-		foreach ( $products as $post ) {
-
-			$product = wc_get_product( $post );
-			$id = $product->get_id();
-			$name = $product->get_name();
-			$return['ids'][] = ["value" => $id, "label"=> $name];
-			$return['html'] .= '
-				el(
-					"div",
-					{
-						className: "search-result", 
-						id: "search-result-'.$id.'",
-						onClick: function(e) {
-							if ($("search-result-'.$id.'").hasClass("selected")) {
-								var arr = props.attributes.product_ids.split(",");
-								var remove = "'.$id.'";
-								var index = arr.indexOf(remove);
-								if (index > -1) {
-								  arr.splice(index, 1);
-								}
-								props.setAttributes({product_ids: arr.join(",")});
-								getCategoriesGrid(arr.join(","));
-							} else {
-	           					var temp = [];
-	           					temp.push('.$id.');
-	           					var tempArr = attributes.product_ids.split(",");
-	           					temp = temp.concat(tempArr);
-	           					props.setAttributes({product_ids: temp.join(",")});
-	           					getCategoriesGrid( temp.join(",") );
-							}
-							$("#search-result-'.$id.'").toggleClass("selected");
-						},
-					}, 
-					"'. $name .'"
-				),';
-		}
-	}
-	$return['html'] .= 'el("div", {className: "search-results"}, '.$return['html'] .' el("div", {className:"clearfix"}))';
-	echo json_encode($return);
-	die();
-}
-
-add_action('wp_ajax_getbowtied_search_category', 'getbowtied_search_category');

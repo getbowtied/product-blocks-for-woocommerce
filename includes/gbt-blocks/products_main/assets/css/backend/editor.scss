@@ -1,0 +1,12 @@
+div[data-type="getbowtied/products-main"] {
+    .category-result-wrapper {
+        > label {
+            display: block;
+            width: 100%;
+            
+            &.child {
+                padding-left: 28px;
+            }
+        }
+    }
+}

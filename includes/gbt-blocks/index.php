@@ -17,5 +17,6 @@ add_filter( 'block_categories', function( $categories, $post ) {
 	);
 }, 10, 2 );
 
-require_once 'products_slider/index.php';
+require_once 'products_slider/block.php';
 require_once 'categories_grid/index.php';
+require_once 'products_main/block.php';
