@@ -1,5 +1,29 @@
 div[data-type="getbowtied/products-main"] .category-result-wrapper > label {
   display: block;
-  width: 100%; }
+  width: 100%;
+  position: relative;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
   div[data-type="getbowtied/products-main"] .category-result-wrapper > label.child {
-    padding-left: 28px; }
+    padding-left: 28px;
+    max-height: 0;
+    overflow: hidden; }
+    div[data-type="getbowtied/products-main"] .category-result-wrapper > label.child.expanded {
+      max-height: 30px; }
+  div[data-type="getbowtied/products-main"] .category-result-wrapper > label .category-count {
+    margin-left: 20px;
+    color: #ccc; }
+  div[data-type="getbowtied/products-main"] .category-result-wrapper > label .expand {
+    position: absolute;
+    right: 0;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out; }
+  div[data-type="getbowtied/products-main"] .category-result-wrapper > label.expanded .expand {
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg); }
+
+div[data-type="getbowtied/products-main"] .search-results {
+  margin-top: 50px;
+  background: yellow; }

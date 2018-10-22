@@ -81,20 +81,20 @@
 				return '/wc/v2/products' + query;
 			}
 
-			function renderResults() {
-				var productElements = [];
-				for ( i = 0; i < props.attributes.result.length; i++ ) {
-					productElements.push(el('div', {className:'single-result'}, props.attributes.result[i].name));
-				}
-				return productElements;
-			}
-
 			function categoryClassName(parent, value) {
 				if ( parent == 0) {
 					return 'parent parent-' + value;
 				} else {
 					return 'child child-' + parent;
 				}
+			}
+
+			function renderResults() {
+				var productElements = [];
+				for ( i = 0; i < props.attributes.result.length; i++ ) {
+					productElements.push(el('div', {className:'single-result'}, props.attributes.result[i].name));
+				}
+				return productElements;
 			}
 
 			function renderCategories() {
@@ -119,6 +119,7 @@
 										onChange: function onChange(evt){
 											if (evt.target.dataset.parent == 0) {
 												if ( evt.target.checked === true ) {
+													// $('span.expand[data-toggle="child-' + evt.target.dataset.id + '"').trigger('click');
 													var qCS = props.attributes.queryCategorySelected;
 													$('input[data-parent="' + evt.target.dataset.id + '"').each(function(){
 														var index = qCS.indexOf($(this).attr('data-id'));
@@ -162,7 +163,28 @@
 										},
 									}, 
 								),
-							props.attributes.queryCategoryOptions[i].label,
+								props.attributes.queryCategoryOptions[i].label,
+								el(
+									'span',
+									{
+										className: 'category-count',
+									},
+									props.attributes.queryCategoryOptions[i].count,
+								),
+								props.attributes.queryCategoryOptions[i].parent == 0 && props.attributes.queryCategoryOptions[i+1].parent == props.attributes.queryCategoryOptions[i].value && el(
+									'span',
+									{
+										className: 'expand dashicons dashicons-arrow-down-alt2',
+										'data-toggle': 'child-' + props.attributes.queryCategoryOptions[i].value,
+										onClick: function onClick(evt) {
+											var _this =$(evt.target);
+											var toggle = evt.target.dataset.toggle;
+											evt.preventDefault();
+											_this.parent('label').toggleClass('expanded');
+											_this.parent('label').nextAll('label.' + toggle ).toggleClass('expanded');
+										}
+									},
+								)
 							),
 						);
 					} 
@@ -177,7 +199,7 @@
 				apiFetch({ path: query }).then(function (categories) {
 					console.log(categories);
 				 	for( i = 0; i < categories.length; i++ ) {
-		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent };
+		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
 		        	}
 
 		        	props.setAttributes({queryCategoryOptions: options});
@@ -221,19 +243,6 @@
 
 			return [
 					el(
-						'div',
-						{
-							className: 'test',
-							value: 'test2',
-							onClick: function onClick(e) {
-								console.log(e.target);
-								console.log(e.target.value);
-								props.setState({ test: 'test1'});
-							}
-						},
-						'click me',
-					),
-					el(
 						SelectControl,
 						{
 							key: 'query-panel-select',
@@ -256,6 +265,7 @@
 								value: 'all_products'
 							}],
 							onChange: function onChange(value) {
+								props.setAttributes({result: []});
 								if ( value === 'by_category') {
 									getCategories();
 								}
@@ -382,6 +392,7 @@
 						{
 							className: 'search-results',
 						},
+						'This is where the products are gonna be displayed:',
 						renderResults(),
 					),
 			];
