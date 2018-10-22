@@ -15,20 +15,11 @@ if ( ! function_exists( 'getbowtied_products_carousel_editor_assets' ) ) {
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
-		wp_localize_script( 'getbowtied-products-carousel-editor-scripts', 'ajax_object',
-	            array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
-
 		wp_register_style(
 			'getbowtied-products-carousel-editor-styles',
 			plugins_url( 'css/backend/editor.css', __FILE__ ),
 			array( 'wp-edit-blocks' ),
 			filemtime( plugin_dir_path( __FILE__ ) . 'css/backend/editor.css' )
-		);
-
-		wp_enqueue_script(
-			'getbowtied-products-carousel-scripts',
-			plugins_url( 'js/vendor/flexslider/jquery.flexslider.js', __FILE__ ),
-			array( 'jquery' )
 		);
 	}
 }
@@ -149,81 +140,4 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	wp_reset_postdata();
 
 	return '<div class="wp-block-getbowtied-products-carousel flexslider ' . $align . '"><div class="slider">' . ob_get_clean() . '</div></div>';
-}
-
-add_action('wp_ajax_getbowtied_render_backend_products_carousel', 'getbowtied_render_backend_products_carousel');
-function getbowtied_render_backend_products_carousel() {
-
-	$attributes = $_POST['attributes'];
-	$output = '';
-	$output_final = '';
-
-	extract( shortcode_atts( array(
-		'orderby'						=> 'newest',
-		'number'     					=> 6,
-		'products_source'      			=> 'date',
-		'columns'						=> '3',
-	), $attributes ) );
-
-	$args = [
-		'status' => 'publish',
-		'orderby' => $orderby,
-	    'order' => $products_source,
-		'limit' => $number
-	];
-
-	$products = wc_get_products( $args );
-
-	if ( $products ) {
-
-		$i = 0;
-		foreach ($products as $product):
-
-			if( $i == 0 ) {
-				$output .= 'el("div", {className:"slide"}, ';
-				$output .= 'el("ul", {className:"gbt-products products columns-'.$columns.'", key:"gbt-products"}, ';
-			}
-
-			$output .= 'el("li",{className:"gbt-product product", key:"gbt-product"},';
-
-				$output .= 'el("a",{className:"woocommerce-loop-product__link", key:"gbt-product-link"},';
-
-				    $image = wp_get_attachment_image_src( $product->image_id, 'thumbnail');
-				    $image = isset($image[0]) ? $image[0] : wc_placeholder_img_src();
-
-				    if ( isset($image) ) {
-				    	$output .= 'el("img",{key:"gbt-product-thumbnail", src: "'.$image.'"}),';
-					}
-
-					$output .= 'el("h4",{className:"gbt-product-title", key:"gbt-product-title"}, "'.htmlspecialchars_decode($product->name).'"),';
-
-					$output .= 'el("span",{className:"gbt-price price", key:"gbt-price"}, "'.$product->price.'"),';
-
-					$output .= 'el("button",{className:"gbt-add-to-cart", key:"gbt-add-to-cart"}, "Add To Cart"),';
-
-				$output .= '),';
-
-			$output .= '),';
-
-			$i++;
-
-			if( $i == $columns ) {
-				$output .= '),';
-				$output .= '),';
-				$i = 0;
-			}
-
-		endforeach;
-
-		if( $i != 0 && $i < $columns ) {
-			$output .= '),';
-			$output .= '),';
-		}
-
-	} 
-
-	$output_final = 'el( "div", {className:"flexslider", id:"flexslider"}, el( "div", {className: "slider"}, '.$output.') )'; 
-
-	echo json_encode($output_final);
-	exit;
 }
