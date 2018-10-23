@@ -103,23 +103,24 @@
 
 			function renderCategories() {
 				var categoryElements = [];
-				if ( props.attributes.queryCategoryOptions.length > 0 )
+				var catArr = props.attributes.queryCategoryOptions;
+				if ( catArr.length > 0 )
 				{
-					for ( i = 0; i < props.attributes.queryCategoryOptions.length; i++ ) {
+					for ( i = 0; i < catArr.length; i++ ) {
 						categoryElements.push(
 							el(
 							'label',
 								{
-									className: categoryClassName( props.attributes.queryCategoryOptions[i].parent, props.attributes.queryCategoryOptions[i].value ),
+									className: categoryClassName( catArr[i].parent, catArr[i].value ),
 								},
 								el(
 								'input', 
 									{
 										type:  'checkbox',
-										key:   'category-checkbox-' + props.attributes.queryCategoryOptions[i].value,
-										value: props.attributes.queryCategoryOptions[i].value,
-										'data-id': props.attributes.queryCategoryOptions[i].value,
-										'data-parent': props.attributes.queryCategoryOptions[i].parent,
+										key:   'category-checkbox-' + catArr[i].value,
+										value: catArr[i].value,
+										'data-id': catArr[i].value,
+										'data-parent': catArr[i].parent,
 										onChange: function onChange(evt){
 											if (evt.target.dataset.parent == 0) {
 												if ( evt.target.checked === true ) {
@@ -167,15 +168,15 @@
 										},
 									}, 
 								),
-								props.attributes.queryCategoryOptions[i].label,
+								catArr[i].label,
 								el(
 									'span',
 									{
 										className: 'category-count',
 									},
-									props.attributes.queryCategoryOptions[i].count,
+									catArr[i].count,
 								),
-								props.attributes.queryCategoryOptions[i].parent == 0 && props.attributes.queryCategoryOptions[i+1].parent == props.attributes.queryCategoryOptions[i].value && el(
+								catArr[i].parent == 0 && ((i+1) <= catArr.length && catArr[i+1].parent == catArr[i].value) && el(
 									'span',
 									{
 										className: 'expand dashicons dashicons-arrow-down-alt2',
@@ -201,7 +202,6 @@
 					if ( arr[i].parent == index) {
 						arr[i].level = 'level-' + level;
 						newarr.push(arr[i]);
-
 						sortCategories(arr[i].value, arr, newarr, level + 1 );
 					}
 				}
