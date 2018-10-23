@@ -33,6 +33,7 @@ body{
 		    opacity: 0;
 		    visibility: hidden;
 		    transition: 0.3s ease-in-out;
+		    pointer-events: none;
 			img{
 				width: 150px;
 				height: 192px;
@@ -112,9 +113,10 @@ body{
 				margin: 0;
 			}
 		}
-		&:nth-child(2n + 2){
+		&:nth-child(2n + 3){
 			flex-direction: row-reverse;
 			.gbt_18_shop_this_book{
+				text-align: right;
 				position: absolute;
 				top: 120px;
 				bottom: auto;
@@ -136,6 +138,41 @@ body{
 			flex-wrap: wrap;
 			align-items: center;
 			justify-content: center;
+			.star-rating {
+				position: relative;
+				margin: 0 auto;
+				display: table;
+				position: relative;
+				word-break: break-all;
+				&:before {
+					content: '\e929\e929\e929\e929\e929';
+					display: block;
+					font-size: 16px;
+					color: #888888;
+					font-family: icomoon;
+				}
+				> span {
+					font-size: 0;
+					overflow: hidden;
+					display: inline;
+					position: absolute;
+					left: 0;
+					z-index: 1;
+					height: 25px;
+					top: 0;
+					text-align: left;
+					&:before {
+						content: '\e929\e929\e929\e929\e929';
+						display: block;
+						font-size: 16px;
+						width: 87.27px;
+						color: #000;
+						font-family: icomoon;
+					}
+				}
+			}
+		}
+		&.gbt_18_look_book_type_grid{
 			.gbt_18_look_item{
 				padding: 24px;
 				box-sizing: border-box;
@@ -168,15 +205,34 @@ body{
 						}
 					}
 					.gbt_18_item_wrapper{
-						width: 280px;
+						width: 232px;
 					}
 				}
-
+				&:nth-child(1):nth-last-child(5),
+				&:nth-child(2):nth-last-child(4),
+				&:nth-child(3):nth-last-child(3),
+				&:nth-child(4):nth-last-child(2),
+				&:nth-child(5):nth-last-child(1){
+					.gbt_18_item_wrapper{
+						width: 232px;
+					}
+				}
+				&:nth-child(1):nth-last-child(6),
+				&:nth-child(2):nth-last-child(5),
+				&:nth-child(3):nth-last-child(4),
+				&:nth-child(4):nth-last-child(3),
+				&:nth-child(5):nth-last-child(2),
+				&:nth-child(6):nth-last-child(1){
+					.gbt_18_item_wrapper{
+						width: 232px;
+					}
+				}
 				.gbt_18_look_product_info{
 					text-align: center;
 				}
-				
 			}
+		}
+		&.gbt_18_look_book_type_inline{
 			
 		}
 	}

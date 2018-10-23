@@ -26,7 +26,8 @@ body {
       transform: translateY(-50%);
       opacity: 0;
       visibility: hidden;
-      transition: 0.3s ease-in-out; }
+      transition: 0.3s ease-in-out;
+      pointer-events: none; }
       .gbt_18_pagination .gbt_18_snap_page .gbt_18_hover_image img {
         width: 150px;
         height: 192px; }
@@ -93,9 +94,10 @@ body {
       font-size: 12px;
       text-transform: uppercase;
       margin: 0; }
-  .gbt_18_snap_look_book .gbt_18_look_book_item:nth-child(2n + 2) {
+  .gbt_18_snap_look_book .gbt_18_look_book_item:nth-child(2n + 3) {
     flex-direction: row-reverse; }
-    .gbt_18_snap_look_book .gbt_18_look_book_item:nth-child(2n + 2) .gbt_18_shop_this_book {
+    .gbt_18_snap_look_book .gbt_18_look_book_item:nth-child(2n + 3) .gbt_18_shop_this_book {
+      text-align: right;
       position: absolute;
       top: 120px;
       bottom: auto;
@@ -113,26 +115,59 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center; }
-    .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item {
-      padding: 24px;
-      box-sizing: border-box;
-      /* two items */
-      /* three items */
-      /* four items */ }
-      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(1) {
-        width: 558px; }
-      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(1) {
-        width: 432px; }
-      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(3), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(1) {
-        width: 280px; }
-      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(4), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(3), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(4):nth-last-child(1) {
-        width: 50%; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(4):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(3):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(2):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(4):nth-last-child(1):nth-child(2n+1) .gbt_18_item_wrapper {
-          float: right; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(1):nth-last-child(4) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(2):nth-last-child(3) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(3):nth-last-child(2) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item:nth-child(4):nth-last-child(1) .gbt_18_item_wrapper {
-          width: 280px; }
-      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .gbt_18_look_item .gbt_18_look_product_info {
-        text-align: center; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .star-rating {
+      position: relative;
+      margin: 0 auto;
+      display: table;
+      position: relative;
+      word-break: break-all; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .star-rating:before {
+        content: '\e929\e929\e929\e929\e929';
+        display: block;
+        font-size: 16px;
+        color: #888888;
+        font-family: icomoon; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .star-rating > span {
+        font-size: 0;
+        overflow: hidden;
+        display: inline;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        height: 25px;
+        top: 0;
+        text-align: left; }
+        .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box .star-rating > span:before {
+          content: '\e929\e929\e929\e929\e929';
+          display: block;
+          font-size: 16px;
+          width: 87.27px;
+          color: #000;
+          font-family: icomoon; }
+  .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item {
+    padding: 24px;
+    box-sizing: border-box;
+    /* two items */
+    /* three items */
+    /* four items */ }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(1) {
+      width: 558px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(1) {
+      width: 432px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(3), .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(3):nth-last-child(1) {
+      width: 280px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(4), .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(3), .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(3):nth-last-child(2), .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(4):nth-last-child(1) {
+      width: 50%; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(4):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(3):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(3):nth-last-child(2):nth-child(2n+1) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(4):nth-last-child(1):nth-child(2n+1) .gbt_18_item_wrapper {
+        float: right; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(4) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(3) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(3):nth-last-child(2) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(4):nth-last-child(1) .gbt_18_item_wrapper {
+        width: 232px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(5) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(4) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(3):nth-last-child(3) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(4):nth-last-child(2) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(5):nth-last-child(1) .gbt_18_item_wrapper {
+      width: 232px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(1):nth-last-child(6) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(2):nth-last-child(5) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(3):nth-last-child(4) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(4):nth-last-child(3) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(5):nth-last-child(2) .gbt_18_item_wrapper, .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item:nth-child(6):nth-last-child(1) .gbt_18_item_wrapper {
+      width: 232px; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item .gbt_18_look_product_info {
+      text-align: center; }
 
 h1 {
   margin: 0;

@@ -28,29 +28,38 @@
 
 			      	var getDataValue;
 			      	var activeClass;
-			      	var getlookBookImage;
+			      	var lookBookImage;
 			      	$(".gbt_18_look_book_item").each(function(i) {
-			      		// console.log(i.toString().length)
+
 			      		$(this).attr("data-section-name", i + 1);
 			        	
 			        	getDataValue = $(this).attr("data-section-name");
 			        	
-			        	getlookBookImage = $(this).find('.gbt_18_look_item:first-child .gbt_18_look_product_image img').attr('src');
+			        	lookBookImage = $(this).find('.gbt_18_look_item:first-child .gbt_18_look_product_image img');
 
-
-			        	console.log(getlookBookImage);
 			        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
-			        
-			        	$(".gbt_18_pagination").append(
-			        		`<div class="gbt_18_snap_page">
-				        		<a class="${activeClass}" href="#${getDataValue}">
-				        			<span> ${getDataValue}</span>
-				        		</a>
-				        		<div class="gbt_18_hover_image">
-				        			<img src="${getlookBookImage}" alt="">
-				        		</div>
-				        	</div>`
-			        	);
+			        	
+			        	if (lookBookImage.length == 0) {
+			        		$(".gbt_18_pagination").append(
+				        		`<div class="gbt_18_snap_page">
+					        		<a class="${activeClass}" href="#${getDataValue}">
+					        			<span> ${getDataValue}</span>
+					        		</a>
+					        	</div>`
+				        	);
+			        	}
+			        	else{
+			        		$(".gbt_18_pagination").append(
+				        		`<div class="gbt_18_snap_page">
+					        		<a class="${activeClass}" href="#${getDataValue}">
+					        			<span> ${getDataValue}</span>
+					        		</a>
+					        		<div class="gbt_18_hover_image">
+					        			<img src="${lookBookImage.attr('src')}" alt="">
+					        		</div>
+					        	</div>`
+				        	);
+			        	}
 			      	});
 
 			      
@@ -62,8 +71,9 @@
 					$('.gbt_18_scroll_down_button').on('click',function(){
 						$.scrollify.next();
 					});
+
 			    }
-			  });
+			});
 		},
 	};
 
