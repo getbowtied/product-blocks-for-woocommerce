@@ -176,7 +176,7 @@
 									},
 									catArr[i].count,
 								),
-								catArr[i].parent == 0 && ((i+1) <= catArr.length && catArr[i+1].parent == catArr[i].value) && el(
+								catArr[i].parent == 0 && (typeof(catArr[i+1] !== 'undefined') && catArr[i+1].parent == catArr[i].value) && el(
 									'span',
 									{
 										className: 'expand dashicons dashicons-arrow-down-alt2',
