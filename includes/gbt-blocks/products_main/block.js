@@ -420,7 +420,7 @@
 								}
 							},
 						),
-						props.attributes.queryFilterSelected === 'attributes'  && el (
+						props.attributes.queryFilterSelected === 'attributes' && props.attributes.queryDisplayType === 'filter_by'  && el (
 							SelectControl,
 							{
 								key: 'query-panel-attributes',
@@ -433,7 +433,7 @@
 								}
 							},
 						),
-						props.attributes.queryAttributesSelected !== ''  && el (
+						props.attributes.queryAttributesSelected !== '' && props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && el (
 							'div',
 							{ 
 								className: 'attributes-results-wrapper'
