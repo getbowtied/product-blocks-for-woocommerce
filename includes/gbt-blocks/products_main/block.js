@@ -69,8 +69,8 @@
 				default: '',
 			},
 			queryAttributesOptionsSelected: {
-				type: 'string',
-				default: '',
+				type: 'array',
+				default: [],
 			},
 		},
 		edit: function( props ) {
@@ -197,6 +197,55 @@
 				return categoryElements;		
 			}
 
+			function renderAttributes() {
+				var attributeElements = [];
+				var attArr = props.attributes.queryAttributesOptionsValues;
+				if ( attArr.length > 0 )
+				{
+					for ( i = 0; i < attArr.length; i++ ) {
+						attributeElements.push(
+							el(
+							'label',
+								{
+									className: 'attribute-label',
+								},
+								el(
+								'input', 
+									{
+										type:  'checkbox',
+										key:   'attribute-checkbox-' + attArr[i].value,
+										value: attArr[i].value,
+										onChange: function onChange(evt){
+											if (evt.target.checked === true) {
+												var qCS = props.attributes.queryAttributesOptionsSelected;
+												var index = qCS.indexOf(evt.target.value);
+												if (index == -1) {
+													qCS.push(evt.target.value);
+												}
+												props.setAttributes({ queryAttributesOptionsSelected: qCS });
+											} else {
+												var qCS = props.attributes.queryAttributesOptionsSelected;
+												var index = qCS.indexOf(evt.target.value);
+												if (index > -1) {
+												  qCS.splice(index, 1);
+												}
+												props.setAttributes({ queryAttributesOptionsSelected: qCS });
+											};
+											var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
+											apiFetch({ path: query }).then(function (products) {
+									        	props.setAttributes({ result: products});
+											});
+										},
+									}, 
+								),
+								attArr[i].label,
+							),
+						);
+					} 
+				}	
+				return attributeElements;		
+			}
+
 			function sortCategories( index, arr, newarr = [], level = 0) {
 				for ( var i = 0; i < arr.length; i++ ) {
 					if ( arr[i].parent == index) {
@@ -232,12 +281,12 @@
 			function getAttributes() {
 				var query = getQuery('/attributes');
 				var options = [];
-				//options[0] = {'label': 'Choose', 'value': ''};
+				options.push({'label': 'Choose', 'value': ' '});
 
 				apiFetch({ path: query }).then(function (categories) {
 					// console.log(categories);
 				 	for( i = 0; i < categories.length; i++ ) {
-		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id };
+		        		options.push({'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id });
 		        	}
 
 		        	props.setAttributes({queryAttributesOptions: options});
@@ -394,21 +443,11 @@
 						},
 					),
 					props.attributes.queryAttributesSelected !== ''  && el (
-						SelectControl,
-						{
-							key: 'query-panel-attributes-values',
-							// label: i18n.__('Pick one or more categories'),
-							value: props.attributes.queryAttributesOptionsSelected,
-							options: props.attributes.queryAttributesOptionsValues,
-							onChange: function onChange(value) {
-								console.log(props.attributes.queryAttributesSelectedSlug);
-								props.setAttributes({ queryAttributesOptionsSelected: value });
-								var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ value);
-								apiFetch({ path: query }).then(function (products) {
-						        	props.setAttributes({ result: products});
-								});
-							}
+						'div',
+						{ 
+							className: 'attributes-results-wrapper'
 						},
+						renderAttributes(),
 					),
 					el(
 						'div',

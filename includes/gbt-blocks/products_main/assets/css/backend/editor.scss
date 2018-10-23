@@ -37,6 +37,14 @@ div[data-type="getbowtied/products-main"] {
         }
     }
 
+    .attributes-results-wrapper {
+        > label {
+            display: block;
+            width: 100%;
+            position: relative;
+        }
+    }
+
     .search-results {
         margin-top: 50px;
         background: yellow;

@@ -24,6 +24,11 @@ div[data-type="getbowtied/products-main"] .category-result-wrapper > label {
     -webkit-transform: rotateX(180deg);
     transform: rotateX(180deg); }
 
+div[data-type="getbowtied/products-main"] .attributes-results-wrapper > label {
+  display: block;
+  width: 100%;
+  position: relative; }
+
 div[data-type="getbowtied/products-main"] .search-results {
   margin-top: 50px;
   background: yellow; }
