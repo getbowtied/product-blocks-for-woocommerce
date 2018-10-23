@@ -7,6 +7,8 @@
 
 	var InspectorControls 	= editor.InspectorControls;
 
+	var rawHandler = element.createBlocksFromMarkup;
+
 	var TextControl 		= components.TextControl;
 	var RadioControl        = components.RadioControl;
 	var SelectControl		= components.SelectControl;
@@ -46,7 +48,7 @@
 			slider: {
 				type: 'string',
 				default: ''
-			}
+			},
 		},
 
 		edit: function( props ) {
@@ -55,13 +57,15 @@
 
 			function createProductsSlider( newNumber ) {
 
-				props.setAttributes( { slider: ' ' } );
+				// jQuery('.flexslider').css('opacity','0');
+				// jQuery('.flexslider').css('visibility','hidden');
+
+				//props.setAttributes( { slider: ' ' } );
 
 				wp.apiFetch({ path: '/wc/v2/products?per_page=' + newNumber }).then(function (products) {
 					//console.log(products); 
 
 					var final_output = [];
-
 					var products_list = [];
 					var index = 0;
 
@@ -72,7 +76,7 @@
 								el("a",{className:"woocommerce-loop-product__link", key:"gbt-product-link"},
 									el("div",{key:"gbt-product-thumbnail", className: "gbt-product-thumbnail", style: { backgroundImage: "url("+products[i]['images'][0]['src']+")" } } ),
 									el("h4",{className:"gbt-product-title", key:"gbt-product-title"}, products[i]['name']),
-									el("span",{className:"gbt-price price", key:"gbt-price"}, products[i]['price']),
+									el("span",{className:"gbt-product-price", key:"gbt-price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
 									el("button",{className:"gbt-add-to-cart", key:"gbt-add-to-cart"}, "Add To Cart")
 								)
 							);
@@ -96,14 +100,22 @@
 
 					final_output = el( "div", {className:"flexslider", id:"flexslider"},el( "div", {className: "slider"}, final_output	));
 
+					props.setAttributes( { slider: ' ' } );
 					props.setAttributes( { slider: final_output } );
 
 					jQuery('.flexslider').flexslider({
 				    	selector: ".slider > .slide",
 				    	animation: "slide",
 				    	slideshow: false,
+				    	smoothHeight: true,
+				    	prevText: "",
+						nextText: "", 
 				    }); 
 
+				 //    setTimeout(function(){
+				 //    jQuery('.flexslider').css('opacity','1');
+					// jQuery('.flexslider').css('visibility','visible');	
+					// },200);		    
 				});
 
 			}
@@ -160,7 +172,10 @@
               				value: attributes.number,
               				onChange: function( newNumber ) {
               					props.setAttributes( { number: newNumber } );
-              					createProductsSlider( newNumber);
+              					setTimeout(function(){
+              						createProductsSlider( newNumber);
+              					},200)
+              					
 							},
 						},
 					),
@@ -182,7 +197,13 @@
 					),
 				),
 				attributes.slider == '' && createProductsSlider( attributes.number ),
-				attributes.slider
+				el( "div",
+					{
+						className: "gbt-product-carousel",
+						key: "gbt-product-carousel",	
+					},
+					attributes.slider
+				)
 			];
 		},
 
