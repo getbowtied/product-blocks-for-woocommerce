@@ -314,149 +314,142 @@
 			}
 
 			return [
+				el(
+					InspectorControls,
+					{
+						key: 'products-main-inspector',
+					},
 					el(
-						SelectControl,
-						{
-							key: 'query-panel-select',
-							label: i18n.__('Display Products By'),
-							value: props.attributes.queryDisplayType,
-							options: [{
-								label: i18n.__('Choose an Option'),
-								value: 'default'
-							}, {
-								label: i18n.__('Manually pick products'),
-								value: 'specific'
-							}, {
-								label: i18n.__('Display by Category'),
-								value: 'by_category'
-							}, {
-								label: i18n.__('Filter Products'),
-								value: 'filter_by'
-							}, {
-								label: i18n.__('All Products'),
-								value: 'all_products'
-							}],
-							onChange: function onChange(value) {
-								props.setAttributes({result: []});
-								if ( value === 'by_category') {
-									getCategories();
-								}
-								return props.setAttributes({ queryDisplayType: value });
-							}
-						}
-					),
-
-					/* Pick specific producs */
-					props.attributes.queryDisplayType === 'specific' && el(
-						TextControl,
-						{
-							key: 'query-panel-string',
-	          				type: 'search',
-	          				className: 'products-ajax-search',
-	          				value: attributes.query,
-	          				placeholder: i18n.__( 'Search for products to display'),
-	          				onChange: function( newQuery ) {
-	          					
-	          					props.setAttributes( { query: newQuery } );
-	          					if (newQuery.length < 3) return;
-
-						        var query = getQuery('?per_page=10&search=' + newQuery);
-
-						        apiFetch({ path: query }).then(function (products) {
-						        	props.setAttributes({ result: products});
-								});
-							},
-						},
-					),
-
-					/* Display products by categories */
-					// props.attributes.queryDisplayType === 'by_category'  && el (
-					// 	SelectControl,
-					// 	{
-					// 		key: 'query-panel-categories',
-					// 		label: i18n.__('Pick one or more categories'),
-					// 		value: props.attributes.queryCategorySelected,
-					// 		options: props.attributes.queryCategoryOptions,
-					// 		onChange: function onChange(value) {
-					// 			props.setAttributes({ queryCategorySelected: value });
-					// 			var query = getQuery('?category=' + value);
-					// 			apiFetch({ path: query }).then(function (products) {
-					// 	        	props.setAttributes({ result: products});
-					// 			});
-					// 		}
-					// 	},
-					// ),
-					props.attributes.queryDisplayType === 'by_category'  && el(
 						'div',
 						{
-							className: 'category-result-wrapper',
+							className: 'products-main-inspector-wrapper',
 						},
-						renderCategories(),
-					),
-					props.attributes.queryDisplayType === 'filter_by'  && el (
-						SelectControl,
-						{
-							key: 'query-panel-filter',
-							// label: i18n.__('Pick one or more categories'),
-							value: props.attributes.queryFilterSelected,
-							options: [{
-										label: 'Filter by',
-										value: '',
-									},
-									{
-										label: i18n.__('Featured products'),
-										value: 'featured'
-									},
-									{
-										label: i18n.__('On sale'),
-										value: 'on_sale'
-									},
-									{
-										label: i18n.__('Attributes'),
-										value: 'attributes'
+						el(
+							SelectControl,
+							{
+								key: 'query-panel-select',
+								label: i18n.__('Display Products By'),
+								value: props.attributes.queryDisplayType,
+								options: [{
+									label: i18n.__('Choose an Option'),
+									value: 'default'
+								}, {
+									label: i18n.__('Manually pick products'),
+									value: 'specific'
+								}, {
+									label: i18n.__('Display by Category'),
+									value: 'by_category'
+								}, {
+									label: i18n.__('Filter Products'),
+									value: 'filter_by'
+								}, {
+									label: i18n.__('All Products'),
+									value: 'all_products'
+								}],
+								onChange: function onChange(value) {
+									props.setAttributes({result: []});
+									if ( value === 'by_category') {
+										getCategories();
 									}
-							],
-							onChange: function onChange(value) {
-								props.setAttributes({ queryFilterSelected: value });
-								if (value === 'attributes') {
-									getAttributes();
-								} else {
-									var query = getQuery('?'+value+'=1');
-									apiFetch({ path: query }).then(function (products) {
+									return props.setAttributes({ queryDisplayType: value });
+								}
+							}
+						),
+						/* Pick specific producs */
+						props.attributes.queryDisplayType === 'specific' && el(
+							TextControl,
+							{
+								key: 'query-panel-string',
+		          				type: 'search',
+		          				className: 'products-ajax-search',
+		          				value: attributes.query,
+		          				placeholder: i18n.__( 'Search for products to display'),
+		          				onChange: function( newQuery ) {
+		          					
+		          					props.setAttributes( { query: newQuery } );
+		          					if (newQuery.length < 3) return;
+
+							        var query = getQuery('?per_page=10&search=' + newQuery);
+
+							        apiFetch({ path: query }).then(function (products) {
 							        	props.setAttributes({ result: products});
 									});
+								},
+							},
+						),
+						props.attributes.queryDisplayType === 'by_category'  && el(
+							'div',
+							{
+								className: 'category-result-wrapper',
+							},
+							renderCategories(),
+						),
+						props.attributes.queryDisplayType === 'filter_by'  && el (
+							SelectControl,
+							{
+								key: 'query-panel-filter',
+								// label: i18n.__('Pick one or more categories'),
+								value: props.attributes.queryFilterSelected,
+								options: [{
+											label: 'Filter by',
+											value: '',
+										},
+										{
+											label: i18n.__('Featured products'),
+											value: 'featured'
+										},
+										{
+											label: i18n.__('On sale'),
+											value: 'on_sale'
+										},
+										{
+											label: i18n.__('Attributes'),
+											value: 'attributes'
+										}
+								],
+								onChange: function onChange(value) {
+									props.setAttributes({ queryFilterSelected: value });
+									if (value === 'attributes') {
+										getAttributes();
+									} else {
+										var query = getQuery('?'+value+'=1');
+										apiFetch({ path: query }).then(function (products) {
+								        	props.setAttributes({ result: products});
+										});
+									}
 								}
-							}
-						},
+							},
+						),
+						props.attributes.queryFilterSelected === 'attributes'  && el (
+							SelectControl,
+							{
+								key: 'query-panel-attributes',
+								// label: i18n.__('Pick one or more categories'),
+								value: props.attributes.queryAttributesSelected,
+								options: props.attributes.queryAttributesOptions,
+								onChange: function onChange(value) {
+									props.setAttributes({ queryAttributesSelected: value });
+									getAttributesOptions(value);
+								}
+							},
+						),
+						props.attributes.queryAttributesSelected !== ''  && el (
+							'div',
+							{ 
+								className: 'attributes-results-wrapper'
+							},
+							renderAttributes(),
+						),
 					),
-					props.attributes.queryFilterSelected === 'attributes'  && el (
-						SelectControl,
-						{
-							key: 'query-panel-attributes',
-							// label: i18n.__('Pick one or more categories'),
-							value: props.attributes.queryAttributesSelected,
-							options: props.attributes.queryAttributesOptions,
-							onChange: function onChange(value) {
-								props.setAttributes({ queryAttributesSelected: value });
-								getAttributesOptions(value);
-							}
-						},
-					),
-					props.attributes.queryAttributesSelected !== ''  && el (
-						'div',
-						{ 
-							className: 'attributes-results-wrapper'
-						},
-						renderAttributes(),
-					),
-					el(
-						'div',
-						{
-							className: 'search-results',
-						},
-						'This is where the products are gonna be displayed:',
-						renderResults(),
-					),
+				),
+				el(
+					'div',
+					{
+						className: 'search-results',
+					},
+					'This is where the products are gonna be displayed:',
+					renderResults(),
+				),
 			];
 		},
 
