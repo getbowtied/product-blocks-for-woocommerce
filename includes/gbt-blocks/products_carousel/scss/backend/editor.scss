@@ -1,1 +1,99 @@
-@import 'grid';
+.products.columns-1
+{
+	.product
+	{
+		width: 100%;
+	}
+}
+
+.products.columns-2
+{
+	.product
+	{
+		width: 50%;
+	}
+}
+
+.products.columns-3
+{
+	.product
+	{
+		width: 33.33333%;
+	}
+}
+
+.products.columns-4
+{
+	.product
+	{
+		width: 25%;
+	}
+}
+
+.products
+{
+	position: relative;
+	overflow: hidden;
+
+	.product
+	{
+    	float: left;
+    	list-style-type: none;
+    	text-align: center;
+    	padding: 0 10px 10px;
+
+    	.gbt-product-thumbnail
+    	{
+		    width: 100%;
+		    padding-bottom: 100%;
+		    background-size: cover;
+		    background-position: center;
+		}
+
+    	.gbt-product-title,
+    	.gbt-price
+    	{
+		    font-size: 16px;
+		    color: #000;
+		    cursor: pointer;
+		    font-weight: normal;
+	        display: block;
+    	}
+
+    	.gbt-price
+    	{
+    		margin: 0;
+    	}
+
+    	.gbt-product-title
+    	{
+    		margin: 10px 0 0;
+    		line-height: 1.5;
+    	}
+
+    	.gbt-add-to-cart
+    	{
+		    background: #b7b7b7;
+	        display: block;
+		    color: #fff;
+		    cursor: pointer;
+		    border: none;
+		    padding: 10px 20px;
+		    border-radius: 20px;
+	        margin: 10px auto 0;
+		    font-size: 16px;
+		    outline: 0;
+    	}
+	}
+}
+
+.flex-direction-nav li
+{
+	list-style-type: none;
+}
+
+.flex-nav-prev a:focus,
+.flex-nav-next a:focus
+{
+    box-shadow: none;
+}

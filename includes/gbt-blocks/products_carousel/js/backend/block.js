@@ -43,33 +43,60 @@
 				type: 'string',
 				default: ''
 			},
+			slider: {
+				type: 'string',
+				default: ''
+			}
 		},
 
 		edit: function( props ) {
 
 			var attributes = props.attributes;
 
-			function getCategoriesGrid( orderby, products_source, number, columns ) {
+			function createProductsSlider( newNumber ) {
 
-				orderby 			= orderby    		|| attributes.orderby;
-				number 				= number 	 		|| attributes.number;
-				products_source 	= products_source 	|| attributes.products_source;
-				columns 			= columns 	 		|| attributes.columns;
+				props.setAttributes( { slider: ' ' } );
 
-				var data = {
-					action 		: 'getbowtied_render_backend_products_carousel',
-					attributes  : {
-						'orderby' 			 : orderby,
-						'products_source'	 : products_source,
-						'number'			 : number,
-						'columns'			 : columns,
+				wp.apiFetch({ path: '/wc/v2/products?per_page=' + newNumber }).then(function (products) {
+					//console.log(products); 
+
+					var final_output = [];
+
+					var products_list = [];
+					var index = 0;
+
+					for( var i = 0; i < products.length; i++) {
+
+						products_list[index] = 
+							el("li",{className:"gbt-product product", key:"gbt-product"},
+								el("a",{className:"woocommerce-loop-product__link", key:"gbt-product-link"},
+									el("div",{key:"gbt-product-thumbnail", className: "gbt-product-thumbnail", style: { backgroundImage: "url("+products[i]['images'][0]['src']+")" } } ),
+									el("h4",{className:"gbt-product-title", key:"gbt-product-title"}, products[i]['name']),
+									el("span",{className:"gbt-price price", key:"gbt-price"}, products[i]['price']),
+									el("button",{className:"gbt-add-to-cart", key:"gbt-add-to-cart"}, "Add To Cart")
+								)
+							);
+
+						index++;
+
+						if( index == attributes.columns ) {
+
+							final_output.push( el("div", {className:"slide"}, el("ul", {className:"products columns-" + attributes.columns}, products_list)) );
+							index = 0;
+							products_list = [];
+						}
 					}
-				};
 
-				jQuery.post( 'admin-ajax.php', data, function(response) { 
-					response = jQuery.parseJSON(response);
-					props.setAttributes( { grid: ' ' } );
-					props.setAttributes( { grid: response } );
+					if( index > 0 && index < attributes.columns ) {
+
+						final_output.push( el("div", {className:"slide"}, el("ul", {className:"products columns-" + attributes.columns}, products_list)) );
+						index = 0;
+						products_list = [];
+					}
+
+					final_output = el( "div", {className:"flexslider", id:"flexslider"},el( "div", {className: "slider"}, final_output	));
+
+					props.setAttributes( { slider: final_output } );
 
 					jQuery('.flexslider').flexslider({
 				    	selector: ".slider > .slide",
@@ -77,7 +104,8 @@
 				    	slideshow: false,
 				    }); 
 
-				});	
+				});
+
 			}
 
 			return [
@@ -100,7 +128,7 @@
               				value: attributes.orderby,
               				onChange: function( newOrderBy ) {
               					props.setAttributes( { orderby: newOrderBy } );
-								getCategoriesGrid( newOrderBy, null, null, null );
+								createProductsSlider( attributes.number );
 							},
 						}
 					),
@@ -117,22 +145,22 @@
               				value: attributes.products_source,
               				onChange: function( newOrder ) {
               					props.setAttributes( { products_source: newOrder } );
-								getCategoriesGrid( null, newOrder, null, null );
+								createProductsSlider( attributes.number );
 							},
 						}
 					),
 					el(
-						TextControl,
+						RangeControl,
 						{
 							key: 'products-carousel-display-number',
               				label: i18n.__( 'Number of Products' ),
-              				type: 'number',
+              				initialPosition: 6,
+							min: 1,
+							max: 200,
               				value: attributes.number,
               				onChange: function( newNumber ) {
               					props.setAttributes( { number: newNumber } );
-              					setTimeout(function() {
-              						getCategoriesGrid( null, null, newNumber, null );
-              					}, 500);
+              					createProductsSlider( newNumber);
 							},
 						},
 					),
@@ -148,19 +176,13 @@
 							label: i18n.__( 'Columns' ),
 							onChange: function( newColumns ) {
 								props.setAttributes( { columns: newColumns } );
-								getCategoriesGrid( null, null, null, newColumns );
+								createProductsSlider( attributes.number );
 							},
 						}
 					),
 				),
-				el(
-					'div',
-					{
-						key: 'wp-block-getbowtied-products-carousel',
-					},
-					eval( attributes.grid ),
-					attributes.grid == '' && getCategoriesGrid( null, null, null, null )
-				),
+				attributes.slider == '' && createProductsSlider( attributes.number ),
+				attributes.slider
 			];
 		},
 
