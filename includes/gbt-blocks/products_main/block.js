@@ -89,7 +89,11 @@
 				}
 			}
 
+			//==============================================================================
+			//	This is where the products are gonna be displayed
+			//==============================================================================
 			function renderResults() {
+				console.log( props.attributes.result );
 				var productElements = [];
 				for ( i = 0; i < props.attributes.result.length; i++ ) {
 					productElements.push(el('div', {className:'single-result'}, props.attributes.result[i].name));
@@ -192,17 +196,36 @@
 				return categoryElements;		
 			}
 
+			function sortCategories( index, arr, newarr = [], level = 0) {
+				for ( var i = 0; i < arr.length; i++ ) {
+					if ( arr[i].parent == index) {
+						arr[i].level = 'level-' + level;
+						newarr.push(arr[i]);
+
+						sortCategories(arr[i].value, arr, newarr, level + 1 );
+					}
+				}
+
+				return newarr;
+			}
+
 			function getCategories() {
 				var query = getQuery('/categories?&per_page=100');
 				var options = [];
+				var sorted = [];
 
 				apiFetch({ path: query }).then(function (categories) {
-					console.log(categories);
+					// console.log(categories);
 				 	for( i = 0; i < categories.length; i++ ) {
 		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
 		        	}
 
-		        	props.setAttributes({queryCategoryOptions: options});
+		        	for ( i = 0; i < options.length; i++ ) {
+
+		        	}
+		        	sorted = sortCategories(0, options);
+		        	console.log(sorted);
+		        	props.setAttributes({queryCategoryOptions: sorted });
 				});
 			}
 
