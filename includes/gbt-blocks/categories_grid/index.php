@@ -81,9 +81,9 @@ register_block_type( 'getbowtied/categories-grid', array(
 			'type'						=> 'number',
 			'default'					=> '3'
 		),
-		'parent'						=> array(
-			'type'						=> 'string',
-			'default'					=> '0',
+		'parent_only'					=> array(
+			'type'						=> 'boolean',
+			'default'					=> false,
 		),
 		'align'							=> array(
 			'type'						=> 'string',
@@ -107,7 +107,7 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
 		'columns'						=> '3',
 		'hide_empty'				 	=> false,
 		'product_count'				 	=> false,
-		'parent'     					=> '0',
+		'parent_only'     				=> false,
 		'align'							=> 'center',
 		'className'						=> 'is-style-layout-1'
 	), $attributes ) );
@@ -124,7 +124,7 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
 	$args['hide_empty'] = $hide_empty;
 	$args['number'] = $number;
 
-	if ( $parent == '0' ) {
+	if ( $parent_only ) {
 		$args['parent'] = 0 ;
 	} else {
 		$args['pad_counts'] = true;
@@ -162,7 +162,11 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
 
 	<?php
 
-	return '<section class="wp-block-getbowtied-categories-grid gbt-grid '.$className.' ' . $align . '"><div class="gbt_categories_grid">' . ob_get_clean() . '</div></section>';
+	if( $className == 'is-style-layout-1' ) {
+		$columns = 'columns-'.$columns;
+	}
+
+	return '<section class="wp-block-getbowtied-categories-grid gbt-grid '.$className.' ' . $align . '"><div class="gbt_categories_grid '.$columns.'">' . ob_get_clean() . '</div></section>';
 }
 
 add_action('wp_ajax_getbowtied_render_backend_categories_grid', 'getbowtied_render_backend_categories_grid');
@@ -172,32 +176,43 @@ function getbowtied_render_backend_categories_grid() {
 	$output = '';
 	$output_final = '';
 
-	extract( shortcode_atts( array(
-		'orderby'						=> 'title',
-		'number'     					=> 8,
-		'order'      					=> 'ASC',
-		'columns'						=> '3',
-		'hide_empty'				 	=> 0,
-		'product_count'				 	=> 0,
-		'parent'     					=> '0',
-	), $attributes ) );
+	if( $attributes['source'] == 'all' ) {
 
-	$args['taxonomy'] = 'product_cat';
+		extract( shortcode_atts( array(
+			'orderby'						=> 'title',
+			'number'     					=> 8,
+			'order'      					=> 'ASC',
+			'columns'						=> '3',
+			'hide_empty'				 	=> 0,
+			'product_count'				 	=> 0,
+			'parent_only'     				=> 0,
+			'className'						=> 'is-style-layout-1'
+		), $attributes ) );
 
-	if( $orderby == 'title' ) {
-		$args['orderby'] = $orderby;
-		$args['order'] = $order;
-	} else {
-		$args['menu_order'] = $order;
-	}
+		$args['taxonomy'] = 'product_cat';
 
-	$args['hide_empty'] = $hide_empty;
-	$args['number'] = $number;
+		if( $orderby == 'title' ) {
+			$args['orderby'] = $orderby;
+			$args['order'] = $order;
+		} else {
+			$args['menu_order'] = $order;
+		}
 
-	if ( $parent == '0' ) {
-		$args['parent'] = 0;
-	} else {
-		$args['pad_counts'] = true;
+		$args['hide_empty'] = $hide_empty;
+		$args['number'] = $number;
+
+		if ( $parent_only ) {
+			$args['parent'] = 0;
+		} else {
+			$args['pad_counts'] = true;
+		}
+	} elseif( $attributes['source'] == 'specific' ) {
+		extract( shortcode_atts( array(
+			'product_ids'					=> [],
+			'columns'						=> '3',
+		), $attributes ) );
+
+		$args['include'] = $product_ids;
 	}
 
 	$product_categories = get_terms( $args );
@@ -236,8 +251,85 @@ function getbowtied_render_backend_categories_grid() {
 
 	} 
 
-	$output_final = 'el("div",{className:"gbt_editor_categories_grid",key:"gbt_categories_grid"},'.$output.'el("div",{className:"clearfix",key:"clearfix"}))'; 
+	if( strpos( $className,'is-style-layout-1' ) ) {
+		$className = 'columns-'.$columns;
+	}
+
+	$output_final = 'el("div",{className:"gbt_editor_categories_grid '.$className.'",key:"gbt_categories_grid"},'.$output.'el("div",{className:"clearfix",key:"clearfix"}))'; 
 
 	echo json_encode($output_final);
 	exit;
 }
+
+function getbowtied_search_category1() {
+
+	$keyword = isset($_POST['attributes']['query'])? $_POST['attributes']['query'] :'';
+	if (empty($keyword) || strlen($keyword) < 3) {
+		return;
+	} 
+
+	$args = array(
+		'search' => $keyword,
+	);
+
+	$products = get_terms( 'product_cat', $args );
+	$return = array("ids" => array(), "html" => '');
+
+	if ( !empty( $products ) ) {
+
+		foreach ( $products as $post ) {
+
+			$id = $post->term_id;
+			$name = htmlspecialchars_decode($post->name);
+
+			$thumbnail_id = get_woocommerce_term_meta( $id, 'thumbnail_id', true );
+			$image = wp_get_attachment_image_src( $thumbnail_id );
+
+			$return['ids'][] = ["value" => $id, "label"=> $name];
+			$return['html'] .= '
+				el(
+					"div",
+					{
+						className: "search-result", 
+						id: "search-result-'.$id.'",
+						onClick: function(e) {
+							if ($("search-result-'.$id.'").hasClass("selected")) {
+								var arr = props.attributes.product_ids.split(",");
+								var remove = "'.$id.'";
+								var index = arr.indexOf(remove);
+								if (index > -1) {
+								  arr.splice(index, 1);
+								}
+								props.setAttributes({product_ids: arr.join(",")});
+								getCategoriesGrid1(arr.join(","));
+							} else {
+	           					var temp = [];
+	           					temp.push('.$id.');
+	           					var tempArr = attributes.product_ids.split(",");
+	           					temp = temp.concat(tempArr);
+	           					props.setAttributes({product_ids: temp.join(",")});
+	           					getCategoriesGrid1( temp.join(",") );
+							}
+							$("#search-result-'.$id.'").toggleClass("selected");
+						},
+					}, 
+					el(
+						"img",
+						{
+							src: "'.$image[0].'"
+						}
+					),
+					el(
+						"span",
+						{},
+						"'. $name .'"
+					)
+				),';
+		}
+	}
+	$return['html'] .= 'el("div", {className: "search-results"}, '.$return['html'] .' el("div", {className:"clearfix"}))';
+	echo json_encode($return);
+	die();
+}
+
+add_action('wp_ajax_getbowtied_search_category1', 'getbowtied_search_category1');

@@ -1,0 +1,39 @@
+.search-results {
+	margin-top: -10px;
+  	height: auto;
+	margin-left: 1px;
+    width: 100%;
+    margin-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e2e2e2;
+
+    .search-result {
+    	padding: 10px;
+    	border-bottom: 1px solid #e2e2e2;
+
+    	&:last-child {
+    		border-bottom: 0;
+    	}
+
+    	&.selected {
+    		background: green;
+    	}
+
+    	img {
+		    width: 30px;
+	        display: inline;
+	        vertical-align: middle;
+    	}
+
+    	span {
+		    display: inline;
+		    vertical-align: middle;
+		    padding-left: 10px;
+    	}
+    }
+}
+
+.categories-grid-ajax-search input {
+	border-radius: 0 !important;
+}
