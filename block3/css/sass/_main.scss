@@ -225,7 +225,6 @@ body{
 			
 		}
 		&.gbt_18_look_book_type_inline{
-			flex-direction: column;
 			.gbt_18_look_product_box{
 				flex-direction: column;
 			    height: 100%;
@@ -248,11 +247,10 @@ body{
 							top: 50%;
 							right: 0;
 							transform: translateY(-50%);
-							transition: 0.5s ease-in-out;
 							width: 0;
 							opacity: 0;
 							img{
-								max-width: 300px;
+								max-width: 450px;
 							}
 						}
 						.gbt_18_look_product_info{

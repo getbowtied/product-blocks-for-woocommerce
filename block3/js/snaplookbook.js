@@ -84,25 +84,16 @@
 			});
 		},
 		hoverImageFunction: function(){
+
 			var getImageWidth;
-			var endAnimation = false;
+
 			$('.gbt_18_look_book_type_inline .gbt_18_look_item .gbt_18_look_product_title').on({
 				mouseenter: function() {
 					getImageWidth = $( this ).closest('.gbt_18_look_item').find('.gbt_18_look_product_image img').width();
-					if (!endAnimation) {
-						$( this ).closest('.gbt_18_look_item').find('.gbt_18_look_product_image').animate({width: getImageWidth + 'px', opacity: 1},350, function(){
-				    		endAnimation = true;
-				    	});
-					}
+						$( this ).closest('.gbt_18_look_item').find('.gbt_18_look_product_image').animate({width: getImageWidth + 'px', opacity: 1}, 500);
 			  	},
 			  	mouseleave: function() {
-
-			  		if (endAnimation) {
-			  			$( this ).closest('.gbt_18_look_item').find('.gbt_18_look_product_image').animate({width: 0, opacity: 0},350 , function(){
-							endAnimation = false;
-			  			});
-			  		}
-			    	
+			  			$( this ).closest('.gbt_18_look_item').find('.gbt_18_look_product_image').animate({width: 0, opacity: 0},500);
 			  	}
 			});
 		}

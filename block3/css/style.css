@@ -173,41 +173,38 @@ body {
           flex: 1; }
           .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_column .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .star-rating {
             margin: 0; }
-  .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline {
-    flex-direction: column; }
-    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box {
-      flex-direction: column;
-      height: 100%;
-      justify-content: flex-end;
-      align-items: baseline;
-      padding: 0 0 100px 100px;
-      flex-wrap: nowrap;
-      overflow: hidden;
-      position: relative; }
-      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item {
-        max-width: 300px;
-        width: 100%;
-        margin-bottom: 50px; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item:last-child {
-          margin: 0; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_image {
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translateY(-50%);
-          transition: 0.5s ease-in-out;
-          width: 0;
-          opacity: 0; }
-          .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_image img {
-            max-width: 300px; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .star-rating {
-          margin: 0; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .gbt_18_look_product_title {
-          display: block; }
-          .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .gbt_18_look_product_title h2 {
-            display: inline; }
-        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .button {
-          display: table; }
+  .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box {
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: baseline;
+    padding: 0 0 100px 100px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative; }
+    .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item {
+      max-width: 300px;
+      width: 100%;
+      margin-bottom: 50px; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item:last-child {
+        margin: 0; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_image {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 0;
+        opacity: 0; }
+        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_image img {
+          max-width: 450px; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .star-rating {
+        margin: 0; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .gbt_18_look_product_title {
+        display: block; }
+        .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .gbt_18_look_product_title h2 {
+          display: inline; }
+      .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_inline .gbt_18_look_product_box .gbt_18_look_item .gbt_18_item_wrapper .gbt_18_look_product_info .button {
+        display: table; }
   .gbt_18_snap_look_book .gbt_18_look_book_item.gbt_18_look_book_type_grid .gbt_18_look_item {
     padding: 24px;
     box-sizing: border-box;
