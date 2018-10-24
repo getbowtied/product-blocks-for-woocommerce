@@ -3,12 +3,14 @@
 /**
  * Plugin Name:       		Product Blocks for WooCommerce
  * Plugin URI:        		https://github.com/getbowtied/product-blocks-for-woocommerce
- * Description:       		This is just the greatest.
+ * Description:       		Advanced Blocks for WooCommerce.
  * Version:           		1.0
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
  * Requires at least: 		4.9
- * Tested up to: 			4.9.8
+ * Tested up to: 		4.9.8
+ * WC requires at least: 	3.5
+ * WC tested up to: 		3.5
  *
  * @package  Product Blocks for WooCommerce
  * @author   GetBowtied
