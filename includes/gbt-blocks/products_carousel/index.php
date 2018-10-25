@@ -11,7 +11,7 @@ if ( ! function_exists( 'getbowtied_products_carousel_editor_assets' ) ) {
 
 		wp_register_script(
 			'getbowtied-products-carousel-editor-scripts',
-			plugins_url( 'js/backend/block.js', __FILE__ ),
+			plugins_url( 'js/backend/block2.js', __FILE__ ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
@@ -61,17 +61,9 @@ register_block_type( 'getbowtied/products-carousel', array(
 	'editor_style'  	=> 'getbowtied-products-carousel-editor-styles',
 	'editor_script'		=> 'getbowtied-products-carousel-editor-scripts',
 	'attributes'      	=> array(
-		'orderby' 						=> array(
-			'type'						=> 'string',
-			'default'					=> 'newest',
-		),
-		'number'						=> array(
-			'type'						=> 'integer',
-			'default'					=> 6,
-		),
-		'products_source'		  		=> array(
-			'type'	  					=> 'string',
-			'default' 					=> 'all',
+		'product_ids' 					=> array(
+			'type'						=> 'array',
+			'default'					=> [],
 		),
 		'columns'						=> array(
 			'type'						=> 'number',
@@ -89,9 +81,7 @@ register_block_type( 'getbowtied/products-carousel', array(
 function getbowtied_render_frontend_products_carousel( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'orderby'						=> 'newest',
-		'number'     					=> 6,
-		'products_source'      			=> 'date',
+		'product_ids'					=> [],
 		'columns'						=> '3',
 		'align'							=> 'center',
 	), $attributes ) );
@@ -99,9 +89,8 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	$args = [
 		'post_type' 		=> 'product',
 		'status' 			=> 'publish',
-		'orderby' 			=> $orderby,
-	    'order' 			=> $products_source,
-		'posts_per_page' 	=> $number
+		'posts_per_page' 	=> -1,
+		'post__in' 			=> $product_ids
 	];
 
 	$loop = new WP_Query( $args );
