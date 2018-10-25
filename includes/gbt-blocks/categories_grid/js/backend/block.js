@@ -14,6 +14,8 @@
 	var PanelBody			= components.PanelBody;
 	var RangeControl		= components.RangeControl;
 
+	var apiFetch = wp.apiFetch;
+
 	var xhr;
 
 	/* Register Block */
@@ -31,6 +33,14 @@
 		],
 		attributes: {
 			resultList: {
+				type: 'string',
+				default: ''
+			},
+			selectedList: {
+				type: 'string',
+				default: ''
+			},
+			selected : {
 				type: 'string',
 				default: ''
 			},
@@ -87,19 +97,24 @@
 
 			function getCategoriesGrid1( product_ids ) {
 
-				var data = {
-					action 		: 'getbowtied_render_backend_categories_grid',
-					attributes  : {
-						'source'		: 'specific',
-						'product_ids'  	: product_ids,
-					}
-				};
+				if(product_ids) {
 
-				jQuery.post( 'admin-ajax.php', data, function(response) { 
-					response = jQuery.parseJSON(response);
+					var data = {
+						action 		: 'getbowtied_render_backend_categories_grid',
+						attributes  : {
+							'source'		: 'specific',
+							'product_ids'  	: product_ids,
+						}
+					};
+
+					jQuery.post( 'admin-ajax.php', data, function(response) { 
+						response = jQuery.parseJSON(response);
+						props.setAttributes( { grid: ' ' } );
+						props.setAttributes( { grid: response } );
+					});	
+				} else {
 					props.setAttributes( { grid: ' ' } );
-					props.setAttributes( { grid: response } );
-				});	
+				}
 			}
 
 			function getCategoriesGrid( orderby, order, parent_only, number, hide_empty, product_count, columns ) {
@@ -129,6 +144,59 @@
 					props.setAttributes( { grid: ' ' } );
 					props.setAttributes( { grid: response } );
 				});	
+			}
+
+			function getSelectedCategories() {
+
+				console.log(attributes.selectedList);
+
+				if( attributes.selectedList ) {
+
+					var result = [];
+					for( var i = 0; i < attributes.selectedList.length; i++ ) {
+						console.log(attributes.selectedList[i]);
+
+						apiFetch({ path: '/wc/v3/products/categories/' + attributes.selectedList[i] }).then(function (category) {
+				        	console.log(category);
+
+				        	result.push(
+				        		el(
+									"div",
+									{
+										className: "selected-category", 
+										id: "selected-category-" + category.id,
+										onClick: function(e) {
+											console.log('deleted');
+											// var arr = props.attributes.product_ids.split(",");
+											// var remove = "'.$id.'";
+											// var index = arr.indexOf(remove);
+											// if (index > -1) {
+											//   arr.splice(index, 1);
+											// }
+											// props.setAttributes({product_ids: arr.join(",")});
+											// props.setAttributes({selectedList: arr});
+											// getCategoriesGrid1(arr.join(","));
+											// getSelectedCategories();
+										}
+									}, 
+									el(
+										"img",
+										{
+											src: category.image.src
+										}
+									),
+									el(
+										"span",
+										{},
+										category.name
+									)
+								)
+				        	);
+						});
+					}
+				}
+
+				props.setAttributes({selected: result});
 			}
 
 			return [
@@ -215,6 +283,24 @@
 								className: 'search-results-wrapper'
 							},
 							eval(attributes.resultList)
+						),
+						el(
+							'div',
+							{
+								className: 'selection-wrapper'
+							},
+							el(
+								"label",
+								{},
+								i18n.__("Selected Categories")
+							),
+							el(
+								'div',
+								{
+									className: 'selection'
+								},
+								eval(attributes.selected)
+							),
 						),
 					],
 					props.attributes.source === 'all' && [

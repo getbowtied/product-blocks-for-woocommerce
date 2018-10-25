@@ -293,7 +293,7 @@ function getbowtied_search_category1() {
 						className: "search-result", 
 						id: "search-result-'.$id.'",
 						onClick: function(e) {
-							if ($("search-result-'.$id.'").hasClass("selected")) {
+							if ($("#search-result-'.$id.'").hasClass("selected")) {
 								var arr = props.attributes.product_ids.split(",");
 								var remove = "'.$id.'";
 								var index = arr.indexOf(remove);
@@ -301,14 +301,19 @@ function getbowtied_search_category1() {
 								  arr.splice(index, 1);
 								}
 								props.setAttributes({product_ids: arr.join(",")});
+								props.setAttributes({selectedList: arr});
 								getCategoriesGrid1(arr.join(","));
+								getSelectedCategories();
 							} else {
 	           					var temp = [];
 	           					temp.push('.$id.');
+	           					props.setAttributes({selectedList: temp});
 	           					var tempArr = attributes.product_ids.split(",");
 	           					temp = temp.concat(tempArr);
 	           					props.setAttributes({product_ids: temp.join(",")});
+	           					
 	           					getCategoriesGrid1( temp.join(",") );
+	           					getSelectedCategories();
 							}
 							$("#search-result-'.$id.'").toggleClass("selected");
 						},
