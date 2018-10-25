@@ -1,4 +1,148 @@
 .products-main-inspector-wrapper {
+    .products-ajax-search-results
+    {
+        border: 1px solid  #E8EBEF;
+        max-height: 261px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+        .single-result {
+            display: flex;
+            align-items: center;
+            height: 52px;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #E8EBEF;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            
+            &:hover {
+                background:#F8FCFF;
+            }
+
+            .title-wrapper {
+                max-width: 130px;
+                overflow: hidden;
+                
+                input[type="checkbox"]{
+                    display: none;
+                }
+            }
+            
+            .img-wrapper{
+                width: 32px;
+                height: 32px;
+                position: relative;
+                margin-right: 12px;
+                margin-left: 12px;
+                flex: 0 0 32px;            
+
+                .img {
+                    background-size: cover;
+                    width: 32px;
+                    height: 32px;
+                    background-position: center center;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }                
+            }
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50px;
+                height: 100%;
+                // background: #FFF;
+                z-index: 1;
+                content: '';
+                background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
+            }
+
+            .dashicons {
+                position: absolute;
+                top: 16px;
+                right: 13px;
+                z-index: 2;
+                opacity: 0;
+            }
+
+            &.selected {
+                background:#F8FCFF;
+                .dashicons {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .products-selected-results
+    {
+        border: 1px solid  #E8EBEF;
+        max-height: 261px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        
+        .single-result {
+            display: flex;
+            align-items: center;
+            height: 52px;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #E8EBEF;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            
+            .title-wrapper {
+                max-width: 130px;
+                overflow: hidden;
+                
+                input[type="checkbox"]{
+                    display: none;
+                }
+            }
+            
+            .img-wrapper{
+                width: 32px;
+                height: 32px;
+                position: relative;
+                margin-right: 12px;
+                margin-left: 12px;
+                flex: 0 0 32px;            
+
+                .img {
+                    background-size: cover;
+                    width: 32px;
+                    height: 32px;
+                    background-position: center center;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                }                
+            }
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50px;
+                height: 100%;
+                // background: #FFF;
+                z-index: 1;
+                content: '';
+                background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
+            }
+
+            &.selected {
+                background:#F8FCFF;
+                .dashicons {
+                    opacity: 1;
+                }
+            }
+        }
+    }
     .category-result-wrapper {
         > label {
             display: block;

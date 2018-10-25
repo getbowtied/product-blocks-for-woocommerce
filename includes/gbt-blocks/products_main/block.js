@@ -11,6 +11,7 @@
 	var RadioControl        = components.RadioControl;
 	var SelectControl		= components.SelectControl;
 	var ToggleControl		= components.ToggleControl;
+	var Button 				= components.Button;
 
 	var xhr;
 	var apiFetch = wp.apiFetch;
@@ -32,6 +33,30 @@
 				type: 'array',
 				default: [],
 			},
+			queryProducts: {
+				type: 'string',
+				default: '',
+			},
+			querySearchString: {
+				type: 'string',
+				default: '',
+			},
+			querySearchResults: {
+				type: 'array',
+				default: [],
+			},
+			querySearchNoResults: {
+				type: 'bool',
+				default: false,
+			},
+			querySearchSelectedIDs: {
+				type: 'array',
+				default: [],
+			},
+			querySearchSelected: {
+				type: 'array',
+				default: [],
+			},
 			queryDisplayType: {
 				type: 'string',
 				default: 'default',
@@ -44,10 +69,6 @@
 				type: 'array',
 				default: [],
 			},
-			// queryCategorySelected: {
-			// 	type: 'int',
-			// 	default: 0,
-			// },
 			queryFilterSelected: {
 				type: 'string',
 				default: '',
@@ -82,6 +103,15 @@
 				return '/wc/v2/products' + query;
 			}
 
+			function getProducts() {
+				var query = props.attributes.queryProducts;
+				if (query != '') {
+					apiFetch({ path: query }).then(function (products) {
+						props.setAttributes({ result: products});
+					});
+				}
+			}
+
 			/* Helper function */
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
@@ -104,6 +134,7 @@
 				return newarr;
 			}
 
+			/* Helper function */
 			function _destroyQuery() {
 				props.setAttributes({ queryAttributesOptionsSelected: [] });
 				props.setAttributes({ queryCategorySelected: [] });
@@ -114,10 +145,92 @@
 			//	This is where the products are gonna be displayed
 			//==============================================================================
 			function renderResults() {
-				console.log( props.attributes.result );
 				var productElements = [];
 				for ( i = 0; i < props.attributes.result.length; i++ ) {
 					productElements.push(el('div', {className:'single-result'}, props.attributes.result[i].name));
+				}
+				return productElements;
+			}
+
+			function renderSearchResults() {
+				var productElements = [];
+
+				if ( props.attributes.querySearchNoResults === true) {
+					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+				}
+				var products = props.attributes.querySearchResults;
+				for ( var i = 0; i < products.length; i++ ) {
+					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					}
+					productElements.push(
+						el(
+							'span', 
+							{
+								className:'single-result', 
+								title: products[i].name,
+								'data-index': i,
+							}, 
+							img,
+							el(
+								'label', 
+								{
+									className: 'title-wrapper'
+								},
+								el(
+									'input',
+									{
+										type: 'checkbox',
+										value: i,
+										onChange: function onChange(evt) {
+											var _this = evt.target;
+											$(_this).parents('.single-result').toggleClass('selected');
+											var qSR = props.attributes.querySearchSelectedIDs;
+											var index = qSR.indexOf(products[evt.target.value].id);
+											if (index == -1) {
+												qSR.push(products[evt.target.value].id);
+											} else {
+												qSR.splice(index,1);
+											}
+											props.setAttributes({ querySearchSelectedIDs: qSR });
+											
+											var query = getQuery('?include=' + qSR.join(','));
+											apiFetch({ path: query }).then(function (products) {
+												props.setAttributes({ querySearchSelected: products});
+											});
+										},
+									},
+								),
+								products[i].name,
+							),
+							el('span',{ className: 'dashicons dashicons-yes'})
+						)
+					);
+				}
+				return productElements;
+			}
+
+			function renderSearchSelected() {
+				console.log(props.attributes.querySearchSelected);
+				var productElements = [];
+
+				var products = props.attributes.querySearchSelected;
+				for ( var i = 0; i < products.length; i++ ) {
+					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					}
+					productElements.push(
+						el(
+							'span', 
+							{
+								className:'single-result', 
+								title: products[i].name,
+							}, 
+							img, 
+							el('span', {className: 'title-wrapper'},products[i].name), 
+							// el('span',{ className: 'dashicons dashicons-yes'})
+						)
+					);
 				}
 				return productElements;
 			}
@@ -183,9 +296,7 @@
 												props.setAttributes({ queryCategorySelected: qCS });
 											};
 											var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
-											apiFetch({ path: query }).then(function (products) {
-									        	props.setAttributes({ result: products});
-											});
+											props.setAttributes({ queryProducts: query});
 										},
 									}, 
 								),
@@ -253,9 +364,7 @@
 												props.setAttributes({ queryAttributesOptionsSelected: qCS });
 											};
 											var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
-											apiFetch({ path: query }).then(function (products) {
-									        	props.setAttributes({ result: products});
-											});
+											props.setAttributes({ queryProducts: query});
 										},
 									}, 
 								),
@@ -371,19 +480,43 @@
 								key: 'query-panel-string',
 		          				type: 'search',
 		          				className: 'products-ajax-search',
-		          				value: attributes.query,
+		          				value: props.attributes.querySearchString,
 		          				placeholder: i18n.__( 'Search for products to display'),
 		          				onChange: function( newQuery ) {
-		          					props.setAttributes( { query: newQuery } );
+		          					props.setAttributes({ querySearchString: newQuery});
 		          					if (newQuery.length < 3) return;
 
 							        var query = getQuery('?per_page=10&search=' + newQuery);
-
 							        apiFetch({ path: query }).then(function (products) {
-							        	props.setAttributes({ result: products});
+							        	if ( products.length == 0) {
+							        		props.setAttributes({ querySearchNoResults: true});
+							        	} else {
+							        		props.setAttributes({ querySearchNoResults: false});
+							        	}
+										props.setAttributes({ querySearchResults: products});
 									});
+
 								},
 							},
+						),
+						typeof props.attributes.querySearchResults !== 'undefined' && props.attributes.queryDisplayType === 'specific' && el(
+							'div',
+							{ 
+								className: 'products-ajax-search-results',
+							},
+							renderSearchResults(),
+						),
+						props.attributes.querySearchSelected.length > 0 && props.attributes.queryDisplayType === 'specific' && el(
+							'div',
+							{
+								className: 'products-selected-results',
+							},
+							el(
+								'label',
+								{},
+								i18n.__('Selected Products:'),
+							),
+							renderSearchSelected(),
 						),
 						props.attributes.queryDisplayType === 'by_category'  && el(
 							'div',
@@ -422,9 +555,7 @@
 										getAttributes();
 									} else {
 										var query = getQuery('?'+value+'=1');
-										apiFetch({ path: query }).then(function (products) {
-								        	props.setAttributes({ result: products});
-										});
+										props.setAttributes({ queryProducts: query });
 									}
 								}
 							},
@@ -449,6 +580,16 @@
 								className: 'attributes-results-wrapper'
 							},
 							renderAttributes(),
+						),
+						el(
+							'button',
+							{
+								className: 'render-results',
+								onClick: function onChange(e) {
+									getProducts();
+								},
+							},
+							i18n.__('Done'),
 						),
 					),
 				),
