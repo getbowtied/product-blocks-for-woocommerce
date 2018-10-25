@@ -4,10 +4,11 @@ body {
 
 .gbt_18_pagination {
   position: fixed;
-  top: 0;
+  top: 50%;
   left: 0;
   z-index: 99;
-  padding: 30px; }
+  padding: 30px;
+  transform: translateY(-50%); }
   .gbt_18_pagination a {
     text-decoration: none;
     font-size: 16px;

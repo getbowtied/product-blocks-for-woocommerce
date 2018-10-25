@@ -45,7 +45,7 @@
                      
 			        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
 			        	
-			        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + i : i }</span>`);
+			        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i - 1) : (i - 1) }</span>`);
 
 			        	if (lookBookImage.length == 0) {
 			        		$(".gbt_18_pagination").append(
