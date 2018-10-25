@@ -75,18 +75,39 @@
 		},
 		edit: function( props ) {
 
+
 			var attributes = props.attributes;
 
 			function getQuery( query ) {
 				return '/wc/v2/products' + query;
 			}
 
-			function categoryClassName(parent, value) {
+			/* Helper function */
+			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
 					return 'parent parent-' + value;
 				} else {
 					return 'child child-' + parent;
 				}
+			}
+
+			/* Helper function */
+			function _sortCategories( index, arr, newarr = [], level = 0) {
+				for ( var i = 0; i < arr.length; i++ ) {
+					if ( arr[i].parent == index) {
+						arr[i].level = 'level-' + level;
+						newarr.push(arr[i]);
+						_sortCategories(arr[i].value, arr, newarr, level + 1 );
+					}
+				}
+
+				return newarr;
+			}
+
+			function _destroyQuery() {
+				props.setAttributes({ queryAttributesOptionsSelected: [] });
+				props.setAttributes({ queryCategorySelected: [] });
+				props.setAttributes({result: []});
 			}
 
 			//==============================================================================
@@ -111,7 +132,7 @@
 							el(
 							'label',
 								{
-									className: categoryClassName( catArr[i].parent, catArr[i].value ),
+									className: _categoryClassName( catArr[i].parent, catArr[i].value ),
 								},
 								el(
 								'input', 
@@ -246,18 +267,6 @@
 				return attributeElements;		
 			}
 
-			function sortCategories( index, arr, newarr = [], level = 0) {
-				for ( var i = 0; i < arr.length; i++ ) {
-					if ( arr[i].parent == index) {
-						arr[i].level = 'level-' + level;
-						newarr.push(arr[i]);
-						sortCategories(arr[i].value, arr, newarr, level + 1 );
-					}
-				}
-
-				return newarr;
-			}
-
 			function getCategories() {
 				var query = getQuery('/categories?&per_page=100');
 				var options = [];
@@ -272,7 +281,7 @@
 		        	for ( i = 0; i < options.length; i++ ) {
 
 		        	}
-		        	sorted = sortCategories(0, options);
+		        	sorted = _sortCategories(0, options);
 		        	console.log(sorted);
 		        	props.setAttributes({queryCategoryOptions: sorted });
 				});
@@ -347,7 +356,7 @@
 									value: 'all_products'
 								}],
 								onChange: function onChange(value) {
-									props.setAttributes({result: []});
+		          					_destroyQuery();
 									if ( value === 'by_category') {
 										getCategories();
 									}
@@ -365,7 +374,6 @@
 		          				value: attributes.query,
 		          				placeholder: i18n.__( 'Search for products to display'),
 		          				onChange: function( newQuery ) {
-		          					
 		          					props.setAttributes( { query: newQuery } );
 		          					if (newQuery.length < 3) return;
 
@@ -408,6 +416,7 @@
 										}
 								],
 								onChange: function onChange(value) {
+									_destroyQuery();
 									props.setAttributes({ queryFilterSelected: value });
 									if (value === 'attributes') {
 										getAttributes();
@@ -428,6 +437,7 @@
 								value: props.attributes.queryAttributesSelected,
 								options: props.attributes.queryAttributesOptions,
 								onChange: function onChange(value) {
+									_destroyQuery();
 									props.setAttributes({ queryAttributesSelected: value });
 									getAttributesOptions(value);
 								}
