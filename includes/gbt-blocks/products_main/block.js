@@ -211,8 +211,8 @@
 			}
 
 			function renderSearchSelected() {
-				console.log(props.attributes.querySearchSelected);
 				var productElements = [];
+				var i;
 
 				var products = props.attributes.querySearchSelected;
 				for ( var i = 0; i < products.length; i++ ) {
@@ -227,8 +227,36 @@
 								title: products[i].name,
 							}, 
 							img, 
-							el('span', {className: 'title-wrapper'},products[i].name), 
-							// el('span',{ className: 'dashicons dashicons-yes'})
+							el(
+								'label', 
+								{
+									className: 'title-wrapper'
+								},
+								el(
+									'input',
+									{
+										type: 'checkbox',
+										value: i,
+										onChange: function onChange(evt) {
+											var _this = evt.target;
+											
+											var qSR = props.attributes.querySearchSelectedIDs;
+											var index = qSR.indexOf(products[evt.target.value].id);
+											if (index != -1) {
+												qSR.splice(index,1);
+											}
+											props.setAttributes({ querySearchSelectedIDs: qSR });
+											
+											var query = getQuery('?include=' + qSR.join(','));
+											apiFetch({ path: query }).then(function (products) {
+												props.setAttributes({ querySearchSelected: products});
+											});
+										},
+									},
+								),
+								products[i].name,
+							),
+							el('span',{ className: 'dashicons dashicons-no-alt'})
 						)
 					);
 				}
@@ -446,7 +474,7 @@
 							SelectControl,
 							{
 								key: 'query-panel-select',
-								label: i18n.__('Display Products By'),
+								label: i18n.__('Source:'),
 								value: props.attributes.queryDisplayType,
 								options: [{
 									label: i18n.__('Choose an Option'),
@@ -475,31 +503,46 @@
 						),
 						/* Pick specific producs */
 						props.attributes.queryDisplayType === 'specific' && el(
-							TextControl,
+							'div',
 							{
-								key: 'query-panel-string',
-		          				type: 'search',
-		          				className: 'products-ajax-search',
-		          				value: props.attributes.querySearchString,
-		          				placeholder: i18n.__( 'Search for products to display'),
-		          				onChange: function( newQuery ) {
-		          					props.setAttributes({ querySearchString: newQuery});
-		          					if (newQuery.length < 3) return;
-
-							        var query = getQuery('?per_page=10&search=' + newQuery);
-							        apiFetch({ path: query }).then(function (products) {
-							        	if ( products.length == 0) {
-							        		props.setAttributes({ querySearchNoResults: true});
-							        	} else {
-							        		props.setAttributes({ querySearchNoResults: false});
-							        	}
-										props.setAttributes({ querySearchResults: products});
-									});
-
-								},
+								className: 'products-ajax-search-wrapper',
 							},
+							el(
+								TextControl,
+								{
+									key: 'query-panel-string',
+			          				type: 'search',
+			          				className: 'products-ajax-search',
+			          				value: props.attributes.querySearchString,
+			          				placeholder: i18n.__( 'Search for products to display'),
+			          				onChange: function( newQuery ) {
+			          					props.setAttributes({ querySearchString: newQuery});
+			          					if (newQuery.length < 3) return;
+
+								        var query = getQuery('?per_page=10&search=' + newQuery);
+								        apiFetch({ path: query }).then(function (products) {
+								        	if ( products.length == 0) {
+								        		props.setAttributes({ querySearchNoResults: true});
+								        	} else {
+								        		props.setAttributes({ querySearchNoResults: false});
+								        	}
+											props.setAttributes({ querySearchResults: products});
+										});
+
+									},
+								},
+							),
+							props.attributes.querySearchString != '' && el(
+								'span',
+								{
+									className: 'dashicons dashicons-dismiss clear-query',
+									onClick: function onClick() {
+										props.setAttributes({ querySearchString: '' });
+									}
+								}
+							),
 						),
-						typeof props.attributes.querySearchResults !== 'undefined' && props.attributes.queryDisplayType === 'specific' && el(
+						props.attributes.querySearchResults.length > 0 && props.attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
@@ -509,14 +552,20 @@
 						props.attributes.querySearchSelected.length > 0 && props.attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{
-								className: 'products-selected-results',
+								className: 'products-selected-results-wrapper',
 							},
 							el(
 								'label',
 								{},
 								i18n.__('Selected Products:'),
 							),
-							renderSearchSelected(),
+							el(
+								'div',
+								{
+									className: 'products-selected-results',
+								},
+								renderSearchSelected(),
+							),
 						),
 						props.attributes.queryDisplayType === 'by_category'  && el(
 							'div',
