@@ -261,6 +261,7 @@
 											apiFetch({ path: query }).then(function (products) {
 												props.setAttributes({ querySearchSelected: products});
 											});
+											props.setAttributes({ queryProducts: query});
 										},
 									},
 								),
