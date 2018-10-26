@@ -121,6 +121,15 @@
 				}
 			}
 
+			function _searchResultClass(theID){
+				var index = props.attributes.querySearchSelectedIDs.indexOf(theID);
+				if ( index == -1) {
+					return 'single-result';
+				} else {
+					return 'single-result selected';
+				}
+			}
+
 			/* Helper function */
 			function _sortCategories( index, arr, newarr = [], level = 0) {
 				for ( var i = 0; i < arr.length; i++ ) {
@@ -167,7 +176,7 @@
 						el(
 							'span', 
 							{
-								className:'single-result', 
+								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
 							}, 
@@ -184,7 +193,8 @@
 										value: i,
 										onChange: function onChange(evt) {
 											var _this = evt.target;
-											$(_this).parents('.single-result').toggleClass('selected');
+											console.log(evt.target);
+											// $(_this).parents('.single-result').toggleClass('selected');
 											var qSR = props.attributes.querySearchSelectedIDs;
 											var index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
