@@ -104,8 +104,6 @@
 			}
 
 			function getProducts() {
-				console.log('getting prodcuts');
-				console.log(props.attributes.queryProducts);
 				var query = props.attributes.queryProducts;
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
@@ -195,8 +193,6 @@
 										value: i,
 										onChange: function onChange(evt) {
 											var _this = evt.target;
-											console.log(evt.target);
-											// $(_this).parents('.single-result').toggleClass('selected');
 											var qSR = props.attributes.querySearchSelectedIDs;
 											var index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
@@ -228,6 +224,14 @@
 				var i;
 
 				var products = props.attributes.querySearchSelected;
+
+				if ( props.attributes.querySearchSelectedIDs.length < 1 ) {
+					var bugFixer = [];
+					for ( var i = 0; i < products.length; i++ ) {
+						bugFixer.push(products[i].id);
+					}
+					props.setAttributes({ querySearchSelectedIDs: bugFixer});
+				}
 				for ( var i = 0; i < products.length; i++ ) {
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
@@ -252,20 +256,20 @@
 										value: i,
 										onChange: function onChange(evt) {
 											var _this = evt.target;
+
 											
-											var qSR = props.attributes.querySearchSelectedIDs;
-											var index = qSR.indexOf(products[evt.target.value].id);
+											var qSS = props.attributes.querySearchSelectedIDs;
+											var index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
-												qSR.splice(index,1);
+												qSS.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSR });
+											props.setAttributes({ querySearchSelectedIDs: qSS });
 											
-											var query = getQuery('?include=' + qSR.join(','));
+											var query = getQuery('?include=' + qSS.join(','));
 											props.setAttributes({queryProducts: query});
 											apiFetch({ path: query }).then(function (products) {
 												props.setAttributes({ querySearchSelected: products});
 											});
-
 										},
 									},
 								),
@@ -425,7 +429,6 @@
 				var sorted = [];
 
 				apiFetch({ path: query }).then(function (categories) {
-					// console.log(categories);
 				 	for( i = 0; i < categories.length; i++ ) {
 		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
 		        	}
@@ -434,7 +437,6 @@
 
 		        	}
 		        	sorted = _sortCategories(0, options);
-		        	console.log(sorted);
 		        	props.setAttributes({queryCategoryOptions: sorted });
 				});
 			}
@@ -445,7 +447,6 @@
 				options.push({'label': 'Choose', 'value': ' '});
 
 				apiFetch({ path: query }).then(function (categories) {
-					// console.log(categories);
 				 	for( i = 0; i < categories.length; i++ ) {
 		        		options.push({'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id });
 		        	}
@@ -457,9 +458,7 @@
 			function getAttributesOptions( term ) {
 				var query = getQuery('/attributes/'+term+'/terms');
 				var options = [];
-				//options[0] = {'label': 'Choose', 'value': ''};
 				apiFetch({ path: query }).then(function (categories) {
-					// console.log(categories);
 				 	for( i = 0; i < categories.length; i++ ) {
 		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id };
 		        	}
@@ -547,7 +546,7 @@
 									},
 								},
 							),
-							props.attributes.querySearchString != '' && el(
+							props.attributes.querySearchString != '' &&  el(
 								'span',
 								{
 									className: 'dashicons dashicons-dismiss clear-query',
@@ -557,7 +556,7 @@
 								}
 							),
 						),
-						props.attributes.querySearchResults.length > 0 && props.attributes.queryDisplayType === 'specific' && el(
+						props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && props.attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
