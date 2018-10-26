@@ -104,6 +104,8 @@
 			}
 
 			function getProducts() {
+				console.log('getting prodcuts');
+				console.log(props.attributes.queryProducts);
 				var query = props.attributes.queryProducts;
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
@@ -205,6 +207,7 @@
 											props.setAttributes({ querySearchSelectedIDs: qSR });
 											
 											var query = getQuery('?include=' + qSR.join(','));
+											props.setAttributes({queryProducts: query});
 											apiFetch({ path: query }).then(function (products) {
 												props.setAttributes({ querySearchSelected: products});
 											});
@@ -258,10 +261,11 @@
 											props.setAttributes({ querySearchSelectedIDs: qSR });
 											
 											var query = getQuery('?include=' + qSR.join(','));
+											props.setAttributes({queryProducts: query});
 											apiFetch({ path: query }).then(function (products) {
 												props.setAttributes({ querySearchSelected: products});
 											});
-											props.setAttributes({ queryProducts: query});
+
 										},
 									},
 								),
