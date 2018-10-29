@@ -9,6 +9,35 @@
   font-style: normal;
 }
 
+.slick-prev,
+.slick-next {
+
+	&:before {
+		/* use !important to prevent issues with browser extensions that change fonts */
+		font-family: 'product-blocks';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+
+		/* Better Font Rendering =========== */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.slick-prev:before {
+	content: '\e903';
+	color: #000;
+}
+
+.slick-next:before {
+	content: '\e902';
+	color: #000;
+}
+
 .flex-nav-prev .flex-prev,
 .flex-nav-next .flex-next {
   /* use !important to prevent issues with browser extensions that change fonts */

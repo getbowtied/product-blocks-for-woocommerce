@@ -9,13 +9,26 @@ add_action( 'admin_init', 'getbowtied_products_carousel_editor_assets' );
 if ( ! function_exists( 'getbowtied_products_carousel_editor_assets' ) ) {
 	function getbowtied_products_carousel_editor_assets() {
 
-		wp_register_script(
+		wp_enqueue_script(
+			'getbowtied-products-carousel-editor-slick-scripts',
+			plugins_url( 'vendor/slick/js/slick.min.js', __FILE__ ),
+			array( 'jquery' )
+		);
+
+		wp_enqueue_style(
+			'getbowtied-products-carousel-editor-slick-styles',
+			plugins_url( 'vendor/slick/css/slick-styles.css', __FILE__ ),
+			array(),
+			filemtime( plugin_dir_path( __FILE__ ) . 'vendor/slick/css/slick-styles.css' )
+		);
+
+		wp_enqueue_script(
 			'getbowtied-products-carousel-editor-scripts',
-			plugins_url( 'js/backend/block2.js', __FILE__ ),
+			plugins_url( 'js/backend/block.js', __FILE__ ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
-		wp_register_style(
+		wp_enqueue_style(
 			'getbowtied-products-carousel-editor-styles',
 			plugins_url( 'css/backend/editor.css', __FILE__ ),
 			array( 'wp-edit-blocks' ),
@@ -30,15 +43,22 @@ if ( ! function_exists( 'getbowtied_products_carousel_assets' ) ) {
 	function getbowtied_products_carousel_assets() {
 
 		wp_enqueue_script(
-			'getbowtied-products-carousel-scripts',
-			plugins_url( 'js/vendor/flexslider/jquery.flexslider.js', __FILE__ ),
+			'getbowtied-products-carousel-slick-scripts',
+			plugins_url( 'vendor/slick/js/slick.min.js', __FILE__ ),
 			array( 'jquery' )
 		);
 
-		wp_enqueue_script(
-			'getbowtied-products-carousel-scripts-flexslider',
-			plugins_url( 'js/frontend/flexslider.js', __FILE__ ),
-			array( 'jquery' )
+		// wp_enqueue_script(
+		// 	'getbowtied-products-carousel-slick-slider-scripts',
+		// 	plugins_url( 'js/frontend/flexslider.js', __FILE__ ),
+		// 	array( 'jquery' )
+		// );
+
+		wp_enqueue_style(
+			'getbowtied-products-carousel-slick-styles',
+			plugins_url( 'vendor/slick/css/slick-styles.css', __FILE__ ),
+			array(),
+			filemtime( plugin_dir_path( __FILE__ ) . 'vendor/slick/css/slick-styles.css' )
 		);
 
 		wp_enqueue_style(
@@ -47,19 +67,12 @@ if ( ! function_exists( 'getbowtied_products_carousel_assets' ) ) {
 			array(),
 			filemtime( plugin_dir_path( __FILE__ ) . 'css/frontend/style.css' )
 		);
-
-		wp_enqueue_style(
-			'getbowtied-products-carousel-flexslider-styles',
-			plugins_url( 'js/vendor/flexslider/flexslider.css', __FILE__ ),
-			array(),
-			filemtime( plugin_dir_path( __FILE__ ) . 'js/vendor/flexslider/flexslider.css' )
-		);
 	}
 }
 
 register_block_type( 'getbowtied/products-carousel', array(
-	'editor_style'  	=> 'getbowtied-products-carousel-editor-styles',
-	'editor_script'		=> 'getbowtied-products-carousel-editor-scripts',
+	// 'editor_style'  	=> 'getbowtied-products-carousel-editor-styles',
+	// 'editor_script'		=> 'getbowtied-products-carousel-editor-scripts',
 	'attributes'      	=> array(
 		'product_ids' 					=> array(
 			'type'						=> 'array',
@@ -97,36 +110,41 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 
 	ob_start();
 
-	?>
-
-	<?php
-
 	if ( $loop->have_posts() ) {
-		$i = 0;
-		while ( $loop->have_posts() ) : $loop->the_post();
 
-			if( $i == 0 ) {
-				echo '<div class="slide">';
-				echo '<ul class="products columns-'.$columns.'">';
-			}
+	?>
+		<div class="wp-block-getbowtied-products-carousel ' . $align . '">
+			<ul class="products slider">
 
-			wc_get_template_part( 'content', 'product' );
-			$i++;
+				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 
-			if( $i == $columns ) {
-				echo '</ul>';
-				echo '</div>';
-				$i = 0;
-			}
+					<?php wc_get_template_part( 'content', 'product' ); ?>
 
-		endwhile;
+				<?php endwhile; ?>
 
-		if( $i != 0 && $i < $columns ) {
-			echo '</ul>';
-			echo '</div>';
-		}
-	}
-	wp_reset_postdata();
+			</ul>
+		</div>
 
-	return '<div class="wp-block-getbowtied-products-carousel flexslider ' . $align . '"><div class="slider">' . ob_get_clean() . '</div></div>';
+	<?php }
+	wp_reset_postdata(); ?>
+
+	<script type="text/javascript">
+		jQuery(function($) {
+	
+			"use strict";
+
+			  $('.slider').slick({
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				arrows: true,
+				fade: false,
+				dots: false,
+				touchMove: false,
+				adaptiveHeight: true
+			}); 	  
+		});
+	</script>
+<?php
+
+//ob_end_flush();
 }
