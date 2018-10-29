@@ -93,6 +93,10 @@
 				type: 'array',
 				default: [],
 			},
+			queryOrder: {
+				type: 'string',
+				default: '',
+			},
 		},
 		edit: function( props ) {
 
@@ -134,7 +138,7 @@
 			function _sortCategories( index, arr, newarr = [], level = 0) {
 				for ( var i = 0; i < arr.length; i++ ) {
 					if ( arr[i].parent == index) {
-						arr[i].level = 'level-' + level;
+						arr[i].level = level;
 						newarr.push(arr[i]);
 						_sortCategories(arr[i].value, arr, newarr, level + 1 );
 					}
@@ -150,6 +154,20 @@
 				props.setAttributes({result: []});
 			}
 
+			function _destroyTempAtts() {
+				props.setAttributes({ querySearchString: ''});
+				props.setAttributes({ querySearchResults: []});
+			}
+
+			function _isChecked( needle ) {
+				var haystack = props.attributes.queryCategorySelected;
+				var idx = haystack.indexOf(needle.toString());
+				if ( idx != - 1) {
+					return true;
+				}
+				return false;
+			}
+
 			//==============================================================================
 			//	This is where the products are gonna be displayed
 			//==============================================================================
@@ -160,6 +178,9 @@
 				}
 				return productElements;
 			}
+			//==============================================================================
+			//	/products
+			//==============================================================================
 
 			function renderSearchResults() {
 				var productElements = [];
@@ -282,98 +303,109 @@
 				return productElements;
 			}
 
-			function renderCategories() {
+			function renderCategories( parent = 0, level = 0 ) {
 				var categoryElements = [];
 				var catArr = props.attributes.queryCategoryOptions;
 				if ( catArr.length > 0 )
 				{
-					for ( i = 0; i < catArr.length; i++ ) {
+					for ( var i = 0; i < catArr.length; i++ ) {
+						if ( catArr[i].parent !=  parent ) { continue; };
 						categoryElements.push(
 							el(
-							'label',
+								'li',
 								{
-									className: _categoryClassName( catArr[i].parent, catArr[i].value ),
+									className: 'level-' + catArr[i].level,
 								},
 								el(
-								'input', 
+								'label',
 									{
-										type:  'checkbox',
-										key:   'category-checkbox-' + catArr[i].value,
-										value: catArr[i].value,
-										'data-id': catArr[i].value,
-										'data-parent': catArr[i].parent,
-										onChange: function onChange(evt){
-											if (evt.target.dataset.parent == 0) {
-												if ( evt.target.checked === true ) {
-													// $('span.expand[data-toggle="child-' + evt.target.dataset.id + '"').trigger('click');
+										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
+									},
+									el(
+									'input', 
+										{
+											type:  'checkbox',
+											key:   'category-checkbox-' + catArr[i].value,
+											value: catArr[i].value,
+											'data-index': i,
+											'data-parent': catArr[i].parent,
+											checked: _isChecked(catArr[i].value),
+											onChange: function onChange(evt){
+												var idx = Number(evt.target.dataset.index);
+												if (evt.target.checked === true) {
 													var qCS = props.attributes.queryCategorySelected;
-													$('input[data-parent="' + evt.target.dataset.id + '"').each(function(){
-														var index = qCS.indexOf($(this).attr('data-id'));
-														if (index == -1) {
-															qCS.push($(this).attr('data-id'));
+													var index = qCS.indexOf(evt.target.value);
+													if (index == -1) {
+														qCS.push(evt.target.value);
+													}
+													for (var j = idx + 1; j < catArr.length - 1; j++) {
+														if ( catArr[idx].level < catArr[j].level) {
+															var index2 = qCS.indexOf(catArr[j].value.toString());
+															if (index2 == -1) {
+																qCS.push(catArr[j].value.toString());
+															}
+														} else {
+															break;
 														}
-														$(this).prop('checked', true);
-													});
+													}
 													props.setAttributes({ queryCategorySelected: qCS });
 												} else {
 													var qCS = props.attributes.queryCategorySelected;
-													$('input[data-parent="' + evt.target.dataset.id + '"').each(function(){
-														var index = qCS.indexOf($(this).attr('data-id'));
-														if (index > -1) {
-														  qCS.splice(index, 1);
+													var index = qCS.indexOf(evt.target.value);
+													if (index > -1) {
+													  qCS.splice(index, 1);
+													}
+													for (var j = idx + 1; j < catArr.length - 1; j++) {
+														if ( catArr[idx].level < catArr[j].level) {
+															var index2 = qCS.indexOf(catArr[j].value.toString());
+															if (index2 > -1) {
+																qCS.splice(index2, 1);
+															}
+															} else {
+															break;
 														}
-														$(this).prop('checked', false);
-													});
+													}
 													props.setAttributes({ queryCategorySelected: qCS });
-												}
-											}
-											if (evt.target.checked === true) {
-												var qCS = props.attributes.queryCategorySelected;
-												var index = qCS.indexOf(evt.target.value);
-												if (index == -1) {
-													qCS.push(evt.target.value);
-												}
-												props.setAttributes({ queryCategorySelected: qCS });
-											} else {
-												var qCS = props.attributes.queryCategorySelected;
-												var index = qCS.indexOf(evt.target.value);
-												if (index > -1) {
-												  qCS.splice(index, 1);
-												}
-												props.setAttributes({ queryCategorySelected: qCS });
-											};
-											var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
-											props.setAttributes({ queryProducts: query});
+												};
+												var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
+												props.setAttributes({ queryProducts: query});
+											},
+										}, 
+									),
+									catArr[i].label,
+									el(
+										'sup',
+										{
+											// className: 'category-count',
 										},
-									}, 
+										catArr[i].count,
+									),
+									// typeof catArr[i+1] !== 'undefined' && catArr[i+1].parent == catArr[i].value && el(
+									// 	'span',
+									// 	{
+									// 		className: 'expand dashicons dashicons-arrow-down-alt2',
+									// 		'data-toggle': 'child-' + props.attributes.queryCategoryOptions[i].value,
+									// 		onClick: function onClick(evt) {
+									// 			var _this =$(evt.target);
+									// 			var toggle = evt.target.dataset.toggle;
+									// 			evt.preventDefault();
+									// 			_this.parent('label').toggleClass('expanded');
+									// 			_this.parent('label').nextAll('label.' + toggle ).toggleClass('expanded');
+									// 		}
+									// 	},
+									// )
 								),
-								catArr[i].label,
-								el(
-									'span',
-									{
-										className: 'category-count',
-									},
-									catArr[i].count,
-								),
-								catArr[i].parent == 0 && typeof catArr[i+1] !== 'undefined' && catArr[i+1].parent == catArr[i].value && el(
-									'span',
-									{
-										className: 'expand dashicons dashicons-arrow-down-alt2',
-										'data-toggle': 'child-' + props.attributes.queryCategoryOptions[i].value,
-										onClick: function onClick(evt) {
-											var _this =$(evt.target);
-											var toggle = evt.target.dataset.toggle;
-											evt.preventDefault();
-											_this.parent('label').toggleClass('expanded');
-											_this.parent('label').nextAll('label.' + toggle ).toggleClass('expanded');
-										}
-									},
-								)
+								renderCategories( catArr[i].value, level+1)
 							),
 						);
 					} 
 				}	
-				return categoryElements;		
+				if (categoryElements.length > 0 ) {
+					var wrapper = el('ul', {className: 'level-' + level}, categoryElements);
+					return wrapper;		
+				} else {
+					return;
+				}
 			}
 
 			function renderAttributes() {
@@ -421,6 +453,60 @@
 					} 
 				}	
 				return attributeElements;		
+			}
+
+			function renderOrderby() {
+			var _returnArr= [];
+			_returnArr.push(
+				el(
+					SelectControl,
+					{
+						key: 'query-panel-orderby',
+						label: i18n.__('Order By:'),
+						value: props.attributes.queryOrder,
+						options: [{
+							label: i18n.__('Choose an Option'),
+							value: 'default'
+						}, {
+							label: i18n.__('Newness - newest first'),
+							value: 'date_desc'
+						}, {
+							label: i18n.__('Newness - oldest first'),
+							value: 'date_asc'
+						}, {
+							label: i18n.__('Title - ascending'),
+							value: 'title_asc'
+						}, {
+							label: i18n.__('Title - descending'),
+							value: 'title_desc'
+						}],
+						onChange: function onChange(value) {
+							props.setAttributes({ queryOrder: value });
+          					var query = props.attributes.queryProducts;
+          					switch ( value) {
+          						case 'date_desc':
+          							query += '&orderby=date&order=desc';
+          						break;
+          						case 'date_asc':
+          							query += '&orderby=date&order=asc';
+          						break;
+          						case 'title_desc':
+          							query += '&orderby=title&order=desc';
+          						break;
+          						case 'title_asc':
+          							query += '&orderby=title&order=asc';
+          						break;
+          						default: 
+          						break;
+          					}
+
+          					props.setAttributes({ queryProducts: query});
+						}
+					},
+				),
+			);
+
+			return _returnArr;
 			}
 
 			function getCategories() {
@@ -588,6 +674,7 @@
 							},
 							renderCategories(),
 						),
+						props.attributes.queryDisplayType === 'by_category' && renderOrderby(),
 						props.attributes.queryDisplayType === 'filter_by'  && el (
 							SelectControl,
 							{
@@ -649,6 +736,7 @@
 							{
 								className: 'render-results',
 								onClick: function onChange(e) {
+									_destroyTempAtts();
 									getProducts();
 								},
 							},
@@ -668,6 +756,7 @@
 		},
 
 		save: function( props ) {
+        	// props.attributes.querySearchString = '';
         	return '';
 		},
 	} );
