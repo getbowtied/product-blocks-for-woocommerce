@@ -7,7 +7,7 @@ require_once 'functions/function-ajax.php';
 //==============================================================================
 //	Frontend output
 //==============================================================================
-function getbowtied_render_frontend_products_slider( $attributes ) {
+function getbowtied_render_frontend_block_1( $attributes ) {
 
 	extract( shortcode_atts( array(
 		'product_ids'							=>  [],
@@ -99,8 +99,8 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 //==============================================================================
 //	Backend output
 //==============================================================================
-add_action('wp_ajax_getbowtied_render_backend_products_slider', 'getbowtied_render_backend_products_slider');
-function getbowtied_render_backend_products_slider() {
+add_action('wp_ajax_getbowtied_render_backend_block_1', 'getbowtied_render_backend_block_1');
+function getbowtied_render_backend_block_1() {
 
 
 	$attributes = isset($_POST['attributes'])? $_POST['attributes']: '';

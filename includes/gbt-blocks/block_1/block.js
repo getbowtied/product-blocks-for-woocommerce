@@ -15,8 +15,8 @@
 	var xhr;
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/products-slider', {
-		title: i18n.__( 'Products Slider' ),
+	registerBlockType( 'getbowtied/block-1', {
+		title: i18n.__( 'Block 1' ),
 		icon: 'layout',
 		category: 'product_blocks',
 		supports: {
@@ -41,7 +41,7 @@
 				product_ids = 	product_ids	|| attributes.product_ids;
 
 				var data = {
-					action 		: 'getbowtied_render_backend_products_slider',
+					action 		: 'getbowtied_render_backend_block_1',
 					attributes  : {
 						'product_ids'						   : product_ids,
 					}
