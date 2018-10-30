@@ -54,7 +54,7 @@ function product_blocks_updater() {
 
 function product_blocks_for_woocommerce() {
 
-	if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_wp_version('>=', '5.0') ) {
+	if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_wp_version('>=', '5.0') || is_wp_version('5.0-beta2') ) {
 		include_once 'includes/gbt-blocks/index.php';
 	} else {
 		add_action( 'admin_notices', 'theme_warning' );
