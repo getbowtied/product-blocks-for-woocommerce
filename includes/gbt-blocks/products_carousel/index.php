@@ -65,5 +65,5 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	</script>
 <?php
 
-ob_get_clean();
+ return ob_get_clean();
 }

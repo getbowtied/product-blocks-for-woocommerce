@@ -11,12 +11,14 @@
 
 .editor-block-list__block[data-type="getbowtied/products-carousel"] {
 
+    transition: all .4s ease-in-out;
+
 	.gbt_18_product_carousel_wrapper {
 		   
 		ul.gbt_18_carousel_products {
 
 			position: relative;
-			transition: opacity .3s ease-in-out;
+			transition: opacity .2s ease-in-out;
 
 			li.gbt_18_carousel_product {
 
@@ -146,5 +148,6 @@
 }
 
 .editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] {
+	max-width: 100% !important;
 	margin: 20px;
 }

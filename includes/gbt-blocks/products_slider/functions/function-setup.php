@@ -43,13 +43,13 @@ add_action( 'enqueue_block_assets', 'getbowtied_products_slider_assets' );
 if ( ! function_exists( 'getbowtied_products_slider_assets' ) ) {
 	function getbowtied_products_slider_assets() {
 
-		wp_register_script(
+		wp_enqueue_script(
 			'getbowtied-products-slider-scripts',
 			plugins_url( 'js/frontend/verticalContentSlider.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
-		wp_register_style(
+		wp_enqueue_style(
 			'getbowtied-products-slider-styles',
 			plugins_url( 'css/frontend/style.css', dirname(__FILE__) ),
 			array(),
@@ -64,8 +64,6 @@ if ( ! function_exists( 'getbowtied_products_slider_assets' ) ) {
 register_block_type( 'getbowtied/products-slider', array(
 	// 'editor_style'  	=> 'getbowtied-products-slider-editor-styles',
 	// 'editor_script'		=> 'getbowtied-products-slider-editor-scripts',
-	'script'			=> 'getbowtied-products-slider-scripts',
-	'style'				=> 'getbowtied-products-slider-styles',
 	'attributes'      	=> array(
 		'product_ids' 					=> array(
 			'type'						=> 'array',

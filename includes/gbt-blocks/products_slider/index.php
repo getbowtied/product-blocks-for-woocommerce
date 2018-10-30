@@ -102,5 +102,6 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
 	<?php endif; ?>
 
-<?php ob_get_clean();
+<?php 
+	return ob_get_clean();
 }
