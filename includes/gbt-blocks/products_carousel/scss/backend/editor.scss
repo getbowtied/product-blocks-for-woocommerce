@@ -1,145 +1,150 @@
-.gbt-product-carousel {
-
-	ul.products.columns-1 .product {
-		width: 100%;
-	}
-
-	ul.products.columns-2 .product {
-		width: 50%;
-	}
-
-	ul.products.columns-3 .product {
-		width: 33.33333%;
-	}
-
-	ul.products.columns-4 .product {
-		width: 25%;
-	}
-
-	ul.products {
-
-		position: relative;
-		overflow: hidden;
-
-		li.product {
-
-	    	float: left;
-	    	list-style-type: none;
-	    	text-align: center;
-	    	padding: 0 10px 10px;
-
-	    	.gbt-product-thumbnail
-	    	{
-			    width: 100%;
-			    padding-bottom: 100%;
-			    background-size: cover;
-			    background-position: center;
-			}
-
-	    	.gbt-product-title,
-	    	.gbt-product-price
-	    	{
-			    font-size: 16px;
-			    color: #000;
-			    cursor: pointer;
-			    font-weight: normal;
-		        display: block;
-	    	}
-
-	    	.gbt-product-price
-	    	{
-	    		margin: 0;
-	    	}
-
-	    	.gbt-product-title
-	    	{
-	    		margin: 10px 0 10px;
-	    		line-height: 1.5;
-	    	}
-
-	    	.gbt-add-to-cart
-	    	{
-			    background: #eeeeee;
-			    display: block;
-			    color: #333;
-			    cursor: pointer;
-			    font-weight: 600;
-			    border: none;
-			    padding: 8px 17px;
-			    margin: 10px auto 0;
-			    font-size: 13px;
-			    outline: 0;
-
-			    &:hover {
-			    	background: #e4e4e4;
-			    }
-	    	}
-		}
-	}
-
-	.flexslider {
-
-		transition: all .5s ease-in-out;
-
-		.flex-control-nav {
-			position: relative;
-			bottom: 0;
-		}
-
-		.flex-direction-nav li {
-			list-style-type: none;
-		}
-
-		.flex-nav-prev a:focus,
-		.flex-nav-next a:focus {
-		    box-shadow: none;
-		}
-	}
+@font-face {
+  font-family: 'product-blocks';
+  src:
+    url('fonts/product-blocks.woff2?f6hoyl') format('woff2'),
+    url('fonts/product-blocks.ttf?f6hoyl') format('truetype'),
+    url('fonts/product-blocks.woff?f6hoyl') format('woff'),
+    url('fonts/product-blocks.svg?f6hoyl#product-blocks') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .editor-block-list__block[data-type="getbowtied/products-carousel"] {
 
-	min-height: 1px;
+	.gbt_18_product_carousel_wrapper {
+		   
+		ul.gbt_18_carousel_products {
 
-	.gbt-product-carousel {
-		transition: all .5s ease-in-out;
-	}
-	
-	.flex-direction-nav {
+			position: relative;
+			transition: opacity .3s ease-in-out;
 
-		.flex-nav-next a,
-		.flex-nav-prev a {
-			opacity: 0;
-			transition: all .5s ease-in-out;
-		}
+			li.gbt_18_carousel_product {
 
-		.flex-nav-next a {
-			right: 0;
-		}
+		    	float: left;
+		    	list-style-type: none;
+		    	text-align: center;
+		    	padding: 0 10px 10px;
 
-		.flex-nav-prev a {
-			left: 0;
-		}
-	}
+		    	.gbt_18_carousel_product_content_wrapper {
+		    		cursor: pointer;
+		    	}
 
-	&.is-hovered,
-	&.is-selected {
+		    	.gbt_18_carousel_product_thumbnail
+		    	{
+				    width: 100%;
+				    padding-bottom: 100%;
+				    background-size: cover;
+				    background-position: center;
+				}
 
-		.flex-direction-nav {
+		    	.gbt_18_carousel_product_title,
+		    	.gbt_18_carousel_product_price
+		    	{
+				    font-size: 16px;
+				    color: #000;
+				    cursor: pointer;
+				    font-weight: normal;
+			        display: block;
+		    	}
 
-			.flex-nav-next a {
-				right: -50px;
+		    	.gbt_18_carousel_product_price
+		    	{
+		    		margin: 0;
+		    	}
+
+		    	.gbt_18_carousel_product_title
+		    	{
+		    		margin: 10px 0 10px;
+		    		line-height: 1.5;
+		    	}
+
+		    	.gbt_18_carousel_product_button
+		    	{
+				    background: #eeeeee;
+				    display: block;
+				    color: #333;
+				    cursor: pointer;
+				    font-weight: 600;
+				    border: none;
+				    padding: 8px 17px;
+				    margin: 10px auto 0;
+				    font-size: 13px;
+				    outline: 0;
+
+				    &:hover {
+				    	background: #e4e4e4;
+				    }
+		    	}
 			}
 
-			.flex-nav-prev a {
-				left: -50px;
+			.slick-prev,
+			.slick-next {
+
+				transition: all .3s ease-in-out;
+
+				&:before {
+					/* use !important to prevent issues with browser extensions that change fonts */
+					font-family: 'product-blocks';
+					speak: none;
+					font-style: normal;
+					font-weight: normal;
+					font-variant: normal;
+					text-transform: none;
+					line-height: 1;
+
+					/* Better Font Rendering =========== */
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				}
 			}
 
-			.flex-nav-next a,
-			.flex-nav-prev a {
-				opacity: 1;
-				transition: all .5s ease-in-out;
+			.slick-prev {
+				opacity: 0;
+				left: -11px;
+			}
+
+			.slick-next {
+				opacity: 0;
+				right: -11px;
+			}
+
+			.slick-prev:before {
+				font-family: "product-blocks";
+				font-size: 20px;
+				content: '\e900';
+				color: #000;
+			}
+
+			.slick-next:before {
+				font-family: "product-blocks";
+				font-size: 20px;
+				content: '\e901';
+				color: #000;
 			}
 		}
 	}
+
+	&.is-selected,
+	&.is-hovered {
+
+		.gbt_18_product_carousel_wrapper {
+
+			ul.gbt_18_carousel_products {
+
+				.slick-prev {
+					opacity: 1;
+					left: -50px;
+				}
+
+				.slick-next {
+					opacity: 1;
+					right: -50px;
+				}
+			}
+		}
+	}
+}
+
+.editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] {
+	margin: 20px;
 }

@@ -37,18 +37,22 @@
 				type: 'string',
 				default: 'date'
 			},
+			product_ids: {
+				type: 'array',
+				default: []
+			},
 			columns: {
 				type: 'number',
 				default: '3'
 			},
-			grid: {
+			content: {
 				type: 'string',
 				default: ''
 			},
-			slider: {
+			old_align: {
 				type: 'string',
-				default: ''
-			},
+				default: 'center'
+			}
 		},
 
 		edit: function( props ) {
@@ -57,70 +61,80 @@
 
 			function createProductsSlider( newNumber ) {
 
-				// jQuery('.flexslider').css('opacity','0');
-				// jQuery('.flexslider').css('visibility','hidden');
-
-				//props.setAttributes( { slider: ' ' } );
-
-				wp.apiFetch({ path: '/wc/v2/products?per_page=' + newNumber }).then(function (products) {
-					//console.log(products); 
+				wp.apiFetch({ path: '/wc/v2/products?per_page=' + newNumber }).then(function (products) { 
 
 					var final_output = [];
 					var products_list = [];
-					var index = 0;
+					var product_ids = [];
 
 					for( var i = 0; i < products.length; i++) {
 
-						products_list[index] = 
-							el("li",{className:"gbt-product product", key:"gbt-product"},
-								el("a",{className:"woocommerce-loop-product__link", key:"gbt-product-link"},
-									el("div",{key:"gbt-product-thumbnail", className: "gbt-product-thumbnail", style: { backgroundImage: "url("+products[i]['images'][0]['src']+")" } } ),
-									el("h4",{className:"gbt-product-title", key:"gbt-product-title"}, products[i]['name']),
-									el("span",{className:"gbt-product-price", key:"gbt-price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-									el("button",{className:"gbt-add-to-cart", key:"gbt-add-to-cart"}, "Add To Cart")
+						product_ids.push(products[i]['id']);
+
+						products_list[i] = 
+							el("li",{className:"gbt_18_carousel_product", key:"gbt_18_carousel_product"},
+								el("div",{className:"gbt_18_carousel_product_content_wrapper", key:"gbt_18_carousel_product_content_wrapper"},
+									el("div",{key:"gbt_18_carousel_product_thumbnail", className: "gbt_18_carousel_product_thumbnail", style: { backgroundImage: "url("+products[i]['images'][0]['src']+")" } } ),
+									el("h4",{className:"gbt_18_carousel_product_title", key:"gbt_18_carousel_product_title"}, products[i]['name']),
+									el("span",{className:"gbt_18_carousel_product_price", key:"gbt_18_carousel_product_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
+									el("button",{className:"gbt_18_carousel_product_button", key:"gbt_18_carousel_product_button"}, "Add To Cart")
 								)
 							);
-
-						index++;
-
-						if( index == attributes.columns ) {
-
-							final_output.push( el("div", {className:"slide"}, el("ul", {className:"products columns-" + attributes.columns}, products_list)) );
-							index = 0;
-							products_list = [];
-						}
 					}
 
-					if( index > 0 && index < attributes.columns ) {
+					props.setAttributes( { content: products_list } );
+					props.setAttributes( { product_ids: product_ids } );
 
-						final_output.push( el("div", {className:"slide"}, el("ul", {className:"products columns-" + attributes.columns}, products_list)) );
-						index = 0;
-						products_list = [];
-					}
-
-					final_output = el( "div", {className:"flexslider", id:"flexslider"},el( "div", {className: "slider"}, final_output	));
-
-					props.setAttributes( { slider: ' ' } );
-					props.setAttributes( { slider: final_output } );
-
-					jQuery('.flexslider').flexslider({
-				    	selector: ".slider > .slide",
-				    	animation: "slide",
-				    	slideshow: false,
-				    	smoothHeight: true,
-				    	prevText: "",
-						nextText: "", 
-				    }); 
-
-				 //    setTimeout(function(){
-				 //    jQuery('.flexslider').css('opacity','1');
-					// jQuery('.flexslider').css('visibility','visible');	
-					// },200);		    
+					if( products_list.length != 0 ) {
+						initSlider();
+					}	
+	    
 				});
 
 			}
 
+			function reinitSlider( columns ) {
+
+				if( attributes.align != attributes.old_align || columns ) {
+
+					if( jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').hasClass('slick-slider') ) {
+
+						jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').css('opacity', '0');
+
+						setTimeout(function(){
+							
+							jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').slick('unslick');
+
+							props.setAttributes( { old_align: attributes.align } );
+
+							var columns = columns || attributes.columns;
+
+							initSlider(columns);
+							jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').css('opacity', '1');
+						}, 400);
+					}
+				}
+			}
+
+			function initSlider(columns) {
+				columns = columns || attributes.columns;
+
+				jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').slick({
+					slidesToShow: columns,
+					slidesToScroll: columns,
+					arrows: true,
+					fade: false,
+					dots: false,
+					swipe: false,
+					touchMove: false,
+					draggable: false,
+					zIndex: -1,
+					adaptiveHeight: true,
+				}); 
+			}
+
 			return [
+				reinitSlider(),
 				el(
 					InspectorControls,
 					{
@@ -191,19 +205,24 @@
 							label: i18n.__( 'Columns' ),
 							onChange: function( newColumns ) {
 								props.setAttributes( { columns: newColumns } );
-								createProductsSlider( attributes.number );
+								reinitSlider( newColumns );
 							},
 						}
 					),
 				),
-				attributes.slider == '' && createProductsSlider( attributes.number ),
 				el( "div",
 					{
-						className: "gbt-product-carousel",
-						key: "gbt-product-carousel",	
+						className: "gbt_18_product_carousel_wrapper",
+						key: "gbt_18_product_carousel_wrapper",	
 					},
-					attributes.slider
-				)
+					el( "ul",
+						{
+							className: "gbt_18_carousel_products gbt_18_carousel_slider",
+						},
+						attributes.content
+					)
+				),
+				//attributes.content === '' && createProductsSlider( attributes.number )
 			];
 		},
 
