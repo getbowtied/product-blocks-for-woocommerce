@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 //==============================================================================
 //	Enqueue Editor Assets
 //==============================================================================
-add_action( 'admin_init', 'getbowtied_products_slider_editor_assets' );
-if ( ! function_exists( 'getbowtied_products_slider_editor_assets' ) ) {
-	function getbowtied_products_slider_editor_assets() {
+add_action( 'admin_init', 'getbowtied_products_carousel_editor_assets' );
+if ( ! function_exists( 'getbowtied_products_carousel_editor_assets' ) ) {
+	function getbowtied_products_carousel_editor_assets() {
 
 		wp_enqueue_script(
 			'getbowtied-slick-scripts',
@@ -22,13 +22,13 @@ if ( ! function_exists( 'getbowtied_products_slider_editor_assets' ) ) {
 		);
 
 		wp_enqueue_script(
-			'getbowtied-products-slider-editor-scripts',
+			'getbowtied-products-carousel-editor-scripts',
 			plugins_url( 'js/backend/block.js', dirname(__FILE__) ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
 		wp_enqueue_style(
-			'getbowtied-products-slider-editor-styles',
+			'getbowtied-products-carousel-editor-styles',
 			plugins_url( 'css/backend/editor.css', dirname(__FILE__) ),
 			array( 'wp-edit-blocks' ),
 			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'css/backend/editor.css' )
@@ -39,18 +39,25 @@ if ( ! function_exists( 'getbowtied_products_slider_editor_assets' ) ) {
 //==============================================================================
 //	Enqueue Frontend Assets
 //==============================================================================
-add_action( 'enqueue_block_assets', 'getbowtied_products_slider_assets' );
-if ( ! function_exists( 'getbowtied_products_slider_assets' ) ) {
-	function getbowtied_products_slider_assets() {
+add_action( 'enqueue_block_assets', 'getbowtied_products_carousel_assets' );
+if ( ! function_exists( 'getbowtied_products_carousel_assets' ) ) {
+	function getbowtied_products_carousel_assets() {
 
-		wp_register_script(
-			'getbowtied-products-slider-scripts',
-			plugins_url( 'js/frontend/verticalContentSlider.js', dirname(__FILE__) ),
+		wp_enqueue_script(
+			'getbowtied-slick-scripts',
+			plugins_url( '../vendor/slick/js/slick.min.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
-		wp_register_style(
-			'getbowtied-products-slider-styles',
+		wp_enqueue_style(
+			'getbowtied-slick-styles',
+			plugins_url( '../vendor/slick/css/slick-styles.css', dirname(__FILE__) ),
+			array(),
+			filemtime( plugin_dir_path( dirname(__FILE__) ) . '../vendor/slick/css/slick-styles.css' )
+		);
+
+		wp_enqueue_style(
+			'getbowtied-products-carousel-styles',
 			plugins_url( 'css/frontend/style.css', dirname(__FILE__) ),
 			array(),
 			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'css/frontend/style.css' )
@@ -61,11 +68,9 @@ if ( ! function_exists( 'getbowtied_products_slider_assets' ) ) {
 //==============================================================================
 //	Register Block
 //==============================================================================
-register_block_type( 'getbowtied/products-slider', array(
-	// 'editor_style'  	=> 'getbowtied-products-slider-editor-styles',
-	// 'editor_script'		=> 'getbowtied-products-slider-editor-scripts',
-	'script'			=> 'getbowtied-products-slider-scripts',
-	'style'				=> 'getbowtied-products-slider-styles',
+register_block_type( 'getbowtied/products-carousel', array(
+	// 'editor_style'  	=> 'getbowtied-products-carousel-editor-styles',
+	// 'editor_script'		=> 'getbowtied-products-carousel-editor-scripts',
 	'attributes'      	=> array(
 		'product_ids' 					=> array(
 			'type'						=> 'array',
@@ -81,5 +86,5 @@ register_block_type( 'getbowtied/products-slider', array(
 		),
 	),
 
-	'render_callback' => 'getbowtied_render_frontend_products_slider',
+	'render_callback' => 'getbowtied_render_frontend_products_carousel',
 ) );
