@@ -91,9 +91,6 @@
 
 				if( attributes.align != attributes.old_align || attributes.old_columns != columns ) {
 
-					console.log('old ' + attributes.old_columns);
-					console.log('new ' + columns);
-
 					if( jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').hasClass('slick-slider') ) {
 
 						jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').css('opacity', '0');
