@@ -8,13 +8,10 @@
 	var InspectorControls 	= editor.InspectorControls;
 
 	var TextControl 		= components.TextControl;
-	var RadioControl        = components.RadioControl;
 	var SelectControl		= components.SelectControl;
-	var ToggleControl		= components.ToggleControl;
 	var Button 				= components.Button;
 
-	var xhr;
-	var apiFetch = wp.apiFetch;
+	var apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-main', {
@@ -100,23 +97,9 @@
 		},
 		edit: function( props ) {
 
-
-			var attributes = props.attributes;
-
-			function getQuery( query ) {
-				return '/wc/v2/products' + query;
-			}
-
-			function getProducts() {
-				var query = props.attributes.queryProducts;
-				if (query != '') {
-					apiFetch({ path: query }).then(function (products) {
-						props.setAttributes({ result: products});
-					});
-				}
-			}
-
-			/* Helper function */
+			//==============================================================================
+			//	Helper functions
+			//==============================================================================
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
 					return 'parent parent-' + value;
@@ -134,7 +117,6 @@
 				}
 			}
 
-			/* Helper function */
 			function _sortCategories( index, arr, newarr = [], level = 0) {
 				for ( var i = 0; i < arr.length; i++ ) {
 					if ( arr[i].parent == index) {
@@ -147,8 +129,10 @@
 				return newarr;
 			}
 
-			/* Helper function */
 			function _destroyQuery() {
+				props.setAttributes({ queryProducts: ''});
+				props.setAttributes({ querySearchString: ''});
+				props.setAttributes({ querySearchResults: []});
 				props.setAttributes({ queryAttributesOptionsSelected: [] });
 				props.setAttributes({ queryCategorySelected: [] });
 				props.setAttributes({result: []});
@@ -159,8 +143,7 @@
 				props.setAttributes({ querySearchResults: []});
 			}
 
-			function _isChecked( needle ) {
-				var haystack = props.attributes.queryCategorySelected;
+			function _isChecked( needle, haystack ) {
 				var idx = haystack.indexOf(needle.toString());
 				if ( idx != - 1) {
 					return true;
@@ -169,8 +152,38 @@
 			}
 
 			//==============================================================================
-			//	This is where the products are gonna be displayed
+			//	Show products functions
 			//==============================================================================
+			function getQuery( query ) {
+				return '/wc/v2/products' + query;
+			}
+
+			function getProducts() {
+				var query = props.attributes.queryProducts;
+				var order = props.attributes.queryOrder;
+				switch ( order) {
+					case 'date_desc':
+						query += '&orderby=date&order=desc';
+					break;
+					case 'date_asc':
+						query += '&orderby=date&order=asc';
+					break;
+					case 'title_desc':
+						query += '&orderby=title&order=desc';
+					break;
+					case 'title_asc':
+						query += '&orderby=title&order=asc';
+					break;
+					default: 
+					break;
+				}
+
+				if (query != '') {
+					apiFetch({ path: query }).then(function (products) {
+						props.setAttributes({ result: products});
+					});
+				}
+			}
 			function renderResults() {
 				var productElements = [];
 				for ( i = 0; i < props.attributes.result.length; i++ ) {
@@ -178,10 +191,10 @@
 				}
 				return productElements;
 			}
-			//==============================================================================
-			//	/products
-			//==============================================================================
 
+			//==============================================================================
+			//	Display ajax results
+			//==============================================================================
 			function renderSearchResults() {
 				var productElements = [];
 
@@ -329,7 +342,7 @@
 											value: catArr[i].value,
 											'data-index': i,
 											'data-parent': catArr[i].parent,
-											checked: _isChecked(catArr[i].value),
+											checked: _isChecked(catArr[i].value, props.attributes.queryCategorySelected),
 											onChange: function onChange(evt){
 												var idx = Number(evt.target.dataset.index);
 												if (evt.target.checked === true) {
@@ -426,6 +439,7 @@
 										type:  'checkbox',
 										key:   'attribute-checkbox-' + attArr[i].value,
 										value: attArr[i].value,
+										checked: _isChecked(attArr[i].value, props.attributes.queryAttributesOptionsSelected),
 										onChange: function onChange(evt){
 											if (evt.target.checked === true) {
 												var qCS = props.attributes.queryAttributesOptionsSelected;
@@ -456,59 +470,44 @@
 			}
 
 			function renderOrderby() {
-			var _returnArr= [];
-			_returnArr.push(
-				el(
-					SelectControl,
-					{
-						key: 'query-panel-orderby',
-						label: i18n.__('Order By:'),
-						value: props.attributes.queryOrder,
-						options: [{
-							label: i18n.__('Choose an Option'),
-							value: 'default'
-						}, {
-							label: i18n.__('Newness - newest first'),
-							value: 'date_desc'
-						}, {
-							label: i18n.__('Newness - oldest first'),
-							value: 'date_asc'
-						}, {
-							label: i18n.__('Title - ascending'),
-							value: 'title_asc'
-						}, {
-							label: i18n.__('Title - descending'),
-							value: 'title_desc'
-						}],
-						onChange: function onChange(value) {
-							props.setAttributes({ queryOrder: value });
-          					var query = props.attributes.queryProducts;
-          					switch ( value) {
-          						case 'date_desc':
-          							query += '&orderby=date&order=desc';
-          						break;
-          						case 'date_asc':
-          							query += '&orderby=date&order=asc';
-          						break;
-          						case 'title_desc':
-          							query += '&orderby=title&order=desc';
-          						break;
-          						case 'title_asc':
-          							query += '&orderby=title&order=asc';
-          						break;
-          						default: 
-          						break;
-          					}
+				var _returnArr= [];
+				_returnArr.push(
+					el(
+						SelectControl,
+						{
+							key: 'query-panel-orderby',
+							label: i18n.__('Order By:'),
+							value: props.attributes.queryOrder,
+							className: 'orderby-wrapper',
+							options: [{
+								label: i18n.__('Choose an Option'),
+								value: 'default'
+							}, {
+								label: i18n.__('Newness - newest first'),
+								value: 'date_desc'
+							}, {
+								label: i18n.__('Newness - oldest first'),
+								value: 'date_asc'
+							}, {
+								label: i18n.__('Title - ascending'),
+								value: 'title_asc'
+							}, {
+								label: i18n.__('Title - descending'),
+								value: 'title_desc'
+							}],
+							onChange: function onChange(value) {
+								props.setAttributes({ queryOrder: value });
+							}
+						},
+					),
+				);
 
-          					props.setAttributes({ queryProducts: query});
-						}
-					},
-				),
-			);
-
-			return _returnArr;
+				return _returnArr;
 			}
 
+			//==============================================================================
+			//	Get ajax results
+			//==============================================================================
 			function getCategories() {
 				var query = getQuery('/categories?&per_page=100');
 				var options = [];
@@ -593,9 +592,18 @@
 									value: 'all_products'
 								}],
 								onChange: function onChange(value) {
+									if ( props.attributes.queryProducts != '' ) {
+										if ( window.confirm(i18n.__("Changing the product source will lose the current selection.")) === false) {
+											return;
+										}
+									}
 		          					_destroyQuery();
 									if ( value === 'by_category') {
 										getCategories();
+									}
+									if ( value === 'all_products') {
+										var query = getQuery('?per_page=100');
+										props.setAttributes({queryProducts: query});
 									}
 									return props.setAttributes({ queryDisplayType: value });
 								}
@@ -642,14 +650,14 @@
 								}
 							),
 						),
-						props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && props.attributes.queryDisplayType === 'specific' && el(
+						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
 						),
-						props.attributes.querySearchSelected.length > 0 && props.attributes.queryDisplayType === 'specific' && el(
+						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
 								className: 'products-selected-results-wrapper',
@@ -667,7 +675,7 @@
 								renderSearchSelected(),
 							),
 						),
-						props.attributes.queryDisplayType === 'by_category'  && el(
+						props.attributes.queryDisplayType === 'by_category' && el(
 							'div',
 							{
 								className: 'category-result-wrapper',
@@ -710,7 +718,7 @@
 								}
 							},
 						),
-						props.attributes.queryFilterSelected === 'attributes' && props.attributes.queryDisplayType === 'filter_by'  && el (
+						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && el (
 							SelectControl,
 							{
 								key: 'query-panel-attributes',
@@ -724,13 +732,15 @@
 								}
 							},
 						),
-						props.attributes.queryAttributesSelected !== '' && props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && el (
+						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && props.attributes.queryAttributesSelected !== '' && el (
 							'div',
 							{ 
 								className: 'attributes-results-wrapper'
 							},
 							renderAttributes(),
 						),
+						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected != '' && renderOrderby(),
+						props.attributes.queryDisplayType === 'all_products' && renderOrderby(),
 						el(
 							'button',
 							{

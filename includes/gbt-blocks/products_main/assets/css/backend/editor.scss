@@ -288,9 +288,14 @@
             display: block;
             width: 100%;
             position: relative;
+            margin-bottom: 10px;
         }
     }
     button.render-results {
         margin-top: 20px;
+    }
+
+    .orderby-wrapper {
+        margin-top: 10px;
     }
 }

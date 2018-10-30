@@ -235,7 +235,11 @@
 .products-main-inspector-wrapper .attributes-results-wrapper > label {
   display: block;
   width: 100%;
-  position: relative; }
+  position: relative;
+  margin-bottom: 10px; }
 
 .products-main-inspector-wrapper button.render-results {
   margin-top: 20px; }
+
+.products-main-inspector-wrapper .orderby-wrapper {
+  margin-top: 10px; }
