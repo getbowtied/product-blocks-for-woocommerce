@@ -29,29 +29,25 @@
 				type: 'string',
 				default: 'newest'
 			},
-			number: {
-				type: 'number',
-				default: '6'
-			},
-			products_source: {
-				type: 'string',
-				default: 'date'
-			},
 			product_ids: {
 				type: 'array',
 				default: []
 			},
 			columns: {
 				type: 'number',
-				default: '3'
+				default: 3
 			},
 			content: {
-				type: 'string',
-				default: ''
+				type: 'array',
+				default: []
 			},
 			old_align: {
 				type: 'string',
 				default: 'center'
+			},
+			old_columns: {
+				type: 'number',
+				default: 3
 			}
 		},
 
@@ -59,9 +55,9 @@
 
 			var attributes = props.attributes;
 
-			function createProductsSlider( newNumber ) {
+			function createProductsSlider() {
 
-				wp.apiFetch({ path: '/wc/v2/products?per_page=' + newNumber }).then(function (products) { 
+				wp.apiFetch({ path: '/wc/v2/products?per_page=6' }).then(function (products) { 
 
 					var final_output = [];
 					var products_list = [];
@@ -85,9 +81,11 @@
 					props.setAttributes( { content: products_list } );
 					props.setAttributes( { product_ids: product_ids } );
 
-					if( products_list.length != 0 ) {
+					if( product_ids.length == 0 ) {
+						props.setAttributes( { content: [] } );
+					} else {
 						initSlider();
-					}	
+					}
 	    
 				});
 
@@ -95,7 +93,10 @@
 
 			function reinitSlider( columns ) {
 
-				if( attributes.align != attributes.old_align || columns ) {
+				if( attributes.align != attributes.old_align || attributes.old_columns != columns ) {
+
+					console.log('old ' + attributes.old_columns);
+					console.log('new ' + columns);
 
 					if( jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').hasClass('slick-slider') ) {
 
@@ -106,8 +107,10 @@
 							jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').slick('unslick');
 
 							props.setAttributes( { old_align: attributes.align } );
+							props.setAttributes( { old_columns: attributes.columns } );
 
-							var columns = columns || attributes.columns;
+							console.log('old ' + attributes.old_columns);
+					console.log('new ' + columns);
 
 							initSlider(columns);
 							jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').css('opacity', '1');
@@ -117,7 +120,8 @@
 			}
 
 			function initSlider(columns) {
-				columns = columns || attributes.columns;
+
+				var columns = columns || attributes.columns;
 
 				jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').slick({
 					slidesToShow: columns,
@@ -134,7 +138,7 @@
 			}
 
 			return [
-				reinitSlider(),
+				reinitSlider(attributes.columns),
 				el(
 					InspectorControls,
 					{
@@ -154,44 +158,9 @@
               				value: attributes.orderby,
               				onChange: function( newOrderBy ) {
               					props.setAttributes( { orderby: newOrderBy } );
-								createProductsSlider( attributes.number );
+								createProductsSlider();
 							},
 						}
-					),
-					el(
-						SelectControl,
-						{
-							key: 'products-carousel-order',
-							options:
-							[
-								{ value: 'all',  label: 'All Products'  },
-								{ value: 'DESC', label: 'Descending' }
-							],
-              				label: i18n.__( 'Alphabetical Order' ),
-              				value: attributes.products_source,
-              				onChange: function( newOrder ) {
-              					props.setAttributes( { products_source: newOrder } );
-								createProductsSlider( attributes.number );
-							},
-						}
-					),
-					el(
-						RangeControl,
-						{
-							key: 'products-carousel-display-number',
-              				label: i18n.__( 'Number of Products' ),
-              				initialPosition: 6,
-							min: 1,
-							max: 200,
-              				value: attributes.number,
-              				onChange: function( newNumber ) {
-              					props.setAttributes( { number: newNumber } );
-              					setTimeout(function(){
-              						createProductsSlider( newNumber);
-              					},200)
-              					
-							},
-						},
 					),
 					el(
 						RangeControl,
@@ -222,7 +191,6 @@
 						attributes.content
 					)
 				),
-				//attributes.content === '' && createProductsSlider( attributes.number )
 			];
 		},
 
