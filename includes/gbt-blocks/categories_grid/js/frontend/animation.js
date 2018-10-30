@@ -31,15 +31,15 @@ jQuery(function($) {
 
 		$('.wp-block-getbowtied-categories-grid').addClass('js_animated');
 
-		if (action == 'reset') $('.wp-block-getbowtied-categories-grid.js_animated .gbt-category-grid-item').removeClass('visible animation_ready animated');
+		if (action == 'reset') $('.wp-block-getbowtied-categories-grid.js_animated .gbt_18_category_grid_item').removeClass('visible animation_ready animated');
 
-		$('.wp-block-getbowtied-categories-grid.js_animated .gbt-category-grid-item:not(.visible)').each(function() {
+		$('.wp-block-getbowtied-categories-grid.js_animated .gbt_18_category_grid_item:not(.visible)').each(function() {
 	    	if ( $(this).visible("partial") ) {                
                 $(this).addClass('visible');
 			}
 		});
 
-		$('.wp-block-getbowtied-categories-grid.js_animated .gbt-category-grid-item.visible:not(.animation_ready)').each(function(i) {
+		$('.wp-block-getbowtied-categories-grid.js_animated .gbt_18_category_grid_item.visible:not(.animation_ready)').each(function(i) {
 	    	$(this).addClass('animation_ready');
 	    	$(this).delay(i*delay).queue(function(next) {
                 $(this).addClass('animated');
@@ -47,7 +47,7 @@ jQuery(function($) {
             });
 		});
 
-		$('.wp-block-getbowtied-categories-grid.js_animated .gbt-category-grid-item.visible:first').prevAll().addClass('visible').addClass('animation_ready').addClass('animated');
+		$('.wp-block-getbowtied-categories-grid.js_animated .gbt_18_category_grid_item.visible:first').prevAll().addClass('visible').addClass('animation_ready').addClass('animated');
 
 	}
 

@@ -149,5 +149,23 @@
 
 .editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] {
 	max-width: 100% !important;
-	margin: 20px;
+	margin: 0;
+
+	&.is-selected,
+	&.is-hovered {
+
+		.gbt_18_product_carousel_wrapper {
+
+			ul.gbt_18_carousel_products {
+
+				.slick-prev {
+					left: -32px;
+				}
+
+				.slick-next {
+					right: -32px;
+				}
+			}
+		}
+	}
 }

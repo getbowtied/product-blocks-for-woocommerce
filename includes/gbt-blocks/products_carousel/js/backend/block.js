@@ -102,9 +102,6 @@
 							props.setAttributes( { old_align: attributes.align } );
 							props.setAttributes( { old_columns: attributes.columns } );
 
-							console.log('old ' + attributes.old_columns);
-					console.log('new ' + columns);
-
 							initSlider(columns);
 							jQuery('.gbt_18_carousel_products.gbt_18_carousel_slider').css('opacity', '1');
 						}, 400);

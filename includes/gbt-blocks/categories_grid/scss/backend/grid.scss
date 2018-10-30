@@ -1,16 +1,24 @@
-.wp-block-getbowtied-categories-grid.gbt-editor
+.editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] {
+	margin: 0;
+
+	.wp-block-getbowtied-categories-grid {
+		padding: 0 16px;
+	}
+}
+
+.wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper
 {
-	.gbt_editor_categories_grid
+	.gbt_18_editor_categories_grid
 	{
 		overflow: hidden;
 
-		.gbt-category-grid-item
+		.gbt_18_category_grid_item
 		{
 			margin-bottom: 16px;
 			position: relative;
 			opacity: 1;
 
-			.gbt-category-img
+			.gbt_18_category_grid_item_img
 			{
 				display: block;
 				width: 100%;
@@ -33,7 +41,7 @@
 				}
 			}
 
-			.gbt-category-title
+			.gbt_18_category_grid_item_title
 			{
 				font-size: 1.15rem;
 				color: #000;
@@ -42,7 +50,7 @@
 			    left: 32px;
 			    margin: 0;
 
-				.gbt-count
+				.gbt_18_category_grid_item_count
 				{
 					color: #888888;
 					font-size: 14px;

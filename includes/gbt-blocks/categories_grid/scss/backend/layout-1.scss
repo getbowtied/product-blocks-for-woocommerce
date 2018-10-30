@@ -1,71 +1,71 @@
-.wp-block-getbowtied-categories-grid.gbt-editor
+.wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper
 {
 	&.is-style-layout-1
 	{
 		@media screen and (min-width: 768px) {
 
-			.gbt_editor_categories_grid
+			.gbt_18_editor_categories_grid
 			{
 				margin: 0 0 0 -16px;
 
 				&.columns-1 {
-					.gbt-category-grid-item {
+					.gbt_18_category_grid_item {
 						width: 100%;
-						padding: 0 16px 100% 16px;
+						padding: 0 16px calc(100% - 16px) 16px;
 					}
 				}
 
 				&.columns-2 {
-					.gbt-category-grid-item {
+					.gbt_18_category_grid_item {
 						width: 50%;
-						padding: 0 16px 50% 16px;
+						padding: 0 16px calc(50% - 16px) 16px;
 					}
 				}
 
 				&.columns-3 {
-					.gbt-category-grid-item {
+					.gbt_18_category_grid_item {
 						width: 33.33333333%;
-						padding: 0 16px 33.33333333% 16px;
+						padding: 0 16px calc(33.33333333% - 16px) 16px;
 					}
 				}
 
 				&.columns-4 {
-					.gbt-category-grid-item {
+					.gbt_18_category_grid_item {
 						width: 25%;
-						padding: 0 16px 25% 16px;
+						padding: 0 16px calc(25% - 16px) 16px;
 
-						.gbt-category-title,
-						.gbt-count {
+						.gbt_18_category_grid_item_title,
+						.gbt_18_category_grid_item_count {
 							font-size: 1rem;
 						}
 					}
 				}
 
 				&.columns-5 {
-					.gbt-category-grid-item {
+					.gbt_18_category_grid_item {
 						width: 20%;
-						padding: 0 16px 20% 16px;
+						padding: 0 16px calc(20% - 16px) 16px;
 
-						.gbt-category-title,
-						.gbt-count {
+						.gbt_18_category_grid_item_title,
+						.gbt_18_category_grid_item_count {
 							font-size: 0.85rem;
 						}
 					}
 				}
 
 				&.columns-6 {
-					.gbt-category-grid-item {
+					.gbt_18_category_grid_item {
 						width: 16.66666666%;
-						padding: 0 16px 16.66666666% 16px;
+						padding: 0 16px calc(16.66666666% - 16px) 16px;
 
-						.gbt-category-title,
-						.gbt-count {
+						.gbt_18_category_grid_item_title,
+						.gbt_18_category_grid_item_count {
 							font-size: 0.85rem;
 						}
 					}
 				}
 
-				.gbt-category-grid-item
+				.gbt_18_category_grid_item
 				{
 					float: left;
 				    width: 33.33333333%;
@@ -75,7 +75,7 @@
 				    height: 0;
 				    padding: 0 16px 33.33333333% 16px;
 
-				    .gbt-category-img
+				    .gbt_18_category_grid_item_img
 				    {
 			    	    position: absolute;
 				    }

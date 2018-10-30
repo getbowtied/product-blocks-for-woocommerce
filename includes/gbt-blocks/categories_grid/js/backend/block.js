@@ -8,42 +8,29 @@
 	var InspectorControls 	= editor.InspectorControls;
 
 	var TextControl 		= components.TextControl;
-	var RadioControl        = components.RadioControl;
 	var SelectControl		= components.SelectControl;
 	var ToggleControl		= components.ToggleControl;
-	var PanelBody			= components.PanelBody;
 	var RangeControl		= components.RangeControl;
 
-	var apiFetch = wp.apiFetch;
+	var SVG 				= components.SVG;
+	var Path 				= components.Path;
 
-	var xhr;
+	var apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/categories-grid', {
 		title: i18n.__( 'Product Categories Grid' ),
-		icon: 'layout',
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
 		styles: [
-			{ name: 'layout-1', label:  'Layout 1' , isDefault: true },
-			{ name: 'layout-2', label:  'Layout 2'  },
+			{ name: 'layout-1', label:  'Layout 1'  },
+			{ name: 'layout-2', label:  'Layout 2' , isDefault: true },
 			{ name: 'layout-3', label:  'Layout 3'  },
 		],
 		attributes: {
-			resultList: {
-				type: 'string',
-				default: ''
-			},
-			selectedList: {
-				type: 'string',
-				default: ''
-			},
-			selected : {
-				type: 'string',
-				default: ''
-			},
 			product_ids: {
 				type: 'string',
 				default: ''
@@ -74,7 +61,7 @@
 			},
 			product_count: {
 				type: 'boolean',
-				default: false
+				default: true
 			},
 			parent_only: {
 				type: 'boolean',
@@ -84,38 +71,12 @@
 				type: 'string',
 				default: ''
 			},
-			query: {
-				type: 'string',
-				default: ''
-			},
 		},
 
 		edit: function( props ) {
 
 			var attributes = props.attributes;
 			var className  = props.className;
-
-			function getCategoriesGrid1( product_ids ) {
-
-				if(product_ids) {
-
-					var data = {
-						action 		: 'getbowtied_render_backend_categories_grid',
-						attributes  : {
-							'source'		: 'specific',
-							'product_ids'  	: product_ids,
-						}
-					};
-
-					jQuery.post( 'admin-ajax.php', data, function(response) { 
-						response = jQuery.parseJSON(response);
-						props.setAttributes( { grid: ' ' } );
-						props.setAttributes( { grid: response } );
-					});	
-				} else {
-					props.setAttributes( { grid: ' ' } );
-				}
-			}
 
 			function getCategoriesGrid( orderby, order, parent_only, number, hide_empty, product_count, columns ) {
 
@@ -146,65 +107,13 @@
 				});	
 			}
 
-			function getSelectedCategories() {
-
-				console.log(attributes.selectedList);
-
-				if( attributes.selectedList ) {
-
-					var result = [];
-					for( var i = 0; i < attributes.selectedList.length; i++ ) {
-						console.log(attributes.selectedList[i]);
-
-						apiFetch({ path: '/wc/v3/products/categories/' + attributes.selectedList[i] }).then(function (category) {
-				        	console.log(category);
-
-				        	result.push(
-				        		el(
-									"div",
-									{
-										className: "selected-category", 
-										id: "selected-category-" + category.id,
-										onClick: function(e) {
-											console.log('deleted');
-											// var arr = props.attributes.product_ids.split(",");
-											// var remove = "'.$id.'";
-											// var index = arr.indexOf(remove);
-											// if (index > -1) {
-											//   arr.splice(index, 1);
-											// }
-											// props.setAttributes({product_ids: arr.join(",")});
-											// props.setAttributes({selectedList: arr});
-											// getCategoriesGrid1(arr.join(","));
-											// getSelectedCategories();
-										}
-									}, 
-									el(
-										"img",
-										{
-											src: category.image.src
-										}
-									),
-									el(
-										"span",
-										{},
-										category.name
-									)
-								)
-				        	);
-						});
-					}
-				}
-
-				props.setAttributes({selected: result});
-			}
-
 			return [
 				el(
 					InspectorControls,
 					{
 						key: 'categories-grid-inspector'
 					},
+					el( "hr", {}),
 					el(
 						SelectControl,
 						{
@@ -225,84 +134,6 @@
 							},
 						}
 					),
-					props.attributes.source === 'specific' && [
-						el(
-							TextControl,
-							{
-								key: 'categories-grid-query-panel-string',
-		          				type: 'search',
-		          				className: 'categories-grid-ajax-search',
-		          				value: attributes.query,
-		          				placeholder: i18n.__( 'Search for categories to display'),
-		          				onChange: function( newQuery ) {
-		          					
-		          					props.setAttributes( { query: newQuery } );
-		          					if (newQuery.length < 3) {
-		          						props.setAttributes( { resultList: ''} );
-		          						return;
-		          					}
-
-							        var query = '/wc/v3/products/categories?per_page=10&search=' + newQuery;
-
-							        props.setAttributes( { resultList: ''} );
-		          					var data = {
-		          						action: 'getbowtied_search_category1',
-		          						attributes: {
-		          							'query': newQuery
-		          						}	
-		          					};
-
-		          					if(xhr && xhr.readyState != 4){
-							            xhr.abort();
-							        }
-							        xhr = jQuery.ajax({
-									    type: "POST",
-									    url: 'admin-ajax.php',
-									    data: data,
-									    success: function(response){
-									    	props.setAttributes( { resultList: ''} );
-									      	response = jQuery.parseJSON(response);
-											var arr = response.ids;
-											props.setAttributes( { products: response.ids } );
-											props.setAttributes( { resultList: response.html} );
-											for (var i = 0, len = arr.length; i < len; i++) {
-												var tempArr = props.attributes.product_ids.split(",");
-												var index = tempArr.indexOf(arr[i]['value']);
-												if ( index > -1 ){
-													$('#search-result-'+arr[i]['value']).addClass('selected');
-												}
-											}
-									    }
-									});
-								},
-							},
-						),
-						el(
-							'div',
-							{
-								className: 'search-results-wrapper'
-							},
-							eval(attributes.resultList)
-						),
-						el(
-							'div',
-							{
-								className: 'selection-wrapper'
-							},
-							el(
-								"label",
-								{},
-								i18n.__("Selected Categories")
-							),
-							el(
-								'div',
-								{
-									className: 'selection'
-								},
-								eval(attributes.selected)
-							),
-						),
-					],
 					props.attributes.source === 'all' && [
 						el(
 							SelectControl,
@@ -411,8 +242,8 @@
 				el(
 					'div',
 					{
-						key: 'wp-block-getbowtied-categories-grid',
-						className: className + ' gbt-editor'
+						key: 'gbt_18_editor_categories_grid_wrapper',
+						className: className + ' gbt_18_editor_categories_grid_wrapper'
 					},
 					eval( attributes.grid ),
 					attributes.grid == '' && getCategoriesGrid( null, null, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null )
