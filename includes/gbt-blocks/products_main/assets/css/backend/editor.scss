@@ -27,6 +27,8 @@
 
             input {
                 text-indent: 24px;
+                border-radius: 0;
+                margin-left: 0;
             }
         }
         .dashicons.dashicons-dismiss.clear-query {
@@ -45,6 +47,7 @@
         max-height: 157px;
         overflow-y: auto;
         overflow-x: hidden;
+        margin-top: -9px;
         
         .single-result {
             display: flex;
@@ -59,14 +62,23 @@
             
             &:hover {
                 background:#F8FCFF;
-                .dashicons {
+                .dashicons-yes {
                     opacity: 1;
+                }
+                &:after {
+                    background: linear-gradient(to left, rgba(248, 252, 255, 1), rgba(248, 252, 255, 0.7));
                 }
             }
 
             .title-wrapper {
-                max-width: 140px;
-                overflow: hidden;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 51px;
+                line-height: 51px;
+                padding-left: 51px;
+                cursor: pointer;
                 
                 input[type="checkbox"]{
                     display: none;
@@ -115,8 +127,21 @@
 
             &.selected {
                 background:#F8FCFF;
-                .dashicons {
+                
+                &:after {
+                    background: linear-gradient(to left, rgba(248, 252, 255, 1), rgba(248, 252, 255, 0.7));
+                }
+                .dashicons-yes {
                     opacity: 1;
+                }
+
+                &:hover {
+                    .dashicons-no-alt {
+                        opacity: 1;
+                    }
+                    .dashicons-yes {
+                        opacity: 0;
+                    }
                 }
             }
         }
@@ -162,6 +187,7 @@
                     height: 51px;
                     line-height: 51px;
                     padding-left: 51px;
+                    cursor: pointer;
                     
                     input[type="checkbox"]{
                         display: none;
@@ -196,7 +222,7 @@
                     // background: #FFF;
                     z-index: 1;
                     content: '';
-                    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
+                    background: linear-gradient(to left, rgba(248, 252, 255, 1), rgba(248, 252, 255, 0.7));
                 }
 
                 .dashicons-no-alt {
@@ -218,6 +244,10 @@
                         opacity: 1;
                         top: -1px;
                         right: -1px;
+                    }
+
+                    &:after {
+                        right: -2px;
                     }
 
                     .title-wrapper {
@@ -284,6 +314,9 @@
         }
     }
     .attributes-results-wrapper {
+        max-height: 157px;
+        overflow-y: auto;
+        overflow-x: hidden;
         > label {
             display: block;
             width: 100%;

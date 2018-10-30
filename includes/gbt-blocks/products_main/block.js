@@ -129,10 +129,26 @@
 				return newarr;
 			}
 
+			function _sortByKeys(keys, products) {
+				var sorted =[];
+				for ( var i = 0; i < keys.length; i++ ) {
+					for ( var j = 0; j < products.length; j++ ) {
+						if ( keys[i] == products[j].id ) {
+							sorted.push(products[j]);
+							break;
+						}
+					}
+				}
+
+				return sorted;
+			}
+
 			function _destroyQuery() {
 				props.setAttributes({ queryProducts: ''});
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
+				props.setAttributes({ querySearchSelected: []});
+				props.setAttributes({ querySearchSelectedIDs: []});
 				props.setAttributes({ queryAttributesOptionsSelected: [] });
 				props.setAttributes({ queryCategorySelected: [] });
 				props.setAttributes({result: []});
@@ -161,6 +177,7 @@
 			function getProducts() {
 				var query = props.attributes.queryProducts;
 				var order = props.attributes.queryOrder;
+				console.log(order);
 				switch ( order) {
 					case 'date_desc':
 						query += '&orderby=date&order=desc';
@@ -175,6 +192,7 @@
 						query += '&orderby=title&order=asc';
 					break;
 					default: 
+						
 					break;
 				}
 
@@ -185,9 +203,15 @@
 				}
 			}
 			function renderResults() {
+				var products = props.attributes.result;
+				var sorted = [];
+				if ( props.attributes.queryDisplayType === 'specific' ) {
+					sorted = _sortByKeys(props.attributes.querySearchSelectedIDs, props.attributes.result );
+				}
+				if ( sorted.length ) { products = sorted; }
 				var productElements = [];
-				for ( i = 0; i < props.attributes.result.length; i++ ) {
-					productElements.push(el('div', {className:'single-result'}, props.attributes.result[i].name));
+				for ( i = 0; i < products.length; i++ ) {
+					productElements.push(el('div', {className:'single-result'}, products[i].name));
 				}
 				return productElements;
 			}
@@ -245,8 +269,9 @@
 									},
 								),
 								products[i].name,
+								el('span',{ className: 'dashicons dashicons-yes'}),
+								el('span',{ className: 'dashicons dashicons-no-alt'}),
 							),
-							el('span',{ className: 'dashicons dashicons-yes'})
 						)
 					);
 				}
@@ -258,6 +283,8 @@
 				var i;
 
 				var products = props.attributes.querySearchSelected;
+				var sorted = _sortByKeys(props.attributes.querySearchSelectedIDs, props.attributes.querySearchSelected );
+
 
 				if ( props.attributes.querySearchSelectedIDs.length < 1 ) {
 					var bugFixer = [];
@@ -266,6 +293,8 @@
 					}
 					props.setAttributes({ querySearchSelectedIDs: bugFixer});
 				}
+
+				if ( sorted.length > 0 ) { products= sorted;}
 				for ( var i = 0; i < products.length; i++ ) {
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
@@ -308,8 +337,8 @@
 									},
 								),
 								products[i].name,
+								el('span',{ className: 'dashicons dashicons-no-alt'})
 							),
-							el('span',{ className: 'dashicons dashicons-no-alt'})
 						)
 					);
 				}
