@@ -7,19 +7,15 @@
 
 	var InspectorControls 	= editor.InspectorControls;
 
-	var rawHandler = element.createBlocksFromMarkup;
-
-	var TextControl 		= components.TextControl;
-	var RadioControl        = components.RadioControl;
 	var SelectControl		= components.SelectControl;
-	var ToggleControl		= components.ToggleControl;
-	var PanelBody			= components.PanelBody;
 	var RangeControl		= components.RangeControl;
+	var SVG 				= components.SVG;
+	var Path 				= components.Path;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-carousel', {
 		title: i18n.__( 'Product Carousel' ),
-		icon: 'slides',
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
