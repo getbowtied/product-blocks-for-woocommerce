@@ -115,7 +115,7 @@
 						renderResults()
 					)
 				),
-				attributes.content.length == 0 && createProductGrid()
+				attributes.result.length == 0 && createProductGrid()
 			];
 		},
 
