@@ -22,4 +22,5 @@ require_once 'products_slider/index.php';
 require_once 'categories_grid/index.php';
 require_once 'products_main/block.php';
 require_once 'products_carousel/index.php';
+require_once 'expanding_grid/index.php';
 
