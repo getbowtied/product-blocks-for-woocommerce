@@ -1,4 +1,4 @@
-.wp-block-getbowtied-categories-grid.gbt-grid
+.wp-block-getbowtied-categories-grid.gbt_18_categories_grid_wrapper
 {
 	margin-bottom: 1.25rem;
 
@@ -16,13 +16,13 @@
 	    max-width: 75vw;
 	}
 
-	.gbt_categories_grid
+	.gbt_18_categories_grid
 	{
 		overflow: hidden;
 		margin: 0 !important;
 		width: 100%;
 
-		.gbt-category-grid-item
+		.gbt_18_category_grid_item
 		{
 			margin-bottom: 16px;
 			position: relative;
@@ -37,7 +37,7 @@
                 transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
             }
 
-			.gbt-category-img
+			.gbt_18_category_grid_item_img
 			{
 				display: block;
 				width: 100%;
@@ -59,7 +59,7 @@
 				}
 			}
 
-			.gbt-category-title
+			.gbt_18_category_grid_item_title
 			{
 				font-size: 1.15rem;
 				font-weight: normal;
@@ -70,7 +70,7 @@
 			    margin: 0;
 			    -webkit-backface-visibility: hidden;
 
-				.gbt-count
+				.gbt_18_category_grid_item_count
 				{
 					color: #888888;
 					font-size: 1.15rem;
