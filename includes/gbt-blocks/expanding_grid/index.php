@@ -12,8 +12,8 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'product_ids'					=> [],
-		'align'							=> 'center',
+		'product_ids'		=> [],
+		'align'				=> 'center',
 	), $attributes ) );
 
 	$products = wc_get_products( [
