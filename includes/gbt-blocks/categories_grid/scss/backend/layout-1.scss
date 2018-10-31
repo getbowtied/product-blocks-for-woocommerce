@@ -9,63 +9,63 @@
 				margin: 0 8px 0 -8px;
 
 				&.columns-1 {
-					.gbt_18_category_grid_item {
+					.gbt_18_editor_category_grid_item {
 						width: 100%;
 						padding: 0 16px calc(100% - 16px) 16px;
 					}
 				}
 
 				&.columns-2 {
-					.gbt_18_category_grid_item {
+					.gbt_18_editor_category_grid_item {
 						width: 50%;
 						padding: 0 16px calc(50% - 16px) 16px;
 					}
 				}
 
 				&.columns-3 {
-					.gbt_18_category_grid_item {
+					.gbt_18_editor_category_grid_item {
 						width: 33.33333333%;
 						padding: 0 16px calc(33.33333333% - 16px) 16px;
 					}
 				}
 
 				&.columns-4 {
-					.gbt_18_category_grid_item {
+					.gbt_18_editor_category_grid_item {
 						width: 25%;
 						padding: 0 16px calc(25% - 16px) 16px;
 
-						.gbt_18_category_grid_item_title,
-						.gbt_18_category_grid_item_count {
+						.gbt_18_editor_category_grid_item_title,
+						.gbt_18_editor_category_grid_item_count {
 							font-size: 1rem;
 						}
 					}
 				}
 
 				&.columns-5 {
-					.gbt_18_category_grid_item {
+					.gbt_18_editor_category_grid_item {
 						width: 20%;
 						padding: 0 16px calc(20% - 16px) 16px;
 
-						.gbt_18_category_grid_item_title,
-						.gbt_18_category_grid_item_count {
+						.gbt_18_editor_category_grid_item_title,
+						.gbt_18_editor_category_grid_item_count {
 							font-size: 0.85rem;
 						}
 					}
 				}
 
 				&.columns-6 {
-					.gbt_18_category_grid_item {
+					.gbt_18_editor_category_grid_item {
 						width: 16.66666666%;
 						padding: 0 16px calc(16.66666666% - 16px) 16px;
 
-						.gbt_18_category_grid_item_title,
-						.gbt_18_category_grid_item_count {
+						.gbt_18_editor_category_grid_item_title,
+						.gbt_18_editor_category_grid_item_count {
 							font-size: 0.85rem;
 						}
 					}
 				}
 
-				.gbt_18_category_grid_item
+				.gbt_18_editor_category_grid_item
 				{
 					float: left;
 				    width: 33.33333333%;
@@ -75,7 +75,7 @@
 				    height: 0;
 				    padding: 0 16px 33.33333333% 16px;
 
-				    .gbt_18_category_grid_item_img
+				    .gbt_18_editor_category_grid_item_img
 				    {
 			    	    position: absolute;
 				    }

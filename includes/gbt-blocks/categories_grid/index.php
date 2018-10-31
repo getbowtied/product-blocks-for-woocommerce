@@ -140,24 +140,24 @@ function getbowtied_render_backend_categories_grid() {
 
 			<?php
 
-			$output .= 'el("div",{className:"gbt_18_category_grid_item", key:"gbt_18_category_grid_item"},';
+			$output .= 'el("div",{className:"gbt_18_editor_category_grid_item", key:"gbt_18_editor_category_grid_item"},';
 
-				$output .= 'el("a",{className:"gbt_18_category_grid_item_img", key:"gbt_18_category_grid_item_img"}';
+				$output .= 'el("a",{className:"gbt_18_editor_category_grid_item_img", key:"gbt_18_editor_category_grid_item_img"}';
 
 					$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
 				    $image = wp_get_attachment_image_src( $thumbnail_id, 'large');
 				    $image = isset($image[0]) ? $image[0] : wc_placeholder_img_src();
 
 				    if ( isset($image) ) {
-				    	$output .= ',el("img",{key:"gbt_18_category_grid_item_thumb", src: "'.$image.'"})';
+				    	$output .= ',el("img",{key:"gbt_18_editor_category_grid_item_thumb", src: "'.$image.'"})';
 					}
 
 				$output .= '),';
 
-				$output .= 'el("h4",{className:"gbt_18_category_grid_item_title", key:"gbt_18_category_grid_item_title"}, "'.htmlspecialchars_decode($cat->name).'"';
+				$output .= 'el("h4",{className:"gbt_18_editor_category_grid_item_title", key:"gbt_18_editor_category_grid_item_title"}, "'.htmlspecialchars_decode($cat->name).'"';
 
 					if( $product_count ) {
-						$output .= ',el("span",{className:"gbt_18_category_grid_item_count", key:"gbt_18_category_grid_item_count"}, "'.esc_attr($cat->count).'")';
+						$output .= ',el("span",{className:"gbt_18_editor_category_grid_item_count", key:"gbt_18_editor_category_grid_item_count"}, "'.esc_attr($cat->count).'")';
 					}
 
 				$output .= ')';
