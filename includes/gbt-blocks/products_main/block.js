@@ -511,6 +511,11 @@
 									}, 
 								),
 								attArr[i].label,
+								el(
+									'sup',
+									{},
+									attArr[i].count,
+								),
 							),
 						);
 					} 
@@ -592,9 +597,9 @@
 			function getAttributesOptions( term ) {
 				var query = getQuery('/attributes/'+term+'/terms');
 				var options = [];
-				apiFetch({ path: query }).then(function (categories) {
-				 	for( i = 0; i < categories.length; i++ ) {
-		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id };
+				apiFetch({ path: query }).then(function (attributes) {
+				 	for( i = 0; i < attributes.length; i++ ) {
+		        		options[i] = {'label': attributes[i].name.replace(/&amp;/g, '&'), 'value': attributes[i].id, 'count': attributes[i].count};
 		        	}
 
 		        	props.setAttributes({queryAttributesOptionsValues: options});
@@ -602,8 +607,8 @@
 
 				var query = getQuery('/attributes/'+term);
 
-				apiFetch({ path: query }).then(function (categories) {
-			     	props.setAttributes({queryAttributesSelectedSlug: categories.slug});
+				apiFetch({ path: query }).then(function (attributes) {
+			     	props.setAttributes({queryAttributesSelectedSlug: attributes.slug});
 				});
 			}
 

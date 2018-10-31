@@ -267,6 +267,8 @@
     width: 100%;
     position: relative;
     margin-bottom: 10px; }
+    .products-main-inspector-wrapper .attributes-results-wrapper > label sup {
+      color: #ccc; }
 
 .products-main-inspector-wrapper button.render-results {
   margin-top: 20px; }

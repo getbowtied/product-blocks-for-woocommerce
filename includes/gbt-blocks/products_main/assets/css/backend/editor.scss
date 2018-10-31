@@ -322,6 +322,10 @@
             width: 100%;
             position: relative;
             margin-bottom: 10px;
+            
+            sup {
+                color: #ccc;
+            }
         }
     }
     button.render-results {
