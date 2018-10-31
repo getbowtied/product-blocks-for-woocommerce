@@ -34,7 +34,7 @@ jQuery(function($) {
 		if (action == 'reset') $('.wp-block-getbowtied-categories-grid.js_animated .gbt_18_category_grid_item').removeClass('visible animation_ready animated');
 
 		$('.wp-block-getbowtied-categories-grid.js_animated .gbt_18_category_grid_item:not(.visible)').each(function() {
-	    	if ( $(this).visible("partial") ) {                
+	    	if ( $(this).is(':visible') ) {                
                 $(this).addClass('visible');
 			}
 		});
