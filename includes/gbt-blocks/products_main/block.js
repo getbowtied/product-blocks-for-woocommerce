@@ -152,6 +152,7 @@
 			}
 
 			function _destroyQuery() {
+				props.setAttributes({ queryOrder: ''});
 				props.setAttributes({ queryProducts: ''});
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
@@ -179,6 +180,59 @@
 				return ( (props.attributes.queryProducts.length == 0) || (props.attributes.queryProducts === props.attributes.queryProductsLast) );
 			}
 
+			function _queryOrder(value) {
+				var query = props.attributes.queryProducts;
+				var idx = query.indexOf('&orderby');
+				if ( idx > -1) {
+					query = query.substring(idx, -25);
+				}
+
+				console.log('query after substring is: ' + query);
+
+				switch ( value ) {
+					case 'date_desc':
+						query +='&orderby=date&order=desc';
+					break;
+					case 'date_asc':
+						query +='&orderby=date&order=asc';
+					break;
+					case 'title_desc':
+						query +='&orderby=title&order=desc';
+					break;
+					case 'title_asc':
+						query +='&orderby=title&order=asc';
+					break;
+					default: 
+						
+					break;
+				}
+				props.setAttributes({ queryProducts: query });
+			}
+
+			function _getQueryOrder() {
+				if ( props.attributes.queryOrder.length < 1) return '';
+				var order = '';
+				switch ( props.attributes.queryOrder ) {
+					case 'date_desc':
+						order = '&orderby=date&order=desc';
+					break;
+					case 'date_asc':
+						order = '&orderby=date&order=asc';
+					break;
+					case 'title_desc':
+						order = '&orderby=title&order=desc';
+					break;
+					case 'title_asc':
+						order = '&orderby=title&order=asc';
+					break;
+					default: 
+						
+					break;
+				}
+
+				return order;
+			}
+
 			//==============================================================================
 			//	Show products functions
 			//==============================================================================
@@ -189,24 +243,6 @@
 			function getProducts() {
 				var query = props.attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
-				var order = props.attributes.queryOrder;
-				switch ( order) {
-					case 'date_desc':
-						query += '&orderby=date&order=desc';
-					break;
-					case 'date_asc':
-						query += '&orderby=date&order=asc';
-					break;
-					case 'title_desc':
-						query += '&orderby=title&order=desc';
-					break;
-					case 'title_asc':
-						query += '&orderby=title&order=asc';
-					break;
-					default: 
-						
-					break;
-				}
 
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
@@ -423,6 +459,7 @@
 												};
 												if ( props.attributes.queryCategorySelected.length > 0 ) {
 													var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
+													query = query + _getQueryOrder();
 													props.setAttributes({ queryProducts: query});
 												} else {
 													props.setAttributes({ queryProducts: '' });
@@ -438,20 +475,6 @@
 										},
 										catArr[i].count,
 									),
-									// typeof catArr[i+1] !== 'undefined' && catArr[i+1].parent == catArr[i].value && el(
-									// 	'span',
-									// 	{
-									// 		className: 'expand dashicons dashicons-arrow-down-alt2',
-									// 		'data-toggle': 'child-' + props.attributes.queryCategoryOptions[i].value,
-									// 		onClick: function onClick(evt) {
-									// 			var _this =$(evt.target);
-									// 			var toggle = evt.target.dataset.toggle;
-									// 			evt.preventDefault();
-									// 			_this.parent('label').toggleClass('expanded');
-									// 			_this.parent('label').nextAll('label.' + toggle ).toggleClass('expanded');
-									// 		}
-									// 	},
-									// )
 								),
 								renderCategories( catArr[i].value, level+1)
 							),
@@ -503,6 +526,7 @@
 											};
 											if ( props.attributes.queryAttributesOptionsSelected.length > 0 ) {
 												var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
+												query = query + _getQueryOrder();
 												props.setAttributes({ queryProducts: query});
 											} else {
 												props.setAttributes({ queryProducts: '' });
@@ -548,6 +572,7 @@
 							}],
 							onChange: function onChange(value) {
 								props.setAttributes({ queryOrder: value });
+								_queryOrder(value);
 							}
 						},
 					),
@@ -764,6 +789,7 @@
 										getAttributes();
 									} else {
 										var query = getQuery('?'+value+'=1');
+										// query = query + _getQueryOrder();
 										props.setAttributes({ queryProducts: query });
 									}
 								}
