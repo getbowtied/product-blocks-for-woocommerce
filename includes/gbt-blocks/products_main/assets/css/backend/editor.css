@@ -26,13 +26,6 @@
     text-indent: 24px;
     border-radius: 0;
     margin-left: 0; }
-  .products-main-inspector-wrapper .products-ajax-search-wrapper .dashicons.dashicons-dismiss.clear-query {
-    position: absolute;
-    top: 9px;
-    right: 5px;
-    font-size: 16px;
-    color: #ccc;
-    cursor: pointer; }
 
 .products-main-inspector-wrapper .products-ajax-search-results {
   border: 1px solid  #E8EBEF;

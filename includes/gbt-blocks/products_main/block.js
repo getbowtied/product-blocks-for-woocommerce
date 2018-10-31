@@ -98,10 +98,10 @@
 				type: 'string',
 				default: '',
 			},
-			renderRequest: {
-				type: 'string',
-				default: 'false',
-			},
+			isLoading: {
+				type: 'bool',
+				default: false,
+			}
 		},
 		edit: function( props ) {
 
@@ -233,6 +233,22 @@
 				return order;
 			}
 
+			function _isLoading() {
+				if ( props.attributes.isLoading  === true ) {
+					return 'is-busy';
+				} else {
+					return '';
+				}
+			}
+
+			function _isLoadingText(){
+				if ( props.attributes.isLoading  === false ) {
+					return i18n.__('Update');
+				} else {
+					return i18n.__('Updating');
+				}
+			}
+
 			//==============================================================================
 			//	Show products functions
 			//==============================================================================
@@ -247,6 +263,7 @@
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
 						props.setAttributes({ result: products});
+										props.setAttributes({ isLoading: false});
 					});
 				}
 			}
@@ -716,15 +733,6 @@
 									},
 								},
 							),
-							props.attributes.querySearchString != '' &&  el(
-								'span',
-								{
-									className: 'dashicons dashicons-dismiss clear-query',
-									onClick: function onClick() {
-										props.setAttributes({ querySearchString: '' });
-									}
-								}
-							),
 						),
 						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
 							'div',
@@ -821,14 +829,15 @@
 						el(
 							'button',
 							{
-								className: 'render-results components-button is-button is-default is-primary is-large',
+								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
+									props.setAttributes({ isLoading: true });
 									_destroyTempAtts();
 									getProducts();
 								},
 							},
-							i18n.__('Done'),
+							_isLoadingText(),
 						),
 					),
 				),
