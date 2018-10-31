@@ -534,9 +534,6 @@
 							value: props.attributes.queryOrder,
 							className: 'orderby-wrapper',
 							options: [{
-								label: i18n.__('Choose an Option'),
-								value: 'default'
-							}, {
 								label: i18n.__('Newness - newest first'),
 								value: 'date_desc'
 							}, {
