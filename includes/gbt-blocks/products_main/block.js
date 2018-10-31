@@ -34,6 +34,10 @@
 				type: 'string',
 				default: '',
 			},
+			queryProductsLast: {
+				type: 'string',
+				default: '',
+			},
 			querySearchString: {
 				type: 'string',
 				default: '',
@@ -172,7 +176,7 @@
 			}
 
 			function _isDonePossible() {
-				return ( props.attributes.queryProducts.length == 0 );
+				return ( (props.attributes.queryProducts.length == 0) || (props.attributes.queryProducts === props.attributes.queryProductsLast) );
 			}
 
 			//==============================================================================
@@ -184,6 +188,7 @@
 
 			function getProducts() {
 				var query = props.attributes.queryProducts;
+				props.setAttributes({ queryProductsLast: query});
 				var order = props.attributes.queryOrder;
 				switch ( order) {
 					case 'date_desc':
