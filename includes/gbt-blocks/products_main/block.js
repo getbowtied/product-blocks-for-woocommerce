@@ -171,6 +171,10 @@
 				return false;
 			}
 
+			function _isDonePossible() {
+				return ( props.attributes.queryProducts.length == 0 );
+			}
+
 			//==============================================================================
 			//	Show products functions
 			//==============================================================================
@@ -260,7 +264,11 @@
 											props.setAttributes({ querySearchSelectedIDs: qSR });
 											
 											var query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
-											props.setAttributes({queryProducts: query});
+											if ( qSR.length > 0 ) {
+												props.setAttributes({queryProducts: query});
+											} else {
+												props.setAttributes({queryProducts: '' });
+											}
 											apiFetch({ path: query }).then(function (products) {
 												props.setAttributes({ querySearchSelected: products});
 											});
@@ -324,7 +332,11 @@
 											props.setAttributes({ querySearchSelectedIDs: qSS });
 											
 											var query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
-											props.setAttributes({queryProducts: query});
+											if ( qSS.length > 0 ) {
+												props.setAttributes({queryProducts: query});
+											} else {
+												props.setAttributes({queryProducts: ''});
+											}
 											apiFetch({ path: query }).then(function (products) {
 												props.setAttributes({ querySearchSelected: products});
 											});
@@ -404,8 +416,12 @@
 													}
 													props.setAttributes({ queryCategorySelected: qCS });
 												};
-												var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
-												props.setAttributes({ queryProducts: query});
+												if ( props.attributes.queryCategorySelected.length > 0 ) {
+													var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
+													props.setAttributes({ queryProducts: query});
+												} else {
+													props.setAttributes({ queryProducts: '' });
+												}
 											},
 										}, 
 									),
@@ -480,8 +496,12 @@
 												}
 												props.setAttributes({ queryAttributesOptionsSelected: qCS });
 											};
-											var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
-											props.setAttributes({ queryProducts: query});
+											if ( props.attributes.queryAttributesOptionsSelected.length > 0 ) {
+												var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
+												props.setAttributes({ queryProducts: query});
+											} else {
+												props.setAttributes({ queryProducts: '' });
+											}
 										},
 									}, 
 								),
@@ -768,7 +788,8 @@
 						el(
 							'button',
 							{
-								className: 'render-results',
+								className: 'render-results components-button is-button is-default is-primary is-large',
+								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
 									_destroyTempAtts();
 									getProducts();

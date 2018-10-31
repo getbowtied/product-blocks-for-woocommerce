@@ -325,7 +325,16 @@
         }
     }
     button.render-results {
-        margin-top: 20px;
+        margin-top:20px; 
+        
+        &.disabled {
+            color: #4daacf;
+            background: #005d82;
+            border-color: #006a95;
+            box-shadow: none;
+            text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+            pointer-events: none;
+        }
     }
 
     .orderby-wrapper {
