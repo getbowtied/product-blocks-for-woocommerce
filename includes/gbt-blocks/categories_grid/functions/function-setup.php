@@ -95,7 +95,7 @@ register_block_type( 'getbowtied/categories-grid', array(
 		),
 		'className'						=> array(
 			'type'						=> 'string',
-			'default'					=> 'is-style-layout-1',
+			'default'					=> 'is-style-layout-2',
 		),
 	),
 

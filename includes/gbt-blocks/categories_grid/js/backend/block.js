@@ -27,7 +27,7 @@
 		},
 		styles: [
 			{ name: 'layout-1', label:  'Layout 1'  },
-			{ name: 'layout-2', label:  'Layout 2' , isDefault: true },
+			{ name: 'layout-2', label:  'Layout 2', isDefault: true },
 			{ name: 'layout-3', label:  'Layout 3'  },
 		],
 		attributes: {
@@ -77,6 +77,8 @@
 
 			var attributes = props.attributes;
 			var className  = props.className;
+
+			if( className.indexOf('is-style-layout') == -1 ) { className += ' is-style-layout-2'; }
 
 			function getCategoriesGrid( orderby, order, parent_only, number, hide_empty, product_count, columns ) {
 

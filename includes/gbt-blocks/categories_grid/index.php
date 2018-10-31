@@ -61,7 +61,10 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
                     ?>
                 </a>
                 <h4 class="gbt_18_category_grid_item_title">
-                    <?php echo esc_html($cat->name); ?><span class="gbt_18_category_grid_item_count"><?php echo esc_attr($cat->count); ?></span>
+                    <?php echo esc_html($cat->name); ?>
+                    <?php if( $product_count ) { ?>
+                    	<span class="gbt_18_category_grid_item_count"><?php echo esc_attr($cat->count); ?></span>
+                    <?php } ?>
                 </h4>
             </div>
 
