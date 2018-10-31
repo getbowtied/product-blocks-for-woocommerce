@@ -41,7 +41,7 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 							$image_link  	= wp_get_attachment_url( $product->image_id );
 	    				?>
 	                    <div class="gbt_18_feature_image">
-	                        <img src="<?php echo $image [0]; ?>" alt="">
+	                        <img src="<?php echo $image[0]; ?>" alt="">
 	                    </div>
 	                    <div class="gbt_18_product-info">
 	                        <h2 class="gbt_18_product_title">

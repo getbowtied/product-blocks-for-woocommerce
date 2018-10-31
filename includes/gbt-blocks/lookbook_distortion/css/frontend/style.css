@@ -1,0 +1,65 @@
+.gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh; }
+  .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item:nth-child(odd) {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse; }
+  .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item:hover .gbt_18_distorsion_image img:nth-child(2) {
+    opacity: 1; }
+  .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image {
+    width: 50%;
+    position: relative;
+    overflow: hidden; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image img {
+      max-width: 100%;
+      height: 100%;
+      width: 100%;
+      -o-object-fit: cover;
+      object-fit: cover; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image img:nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        -webkit-transition: opacity 0.3s;
+        -o-transition: opacity 0.3s;
+        transition: opacity 0.3s; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image canvas {
+      position: absolute;
+      top: 0;
+      left: 0; }
+  .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content {
+    width: 50%; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 100px 0;
+      color: #fff; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper h2 {
+        max-width: 460px;
+        font-size: 54px; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper p {
+        font-size: 20px;
+        max-width: 460px;
+        min-height: 30vh; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper .gbt_18_product_price {
+        font-size: 54px; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper .button {
+        display: table;
+        font-size: 18px;
+        color: #fff; }
+
+.gbt_18_distorsion_lookbook {
+  margin-bottom: 1.25rem; }
+  .gbt_18_distorsion_lookbook.full {
+    margin-left: calc( -100vw / 2 + 100% / 2);
+    margin-right: calc( -100vw / 2 + 100% / 2);
+    max-width: 100vw; }
+  .gbt_18_distorsion_lookbook.wide {
+    margin-left: calc( -75vw / 2 + 100% / 2);
+    margin-right: calc( -75vw / 2 + 100% / 2);
+    max-width: 75vw; }

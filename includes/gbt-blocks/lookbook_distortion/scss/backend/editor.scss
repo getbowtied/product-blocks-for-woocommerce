@@ -1,0 +1,115 @@
+.wp-block-slider-title-wrapper
+{
+	background-color: #f3f3f3;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.7em 1em 1em;
+    min-height: 70px;
+    height: 70px;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #e6e6e6;
+
+    &:hover
+    {
+    	cursor: pointer;
+    }
+
+    .dashicon.dashicons-slides
+	{
+	    margin-right: 1ch;
+	    margin-top: -10px;
+	}
+
+	.wp-block-slider-title
+	{
+		font-family: BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif !important;
+	    display: flex;
+	    justify-content: center;
+	    font-weight: 600;
+	    margin-bottom: 0;
+	    margin-top: 3px;
+	    margin-left: -3px;
+	}
+
+	.dashicon.dashicons-slides:before
+	{
+		font-family: "dashicons";
+	    font-size: 26px;
+	}
+}
+
+.gbt_18_editor_lookbook_product_content {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    min-height: 200px;
+
+    .gbt_18_editor_lookbook_product_content_left,
+    .gbt_18_editor_lookbook_product_content_right {
+    	width: 50%;
+    	float: left;
+	    align-items: stretch;
+    }
+
+    .gbt_18_editor_lookbook_product_content_left {
+    	padding: 60px;
+    }
+}
+
+.gbt_18_editor_lookbook_product_content_left_inner_bottom {
+	bottom: 90px;
+	width: 38%;
+    position: absolute;
+}
+
+.gbt_18_editor_lookbook_product_image {
+	background-size: cover;
+	background-position: center;
+	padding-bottom: 100%;
+	height: 0;
+	width: 100%;
+}
+
+.gbt_18_editor_lookbook_product_title,
+.gbt_18_editor_lookbook_product_price,
+.gbt_18_editor_lookbook_product_text,
+.gbt_18_editor_lookbook_product_button {
+	color: #fff;
+	font-family: sans-serif;
+}
+
+.editor-block-list__block p.gbt_18_editor_lookbook_product_price {
+	font-size: 28px;
+	margin: 10px 0 15px 0;
+}
+
+.gbt_18_editor_lookbook_product_title {
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 1.3;
+}
+
+.gbt_18_editor_lookbook_product_button {
+    background: transparent;
+    display: block;
+    cursor: pointer;
+    font-weight: 600;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #fff;
+    padding: 1px 0px;
+    outline: 0;
+
+    &:hover {
+    	background: transparent;
+    }
+}
+
+body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-distortion-product"] {
+	max-width: 100%;
+}
