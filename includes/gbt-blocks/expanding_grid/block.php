@@ -34,18 +34,18 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
             	<?php foreach( $products as $product ) : ?>
 
-					<div id="product-<?php echo $product->id; ?>" class="gbt_18_expanding_grid_item">
+					<div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanding_grid_item">
 
 						<?php 
-							$image 			= wp_get_attachment_image_src( $product->image_id, 'full' );
-							$image_link  	= wp_get_attachment_url( $product->image_id );
+							$image 			= wp_get_attachment_image_src( $product->get_image_id(), 'full' );
+							$image_link  	= wp_get_attachment_url( $product->get_image_id() );
 	    				?>
 	                    <div class="gbt_18_feature_image">
 	                        <img src="<?php echo $image[0]; ?>" alt="">
 	                    </div>
 	                    <div class="gbt_18_product-info">
 	                        <h2 class="gbt_18_product_title">
-	                            <span><?php echo $product->name; ?></span>
+	                            <span><?php echo $product->get_name(); ?></span>
 	                        </h2>
 	                        <span class="gbt_18_product_price">
 	                            <?php echo $product->get_price_html(); ?>
@@ -59,17 +59,17 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
             <?php foreach( $products as $product ) : ?>
 
-            <div id="product-<?php echo $product->id; ?>" class="gbt_18_expanded_content">
+            <div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanded_content">
                 <span class="gbt_18_close_content">X</span>
                 <div class="gbt_18_expanded_bg"></div>
                 <div class="gbt_18_product_details">
                     <div class="summary entry-summary">
-                        <h1 class="product_title entry-title"><?php echo $product->name; ?></h1>
+                        <h1 class="product_title entry-title"><?php echo $product->get_name(); ?></h1>
 
                         <?php echo $product->get_price_html(); ?>
 
                         <div class="woocommerce-product-details__short-description">
-                            <p><?php echo $product->short_description; ?></p>
+                            <p><?php echo $product->get_short_description(); ?></p>
                         </div>
                         <p class="stock in-stock">2 in stock</p>
                         <?php if ( $product->get_type() == 'simple' ): ?>
@@ -98,7 +98,7 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
                     </div>
                 </div>
 
-                <?php $attachment_ids = $product->get_gallery_attachment_ids(); ?>
+                <?php $attachment_ids = $product->get_gallery_image_ids(); ?>
                 
                 <div class="gbt_18_product_image">
                 	<?php foreach( $attachment_ids as $attachment_id ) : ?>
