@@ -60,6 +60,12 @@ if ( ! function_exists( 'getbowtied_lookbook_distortion_assets' ) ) {
 			array( 'jquery' )
 		);
 
+		wp_enqueue_script(
+			'getbowtied-lookbook-distortion-hover1-scripts',
+			plugins_url( 'js/frontend/frontend.js', dirname(__FILE__) ),
+			array( ), false, true
+		);
+
 		wp_enqueue_style(
 			'getbowtied-lookbook-distortion-styles',
 			plugins_url( 'css/frontend/style.css', dirname(__FILE__) ),
@@ -82,6 +88,14 @@ register_block_type( 'getbowtied/lookbook-distortion-product', array(
 		'bg_color'						=> array(
 			'type'						=> 'string',
 			'default'					=> '#abb7c3'
+		),
+		'text_color'					=> array(
+			'type'						=> 'string',
+			'default'					=> '#ffffff'
+		),
+		'animation'						=> array(
+			'type'						=> 'string',
+			'default'					=> 'animation-1'
 		),
 		'align'							=> array(
 			'type'						=> 'string',

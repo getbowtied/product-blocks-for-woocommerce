@@ -33,6 +33,14 @@
 	        	type: 'string',
 	        	default: '#abb7c3'
 	        },
+	        text_color: {
+	        	type: 'string',
+	        	default: '#ffffff'
+	        },
+	        animation: {
+	        	type: 'string',
+	        	default: 'animation-1'
+	        },
 		},
 
 		edit: function( props ) {
@@ -54,29 +62,53 @@
 				var products = props.attributes.result;
 
 				var productElements = [];
-				var dots = '';
 
-				for ( i = 0; i < products.length; i++ ) {
-					
-					if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
+				if( products.length > 0 ) {
+					var dots = '';
 
-					productElements.push(
-						el( "div", { className: "gbt_18_editor_lookbook_product_content", key: "gbt_18_editor_lookbook_product_content"},
-							el( "div", { className: "gbt_18_editor_lookbook_product_content_left", key: "gbt_18_editor_lookbook_product_content_left"},
-								el( "div", { className: "gbt_18_editor_lookbook_product_content_left_inner_top", key: "gbt_18_editor_lookbook_product_content_left_inner_top"},
-									el("h2", { className: "gbt_18_editor_lookbook_product_title", key: "gbt_18_editor_lookbook_product_title"}, products[i]['name'].substring(0,35) + dots ),
-									el("div",{className:"gbt_18_editor_lookbook_product_text", key:"gbt_18_editor_lookbook_product_text", dangerouslySetInnerHTML: { __html: products[i]['short_description'].substring(0,100) } } ),
+					for ( i = 0; i < products.length; i++ ) {
+						
+						if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
+
+						productElements.push(
+							el( "div", { className: "gbt_18_editor_lookbook_product_content", key: "gbt_18_editor_lookbook_product_content"},
+								el( "div", { className: "gbt_18_editor_lookbook_product_content_left", key: "gbt_18_editor_lookbook_product_content_left" },
+									el( "div", { className: "gbt_18_editor_lookbook_product_content_left_inner_top", key: "gbt_18_editor_lookbook_product_content_left_inner_top"},
+										el("h2", { className: "gbt_18_editor_lookbook_product_title", key: "gbt_18_editor_lookbook_product_title", style: { color: attributes.text_color } }, products[i]['name'].substring(0,35) + dots ),
+										el("div",{className:"gbt_18_editor_lookbook_product_text", key:"gbt_18_editor_lookbook_product_text", style: { color: attributes.text_color }, dangerouslySetInnerHTML: { __html: products[i]['short_description'].substring(0,100) } } ),
+									),
+									el( "div", { className: "gbt_18_editor_lookbook_product_content_left_inner_bottom", key: "gbt_18_editor_lookbook_product_content_left_inner_bottom"},
+										el("p",{className:"gbt_18_editor_lookbook_product_price", key:"gbt_18_editor_lookbook_product_price", style: { color: attributes.text_color }, dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
+										el("button",{className:"gbt_18_editor_lookbook_product_button", key:"gbt_18_editor_lookbook_product_button", style: { color: attributes.text_color, borderBottomColor: attributes.text_color } }, "Add To Cart"),
+									),
 								),
-								el( "div", { className: "gbt_18_editor_lookbook_product_content_left_inner_bottom", key: "gbt_18_editor_lookbook_product_content_left_inner_bottom"},
-									el("p",{className:"gbt_18_editor_lookbook_product_price", key:"gbt_18_editor_lookbook_product_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-									el("button",{className:"gbt_18_editor_lookbook_product_button", key:"gbt_18_editor_lookbook_product_button"}, "Add To Cart"),
+								el( "div", { className: "gbt_18_editor_lookbook_product_content_right", key: "gbt_18_editor_lookbook_product_content_right"},
+									el( "div", { className: "gbt_18_editor_lookbook_product_image", key: "gbt_18_editor_lookbook_product_image", style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} })
+								)
+							));
+					}
+				} else {
+					productElements.push(
+						el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content", key: "gbt_18_editor_dummy_lookbook_product_content"},
+							el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_left", key: "gbt_18_editor_dummy_lookbook_product_content_left" },
+								el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_left_inner_top", key: "gbt_18_editor_dummy_lookbook_product_content_left_inner_top" },
+									el("div", { className: "gbt_18_editor_dummy_lookbook_product_title", key: "gbt_18_editor_dummy_lookbook_product_title" } ),
+									el("div",{className:"gbt_18_editor_dummy_lookbook_product_text1", key:"gbt_18_editor_dummy_lookbook_product_text1" } ),
+									el("div",{className:"gbt_18_editor_dummy_lookbook_product_text2", key:"gbt_18_editor_dummy_lookbook_product_text2" } ),
+									el("div",{className:"gbt_18_editor_dummy_lookbook_product_text3", key:"gbt_18_editor_dummy_lookbook_product_text3" } ),
+								),
+								el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom", key: "gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom"},
+									el("div",{className:"gbt_18_editor_dummy_lookbook_product_price", key:"gbt_18_editor_dummy_lookbook_product_price" } ),
+									el("button",{className:"gbt_18_editor_dummy_lookbook_product_button", key:"gbt_18_editor_dummy_lookbook_product_button" }, "Add To Cart"),
 								),
 							),
-							el( "div", { className: "gbt_18_editor_lookbook_product_content_right", key: "gbt_18_editor_lookbook_product_content_right"},
-								el( "div", { className: "gbt_18_editor_lookbook_product_image", key: "gbt_18_editor_lookbook_product_image", style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} })
+							el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_right", key: "gbt_18_editor_dummy_lookbook_product_content_right"},
+								el( "div", { className: "gbt_18_editor_dummy_lookbook_product_image", key: "gbt_18_editor_dummy_lookbook_product_image" })
 							)
 						));
 				}
+
+
 				return productElements;
 			}
 
@@ -118,20 +150,56 @@
 						}
 					),
 					el(
+						SelectControl,
+						{
+							key: 'lookbook-distortion-animation',
+							options:
+								[
+									{ value: 'animation-1',   label: 'Animation 1' },
+									{ value: 'animation-2',   label: 'Animation 2' },
+									{ value: 'animation-3',   label: 'Animation 3' },
+								],
+              				label: i18n.__( 'Animation Type' ),
+              				value: attributes.animation,
+              				onChange: function( newAnimation ) {
+              					props.setAttributes( { animation: newAnimation } );
+							},
+						}
+					),
+					el(
 						PanelColor,
 						{
-							key: 'slide-text-color-panel',
+							key: 'lookbook-distortion-bg-color-panel',
 							title: i18n.__( 'Background Color' ),
 							colorValue: attributes.bg_color,
 						},
 						el(
 							ColorPalette, 
 							{
-								key: 'slide-text-color-palette',
+								key: 'lookbook-distortion-bg-color-palette',
 								colors: colors,
 								value: attributes.bg_color,
 								onChange: function( newColor) {
 									props.setAttributes( { bg_color: newColor } );
+								},
+							} 
+						),
+					),
+					el(
+						PanelColor,
+						{
+							key: 'lookbook-distortion-text-color-panel',
+							title: i18n.__( 'Text Color' ),
+							colorValue: attributes.text_color,
+						},
+						el(
+							ColorPalette, 
+							{
+								key: 'lookbook-distortion-text-color-palette',
+								colors: colors,
+								value: attributes.text_color,
+								onChange: function( newColor) {
+									props.setAttributes( { text_color: newColor } );
 								},
 							} 
 						),
