@@ -10,16 +10,18 @@
 	var TextControl 		= components.TextControl;
 	var SelectControl		= components.SelectControl;
 	var Button 				= components.Button;
+	var SVG 				= components.SVG;
+	var Path 				= components.Path;
 
 	var apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/products-main', {
-		title: i18n.__( 'GetBowtied Products' ),
-		icon: 'layout',
+	registerBlockType( 'getbowtied/expanding-grid', {
+		title: i18n.__( 'Product Grid with Expanding Preview' ),
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z"})),
 		category: 'product_blocks',
 		supports: {
-			align: [ 'wide', 'full' ],
+			align: [ 'center', 'wide', 'full' ],
 		},
 		attributes: {
 		/* Products source */
@@ -221,10 +223,36 @@
 				var products = props.attributes.result;
 
 				var productElements = [];
+				var wrapper = [];
+
+				console.log(products);
+
 				for ( i = 0; i < products.length; i++ ) {
-					productElements.push(el('div', {className:'single-result'}, products[i].name));
+					productElements.push(
+						el("li",{className:"gbt_18_grid_product", key:"gbt_18_grid_product"},
+							el("div",{className:"gbt_18_grid_product_content_wrapper", key:"gbt_18_grid_product_content_wrapper"},
+								el("img",{key:"gbt_18_grid_product_thumbnail", className: "gbt_18_grid_product_thumbnail", src: products[i]['images'][0]['src'] } ),
+								el("h4",{className:"gbt_18_grid_product_title", key:"gbt_18_grid_product_title"}, products[i]['name']),
+								el("span",{className:"gbt_18_grid_product_price", key:"gbt_18_grid_product_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
+								el("button",{className:"gbt_18_grid_product_button", key:"gbt_18_grid_product_button"}, "Add To Cart")
+							)
+						));
 				}
-				return productElements;
+				wrapper.push(
+					el( "div",
+					{
+						className: "gbt_18_expanding_grid_wrapper",
+						key: "gbt_18_expanding_grid_wrapper",	
+					},
+						el( "ul",
+							{
+								className: "gbt_18_expanding_grid_products ",
+							},
+							productElements,
+						)
+					),
+				);
+				return wrapper;
 			}
 
 			function _queryOrder(value) {
@@ -855,9 +883,7 @@
 				el(
 					'div',
 					{
-						className: 'search-results',
 					},
-					'This is where the products are gonna be displayed:',
 					renderResults(),
 				),
 			];
