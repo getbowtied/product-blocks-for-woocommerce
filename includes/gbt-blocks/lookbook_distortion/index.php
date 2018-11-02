@@ -38,7 +38,7 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 					<section class="gbt_18_distorsion_lookbook_item">
 		                <div class="gbt_18_distorsion_image" data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
 		                	<?php 
-								$image = wp_get_attachment_image_src( $product->image_id, 'full' )[0];
+								$image = wp_get_attachment_image_src( $product->get_image_id(), 'full' )[0];
 
 								$gallery_ids = $product->get_gallery_attachment_ids();
 	                			if( $gallery_ids[0] ) {
@@ -51,8 +51,8 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                </div>
 		                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bg_color; ?>;">
 		                    <div class="gbt_18_text_wrapper">
-		                        <h2 style="color:<?php echo $text_color; ?>"><?php echo $product->name; ?></h2>
-		                        <p style="color:<?php echo $text_color; ?>"><?php echo $product->short_description; ?></p>
+		                        <h2 style="color:<?php echo $text_color; ?>"><?php echo $product->get_name(); ?></h2>
+		                        <p style="color:<?php echo $text_color; ?>"><?php echo $product->get_short_description(); ?></p>
 		                        <span class="gbt_18_product_price" style="color:<?php echo $text_color; ?>">
 		                            <?php echo $product->get_price_html(); ?>
 		                        </span>

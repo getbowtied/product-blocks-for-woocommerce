@@ -908,47 +908,49 @@
 					),
 				),
 				el(
-					'div',
+					SSR,
 					{
+						block: 'getbowtied/products-slider',
+						attributes: props.attributes.product_ids,
 					},
-					el( 
-						'div',
-						{
-							className: 'gbt_18_editor_default_slider',
-							key: 'gbt_18_default_slider',	
-						},
-						el( 
-							'div',
-							{
-								className: 'gbt_18_editor_content',
-								key: 'gbt_18_content',	
-							},
-							el( 
-								'div',
-								{
-									className: 'gbt_18_editor_content_wrapper',
-									key: 'gbt_18_content_wrapper',	
-								},
-								el( 
-									'div',
-									{
-										className: 'gbt_18_editor_slide_content slider',
-										key: 'gbt_18_slide_content',
-										 onChange: function onChange() {
-										 	console.log('test');
-										 },
-										 componentDidUpdate: function test() {
-										 	console.log('test');
-										 },
-										 onUpdate: function onUpdate() {
-										 	console.log('test');
-										 },
-									},
-									renderResults(),
-								),
-							)
-						),
-					),
+					// el( 
+					// 	'div',
+					// 	{
+					// 		className: 'gbt_18_editor_default_slider',
+					// 		key: 'gbt_18_default_slider',	
+					// 	},
+					// 	el( 
+					// 		'div',
+					// 		{
+					// 			className: 'gbt_18_editor_content',
+					// 			key: 'gbt_18_content',	
+					// 		},
+					// 		el( 
+					// 			'div',
+					// 			{
+					// 				className: 'gbt_18_editor_content_wrapper',
+					// 				key: 'gbt_18_content_wrapper',	
+					// 			},
+					// 			el( 
+					// 				'div',
+					// 				{
+					// 					className: 'gbt_18_editor_slide_content slider',
+					// 					key: 'gbt_18_slide_content',
+					// 					 onChange: function onChange() {
+					// 					 	console.log('test');
+					// 					 },
+					// 					 componentDidUpdate: function test() {
+					// 					 	console.log('test');
+					// 					 },
+					// 					 onUpdate: function onUpdate() {
+					// 					 	console.log('test');
+					// 					 },
+					// 				},
+					// 				renderResults(),
+					// 			),
+					// 		)
+					// 	),
+					// ),
 				),
 			];
 		},
