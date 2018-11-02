@@ -18,7 +18,11 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
         }
 
         .gbt_18_editor_lookbook_product_content_left {
-            padding: 60px;
+
+            .gbt_18_editor_lookbook_product_content_left_inner_top,
+            .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                text-align: left;
+            }
 
             .gbt_18_editor_lookbook_product_content_left_inner_top {
 
@@ -29,24 +33,17 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
 
                 .gbt_18_editor_lookbook_product_title {
                     font-weight: normal;
-                    font-size: 30px;
                     line-height: 1.3;
                 }
             }
 
             .gbt_18_editor_lookbook_product_content_left_inner_bottom {
-                bottom: 90px;
                 width: 38%;
                 position: absolute;
 
                 .gbt_18_editor_lookbook_product_price,
                 .gbt_18_editor_lookbook_product_button {
                     font-family: sans-serif;
-                }
-
-                .editor-block-list__block p.gbt_18_editor_lookbook_product_price {
-                    font-size: 28px;
-                    margin: 10px 0 15px 0;
                 }
 
                 .gbt_18_editor_lookbook_product_button {
@@ -73,6 +70,97 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
             height: 0;
             width: 100%;
         }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"] {
+
+    .gbt_18_lookbook_distortion_product_wrapper {
+
+        .gbt_18_editor_lookbook_product_content {
+
+            .gbt_18_editor_lookbook_product_content_left {
+                padding: 60px;
+
+                .gbt_18_editor_lookbook_product_content_left_inner_top {
+
+                    .gbt_18_editor_lookbook_product_title {
+                        font-size: 18px;
+                    }
+
+                    .gbt_18_editor_lookbook_product_text p {
+                        font-size: 12px;
+                    }
+                }
+
+                .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                    bottom: 55px;
+
+                    .gbt_18_editor_lookbook_product_price {
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                    }
+
+                    .gbt_18_editor_lookbook_product_button {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="wide"],
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="full"] {
+
+    .gbt_18_lookbook_distortion_product_wrapper {
+
+        .gbt_18_editor_lookbook_product_content {
+
+            .gbt_18_editor_lookbook_product_content_left {
+                padding: 60px;
+
+                .gbt_18_editor_lookbook_product_content_left_inner_top {
+
+                    .gbt_18_editor_lookbook_product_title {
+                        font-size: 30px;
+                    }
+
+                    .gbt_18_editor_lookbook_product_text p {
+                        font-size: 16px;
+                    }
+                }
+
+                .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                    bottom: 90px;
+
+                    .gbt_18_editor_lookbook_product_price {
+                        font-size: 28px;
+                        margin: 10px 0 15px 0;
+                    }
+
+                    .gbt_18_editor_lookbook_product_button {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="full"] {
+    
+    .editor-inner-blocks {
+
+        .gbt_18_lookbook_distortion_product_wrapper {
+
+            .gbt_18_editor_lookbook_product_content {
+
+                .gbt_18_editor_lookbook_product_content_left {
+                    padding: 60px 120px;
+                }
+            }
         }
     }
 }

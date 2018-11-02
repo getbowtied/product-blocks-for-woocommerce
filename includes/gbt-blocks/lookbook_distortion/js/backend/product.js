@@ -9,8 +9,7 @@
 
 	var SelectControl		= components.SelectControl;
 	var RangeControl		= components.RangeControl;
-	var PanelColor			= components.PanelColor; // wp.editor.PanelColorSettings
-	var ColorPalette		= components.ColorPalette;
+	var ColorSettings		= editor.PanelColorSettings;
 	var SVG 				= components.SVG;
 	var Path 				= components.Path;
 
@@ -267,42 +266,28 @@
 						}
 					),
 					el(
-						PanelColor,
+						ColorSettings,
 						{
-							key: 'lookbook-distortion-bg-color-panel',
-							title: i18n.__( 'Background Color' ),
-							colorValue: attributes.bg_color,
-						},
-						el(
-							ColorPalette, 
-							{
-								key: 'lookbook-distortion-bg-color-palette',
-								colors: colors,
-								value: attributes.bg_color,
-								onChange: function( newColor) {
-									props.setAttributes( { bg_color: newColor } );
+							key: 'lookbook-distortion-colors',
+							title: i18n.__( 'Colors' ),
+							colors: colors,
+							colorSettings: [
+								{ 
+									label: i18n.__( 'Background Color' ),
+									value: attributes.bg_color,
+									onChange: function( newColor) {
+										props.setAttributes( { bg_color: newColor } );
+									},
 								},
-							} 
-						),
-					),
-					el(
-						PanelColor,
-						{
-							key: 'lookbook-distortion-text-color-panel',
-							title: i18n.__( 'Text Color' ),
-							colorValue: attributes.text_color,
-						},
-						el(
-							ColorPalette, 
-							{
-								key: 'lookbook-distortion-text-color-palette',
-								colors: colors,
-								value: attributes.text_color,
-								onChange: function( newColor) {
-									props.setAttributes( { text_color: newColor } );
+								{ 
+									label: i18n.__( 'Text Color' ),
+									value: attributes.text_color,
+									onChange: function( newColor) {
+										props.setAttributes( { text_color: newColor } );
+									},
 								},
-							} 
-						),
+							]
+						},
 					),
 				),
 				renderResults()
