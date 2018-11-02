@@ -20,7 +20,8 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 	$products = wc_get_products( [
 		'status' 			=> 'publish',
 		'posts_per_page' 	=> 5,
-		'include' 			=> $product_ids
+		// 'include' 			=> $product_ids,
+		'per_page'			=> 10
 	] );
 
 	ob_start();
@@ -42,11 +43,11 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
 							<div class="gbt_18_slide_content_item">
 				                <h2 class="gbt_18_slide_title">
-				                    <a target="_blank" href="<?php echo get_permalink($product->id); ?>"><?php echo $product->name; ?></a>
+				                    <a target="_blank" href="<?php echo get_permalink($product->get_id()); ?>"><?php echo $product->get_name(); ?></a>
 				                </h2>
 				                <p class="price"><?php echo $product->get_price_html(); ?></p>
 				                <p class="gbt_18_slide_text">
-				                    <span class="gbt_18_p_wrapper"><?php echo substr($product->short_description, 0, 100); ?></span>
+				                    <span class="gbt_18_p_wrapper"><?php echo substr($product->get_short_description(), 0, 100); ?></span>
 				                </p>
 				                <?php if ( $product->get_type() == 'simple' ): ?>
 									<?php 
@@ -85,11 +86,11 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
         			<?php foreach( $products as $product ) : 
 
-        				$image 			= wp_get_attachment_image_src( $product->image_id, 'full' );
-						$image_link  	= wp_get_attachment_url( $product->image_id );
+        				$image 			= wp_get_attachment_image_src( $product->get_image_id(), 'full' );
+						$image_link  	= wp_get_attachment_url( $product->get_image_id() );
         				?>
 
-        				<a target="_blank" class="gbt_18_image_link" href="<?php echo get_permalink($product->id); ?>">
+        				<a target="_blank" class="gbt_18_image_link" href="<?php echo get_permalink($product->get_id()); ?>">
         					<img src="<?php echo $image[0]; ?>" alt="" />
         				</a>
 

@@ -50,13 +50,13 @@ if ( ! function_exists( 'getbowtied_expanding_grid_assets' ) ) {
 //==============================================================================
 register_block_type( 'getbowtied/expanding-grid', array(
 	'attributes'      	=> array(
-		'product_ids' 					=> array(
-			'type'						=> 'array',
-			'default'					=> [],
+		'productIDs' 					=> array(
+			'type'						=> 'string',
+			'default'					=>  '',
 		),
 		'align'							=> array(
 			'type'						=> 'string',
-			'default'					=> 'center',
+			'default'					=> '',
 		),
 	),
 

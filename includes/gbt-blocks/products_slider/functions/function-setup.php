@@ -23,7 +23,7 @@ if ( ! function_exists( 'getbowtied_products_slider_editor_assets' ) ) {
 
 		wp_enqueue_script(
 			'getbowtied-products-slider-editor-scripts',
-			plugins_url( 'js/backend/block.js', dirname(__FILE__) ),
+			plugins_url( 'block.js', dirname(__FILE__) ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 

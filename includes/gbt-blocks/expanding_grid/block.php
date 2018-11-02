@@ -12,14 +12,14 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'product_ids'		=> [],
+		'productIDs'		=> '',
 		'align'				=> 'center',
 	), $attributes ) );
 
 	$products = wc_get_products( [
 		'status' 			=> 'publish',
 		'posts_per_page' 	=> 6,
-		'include' 			=> $product_ids
+		'include' 			=> explode(',',$productIDs)
 	] );
 
 	ob_start();
@@ -28,7 +28,7 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
 	?>
 
-		<div class="gbt_18_expanding_grid">
+		<div class="gbt_18_expanding_grid <?php echo $align; ?>">
 
             <div class="gbt_18_grid">
 

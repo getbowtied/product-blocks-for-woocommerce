@@ -12,22 +12,19 @@
 	var Button 				= components.Button;
 	var SVG 				= components.SVG;
 	var Path 				= components.Path;
+	var SSR                 = components.ServerSideRender;
 
 	var apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/expanding-grid', {
-		title: i18n.__( 'Product Grid with Expanding Preview' ),
-		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z"})),
+	registerBlockType( 'getbowtied/products-slider', {
+		title: i18n.__( 'Product Slider' ),
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M21 18H2v2h19v-2zm-2-8v4H4v-4h15m1-2H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm1-4H2v2h19V4z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
 		attributes: {
-			productIDs: {
-				type: 'string',
-				default: '',
-			},
 		/* Products source */
 			result: {
 				type: 'array',
@@ -116,6 +113,7 @@
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
+		
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
 					return 'parent parent-' + value;
@@ -219,48 +217,71 @@
 					apiFetch({ path: query }).then(function (products) {
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
-						let IDs = '';
-						for ( let i = 0; i < products.length; i++) {
-							IDs += products[i].id + ',';
-						}
-						props.setAttributes({ productIDs: IDs});
 					});
 				}
 			}
 
 			function renderResults() {
 				var products = props.attributes.result;
-
-				var productElements = [];
 				var wrapper = [];
 
 
-				for ( i = 0; i < products.length; i++ ) {
+
+				var productElements = [];
+				let dots;
+				for ( let i = 0; i < products.length; i++ ) {
+					if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
 					productElements.push(
-						el("li",{className:"gbt_18_grid_product", key:"gbt_18_grid_product"},
-							el("div",{className:"gbt_18_grid_product_content_wrapper", key:"gbt_18_grid_product_content_wrapper"},
-								el("img",{key:"gbt_18_grid_product_thumbnail", className: "gbt_18_grid_product_thumbnail", src: products[i]['images'][0]['src'] } ),
-								el("h4",{className:"gbt_18_grid_product_title", key:"gbt_18_grid_product_title"}, products[i]['name']),
-								el("span",{className:"gbt_18_grid_product_price", key:"gbt_18_grid_product_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-								el("button",{className:"gbt_18_grid_product_button", key:"gbt_18_grid_product_button"}, "Add To Cart")
+						el( "div", {
+							 className: "gbt_18_editor_slide_content_item slide", 
+							 key: "gbt_18_slide_content_item"},
+							el( "div", { className: "gbt_18_editor_slide_content_left", key: "gbt_18_editor_slide_content_left"},
+								el( "div", { className: "gbt_18_editor_slide_content_left_inner", key: "gbt_18_editor_slide_content_left_inner"},
+									el("h2", { className: "gbt_18_editor_slide_title", key: "gbt_18_slide_title"}, products[i]['name'].substring(0,35) + dots ),
+									el("p",{className:"gbt_18_editor_slide_price", key:"gbt_18_slide_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
+									el("div",{className:"gbt_18_editor_slide_text", key:"gbt_18_slide_text", dangerouslySetInnerHTML: { __html: products[i]['short_description'].substring(0,100) } } ),
+									el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_add_to_cart"}, "Add To Cart"),
+								),
+							),
+							el( "div", { className: "gbt_18_editor_slide_content_right", key: "gbt_18_editor_slide_content_right"},
+								el( "div", { className: "gbt_18_editor_image", key: "gbt_18_image", style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} })
 							)
-						));
-				}
-				wrapper.push(
-					el( "div",
-					{
-						className: "gbt_18_expanding_grid_wrapper",
-						key: "gbt_18_expanding_grid_wrapper",	
-					},
-						el( "ul",
-							{
-								className: "gbt_18_expanding_grid_products ",
-							},
-							productElements,
 						)
-					),
-				);
-				return wrapper;
+					);
+				}
+				if ( productElements.length > 0 ) {
+					return productElements;
+				} else {
+					return el( "div", { className: "gbt_18_editor_slide_dummy_content_item", key: "gbt_18_slide_dummy_content_item"},
+						el( "div", { className: "gbt_18_editor_slide_dummy_content_left", key: "gbt_18_editor_slide_dummy_content_left"},
+							el("div", { className: "gbt_18_editor_slide_dummy_title", key: "gbt_18_slide_dummy_title"}),
+							el("div",{className:"gbt_18_editor_slide_dummy_p1", key:"gbt_18_editor_slide_dummy_p1"} ),
+							el("div",{className:"gbt_18_editor_slide_dummy_p2", key:"gbt_18_editor_slide_dummy_p2"} ),
+							el("div",{className:"gbt_18_editor_slide_dummy_p3", key:"gbt_18_editor_slide_dummy_p3"} ),
+							el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_dummy_add_to_cart"}, "Add To Cart"),
+						),
+						el( "div", { className: "gbt_18_editor_slide_dummy_content_right", key: "gbt_18_editor_slide_dummy_content_right"},
+							el( "div", { className: "gbt_18_editor_dummy_image", key: "gbt_18_editor_dummy_image"})
+						)
+					)
+				}
+			}
+
+			function initSlider() {
+					if ( !jQuery('.gbt_18_editor_slide_content.slider').hasClass('slick-initialized') ) {
+						jQuery('.gbt_18_editor_slide_content.slider').slick({
+							slidesToShow: 1,
+							arrows: true,
+							fade: false,
+							dots: false,
+							swipe: false,
+							touchMove: false,
+							draggable: false,
+							zIndex: -1,
+							adaptiveHeight: true,
+							vertical: true
+						});
+					}
 			}
 
 			function _queryOrder(value) {
@@ -269,8 +290,6 @@
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
 				}
-
-				console.log('query after substring is: ' + query);
 
 				switch ( value ) {
 					case 'date_desc':
@@ -892,7 +911,44 @@
 					'div',
 					{
 					},
-					renderResults(),
+					el( 
+						'div',
+						{
+							className: 'gbt_18_editor_default_slider',
+							key: 'gbt_18_default_slider',	
+						},
+						el( 
+							'div',
+							{
+								className: 'gbt_18_editor_content',
+								key: 'gbt_18_content',	
+							},
+							el( 
+								'div',
+								{
+									className: 'gbt_18_editor_content_wrapper',
+									key: 'gbt_18_content_wrapper',	
+								},
+								el( 
+									'div',
+									{
+										className: 'gbt_18_editor_slide_content slider',
+										key: 'gbt_18_slide_content',
+										 onChange: function onChange() {
+										 	console.log('test');
+										 },
+										 componentDidUpdate: function test() {
+										 	console.log('test');
+										 },
+										 onUpdate: function onUpdate() {
+										 	console.log('test');
+										 },
+									},
+									renderResults(),
+								),
+							)
+						),
+					),
 				),
 			];
 		},
