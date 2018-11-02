@@ -58,6 +58,10 @@ register_block_type( 'getbowtied/expanding-grid', array(
 			'type'						=> 'string',
 			'default'					=> '',
 		),
+		'queryOrder'					=> array(
+			'type'						=> 'string',
+			'default'					=> '',
+		),
 	),
 
 	'render_callback' => 'getbowtied_render_frontend_expanding_grid',

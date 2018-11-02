@@ -14,15 +14,56 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 	extract( shortcode_atts( array(
 		'productIDs'		=> '',
 		'align'				=> 'center',
+		'queryOrder'		=> '',
 	), $attributes ) );
 
+	switch ( $queryOrder ) {
+		case 'date_desc':
+			$orderby= 'date';
+			$order= 'desc';
+		break;
+		case 'date_asc':
+			$orderby= 'date';
+			$order= 'asc';
+		break;
+		case 'title_desc':
+			$orderby= 'title';
+			$order= 'desc';
+		break;
+		case 'title_asc':
+			$orderby= 'title';
+			$order= 'asc';
+		break;
+		default: 
+			$orderby = 'none';
+			$order = '';
+		break;
+	}
+
 	$products = wc_get_products( [
-		'status' 			=> 'publish',
-		'posts_per_page' 	=> 6,
-		'include' 			=> explode(',',$productIDs)
+		'include' 			=> explode(',',$productIDs),
+		'limit'				=> -1,
+		'orderby'			=> $orderby,
+		'order'				=> $order
 	] );
 
 	ob_start();
+
+	if ($orderby == 'none') {
+		$sorted = [];
+		foreach ( explode(',',$productIDs) as $id) {
+			foreach ($products as $unsorted) {
+				if ($unsorted->get_id() == $id) {
+					$sorted[] = $unsorted;
+					break;
+				}
+			}
+		}
+
+	  	if (sizeof($sorted) == sizeof($products)) {
+	  		$products= $sorted;
+	  	}
+	}
 
 	if ( $products ) :
 
