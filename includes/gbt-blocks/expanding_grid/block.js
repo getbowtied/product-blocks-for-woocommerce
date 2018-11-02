@@ -43,7 +43,7 @@
 			},
 			queryDisplayType: {
 				type: 'string',
-				default: 'default',
+				default: 'all_products',
 			},
 		/* loader */
 			isLoading: {
@@ -110,6 +110,11 @@
 				type: 'string',
 				default: '',
 			},
+		/* First Load */
+			firstLoad: {
+				type: 'bool',
+				default: true,
+			}
 		},
 		edit: function( props ) {
 
@@ -229,8 +234,17 @@
 			}
 
 			function renderResults() {
-				var products = props.attributes.result;
+				if ( props.attributes.firstLoad === true ) {
+					apiFetch({ path: 'wc/v2/products?per_page=10' }).then(function (products) {
+						props.setAttributes({ result: products });
+						props.setAttributes({ firstLoad: false });
+						var query = getQuery('?per_page=100');
+						props.setAttributes({queryProducts: query});
+						props.setAttributes({ queryDisplayType: 'all_products' });
+					});
+				}
 
+				var products = props.attributes.result;
 				var productElements = [];
 				var wrapper = [];
 
@@ -269,8 +283,6 @@
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
 				}
-
-				console.log('query after substring is: ' + query);
 
 				switch ( value ) {
 					case 'date_desc':
@@ -629,7 +641,7 @@
 							onChange: function onChange(value) {
 								props.setAttributes({ queryOrder: value });
 								_queryOrder(value);
-							}
+							},
 						},
 					),
 				);
@@ -897,8 +909,8 @@
 			];
 		},
 
-		save: function( props ) {
-        	return '';
+		save: function() {
+        	return;
 		},
 	} );
 
