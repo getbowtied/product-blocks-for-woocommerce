@@ -24,7 +24,7 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
-add_action( 'init', 'product_blocks_updater' );
+// add_action( 'init', 'product_blocks_updater' );
 function product_blocks_updater() {
 
 	if ( !class_exists('WP_GitHub_Updater')) require_once 'core/class-updater.php';
