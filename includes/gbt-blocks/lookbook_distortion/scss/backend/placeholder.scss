@@ -1,0 +1,88 @@
+.gbt_18_editor_lookbook_product_wrapper.dummy {
+    background-color: #d3d5d9;
+
+    .gbt_18_editor_lookbook_product_content.dummy {
+        width: 100%;
+        border: 1px solid #d3d5d9;
+        overflow: auto;
+        display: flex;
+        min-height: 200px;
+
+        .gbt_18_editor_dummy_lookbook_product_content_left,
+        .gbt_18_editor_dummy_lookbook_product_content_right {
+            width: 50%;
+            float: left;
+            align-items: stretch;
+        }
+
+        .gbt_18_editor_dummy_lookbook_product_content_left {
+            padding: 60px;
+
+            .gbt_18_editor_dummy_lookbook_product_content_left_inner_top {
+                margin-top: 30px;
+
+                .gbt_18_editor_dummy_lookbook_product_title {
+                    height: 60px;
+                    width: 90%;
+                    background: #fff;
+                }
+
+                .gbt_18_editor_dummy_lookbook_product_text1 {
+                    height: 15px;
+                    margin-top: 40px;
+                    width: 80%;
+                    background: #fff;
+                }
+
+                .gbt_18_editor_dummy_lookbook_product_text2 {
+                    height: 15px;
+                    margin-top: 15px;
+                    width: 60%;
+                    background: #fff;
+                }
+            }
+
+            .gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom {
+                bottom: 90px;
+                width: 38%;
+                position: absolute;
+
+                .gbt_18_editor_dummy_lookbook_product_price {
+                    height: 40px;
+                    width: 25%;
+                    background: #fff;
+                }
+
+                .gbt_18_editor_dummy_lookbook_product_button {
+                    background: transparent;
+                    display: block;
+                    font-family: sans-serif;
+                    cursor: pointer;
+                    font-weight: 600;
+                    color: #fff;
+                    margin-top: 25px;
+                    border-top: none;
+                    border-right: none;
+                    border-left: none;
+                    border-bottom: 1px solid;
+                    padding: 1px 0px;
+                    outline: 0;
+                }
+            }
+        }
+
+        .gbt_18_editor_dummy_lookbook_product_content_right {
+
+            .gbt_18_editor_dummy_lookbook_product_image {
+                background-size: cover;
+                background: url( '../../assets/images/placeholder.png' );
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: #fff;
+                padding-bottom: 100%;
+                height: 0;
+                width: 100%;
+            }
+        }
+    }
+}

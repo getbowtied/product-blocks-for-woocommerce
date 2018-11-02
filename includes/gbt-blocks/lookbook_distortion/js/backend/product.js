@@ -17,12 +17,14 @@
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-distortion-product', {
 		title: i18n.__( 'Lookbook Product' ),
-		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z"})),
+		icon: 	el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
+					el( Path, { d:'M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 19V6h8v13H3zm18 0h-8V6h8v13zm-7-9.5h6V11h-6zm0 2.5h6v1.5h-6zm0 2.5h6V16h-6z' } ) 
+				),
 		category: 'product_blocks',
 		parent: [ 'getbowtied/lookbook-distortion-lookbook' ],
 		attributes: {
 			product_id: {
-				type: 'string',
+				type: 'number',
 				default: ''
 			},
 			result: {
@@ -31,7 +33,7 @@
 			},
 			bg_color: {
 	        	type: 'string',
-	        	default: '#abb7c3'
+	        	default: '#d3d5d9'
 	        },
 	        text_color: {
 	        	type: 'string',
@@ -62,54 +64,152 @@
 				var products = props.attributes.result;
 
 				var productElements = [];
+				var wrapper = [];
 
-				if( products.length > 0 ) {
-					var dots = '';
+				if( products.length > 0 ) { // generate content
+
+					var dots 		 = '';
+					var class_prefix = 'gbt_18_editor_lookbook_product';
 
 					for ( i = 0; i < products.length; i++ ) {
 						
 						if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
 
 						productElements.push(
-							el( "div", { className: "gbt_18_editor_lookbook_product_content", key: "gbt_18_editor_lookbook_product_content"},
-								el( "div", { className: "gbt_18_editor_lookbook_product_content_left", key: "gbt_18_editor_lookbook_product_content_left" },
-									el( "div", { className: "gbt_18_editor_lookbook_product_content_left_inner_top", key: "gbt_18_editor_lookbook_product_content_left_inner_top"},
-										el("h2", { className: "gbt_18_editor_lookbook_product_title", key: "gbt_18_editor_lookbook_product_title", style: { color: attributes.text_color } }, products[i]['name'].substring(0,35) + dots ),
-										el("div",{className:"gbt_18_editor_lookbook_product_text", key:"gbt_18_editor_lookbook_product_text", style: { color: attributes.text_color }, dangerouslySetInnerHTML: { __html: products[i]['short_description'].substring(0,100) } } ),
+							el( 'div', 
+								{
+									key: 		class_prefix + '_content',
+									className: 	class_prefix + '_content' 
+								},
+								el( 'div', 
+									{
+										key: 		class_prefix + '_content_left',
+										className: 	class_prefix + '_content_left'
+									},
+									el( 'div', 
+										{
+											key: 		class_prefix + '_content_left_inner_top',
+											className: 	class_prefix + '_content_left_inner_top'
+										},
+										el( 'h2', 
+											{
+												key: 		class_prefix + '_title', 
+												style: 		{ color: attributes.text_color },
+												className: 	class_prefix + '_title' 
+											}, 
+											products[i]['name'].substring(0,35) + dots 
+										),
+										el( 'div',
+											{
+												key: 						class_prefix + '_text', 
+												style: 						{ color: attributes.text_color },
+												className: 					class_prefix + '_text', 
+												dangerouslySetInnerHTML: 	{ __html: products[i]['short_description'].substring(0,100) } 
+											} 
+										),
 									),
-									el( "div", { className: "gbt_18_editor_lookbook_product_content_left_inner_bottom", key: "gbt_18_editor_lookbook_product_content_left_inner_bottom"},
-										el("p",{className:"gbt_18_editor_lookbook_product_price", key:"gbt_18_editor_lookbook_product_price", style: { color: attributes.text_color }, dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-										el("button",{className:"gbt_18_editor_lookbook_product_button", key:"gbt_18_editor_lookbook_product_button", style: { color: attributes.text_color, borderBottomColor: attributes.text_color } }, "Add To Cart"),
+									el( 'div', 
+										{ 
+											key: 		class_prefix + '_content_left_inner_bottom',
+											className: 	class_prefix + '_content_left_inner_bottom' 
+										},
+										el( 'p',
+											{
+												key: 						class_prefix + '_price', 
+												style: 						{ color: attributes.text_color }, 
+												className: 					class_prefix + '_price', 
+												dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+											}
+										),
+										el( 'button',
+											{
+												key: 		class_prefix + '_button', 
+												style: 		{ color: attributes.text_color, borderBottomColor: attributes.text_color },
+												className: 	class_prefix + '_button'
+											}, 
+											'Add To Cart'
+										),
 									),
 								),
-								el( "div", { className: "gbt_18_editor_lookbook_product_content_right", key: "gbt_18_editor_lookbook_product_content_right"},
-									el( "div", { className: "gbt_18_editor_lookbook_product_image", key: "gbt_18_editor_lookbook_product_image", style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} })
+								el( 'div', 
+									{ 
+										key: 		class_prefix + '_content_right',
+										className: 	class_prefix + '_content_right'
+									},
+									el( 'div', 
+										{
+											key: 		class_prefix + '_image', 
+											style: 		{ backgroundImage: 'url('+products[i]['images'][0]['src']+')' } ,
+											className: 	class_prefix + '_image'
+										}
+									)
 								)
 							));
 					}
-				} else {
-					productElements.push(
-						el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content", key: "gbt_18_editor_dummy_lookbook_product_content"},
-							el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_left", key: "gbt_18_editor_dummy_lookbook_product_content_left" },
-								el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_left_inner_top", key: "gbt_18_editor_dummy_lookbook_product_content_left_inner_top" },
-									el("div", { className: "gbt_18_editor_dummy_lookbook_product_title", key: "gbt_18_editor_dummy_lookbook_product_title" } ),
-									el("div",{className:"gbt_18_editor_dummy_lookbook_product_text1", key:"gbt_18_editor_dummy_lookbook_product_text1" } ),
-									el("div",{className:"gbt_18_editor_dummy_lookbook_product_text2", key:"gbt_18_editor_dummy_lookbook_product_text2" } ),
-									el("div",{className:"gbt_18_editor_dummy_lookbook_product_text3", key:"gbt_18_editor_dummy_lookbook_product_text3" } ),
+
+					wrapper.push(
+						el( 'div',
+							{
+								className: 	'gbt_18_lookbook_distortion_product_wrapper',
+								key: 		'gbt_18_lookbook_distortion_product_wrapper',
+								style: 		{ backgroundColor: attributes.bg_color }
+							},
+							productElements
+						)
+					);
+
+				} else { //generate placeholder content
+
+					var class_prefix = 'gbt_18_editor_dummy_lookbook_product';
+
+					wrapper.push(
+						el( 'div', 
+							{ 
+								key: 		class_prefix + '_wrapper',
+								className: 	'gbt_18_editor_lookbook_product_wrapper dummy'
+							},
+							el( 'div', 
+								{
+									key: 		class_prefix + '_content',
+									className: 	'gbt_18_editor_lookbook_product_content dummy'
+								},
+								el( 'div', 
+									{
+										key: 		class_prefix + '_content_left',
+										className: 	class_prefix + '_content_left'
+									},
+									el( 'div', 
+										{ 
+											key: 		class_prefix + '_content_left_inner_top',
+											className: 	class_prefix + '_content_left_inner_top'
+										},
+										el('div', { className: class_prefix + '_title', key: class_prefix + '_title' } ),
+										el('div', { className: class_prefix + '_text1', key: class_prefix + '_text1' } ),
+										el('div', { className: class_prefix + '_text2', key: class_prefix + '_text2' } ),
+									),
+									el( 'div', 
+										{
+											key: 		class_prefix + '_content_left_inner_bottom',
+											className: 	class_prefix + '_content_left_inner_bottom'
+										},
+										el( 'div', 	  { className: class_prefix + '_price',  key: class_prefix + '_price'  } ),
+										el( 'button', { className: class_prefix + '_button', key: class_prefix + '_button' }, 'Add To Cart' ),
+									),
 								),
-								el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom", key: "gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom"},
-									el("div",{className:"gbt_18_editor_dummy_lookbook_product_price", key:"gbt_18_editor_dummy_lookbook_product_price" } ),
-									el("button",{className:"gbt_18_editor_dummy_lookbook_product_button", key:"gbt_18_editor_dummy_lookbook_product_button" }, "Add To Cart"),
-								),
-							),
-							el( "div", { className: "gbt_18_editor_dummy_lookbook_product_content_right", key: "gbt_18_editor_dummy_lookbook_product_content_right"},
-								el( "div", { className: "gbt_18_editor_dummy_lookbook_product_image", key: "gbt_18_editor_dummy_lookbook_product_image" })
+								el( 'div', 
+									{
+										key: 		class_prefix + '_content_right',
+										className: 	class_prefix + '_content_right'
+									},
+									el( 'div', { className: class_prefix + '_image', key: class_prefix + '_image' } )
+								)
 							)
-						));
+						)
+					);
 				}
 
 
-				return productElements;
+				return wrapper;
 			}
 
 			function createProduct() {
@@ -205,14 +305,7 @@
 						),
 					),
 				),
-				el( "div",
-					{
-						className: "gbt_18_lookbook_distortion_product_wrapper",
-						key: "gbt_18_lookbook_distortion_product_wrapper",
-						style: { backgroundColor: attributes.bg_color }
-					},
-					renderResults()
-				),
+				renderResults()
 			];
 		},
 

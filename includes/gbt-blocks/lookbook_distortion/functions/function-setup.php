@@ -82,8 +82,8 @@ register_block_type( 'getbowtied/lookbook-distortion-product', array(
 
 	'attributes'      	=> array(
 		'product_id' 					=> array(
-			'type'						=> 'array',
-			'default'					=> [],
+			'type'						=> 'number',
+			'default'					=> '',
 		),
 		'bg_color'						=> array(
 			'type'						=> 'string',

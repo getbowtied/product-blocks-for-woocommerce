@@ -13,7 +13,7 @@
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-distortion-lookbook', {
 		title: i18n.__( 'Lookbook - Distortion Motion Reveal' ),
-		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z"})),
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M4 6v12h17V6H4zm15 10H6v-3h13v3zM6 11V8h13v3H6z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'wide', 'full' ],
@@ -24,32 +24,22 @@
 			var attributes = props.attributes;
 
 			return [
-				el( 
-					'div',
+				el( 'div',
 					{ 
-						key: 'wp-block-slider-title-wrapper',
-						className: 'wp-block-slider-title-wrapper'
+						key: 		'gbt_18_lookbook_distortion_topbar',
+						className: 	'gbt_18_lookbook_distortion_topbar'
 					},
-					el(
-						'h4',
+					el( 'h4',
 						{
-							key: 'wp-block-slider-title',
-							className: 'wp-block-slider-title',
+							key: 		'gbt_18_lookbook_distortion_topbar_title',
+							className: 	'gbt_18_lookbook_distortion_topbar_title',
 						},
-						el(
-							'span',
-							{
-								key: 'wp-block-slider-dashicon',
-								className: 'dashicon dashicons-slides',
-							},
-						),
 						i18n.__('Lookbook - Distortion Motion Reveal')
 					),
 				),
-				el(
-					InnerBlock,
+				el( InnerBlock,
 					{
-						key: 'gbt_18_lookbook_distortion_inner_product',
+						key: 				'gbt_18_lookbook_distortion_inner_product',
 						allowedBlocksNames: [ 'getbowtied/lookbook-distortion-product' ],
 					},
 				),
@@ -60,8 +50,8 @@
 			return el(
 				'div',
 				{
-					key: 'gbt_18_lookbook_distortion_wrapper',
-					className: 'gbt_18_lookbook_distortion_wrapper'
+					key: 		'gbt_18_lookbook_distortion_wrapper',
+					className: 	'gbt_18_lookbook_distortion_wrapper'
 				},
 				el( InnerBlock.Content, { key: 'gbt_18_lookbook_distortion_wrapper' } )
 			);
