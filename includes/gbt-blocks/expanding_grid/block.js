@@ -241,6 +241,11 @@
 						var query = getQuery('?per_page=100');
 						props.setAttributes({queryProducts: query});
 						props.setAttributes({ queryDisplayType: 'all_products' });
+						let IDs = '';
+						for ( let i = 0; i < products.length; i++) {
+							IDs += products[i].id + ',';
+						}
+						props.setAttributes({ productIDs: IDs});
 					});
 				}
 
