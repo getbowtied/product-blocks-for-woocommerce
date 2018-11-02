@@ -14,6 +14,8 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 	extract( shortcode_atts( array(
 		'product_id'					=> [],
 		'bg_color'						=> '#abb7c3',
+		'text_color'					=> '#ffffff',
+		'animation'						=> 'animation-1',
 		'align'							=> 'center',
 	), $attributes ) );
 
@@ -32,20 +34,24 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 			<?php foreach( $products as $product ) : ?>
 
 				<section class="gbt_18_distorsion_lookbook_item">
-	                <div class="gbt_18_distorsion_image" data-displacement="<?php echo plugins_url('16.jpg', __FILE__); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
+	                <div class="gbt_18_distorsion_image" data-displacement="<?php echo plugins_url($animation . '.jpg', __FILE__); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
 	                	<?php 
-							$image 			= wp_get_attachment_image_src( $product->image_id, 'full' );
-							$image_link  	= wp_get_attachment_url( $product->image_id );
+							$image = wp_get_attachment_image_src( $product->image_id, 'full' )[0];
+
+							$gallery_ids = $product->get_gallery_attachment_ids();
+                			if( $gallery_ids[0] ) {
+                				$image2 = wp_get_attachment_image_src( $gallery_ids[0], 'full' )[0];
+                			}               
 	    				?>
 
-	                    <img src="<?php echo $image[0]; ?>" alt="Imafdsge"/>
-	                    <img src="<?php echo $image[0]; ?>" alt="Imfdsage"/>
+	                    <img src="<?php echo $image; ?>" alt="Imafdsge"/>
+	                    <img src="<?php echo $image2; ?>" alt="Imfdsage"/>
 	                </div>
 	                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bg_color; ?>;">
 	                    <div class="gbt_18_text_wrapper">
-	                        <h2><?php echo $product->name; ?></h2>
-	                        <p><?php echo $product->short_description; ?></p>
-	                        <span class="gbt_18_product_price">
+	                        <h2 style="color:<?php echo $text_color; ?>"><?php echo $product->name; ?></h2>
+	                        <p style="color:<?php echo $text_color; ?>"><?php echo $product->short_description; ?></p>
+	                        <span class="gbt_18_product_price" style="color:<?php echo $text_color; ?>">
 	                            <?php echo $product->get_price_html(); ?>
 	                        </span>
 	                        <?php if ( $product->get_type() == 'simple' ): ?>
@@ -83,29 +89,8 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 
 		wp_reset_postdata(); ?>
 
-		<script>
-	        imagesLoaded( document.querySelectorAll('img'), () => {
-	            document.body.classList.remove('loading');
-	        });
+    <?php endif; ?>
 
-	        Array.from(document.querySelectorAll('.gbt_18_distorsion_image')).forEach((el) => {
-	            const imgs = Array.from(el.querySelectorAll('img'));
-	            new hoverEffect({
-	                parent: el,
-	                intensity: el.dataset.intensity || undefined,
-	                speedIn: el.dataset.speedin || undefined,
-	                speedOut: el.dataset.speedout || undefined,
-	                easing: el.dataset.easing || undefined,
-	                hover: el.dataset.hover || undefined,
-	                image1: imgs[0].getAttribute('src'),
-	                image2: imgs[1].getAttribute('src'),
-	                displacementImage: el.dataset.displacement
-	            });
-	        });
-
-	    </script>
-
-    <?php endif;
-
+<?php
  return ob_get_clean();
 }

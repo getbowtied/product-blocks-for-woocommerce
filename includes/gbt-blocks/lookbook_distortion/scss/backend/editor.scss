@@ -1,3 +1,17 @@
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"] .editor-inner-blocks {
+    .editor-block-list__block[data-type="getbowtied/lookbook-distortion-product"]:nth-child(even) {
+        .gbt_18_editor_lookbook_product_content {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="full"] {
+    .editor-block-list__block-edit {
+        padding: 0 12px;
+    }
+}
+
 .wp-block-slider-title-wrapper
 {
 	background-color: #f3f3f3;
@@ -60,6 +74,92 @@
     }
 }
 
+.gbt_18_editor_dummy_lookbook_product_content {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    min-height: 200px;
+
+    .gbt_18_editor_dummy_lookbook_product_content_left,
+    .gbt_18_editor_dummy_lookbook_product_content_right {
+        width: 50%;
+        float: left;
+        align-items: stretch;
+    }
+
+    .gbt_18_editor_dummy_lookbook_product_content_left {
+        padding: 60px;
+    }
+}
+
+.gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom {
+    bottom: 90px;
+    width: 38%;
+    position: absolute;
+}
+
+.gbt_18_editor_dummy_lookbook_product_image {
+    background-size: cover;
+    background-color: #e6c4c4;
+    background-position: center;
+    padding-bottom: 100%;
+    height: 0;
+    width: 100%;
+}
+
+.gbt_18_editor_dummy_lookbook_product_title {
+    height: 60px;
+    width: 90%;
+    background: #fff;
+}
+
+.gbt_18_editor_dummy_lookbook_product_price {
+    height: 40px;
+    width: 25%;
+    background: #fff;
+}
+
+.gbt_18_editor_dummy_lookbook_product_text1 {
+    height: 15px;
+    margin-top: 40px;
+    width: 80%;
+    background: #fff;
+}
+
+.gbt_18_editor_dummy_lookbook_product_text2 {
+    height: 15px;
+    margin-top: 15px;
+    width: 60%;
+    background: #fff;
+}
+
+.gbt_18_editor_dummy_lookbook_product_text3 {
+    height: 15px;
+    margin-top: 15px;
+    width: 70%;
+    background: #fff;
+}
+
+.gbt_18_editor_dummy_lookbook_product_button {
+    background: transparent;
+    display: block;
+    font-family: sans-serif;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 20px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid;
+    padding: 1px 0px;
+    outline: 0;
+
+    &:hover {
+        background: transparent;
+    }
+}
+
 .gbt_18_editor_lookbook_product_content_left_inner_bottom {
 	bottom: 90px;
 	width: 38%;
@@ -78,7 +178,6 @@
 .gbt_18_editor_lookbook_product_price,
 .gbt_18_editor_lookbook_product_text,
 .gbt_18_editor_lookbook_product_button {
-	color: #fff;
 	font-family: sans-serif;
 }
 
@@ -101,7 +200,7 @@
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid;
     padding: 1px 0px;
     outline: 0;
 

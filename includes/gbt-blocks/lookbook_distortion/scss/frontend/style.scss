@@ -1,10 +1,17 @@
+.gbt_18_lookbook_distortion_wrapper {
+	.gbt_18_distorsion_lookbook {
+		&:nth-child(odd) {
+			.gbt_18_distorsion_lookbook_item {
+				flex-direction: row-reverse;
+			}
+		}
+	}
+}
+
 .gbt_18_distorsion_lookbook{
 	.gbt_18_distorsion_lookbook_item{
 		display: flex;
 		height: 100vh;
-		&:nth-child(odd){
-			flex-direction: row-reverse;
-		}
 		&:hover{
 			.gbt_18_distorsion_image{
 				img{
@@ -69,21 +76,19 @@
 	}
 }
 
-.gbt_18_distorsion_lookbook
-{
-	margin-bottom: 1.25rem;
+// .gbt_18_distorsion_lookbook
+// {
+// 	&.full
+// 	{
+// 		margin-left: calc( -100vw / 2 + 100% / 2 );
+// 	    margin-right: calc( -100vw / 2 + 100% / 2 );
+// 	    max-width: 100vw;
+// 	}
 
-	&.full
-	{
-		margin-left: calc( -100vw / 2 + 100% / 2 );
-	    margin-right: calc( -100vw / 2 + 100% / 2 );
-	    max-width: 100vw;
-	}
-
-	&.wide
-	{
-		margin-left: calc( -75vw / 2 + 100% / 2 );
-	    margin-right: calc( -75vw / 2 + 100% / 2 );
-	    max-width: 75vw;
-	}
-}
+// 	&.wide
+// 	{
+// 		margin-left: calc( -75vw / 2 + 100% / 2 );
+// 	    margin-right: calc( -75vw / 2 + 100% / 2 );
+// 	    max-width: 75vw;
+// 	}
+// }
