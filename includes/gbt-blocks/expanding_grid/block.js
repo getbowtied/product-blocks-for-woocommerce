@@ -284,6 +284,7 @@
 
 			function _queryOrder(value) {
 				var query = props.attributes.queryProducts;
+				if ( query.length < 1) return;
 				var idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
