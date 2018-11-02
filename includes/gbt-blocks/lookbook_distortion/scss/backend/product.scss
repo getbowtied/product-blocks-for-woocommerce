@@ -76,3 +76,64 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
         }
     }
 }
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="center"] {
+
+    .editor-inner-blocks {
+
+        .gbt_18_lookbook_distortion_product_wrapper {
+
+            .gbt_18_editor_lookbook_product_content {
+
+                .gbt_18_editor_lookbook_product_content_left {
+                    padding: 20px 50px;
+
+                    .gbt_18_editor_lookbook_product_content_left_inner_top,
+                    .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                        text-align: left;
+                    }
+
+                    .gbt_18_editor_lookbook_product_content_left_inner_top {
+
+                        .gbt_18_editor_lookbook_product_title {
+                            font-size: 18px;
+                        }
+
+                        .gbt_18_editor_lookbook_product_text p {
+                            font-size: 12px;
+                        }
+                    }
+
+                    .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                        bottom: 40px;
+
+                        .gbt_18_editor_lookbook_product_price {
+                            font-size: 14px;
+                            margin-bottom: 10px;
+                        }
+
+                        .gbt_18_editor_lookbook_product_button {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="full"] {
+    
+    .editor-inner-blocks {
+
+        .gbt_18_lookbook_distortion_product_wrapper {
+
+            .gbt_18_editor_lookbook_product_content {
+
+                .gbt_18_editor_lookbook_product_content_left {
+                    padding: 60px 120px;
+                }
+            }
+        }
+    }
+}

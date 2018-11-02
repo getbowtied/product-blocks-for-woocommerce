@@ -86,3 +86,49 @@
         }
     }
 }
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="center"] {
+
+    .editor-inner-blocks {
+
+        .gbt_18_editor_lookbook_product_wrapper.dummy {
+
+            .gbt_18_editor_lookbook_product_content.dummy {
+
+                .gbt_18_editor_dummy_lookbook_product_content_left {
+                    padding: 20px 50px;
+                }
+
+                .gbt_18_editor_dummy_lookbook_product_content_left_inner_top {
+
+                    .gbt_18_editor_dummy_lookbook_product_title {
+                        height: 45px;
+                    }
+
+                    .gbt_18_editor_dummy_lookbook_product_text1 {
+                        height: 10px;
+                        margin-top: 25px;
+                    }
+
+                    .gbt_18_editor_dummy_lookbook_product_text2 {
+                        height: 10px;
+                        margin-top: 10px;
+                    }
+                }
+
+                .gbt_18_editor_dummy_lookbook_product_content_left_inner_bottom {
+                    bottom: 40px;
+
+                    .gbt_18_editor_dummy_lookbook_product_price {
+                        height: 25px;
+                    }
+
+                    .gbt_18_editor_dummy_lookbook_product_button {
+                        font-size: 12px;
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
