@@ -240,6 +240,7 @@
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out; }
     .products-main-inspector-wrapper .category-result-wrapper label sup {
+      margin-left: 4px;
       color: #ccc; }
     .products-main-inspector-wrapper .category-result-wrapper label .expand {
       position: absolute;
@@ -261,6 +262,7 @@
     position: relative;
     margin-bottom: 10px; }
     .products-main-inspector-wrapper .attributes-results-wrapper > label sup {
+      margin-left: 4px;
       color: #ccc; }
 
 .products-main-inspector-wrapper button.render-results {

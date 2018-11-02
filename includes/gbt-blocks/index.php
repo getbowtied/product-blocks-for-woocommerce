@@ -17,10 +17,19 @@ add_filter( 'block_categories', function( $categories, $post ) {
 	);
 }, 10, 2 );
 
+//==============================================================================
+//	Main Editor Styles
+//==============================================================================
+wp_enqueue_style(
+	'getbowtied-product-blocks-editor-styles',
+	plugins_url( 'assets/css/editor.css', dirname(dirname(__FILE__) )),
+	array( 'wp-edit-blocks' )
+);
+
 // require_once 'block_1/block.php';
 require_once 'products_slider/index.php';
 require_once 'categories_grid/index.php';
-require_once 'products_main/block.php';
+// require_once 'products_main/block.php';
 require_once 'products_carousel/index.php';
 require_once 'expanding_grid/block.php';
 require_once 'lookbook_distortion/index.php';

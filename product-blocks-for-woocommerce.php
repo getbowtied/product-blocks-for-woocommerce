@@ -79,3 +79,4 @@ if( !function_exists('is_wp_version') ) {
 		return version_compare( $wp_version, $version, $operator );
 	}
 }
+
