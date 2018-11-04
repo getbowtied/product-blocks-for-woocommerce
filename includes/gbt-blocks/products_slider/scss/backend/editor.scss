@@ -156,10 +156,10 @@
 	.gbt_18_editor_default_slider {
 		width: 100%;
 
-		.gbt_18_editor_slide_content_item.slide:not(.slick-slide) {
+		.gbt_18_editor_slide_content_item.slide {
 			display: none;
 
-			&:first-child {
+			&.selected {
 				display: flex;
 			}
 		}

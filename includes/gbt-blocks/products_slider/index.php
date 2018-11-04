@@ -1,5 +1,4 @@
 <?php
-
 // Products Slider
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -10,7 +9,6 @@ include_once 'functions/function-setup.php';
 //	Frontend Output
 //==============================================================================
 function getbowtied_render_frontend_products_slider( $attributes ) {
-
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
 		'align'							=> '',
@@ -37,9 +35,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
 	ob_start();
 ?>
-
 	<?php if ( $products ) : ?>
-	
 		<div class="gbt_18_default_slider <?php echo $align; ?>">
 			<div class="gbt_18_content">
 				<div class="gbt_18_content_wrapper">
@@ -56,10 +52,10 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 				                <h2 class="gbt_18_slide_title">
 				                    <a target="_blank" href="<?php echo esc_url(get_permalink($product->get_id())); ?>"><?php echo $product->get_name(); ?></a>
 				                </h2>
-				                <p class="price"><?php echo $product->get_price_html(); ?></p>
-				                <p class="gbt_18_slide_text">
+				                <span class="price"><?php echo $product->get_price_html(); ?></span>
+				                <span class="gbt_18_slide_text">
 				                    <span class="gbt_18_p_wrapper"><?php echo $product->get_short_description(); ?></span>
-				                </p>
+				                </span>
 				                <?php if ( $product->get_type() == 'simple' ): ?>
 									<?php 
 									woocommerce_quantity_input( array(
@@ -115,5 +111,5 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 	<?php endif; ?>
 
 <?php 
-	echo ob_get_clean();
+	return ob_get_clean();
 }
