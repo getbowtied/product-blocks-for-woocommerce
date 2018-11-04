@@ -62,20 +62,14 @@ if ( ! function_exists( 'getbowtied_products_slider_assets' ) ) {
 //	Register Block
 //==============================================================================
 register_block_type( 'getbowtied/products-slider', array(
-	// 'editor_style'  	=> 'getbowtied-products-slider-editor-styles',
-	// 'editor_script'		=> 'getbowtied-products-slider-editor-scripts',
 	'attributes'      	=> array(
-		'product_ids' 					=> array(
-			'type'						=> 'array',
-			'default'					=> [],
-		),
-		'columns'						=> array(
-			'type'						=> 'number',
-			'default'					=> '3'
+		'productIDs' 					=> array(
+			'type'						=> 'string',
+			'default'					=>  '',
 		),
 		'align'							=> array(
 			'type'						=> 'string',
-			'default'					=> 'center',
+			'default'					=> '',
 		),
 	),
 

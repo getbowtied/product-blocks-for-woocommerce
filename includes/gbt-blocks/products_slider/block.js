@@ -29,6 +29,10 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		attributes: {
+			productIDs: {
+				type: 'string',
+				default: '',
+			},
 		/* Products source */
 			result: {
 				type: 'array',
@@ -163,6 +167,11 @@
 							console.log('test');
 							initSlider();
 						}, 1000);
+						let IDs = '';
+						for ( let i = 0; i < products.length; i++) {
+							IDs += products[i].id + ',';
+						}
+						props.setAttributes({ productIDs: IDs});
 					});
 				}
 			}
@@ -443,8 +452,9 @@
 				el(
 					InspectorControls,
 					{
-						key: 'products-main-inspector',
+						key: 'products-slider-inspector',
 					},
+					el( "hr", {}),
 					el(
 						'div',
 						{

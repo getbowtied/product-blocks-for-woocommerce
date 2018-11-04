@@ -12,17 +12,28 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_products_slider( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'product_ids'					=> [],
-		'columns'						=> '3',
-		'align'							=> 'center',
+		'productIDs'					=> '',
+		'align'							=> '',
 	), $attributes ) );
 
 	$products = wc_get_products( [
-		'status' 			=> 'publish',
-		'posts_per_page' 	=> 5,
-		// 'include' 			=> $product_ids,
-		'per_page'			=> 10
+		'include' 			=> explode(',',$productIDs),
+		'limit'				=> -1
 	] );
+
+	$sorted = [];
+	foreach ( explode(',',$productIDs) as $id) {
+		foreach ($products as $unsorted) {
+			if ($unsorted->get_id() == $id) {
+				$sorted[] = $unsorted;
+				break;
+			}
+		}
+	}
+
+  	if (sizeof($sorted) == sizeof($products)) {
+  		$products= $sorted;
+  	}
 
 	ob_start();
 ?>
@@ -34,6 +45,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 				<div class="gbt_18_content_wrapper">
 					<div class="gbt_18_slide_header">
 						<span class="gbt_18_line"></span>
+						<span class="gbt_18_number_of_items"><?php echo sprintf("%02d",sizeof($products)); ?></span>
 					</div>
 					<div class="gbt_18_slide_content">
 
@@ -43,11 +55,11 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
 							<div class="gbt_18_slide_content_item">
 				                <h2 class="gbt_18_slide_title">
-				                    <a target="_blank" href="<?php echo get_permalink($product->get_id()); ?>"><?php echo $product->get_name(); ?></a>
+				                    <a target="_blank" href="<?php echo esc_url(get_permalink($product->get_id())); ?>"><?php echo $product->get_name(); ?></a>
 				                </h2>
 				                <p class="price"><?php echo $product->get_price_html(); ?></p>
 				                <p class="gbt_18_slide_text">
-				                    <span class="gbt_18_p_wrapper"><?php echo substr($product->get_short_description(), 0, 100); ?></span>
+				                    <span class="gbt_18_p_wrapper"><?php echo $product->get_short_description(); ?></span>
 				                </p>
 				                <?php if ( $product->get_type() == 'simple' ): ?>
 									<?php 
