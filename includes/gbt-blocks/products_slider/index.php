@@ -45,7 +45,6 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 				<div class="gbt_18_content_wrapper">
 					<div class="gbt_18_slide_header">
 						<span class="gbt_18_line"></span>
-						<span class="gbt_18_number_of_items"><?php echo sprintf("%02d",sizeof($products)); ?></span>
 					</div>
 					<div class="gbt_18_slide_content">
 
@@ -81,7 +80,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 									<button type="submit" 
 											class="single_add_to_cart_button button alt" 
 											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-											<?php echo $product->add_to_cart_text(); ?>
+											<?php echo esc_html($product->add_to_cart_text()); ?>
 									</button>
 								<?php endif; ?>
 				            </div>
@@ -116,5 +115,5 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 	<?php endif; ?>
 
 <?php 
-	return ob_get_clean();
+	echo ob_get_clean();
 }
