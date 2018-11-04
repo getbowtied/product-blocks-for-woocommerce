@@ -1,3 +1,9 @@
+(function( $ ) {
+
+    'use strict';
+
+} )( jQuery );
+
 ( function( blocks, components, editor, i18n, element ) {
 
 	var el = element.createElement;
@@ -8,12 +14,10 @@
 	var InspectorControls 	= editor.InspectorControls;
 
 	var TextControl 		= components.TextControl;
-	var SelectControl		= components.SelectControl;
 	var Button 				= components.Button;
 	var SVG 				= components.SVG;
 	var Path 				= components.Path;
-	var SSR                 = components.ServerSideRender;
-
+	
 	var apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
@@ -68,60 +72,13 @@
 				type: 'array',
 				default: [],
 			},
-		/* Display by category */
-			queryCategoryOptions: {
-				type: 'array',
-				default: [],
-			},
-			queryCategorySelected: {
-				type: 'array',
-				default: [],
-			},
-		/* Filter by */
-			queryFilterSelected: {
-				type: 'string',
-				default: '',
-			},
-			queryAttributesOptions: {
-				type: 'array',
-				default: '',
-			},
-			queryAttributesSelected: {
-				type: 'string',
-				default: '',
-			},
-			queryAttributesSelectedSlug: {
-				type: 'string',
-				default: '',
-			},
-			queryAttributesOptionsValues: {
-				type: 'array',
-				default: '',
-			},
-			queryAttributesOptionsSelected: {
-				type: 'array',
-				default: [],
-			},
-		/* Order by */
-			queryOrder: {
-				type: 'string',
-				default: '',
-			},
 		},
 		edit: function( props ) {
 
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-		
-			function _categoryClassName(parent, value) {
-				if ( parent == 0) {
-					return 'parent parent-' + value;
-				} else {
-					return 'child child-' + parent;
-				}
-			}
-
+			
 			function _searchResultClass(theID){
 				var index = props.attributes.querySearchSelectedIDs.indexOf(theID);
 				if ( index == -1) {
@@ -129,18 +86,6 @@
 				} else {
 					return 'single-result selected';
 				}
-			}
-
-			function _sortCategories( index, arr, newarr = [], level = 0) {
-				for ( var i = 0; i < arr.length; i++ ) {
-					if ( arr[i].parent == index) {
-						arr[i].level = level;
-						newarr.push(arr[i]);
-						_sortCategories(arr[i].value, arr, newarr, level + 1 );
-					}
-				}
-
-				return newarr;
 			}
 
 			function _sortByKeys(keys, products) {
@@ -163,9 +108,6 @@
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
 				props.setAttributes({ querySearchSelected: []});
-				props.setAttributes({ querySearchSelectedIDs: []});
-				props.setAttributes({ queryAttributesOptionsSelected: [] });
-				props.setAttributes({ queryCategorySelected: [] });
 				props.setAttributes({result: []});
 			}
 
@@ -217,6 +159,10 @@
 					apiFetch({ path: query }).then(function (products) {
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
+						setTimeout(function(){
+							console.log('test');
+							initSlider();
+						}, 1000);
 					});
 				}
 			}
@@ -224,8 +170,6 @@
 			function renderResults() {
 				var products = props.attributes.result;
 				var wrapper = [];
-
-
 
 				var productElements = [];
 				let dots;
@@ -249,10 +193,8 @@
 						)
 					);
 				}
-				if ( productElements.length > 0 ) {
-					return productElements;
-				} else {
-					return el( "div", { className: "gbt_18_editor_slide_dummy_content_item", key: "gbt_18_slide_dummy_content_item"},
+				if ( productElements.length == 0 ) {
+					productElements.push(el( "div", { className: "gbt_18_editor_slide_dummy_content_item", key: "gbt_18_slide_dummy_content_item"},
 						el( "div", { className: "gbt_18_editor_slide_dummy_content_left", key: "gbt_18_editor_slide_dummy_content_left"},
 							el("div", { className: "gbt_18_editor_slide_dummy_title", key: "gbt_18_slide_dummy_title"}),
 							el("div",{className:"gbt_18_editor_slide_dummy_p1", key:"gbt_18_editor_slide_dummy_p1"} ),
@@ -263,25 +205,51 @@
 						el( "div", { className: "gbt_18_editor_slide_dummy_content_right", key: "gbt_18_editor_slide_dummy_content_right"},
 							el( "div", { className: "gbt_18_editor_dummy_image", key: "gbt_18_editor_dummy_image"})
 						)
-					)
+					));
 				}
+
+				wrapper.push(el( 
+							'div',
+							{
+								className: 'gbt_18_editor_content',
+								key: 'gbt_18_content',	
+							},
+							el( 
+								'div',
+								{
+									className: 'gbt_18_editor_content_wrapper',
+									key: 'gbt_18_content_wrapper',	
+								},
+								el( 
+									'div',
+									{
+										className: 'gbt_18_editor_slide_content slider',
+										key: 'gbt_18_slide_content',
+									},
+									productElements,
+								),
+							)
+						)
+				);
+
+				return wrapper;
 			}
 
 			function initSlider() {
-					if ( !jQuery('.gbt_18_editor_slide_content.slider').hasClass('slick-initialized') ) {
-						jQuery('.gbt_18_editor_slide_content.slider').slick({
-							slidesToShow: 1,
-							arrows: true,
-							fade: false,
-							dots: false,
-							swipe: false,
-							touchMove: false,
-							draggable: false,
-							zIndex: -1,
-							adaptiveHeight: true,
-							vertical: true
-						});
-					}
+				if ( jQuery('.gbt_18_editor_slide_content.slider').length > 0 && !jQuery('.gbt_18_editor_slide_content.slider').hasClass('slick-initialized') ) {
+					jQuery('.gbt_18_editor_slide_content.slider').slick({
+						slidesToShow: 1,
+						arrows: true,
+						fade: false,
+						dots: false,
+						swipe: false,
+						touchMove: false,
+						draggable: false,
+						zIndex: -1,
+						adaptiveHeight: true,
+						vertical: true
+					});
+				}
 			}
 
 			function _queryOrder(value) {
@@ -468,247 +436,6 @@
 				return productElements;
 			}
 
-			function renderCategories( parent = 0, level = 0 ) {
-				var categoryElements = [];
-				var catArr = props.attributes.queryCategoryOptions;
-				if ( catArr.length > 0 )
-				{
-					for ( var i = 0; i < catArr.length; i++ ) {
-						if ( catArr[i].parent !=  parent ) { continue; };
-						categoryElements.push(
-							el(
-								'li',
-								{
-									className: 'level-' + catArr[i].level,
-								},
-								el(
-								'label',
-									{
-										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
-									},
-									el(
-									'input', 
-										{
-											type:  'checkbox',
-											key:   'category-checkbox-' + catArr[i].value,
-											value: catArr[i].value,
-											'data-index': i,
-											'data-parent': catArr[i].parent,
-											checked: _isChecked(catArr[i].value, props.attributes.queryCategorySelected),
-											onChange: function onChange(evt){
-												var idx = Number(evt.target.dataset.index);
-												if (evt.target.checked === true) {
-													var qCS = props.attributes.queryCategorySelected;
-													var index = qCS.indexOf(evt.target.value);
-													if (index == -1) {
-														qCS.push(evt.target.value);
-													}
-													for (var j = idx + 1; j < catArr.length - 1; j++) {
-														if ( catArr[idx].level < catArr[j].level) {
-															var index2 = qCS.indexOf(catArr[j].value.toString());
-															if (index2 == -1) {
-																qCS.push(catArr[j].value.toString());
-															}
-														} else {
-															break;
-														}
-													}
-													props.setAttributes({ queryCategorySelected: qCS });
-												} else {
-													var qCS = props.attributes.queryCategorySelected;
-													var index = qCS.indexOf(evt.target.value);
-													if (index > -1) {
-													  qCS.splice(index, 1);
-													}
-													for (var j = idx + 1; j < catArr.length - 1; j++) {
-														if ( catArr[idx].level < catArr[j].level) {
-															var index2 = qCS.indexOf(catArr[j].value.toString());
-															if (index2 > -1) {
-																qCS.splice(index2, 1);
-															}
-															} else {
-															break;
-														}
-													}
-													props.setAttributes({ queryCategorySelected: qCS });
-												};
-												if ( props.attributes.queryCategorySelected.length > 0 ) {
-													var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
-													query = query + _getQueryOrder();
-													props.setAttributes({ queryProducts: query});
-												} else {
-													props.setAttributes({ queryProducts: '' });
-												}
-											},
-										}, 
-									),
-									catArr[i].label,
-									el(
-										'sup',
-										{
-											// className: 'category-count',
-										},
-										catArr[i].count,
-									),
-								),
-								renderCategories( catArr[i].value, level+1)
-							),
-						);
-					} 
-				}	
-				if (categoryElements.length > 0 ) {
-					var wrapper = el('ul', {className: 'level-' + level}, categoryElements);
-					return wrapper;		
-				} else {
-					return;
-				}
-			}
-
-			function renderAttributes() {
-				var attributeElements = [];
-				var attArr = props.attributes.queryAttributesOptionsValues;
-				if ( attArr.length > 0 )
-				{
-					for ( i = 0; i < attArr.length; i++ ) {
-						attributeElements.push(
-							el(
-							'label',
-								{
-									className: 'attribute-label',
-								},
-								el(
-								'input', 
-									{
-										type:  'checkbox',
-										key:   'attribute-checkbox-' + attArr[i].value,
-										value: attArr[i].value,
-										checked: _isChecked(attArr[i].value, props.attributes.queryAttributesOptionsSelected),
-										onChange: function onChange(evt){
-											if (evt.target.checked === true) {
-												var qCS = props.attributes.queryAttributesOptionsSelected;
-												var index = qCS.indexOf(evt.target.value);
-												if (index == -1) {
-													qCS.push(evt.target.value);
-												}
-												props.setAttributes({ queryAttributesOptionsSelected: qCS });
-											} else {
-												var qCS = props.attributes.queryAttributesOptionsSelected;
-												var index = qCS.indexOf(evt.target.value);
-												if (index > -1) {
-												  qCS.splice(index, 1);
-												}
-												props.setAttributes({ queryAttributesOptionsSelected: qCS });
-											};
-											if ( props.attributes.queryAttributesOptionsSelected.length > 0 ) {
-												var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
-												query = query + _getQueryOrder();
-												props.setAttributes({ queryProducts: query});
-											} else {
-												props.setAttributes({ queryProducts: '' });
-											}
-										},
-									}, 
-								),
-								attArr[i].label,
-								el(
-									'sup',
-									{},
-									attArr[i].count,
-								),
-							),
-						);
-					} 
-				}	
-				return attributeElements;		
-			}
-
-			function renderOrderby() {
-				var _returnArr= [];
-				_returnArr.push(
-					el(
-						SelectControl,
-						{
-							key: 'query-panel-orderby',
-							label: i18n.__('Order By:'),
-							value: props.attributes.queryOrder,
-							className: 'orderby-wrapper',
-							options: [{
-								label: i18n.__('Newness - newest first'),
-								value: 'date_desc'
-							}, {
-								label: i18n.__('Newness - oldest first'),
-								value: 'date_asc'
-							}, {
-								label: i18n.__('Title - ascending'),
-								value: 'title_asc'
-							}, {
-								label: i18n.__('Title - descending'),
-								value: 'title_desc'
-							}],
-							onChange: function onChange(value) {
-								props.setAttributes({ queryOrder: value });
-								_queryOrder(value);
-							}
-						},
-					),
-				);
-
-				return _returnArr;
-			}
-
-		//==============================================================================
-		//	Get ajax results
-		//==============================================================================
-			function getCategories() {
-				var query = getQuery('/categories?&per_page=100');
-				var options = [];
-				var sorted = [];
-
-				apiFetch({ path: query }).then(function (categories) {
-				 	for( i = 0; i < categories.length; i++ ) {
-		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
-		        	}
-
-		        	for ( i = 0; i < options.length; i++ ) {
-
-		        	}
-		        	sorted = _sortCategories(0, options);
-		        	props.setAttributes({queryCategoryOptions: sorted });
-				});
-			}
-
-			function getAttributes() {
-				var query = getQuery('/attributes');
-				var options = [];
-				options.push({'label': 'Choose', 'value': ' '});
-
-				apiFetch({ path: query }).then(function (categories) {
-				 	for( i = 0; i < categories.length; i++ ) {
-		        		options.push({'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id });
-		        	}
-
-		        	props.setAttributes({queryAttributesOptions: options});
-				});
-			}
-
-			function getAttributesOptions( term ) {
-				var query = getQuery('/attributes/'+term+'/terms');
-				var options = [];
-				apiFetch({ path: query }).then(function (attributes) {
-				 	for( i = 0; i < attributes.length; i++ ) {
-		        		options[i] = {'label': attributes[i].name.replace(/&amp;/g, '&'), 'value': attributes[i].id, 'count': attributes[i].count};
-		        	}
-
-		        	props.setAttributes({queryAttributesOptionsValues: options});
-				});
-
-				var query = getQuery('/attributes/'+term);
-
-				apiFetch({ path: query }).then(function (attributes) {
-			     	props.setAttributes({queryAttributesSelectedSlug: attributes.slug});
-				});
-			}
-
 		//==============================================================================
 		//	Main controls 
 		//==============================================================================
@@ -723,48 +450,8 @@
 						{
 							className: 'products-main-inspector-wrapper',
 						},
-						el(
-							SelectControl,
-							{
-								key: 'query-panel-select',
-								label: i18n.__('Source:'),
-								value: props.attributes.queryDisplayType,
-								options: [{
-									label: i18n.__('Choose an Option'),
-									value: 'default'
-								}, {
-									label: i18n.__('Manually pick products'),
-									value: 'specific'
-								}, {
-									label: i18n.__('Display by Category'),
-									value: 'by_category'
-								}, {
-									label: i18n.__('Filter Products'),
-									value: 'filter_by'
-								}, {
-									label: i18n.__('All Products'),
-									value: 'all_products'
-								}],
-								onChange: function onChange(value) {
-									if ( props.attributes.queryProducts != '' ) {
-										if ( window.confirm(i18n.__("Changing the product source will lose the current selection.")) === false) {
-											return;
-										}
-									}
-		          					_destroyQuery();
-									if ( value === 'by_category') {
-										getCategories();
-									}
-									if ( value === 'all_products') {
-										var query = getQuery('?per_page=100');
-										props.setAttributes({queryProducts: query});
-									}
-									return props.setAttributes({ queryDisplayType: value });
-								}
-							}
-						),
 					/* Pick specific producs */
-						props.attributes.queryDisplayType === 'specific' && el(
+						el(
 							'div',
 							{
 								className: 'products-ajax-search-wrapper',
@@ -795,14 +482,14 @@
 								},
 							),
 						),
-						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
+						props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
 						),
-						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchSelected.length > 0 && el(
+						props.attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
 								className: 'products-selected-results-wrapper',
@@ -820,77 +507,6 @@
 								renderSearchSelected(),
 							),
 						),
-					/* Display by category */
-						props.attributes.queryDisplayType === 'by_category' && el(
-							'div',
-							{
-								className: 'category-result-wrapper',
-							},
-							renderCategories(),
-						),
-						props.attributes.queryDisplayType === 'by_category' && renderOrderby(),
-					/* Filter by */
-						props.attributes.queryDisplayType === 'filter_by'  && el (
-							SelectControl,
-							{
-								key: 'query-panel-filter',
-								// label: i18n.__('Pick one or more categories'),
-								value: props.attributes.queryFilterSelected,
-								options: [{
-											label: 'Filter by',
-											value: '',
-										},
-										{
-											label: i18n.__('Featured products'),
-											value: 'featured'
-										},
-										{
-											label: i18n.__('On sale'),
-											value: 'on_sale'
-										},
-										{
-											label: i18n.__('Attributes'),
-											value: 'attributes'
-										}
-								],
-								onChange: function onChange(value) {
-									_destroyQuery();
-									props.setAttributes({ queryFilterSelected: value });
-									if (value === 'attributes') {
-										getAttributes();
-									} else {
-										var query = getQuery('?'+value+'=1');
-										// query = query + _getQueryOrder();
-										props.setAttributes({ queryProducts: query });
-									}
-								}
-							},
-						),
-						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && el (
-							SelectControl,
-							{
-								key: 'query-panel-attributes',
-								// label: i18n.__('Pick one or more categories'),
-								value: props.attributes.queryAttributesSelected,
-								options: props.attributes.queryAttributesOptions,
-								onChange: function onChange(value) {
-									_destroyQuery();
-									props.setAttributes({ queryAttributesSelected: value });
-									getAttributesOptions(value);
-								}
-							},
-						),
-						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && props.attributes.queryAttributesSelected !== '' && el (
-							'div',
-							{ 
-								className: 'attributes-results-wrapper'
-							},
-							renderAttributes(),
-						),
-						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected != '' && renderOrderby(),
-					/* All products */
-						props.attributes.queryDisplayType === 'all_products'
-						 && renderOrderby(),
 					/* Load all products */
 						el(
 							'button',
@@ -908,49 +524,17 @@
 					),
 				),
 				el(
-					SSR,
+					'div',
 					{
-						block: 'getbowtied/products-slider',
-						attributes: props.attributes.product_ids,
 					},
-					// el( 
-					// 	'div',
-					// 	{
-					// 		className: 'gbt_18_editor_default_slider',
-					// 		key: 'gbt_18_default_slider',	
-					// 	},
-					// 	el( 
-					// 		'div',
-					// 		{
-					// 			className: 'gbt_18_editor_content',
-					// 			key: 'gbt_18_content',	
-					// 		},
-					// 		el( 
-					// 			'div',
-					// 			{
-					// 				className: 'gbt_18_editor_content_wrapper',
-					// 				key: 'gbt_18_content_wrapper',	
-					// 			},
-					// 			el( 
-					// 				'div',
-					// 				{
-					// 					className: 'gbt_18_editor_slide_content slider',
-					// 					key: 'gbt_18_slide_content',
-					// 					 onChange: function onChange() {
-					// 					 	console.log('test');
-					// 					 },
-					// 					 componentDidUpdate: function test() {
-					// 					 	console.log('test');
-					// 					 },
-					// 					 onUpdate: function onUpdate() {
-					// 					 	console.log('test');
-					// 					 },
-					// 				},
-					// 				renderResults(),
-					// 			),
-					// 		)
-					// 	),
-					// ),
+					el( 
+						'div',
+						{
+							className: 'gbt_18_editor_default_slider',
+							key: 'gbt_18_default_slider',	
+						},
+						renderResults(),
+					),
 				),
 			];
 		},
