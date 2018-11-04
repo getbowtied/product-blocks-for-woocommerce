@@ -253,27 +253,61 @@
 				var productElements = [];
 				var wrapper = [];
 
+				var class_prefix = 'gbt_18_grid_product';
 
 				for ( i = 0; i < products.length; i++ ) {
 					productElements.push(
-						el("li",{className:"gbt_18_grid_product", key:"gbt_18_grid_product"},
-							el("div",{className:"gbt_18_grid_product_content_wrapper", key:"gbt_18_grid_product_content_wrapper"},
-								el("img",{key:"gbt_18_grid_product_thumbnail", className: "gbt_18_grid_product_thumbnail", src: products[i]['images'][0]['src'] } ),
-								el("h4",{className:"gbt_18_grid_product_title", key:"gbt_18_grid_product_title"}, products[i]['name']),
-								el("span",{className:"gbt_18_grid_product_price", key:"gbt_18_grid_product_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-								el("button",{className:"gbt_18_grid_product_button", key:"gbt_18_grid_product_button"}, "Add To Cart")
+						el( 'li',
+							{	
+								key: 		class_prefix,
+								className: 	class_prefix
+							},
+							el( 'div',
+								{
+									key: 		class_prefix + '_content_wrapper',
+									className: 	class_prefix + '_content_wrapper'
+								},
+								el( 'img',
+									{
+										key: 		class_prefix + '_thumbnail',
+										className: 	class_prefix + '_thumbnail',
+										src: 		products[i]['images'][0]['src']
+									}
+									),
+								el( 'h4',
+									{
+										key: 		class_prefix + '_title',
+										className: 	class_prefix + '_title'
+									},
+									products[i]['name']
+								),
+								el( 'span',
+									{
+										key: 						class_prefix + '_price',
+										className: 					class_prefix + '_price',
+										dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+									}
+								),
+								el( 'button',
+									{
+										key: 		class_prefix + '_button',
+										className: 	class_prefix + '_button'
+									}, 
+									i18n.__("Add To Cart")
+								)
 							)
 						));
 				}
 				wrapper.push(
-					el( "div",
+					el( 'div',
 					{
-						className: "gbt_18_expanding_grid_wrapper",
-						key: "gbt_18_expanding_grid_wrapper",	
+						key: 		'gbt_18_expanding_grid_wrapper',
+						className: 	'gbt_18_expanding_grid_wrapper'	
 					},
-						el( "ul",
+						el( 'ul',
 							{
-								className: "gbt_18_expanding_grid_products ",
+								key: 		'gbt_18_expanding_grid_products ',
+								className: 	'gbt_18_expanding_grid_products '
 							},
 							productElements,
 						)

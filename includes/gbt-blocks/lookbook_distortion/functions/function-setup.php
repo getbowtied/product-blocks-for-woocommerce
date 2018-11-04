@@ -10,21 +10,21 @@ if ( ! function_exists( 'getbowtied_lookbook_distortion_editor_assets' ) ) {
 
 		wp_enqueue_script(
 			'getbowtied-lookbook-distortion-editor-lookbook-scripts',
-			plugins_url( 'js/backend/lookbook.js', dirname(__FILE__) ),
+			plugins_url( 'blocks/lookbook.js', dirname(__FILE__) ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
 		wp_enqueue_script(
 			'getbowtied-lookbook-distortion-editor-lookbook-product-scripts',
-			plugins_url( 'js/backend/product.js', dirname(__FILE__) ),
+			plugins_url( 'blocks/product.js', dirname(__FILE__) ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
 		wp_enqueue_style(
 			'getbowtied-lookbook-distortion-editor-styles',
-			plugins_url( 'css/backend/editor.css', dirname(__FILE__) ),
+			plugins_url( 'assets/css/backend/editor.css', dirname(__FILE__) ),
 			array( 'wp-edit-blocks' ),
-			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'css/backend/editor.css' )
+			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor.css' )
 		);
 	}
 }
@@ -38,13 +38,13 @@ if ( ! function_exists( 'getbowtied_lookbook_distortion_assets' ) ) {
 
 		wp_enqueue_script(
 			'getbowtied-lookbook-distortion-imagesloaded-scripts',
-			plugins_url( 'js/frontend/imagesloaded.pkgd.min.js', dirname(__FILE__) ),
+			plugins_url( 'assets/js/frontend/imagesloaded.pkgd.min.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
 		wp_enqueue_script(
 			'getbowtied-lookbook-distortion-three-scripts',
-			plugins_url( 'js/frontend/three.min.js', dirname(__FILE__) ),
+			plugins_url( 'assets/js/frontend/three.min.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
@@ -56,21 +56,21 @@ if ( ! function_exists( 'getbowtied_lookbook_distortion_assets' ) ) {
 
 		wp_enqueue_script(
 			'getbowtied-lookbook-distortion-hover-scripts',
-			plugins_url( 'js/frontend/hover.js', dirname(__FILE__) ),
+			plugins_url( 'assets/js/frontend/hover.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
 		wp_enqueue_script(
 			'getbowtied-lookbook-distortion-hover1-scripts',
-			plugins_url( 'js/frontend/frontend.js', dirname(__FILE__) ),
+			plugins_url( 'assets/js/frontend/frontend.js', dirname(__FILE__) ),
 			array( ), false, true
 		);
 
 		wp_enqueue_style(
 			'getbowtied-lookbook-distortion-styles',
-			plugins_url( 'css/frontend/style.css', dirname(__FILE__) ),
+			plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
 			array(),
-			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'css/frontend/style.css' )
+			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
 		);
 	}
 }

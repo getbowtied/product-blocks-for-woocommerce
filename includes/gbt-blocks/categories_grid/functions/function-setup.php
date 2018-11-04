@@ -10,7 +10,7 @@ if ( ! function_exists( 'getbowtied_categories_grid_editor_assets' ) ) {
 
 		wp_register_script(
 			'getbowtied-categories-grid-editor-scripts',
-			plugins_url( 'js/backend/block.js', dirname(__FILE__) ),
+			plugins_url( 'block.js', dirname(__FILE__) ),
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
@@ -19,9 +19,9 @@ if ( ! function_exists( 'getbowtied_categories_grid_editor_assets' ) ) {
 
 		wp_register_style(
 			'getbowtied-categories-grid-editor-styles',
-			plugins_url( 'css/backend/editor.css', dirname(__FILE__) ),
+			plugins_url( 'assets/css/backend/editor.css', dirname(__FILE__) ),
 			array( 'wp-edit-blocks' ),
-			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'css/backend/editor.css' )
+			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor.css' )
 		);
 	}
 }
@@ -35,21 +35,21 @@ if ( ! function_exists( 'getbowtied_categories_grid_assets' ) ) {
 
 		wp_enqueue_script(
 			'getbowtied-categories-grid-scripts',
-			plugins_url( 'js/frontend/animation.js', dirname(__FILE__) ),
+			plugins_url( 'assets/js/frontend/animation.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
 		wp_enqueue_script(
 			'getbowtied-categories-grid-imagesloaded',
-			plugins_url( 'js/frontend/__imagesloaded.pkgd.min.js', dirname(__FILE__) ),
+			plugins_url( 'assets/js/frontend/__imagesloaded.pkgd.min.js', dirname(__FILE__) ),
 			array()
 		);
 
 		wp_enqueue_style(
 			'getbowtied-categories-grid-styles',
-			plugins_url( 'css/frontend/style.css', dirname(__FILE__) ),
+			plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
 			array(),
-			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'css/frontend/style.css' )
+			filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
 		);
 	}
 }
