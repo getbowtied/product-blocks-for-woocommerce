@@ -117,130 +117,135 @@
 					{
 						key: 'categories-grid-inspector'
 					},
-					el( "hr", {}),
 					el(
-						SelectControl,
+						'div',
 						{
-							key: 'categories-grid-source',
-							options:
-							[
-								{ value: 'all',  	 label: 'All Categories'  },
-								{ value: 'specific', label: 'Manually Pick Categories' }
-							],
-              				label: i18n.__( 'Source' ),
-              				value: attributes.source,
-              				onChange: function( newSource ) {
-              					props.setAttributes( { source: newSource } );
-
-              					if(newSource == 'specific') {
-              						props.setAttributes( { product_ids: ''} );
-              					}
-							},
-						}
-					),
-					props.attributes.source === 'all' && [
+							className: 'products-main-inspector-wrapper',
+						},
 						el(
 							SelectControl,
 							{
-								key: 'categories-grid-order-by',
-								options:
-									[
-										{ value: 'title',   label: 'Alphabetical' },
-										{ value: 'menu_order', label: 'Menu Order' },
-									],
-	              				label: i18n.__( 'Order By' ),
-	              				value: attributes.orderby,
-	              				onChange: function( newOrderBy ) {
-	              					props.setAttributes( { orderby: newOrderBy } );
-									getCategoriesGrid( newOrderBy, null, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null );
-								},
-							}
-						),
-						el(
-							SelectControl,
-							{
-								key: 'categories-grid-order',
+								key: 'categories-grid-source',
 								options:
 								[
-									{ value: 'ASC',  label: 'Ascending'  },
-									{ value: 'DESC', label: 'Descending' }
+									{ value: 'all',  	 label: 'All Categories'  },
+									{ value: 'specific', label: 'Manually Pick Categories' }
 								],
-	              				label: i18n.__( 'Alphabetical Order' ),
-	              				value: attributes.order,
-	              				onChange: function( newOrder ) {
-	              					props.setAttributes( { order: newOrder } );
-									getCategoriesGrid( null, newOrder, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null );
+	              				label: i18n.__( 'Source' ),
+	              				value: attributes.source,
+	              				onChange: function( newSource ) {
+	              					props.setAttributes( { source: newSource } );
+
+	              					if(newSource == 'specific') {
+	              						props.setAttributes( { product_ids: ''} );
+	              					}
 								},
 							}
 						),
-						el(
-							TextControl,
-							{
-								key: 'categories-grid-display-number',
-	              				label: i18n.__( 'How many product categories to display?' ),
-	              				type: 'number',
-	              				value: attributes.number,
-	              				onChange: function( newNumber ) {
-	              					props.setAttributes( { number: newNumber } );
-	              					setTimeout(function() {
-	              						getCategoriesGrid( null, null, attributes.parent_only, newNumber, attributes.hide_empty, attributes.product_count, null );
-	              					}, 500);
+						props.attributes.source === 'all' && [
+							el(
+								SelectControl,
+								{
+									key: 'categories-grid-order-by',
+									options:
+										[
+											{ value: 'title',   label: 'Alphabetical' },
+											{ value: 'menu_order', label: 'Menu Order' },
+										],
+		              				label: i18n.__( 'Order By' ),
+		              				value: attributes.orderby,
+		              				onChange: function( newOrderBy ) {
+		              					props.setAttributes( { orderby: newOrderBy } );
+										getCategoriesGrid( newOrderBy, null, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null );
+									},
+								}
+							),
+							el(
+								SelectControl,
+								{
+									key: 'categories-grid-order',
+									options:
+									[
+										{ value: 'ASC',  label: 'Ascending'  },
+										{ value: 'DESC', label: 'Descending' }
+									],
+		              				label: i18n.__( 'Alphabetical Order' ),
+		              				value: attributes.order,
+		              				onChange: function( newOrder ) {
+		              					props.setAttributes( { order: newOrder } );
+										getCategoriesGrid( null, newOrder, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null );
+									},
+								}
+							),
+							el(
+								TextControl,
+								{
+									key: 'categories-grid-display-number',
+		              				label: i18n.__( 'How many product categories to display?' ),
+		              				type: 'number',
+		              				value: attributes.number,
+		              				onChange: function( newNumber ) {
+		              					props.setAttributes( { number: newNumber } );
+		              					setTimeout(function() {
+		              						getCategoriesGrid( null, null, attributes.parent_only, newNumber, attributes.hide_empty, attributes.product_count, null );
+		              					}, 500);
+									},
 								},
-							},
-						),
+							),
+							el(
+								ToggleControl,
+								{
+									id: "categories-grid-display",
+									key: 'categories-grid-display',
+		              				label: i18n.__( 'Parent Categories Only' ),
+		              				checked: attributes.parent_only,
+		              				onChange: function() {
+		              					props.setAttributes( { parent_only: ! attributes.parent_only } );
+										getCategoriesGrid( null, null, !attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null);
+									},
+								}
+							),
+							el(
+								ToggleControl,
+								{
+									key: "categories-grid-hide-empty",
+		              				label: i18n.__( 'Hide Empty' ),
+		              				checked: attributes.hide_empty,
+		              				onChange: function() {
+		              					props.setAttributes( { hide_empty: ! attributes.hide_empty } );
+										getCategoriesGrid( null, null, attributes.parent_only, null, !attributes.hide_empty, attributes.product_count, null );
+									},
+								}
+							),
+						],
 						el(
 							ToggleControl,
 							{
-								id: "categories-grid-display",
-								key: 'categories-grid-display',
-	              				label: i18n.__( 'Parent Categories Only' ),
-	              				checked: attributes.parent_only,
+								key: "categories-grid-product-count",
+	              				label: i18n.__( 'Product Count' ),
+	              				checked: attributes.product_count,
 	              				onChange: function() {
-	              					props.setAttributes( { parent_only: ! attributes.parent_only } );
-									getCategoriesGrid( null, null, !attributes.parent_only, null, attributes.hide_empty, attributes.product_count, null);
+	              					props.setAttributes( { product_count: ! attributes.product_count } );
+									getCategoriesGrid( null, null, attributes.parent_only, null, attributes.hide_empty, !attributes.product_count, null );
 								},
 							}
 						),
-						el(
-							ToggleControl,
+						props.className.indexOf('is-style-layout-1') !== -1 && el(
+							RangeControl,
 							{
-								key: "categories-grid-hide-empty",
-	              				label: i18n.__( 'Hide Empty' ),
-	              				checked: attributes.hide_empty,
-	              				onChange: function() {
-	              					props.setAttributes( { hide_empty: ! attributes.hide_empty } );
-									getCategoriesGrid( null, null, attributes.parent_only, null, !attributes.hide_empty, attributes.product_count, null );
+								key: "categories-grid-layout-1-columns",
+								value: attributes.columns,
+								allowReset: false,
+								initialPosition: 3,
+								min: 1,
+								max: 6,
+								label: i18n.__( 'Columns' ),
+								onChange: function( newColumns ) {
+									props.setAttributes( { columns: newColumns } );
+									getCategoriesGrid( null, null, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, newColumns );
 								},
 							}
 						),
-					],
-					el(
-						ToggleControl,
-						{
-							key: "categories-grid-product-count",
-              				label: i18n.__( 'Product Count' ),
-              				checked: attributes.product_count,
-              				onChange: function() {
-              					props.setAttributes( { product_count: ! attributes.product_count } );
-								getCategoriesGrid( null, null, attributes.parent_only, null, attributes.hide_empty, !attributes.product_count, null );
-							},
-						}
-					),
-					props.className.indexOf('is-style-layout-1') !== -1 && el(
-						RangeControl,
-						{
-							key: "categories-grid-layout-1-columns",
-							value: attributes.columns,
-							allowReset: false,
-							initialPosition: 3,
-							min: 1,
-							max: 6,
-							label: i18n.__( 'Columns' ),
-							onChange: function( newColumns ) {
-								props.setAttributes( { columns: newColumns } );
-								getCategoriesGrid( null, null, attributes.parent_only, null, attributes.hide_empty, attributes.product_count, newColumns );
-							},
-						}
 					),
 				),
 				el(

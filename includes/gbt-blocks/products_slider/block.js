@@ -479,7 +479,6 @@
 					{
 						key: 'products-slider-inspector',
 					},
-					el( "hr", {}),
 					el(
 						'div',
 						{
