@@ -27,7 +27,7 @@ wp_enqueue_style(
 );
 
 // require_once 'block_1/block.php';
-require_once 'products_slider/index.php';
+require_once 'products_slider/block.php';
 require_once 'categories_grid/block.php';
 // require_once 'products_main/block.php';
 require_once 'products_carousel/index.php';
