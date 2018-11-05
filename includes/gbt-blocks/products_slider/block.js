@@ -124,6 +124,7 @@
 			}
 
 			function _destroyTempAtts() {
+				props.setAttributes({ selectedSlide: 0});
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
 			}
@@ -176,6 +177,7 @@
 							IDs += products[i].id + ',';
 						}
 						props.setAttributes({ productIDs: IDs});
+						props.setAttributes({ selectedSlide: 0});
 					});
 				}
 			}
@@ -188,9 +190,10 @@
 				let dots;
 				let selectedSlide = 0;
 
+
 				function isSelectedSlide( idx ) {
-					if ( props.attributes.selectedSlide == idx ) {
-						return 'selected';
+					if ( props.attributes.selectedSlide > idx ) {
+						return 'slide-out';
 					}
 					else return '';
 				}
@@ -269,9 +272,8 @@
 										className: 'slick-next slick-arrow',
 										onClick: function onClick() {
 											let idx = props.attributes.selectedSlide;
-											console.log(idx + 1);
-											if ( idx + 1 < productElements.length) {
-												props.setAttributes({ selectedSlide: idx + 1});
+											if ( idx + 1  < productElements.length) {
+												props.setAttributes({ selectedSlide: idx + 1  })
 											} else {
 												props.setAttributes({ selectedSlide: 0 });
 											}
