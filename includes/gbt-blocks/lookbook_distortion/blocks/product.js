@@ -159,18 +159,18 @@
 
 				} else { //generate placeholder content
 
-					var class_prefix = 'gbt_18_editor_dummy_lookbook_product';
+					var class_prefix = 'gbt_18_editor_placeholder_lookbook_product';
 
 					wrapper.push(
 						el( 'div', 
 							{ 
 								key: 		class_prefix + '_wrapper',
-								className: 	'gbt_18_editor_lookbook_product_wrapper dummy'
+								className: 	'gbt_18_editor_lookbook_product_wrapper placeholder'
 							},
 							el( 'div', 
 								{
 									key: 		class_prefix + '_content',
-									className: 	'gbt_18_editor_lookbook_product_content dummy'
+									className: 	'gbt_18_editor_lookbook_product_content placeholder'
 								},
 								el( 'div', 
 									{

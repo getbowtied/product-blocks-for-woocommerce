@@ -320,7 +320,7 @@
 					
 				} else {
 
-					var class_prefix = 'gbt_18_dummy_grid_product';
+					var class_prefix = 'gbt_18_placeholder_grid_product';
 
 					for ( i = 0; i < 2; i++ ) {
 						productElements.push(
@@ -367,13 +367,13 @@
 					wrapper.push(
 						el( 'div',
 						{
-							key: 		'gbt_18_dummy_expanding_grid_wrapper',
-							className: 	'gbt_18_dummy_expanding_grid_wrapper'	
+							key: 		'gbt_18_placeholder_expanding_grid_wrapper',
+							className: 	'gbt_18_placeholder_expanding_grid_wrapper'	
 						},
 							el( 'ul',
 								{
-									key: 		'gbt_18_dummy_expanding_grid_products ',
-									className: 	'gbt_18_dummy_expanding_grid_products '
+									key: 		'gbt_18_placeholder_expanding_grid_products ',
+									className: 	'gbt_18_placeholder_expanding_grid_products '
 								},
 								productElements,
 							)

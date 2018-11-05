@@ -10,34 +10,34 @@
 }
 
 //==============================================================================
-//	Dummy Content Styles
+//	Placeholder Content Styles
 //==============================================================================
 .editor-block-list__block[data-type="getbowtied/products-slider"] {
 
-	.gbt_18_editor_slide_dummy_content_item {
+	.gbt_18_editor_slide_placeholder_content_item {
 	    width: 100%;
 	    overflow: auto;
 	    min-height: 200px;
 
-	    .gbt_18_editor_slide_dummy_content_left,
-	    .gbt_18_editor_slide_dummy_content_right {
+	    .gbt_18_editor_slide_placeholder_content_left,
+	    .gbt_18_editor_slide_placeholder_content_right {
 	    	width: 50%;
 	    	float: left;
 	    }
 	}
 
-	.gbt_18_editor_slide_dummy_title {
+	.gbt_18_editor_slide_placeholder_title {
 	    width: 80%;
 	    background-color: #eeeeee;
 	}
 
-	.gbt_18_editor_slide_dummy_p1,
-	.gbt_18_editor_slide_dummy_p2,
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p1,
+	.gbt_18_editor_slide_placeholder_p2,
+	.gbt_18_editor_slide_placeholder_p3 {
 		background-color: #eeeeee;
 	}
 
-	.gbt_18_editor_dummy_image {
+	.gbt_18_editor_placeholder_image {
 		background-color: #eeeeee;
 		background-position: center;
 		padding-bottom: 100%;
@@ -45,105 +45,105 @@
 		width: 100%;
 	}
 
-	.gbt_18_editor_slide_dummy_title {
+	.gbt_18_editor_slide_placeholder_title {
 		height: 30px;
 	}
 
-	.gbt_18_editor_slide_dummy_p1,
-	.gbt_18_editor_slide_dummy_p2,
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p1,
+	.gbt_18_editor_slide_placeholder_p2,
+	.gbt_18_editor_slide_placeholder_p3 {
 		height: 10px;
 	}
 
-	.gbt_18_editor_slide_dummy_p1 {
+	.gbt_18_editor_slide_placeholder_p1 {
 	    width: 70%;
 	    margin-top: 30px;
 	}
 
-	.gbt_18_editor_slide_dummy_p2 {
+	.gbt_18_editor_slide_placeholder_p2 {
 	    width: 50%;
 	    margin-top: 10px;
 	}
 
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p3 {
 	    width: 60%;
 	    margin-top: 10px;
 	    margin-bottom: 30px;
 	}
 
-	.gbt_18_editor_slide_dummy_content_left {
+	.gbt_18_editor_slide_placeholder_content_left {
     	padding: 50px 20px 10px 30px;
     }
 }
 
 .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] {
-	.gbt_18_editor_slide_dummy_content_left {
+	.gbt_18_editor_slide_placeholder_content_left {
         padding: 50px 50px 10px 40px;
     }
 
-    .gbt_18_editor_slide_dummy_title {
+    .gbt_18_editor_slide_placeholder_title {
 		height: 40px;
 	}
 
-	.gbt_18_editor_slide_dummy_p1,
-	.gbt_18_editor_slide_dummy_p2,
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p1,
+	.gbt_18_editor_slide_placeholder_p2,
+	.gbt_18_editor_slide_placeholder_p3 {
 		height: 15px;
 	}
 
-	.gbt_18_editor_slide_dummy_p1 {
+	.gbt_18_editor_slide_placeholder_p1 {
 	    width: 70%;
 	    margin-top: 50px;
 	}
 
-	.gbt_18_editor_slide_dummy_p2 {
+	.gbt_18_editor_slide_placeholder_p2 {
 	    width: 50%;
 	    margin-top: 20px;
 	}
 
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p3 {
 	    width: 60%;
 	    margin-top: 20px;
 	    margin-bottom: 50px;
 	}
 
-	.gbt_18_editor_slide_dummy_content_left {
+	.gbt_18_editor_slide_placeholder_content_left {
     	padding: 100px 30px 10px 50px;
     }
 }
 
 .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] {
-	.gbt_18_editor_slide_dummy_content_left {
+	.gbt_18_editor_slide_placeholder_content_left {
         padding: 80px;
     }
 
-    .gbt_18_editor_slide_dummy_title {
+    .gbt_18_editor_slide_placeholder_title {
 		height: 40px;
 	}
 
-	.gbt_18_editor_slide_dummy_p1,
-	.gbt_18_editor_slide_dummy_p2,
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p1,
+	.gbt_18_editor_slide_placeholder_p2,
+	.gbt_18_editor_slide_placeholder_p3 {
 		height: 15px;
 	}
 
-	.gbt_18_editor_slide_dummy_p1 {
+	.gbt_18_editor_slide_placeholder_p1 {
 	    width: 70%;
 	    margin-top: 50px;
 	}
 
-	.gbt_18_editor_slide_dummy_p2 {
+	.gbt_18_editor_slide_placeholder_p2 {
 	    width: 50%;
 	    margin-top: 20px;
 	}
 
-	.gbt_18_editor_slide_dummy_p3 {
+	.gbt_18_editor_slide_placeholder_p3 {
 	    width: 60%;
 	    margin-top: 20px;
 	    margin-bottom: 50px;
 	}
 
-	.gbt_18_editor_slide_dummy_content_left {
+	.gbt_18_editor_slide_placeholder_content_left {
     	padding: 150px 50px 10px 80px;
     }
 }
@@ -155,21 +155,21 @@
 
 	.gbt_18_editor_default_slider {
 		width: 100%;
-		
-		.gbt_18_editor_content {
-			&:after {
-				clear:both;
-				content: ' ';
-				display:block;
+		height: 50vh;
+		overflow: hidden;
+
+		.gbt_18_editor_slide_content_item.slide {
+			height: 50vh;
+			transition: all .3s ease-in-out;
+			
+			&.slide-out {
+				transform: translateY(-50vh);
+				margin-bottom: -50vh;
 			}
 		}
 
-		.gbt_18_editor_slide_content_item.slide {
-			display: none;
-
-			&.selected {
-				display: flex;
-			}
+		.gbt_18_editor_slide_content_item.slide.slick-slide {
+			display: flex;
 		}
 
 		.gbt_18_editor_slide_content_item {
@@ -208,14 +208,8 @@
 		    }
 		}
 
-		.toggle-prev,
-		.toggle-next {
-
-			border: none;
-			outline: none;
-			float: left;
-			cursor: pointer;
-			margin-top: 20px;
+		.slick-prev,
+		.slick-next {
 
 			&:before {
 				/* use !important to prevent issues with browser extensions that change fonts */
@@ -233,26 +227,35 @@
 			}
 		}
 
-		.toggle-prev:before {
+		.slick-prev:before {
 			font-family: "product-blocks";
 			content: '\e903';
 			color: #000;
 		}
 
-		.toggle-next:before {
+		.slick-next:before {
 			font-family: "product-blocks";
 			content: '\e902';
 			color: #000;
 		}
 	}
 
-	.toggle-prev,
-	.toggle-next {
-
+	.slick-prev,
+	.slick-next {
+		top: 96%;
+		z-index: 100;
 
 		&:before {
 			font-size: 18px;
 		}
+	}
+
+	.slick-prev {
+		left: 7px;
+	}
+
+	.slick-next {
+		left: 30px;
 	}
 
 	.gbt_18_editor_slide_content_left {
@@ -297,8 +300,8 @@
 		font-size: 14px;
 	}
 
-	.toggle-prev,
-	.toggle-next {
+	.slick-prev,
+	.slick-next {
 		top: 96%;
 		z-index: 100;
 
@@ -307,10 +310,13 @@
 		}
 	}
 
-	.toggle-prev {
-		margin-left: 40px;
+	.slick-prev {
+		left: 35px;
 	}
 
+	.slick-next {
+		left: 60px;
+	}
 }
 
 //==============================================================================
@@ -341,8 +347,8 @@
 		font-size: 16px;
 	}
 
-	.toggle-prev,
-	.toggle-next {
+	.slick-prev,
+	.slick-next {
 		top: 96%;
 		z-index: 100;
 
@@ -351,8 +357,11 @@
 		}
 	}
 
-	.toggle-prev {
-		margin-left: 80px;
+	.slick-prev {
+		left: 35px;
 	}
 
+	.slick-next {
+		left: 60px;
+	}
 }
