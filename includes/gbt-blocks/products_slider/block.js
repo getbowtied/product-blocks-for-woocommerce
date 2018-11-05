@@ -176,6 +176,7 @@
 							IDs += products[i].id + ',';
 						}
 						props.setAttributes({ productIDs: IDs});
+						props.setAttributes({ selectedSlide: 0});
 					});
 				}
 			}
@@ -252,7 +253,7 @@
 								el(
 									'button',
 									{
-										className: 'slick-prev slick-arrow',
+										className: 'toggle-prev toggle-arrow',
 										onClick: function onClick() {
 											let idx = props.attributes.selectedSlide;
 											if ( idx - 1 >= 0) {
@@ -266,7 +267,7 @@
 								el(
 									'button',
 									{
-										className: 'slick-next slick-arrow',
+										className: 'toggle-next toggle-arrow',
 										onClick: function onClick() {
 											let idx = props.attributes.selectedSlide;
 											console.log(idx + 1);

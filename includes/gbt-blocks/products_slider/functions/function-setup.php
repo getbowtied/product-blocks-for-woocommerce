@@ -8,18 +8,6 @@ add_action( 'admin_init', 'getbowtied_products_slider_editor_assets' );
 if ( ! function_exists( 'getbowtied_products_slider_editor_assets' ) ) {
 	function getbowtied_products_slider_editor_assets() {
 
-		wp_enqueue_script(
-			'getbowtied-slick-scripts',
-			plugins_url( '../vendor/slick/js/slick.min.js', dirname(__FILE__) ),
-			array( 'jquery' )
-		);
-
-		wp_enqueue_style(
-			'getbowtied-slick-styles',
-			plugins_url( '../vendor/slick/css/slick-styles.css', dirname(__FILE__) ),
-			array(),
-			filemtime( plugin_dir_path( dirname(__FILE__) ) . '../vendor/slick/css/slick-styles.css' )
-		);
 
 		wp_enqueue_script(
 			'getbowtied-products-slider-editor-scripts',
