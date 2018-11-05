@@ -253,66 +253,134 @@
 				var productElements = [];
 				var wrapper = [];
 
-				var class_prefix = 'gbt_18_grid_product';
+				if( products.length > 0) {
 
-				for ( i = 0; i < products.length; i++ ) {
-					productElements.push(
-						el( 'li',
-							{	
-								key: 		class_prefix,
-								className: 	class_prefix
-							},
-							el( 'div',
-								{
-									key: 		class_prefix + '_content_wrapper',
-									className: 	class_prefix + '_content_wrapper'
+					var class_prefix = 'gbt_18_grid_product';
+
+					for ( i = 0; i < products.length; i++ ) {
+						productElements.push(
+							el( 'li',
+								{	
+									key: 		class_prefix,
+									className: 	class_prefix
 								},
-								el( 'img',
+								el( 'div',
 									{
-										key: 		class_prefix + '_thumbnail',
-										className: 	class_prefix + '_thumbnail',
-										src: 		products[i]['images'][0]['src']
-									}
-									),
-								el( 'h4',
-									{
-										key: 		class_prefix + '_title',
-										className: 	class_prefix + '_title'
+										key: 		class_prefix + '_content_wrapper',
+										className: 	class_prefix + '_content_wrapper'
 									},
-									products[i]['name']
-								),
-								el( 'span',
-									{
-										key: 						class_prefix + '_price',
-										className: 					class_prefix + '_price',
-										dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
-									}
-								),
-								el( 'button',
-									{
-										key: 		class_prefix + '_button',
-										className: 	class_prefix + '_button'
-									}, 
-									i18n.__("Add To Cart")
+									el( 'img',
+										{
+											key: 		class_prefix + '_thumbnail',
+											className: 	class_prefix + '_thumbnail',
+											src: 		products[i]['images'][0]['src']
+										}
+									),
+									el( 'h4',
+										{
+											key: 		class_prefix + '_title',
+											className: 	class_prefix + '_title'
+										},
+										products[i]['name']
+									),
+									el( 'span',
+										{
+											key: 						class_prefix + '_price',
+											className: 					class_prefix + '_price',
+											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+										}
+									),
+									el( 'button',
+										{
+											key: 		class_prefix + '_button',
+											className: 	class_prefix + '_button'
+										}, 
+										i18n.__("Add To Cart")
+									)
 								)
 							)
-						));
+						);
+					}
+
+					wrapper.push(
+						el( 'div',
+						{
+							key: 		'gbt_18_expanding_grid_wrapper',
+							className: 	'gbt_18_expanding_grid_wrapper'	
+						},
+							el( 'ul',
+								{
+									key: 		'gbt_18_expanding_grid_products ',
+									className: 	'gbt_18_expanding_grid_products '
+								},
+								productElements,
+							)
+						),
+					);
+					
+				} else {
+
+					var class_prefix = 'gbt_18_dummy_grid_product';
+
+					for ( i = 0; i < 2; i++ ) {
+						productElements.push(
+							el( 'li',
+								{	
+									key: 		class_prefix,
+									className: 	class_prefix
+								},
+								el( 'div',
+									{
+										key: 		class_prefix + '_content_wrapper',
+										className: 	class_prefix + '_content_wrapper'
+									},
+									el( 'div',
+										{
+											key: 		class_prefix + '_thumbnail',
+											className: 	class_prefix + '_thumbnail',
+										}
+									),
+									el( 'div',
+										{
+											key: 		class_prefix + '_title',
+											className: 	class_prefix + '_title'
+										},
+									),
+									el( 'div',
+										{
+											key: 						class_prefix + '_price',
+											className: 					class_prefix + '_price',
+										}
+									),
+									el( 'button',
+										{
+											key: 		class_prefix + '_button',
+											className: 	class_prefix + '_button'
+										}, 
+										i18n.__("Add To Cart")
+									)
+								)
+							)
+						);
+					}
+
+					wrapper.push(
+						el( 'div',
+						{
+							key: 		'gbt_18_dummy_expanding_grid_wrapper',
+							className: 	'gbt_18_dummy_expanding_grid_wrapper'	
+						},
+							el( 'ul',
+								{
+									key: 		'gbt_18_dummy_expanding_grid_products ',
+									className: 	'gbt_18_dummy_expanding_grid_products '
+								},
+								productElements,
+							)
+						),
+					);
 				}
-				wrapper.push(
-					el( 'div',
-					{
-						key: 		'gbt_18_expanding_grid_wrapper',
-						className: 	'gbt_18_expanding_grid_wrapper'	
-					},
-						el( 'ul',
-							{
-								key: 		'gbt_18_expanding_grid_products ',
-								className: 	'gbt_18_expanding_grid_products '
-							},
-							productElements,
-						)
-					),
-				);
+
 				return wrapper;
 			}
 
