@@ -81,7 +81,7 @@ register_block_type( 'getbowtied/categories-grid', array(
 			'type'    					=> 'boolean',
 			'default' 					=> false,
 		),
-		'product_count'  				=> array(
+		'productCount'  				=> array(
 			'type'    					=> 'boolean',
 			'default' 					=> true,
 		),

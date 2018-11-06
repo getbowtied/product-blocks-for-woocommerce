@@ -97,6 +97,10 @@
 				type: 'string',
 				default: 'menu_order',
 			},
+			productCount: {
+				type: 'bool',
+				default: true,
+			},
 		/* First Load */
 			firstLoad: {
 				type: 'bool',
@@ -299,7 +303,7 @@
 										className: 	class_prefix + '_title'
 									},
 									categories[i]['name'].replace(/&amp;/g, '&'),
-									el( 'span',
+									props.attributes.productCount === true && el( 'span',
 										{
 											key: 						class_prefix + '_count',
 											className: 					class_prefix + '_count',
@@ -720,6 +724,18 @@
 							},
 							_isLoadingText(),
 						),
+					),
+					el('hr', {}),
+					el(
+						ToggleControl,
+						{
+							key: "categories-grid-product-count",
+              				label: i18n.__( 'Product Count' ),
+              				checked: props.attributes.productCount,
+              				onChange: function( value ) {
+              					props.setAttributes({ productCount: value });
+							},
+						}
 					),
 				),
 				el(
