@@ -1,4 +1,4 @@
-.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"] .editor-inner-blocks {
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"] .editor-inner-blocks {
     .editor-block-list__block[data-type="getbowtied/lookbook-distortion-product"]:nth-child(even) {
         .gbt_18_editor_lookbook_product_content {
             flex-direction: row-reverse;
@@ -6,7 +6,7 @@
     }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"][data-align="full"] {
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"][data-align="full"] {
     .editor-block-list__block-edit {
         padding: 0 12px;
     }
@@ -42,7 +42,7 @@
 	}
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-distortion-lookbook"]
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"]
 {
     .editor-inner-blocks
     {

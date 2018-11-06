@@ -33,4 +33,5 @@ require_once 'categories_grid/block.php';
 require_once 'products_carousel/block.php';
 require_once 'expanding_grid/block.php';
 require_once 'lookbook_distortion/block.php';
+require_once 'lookbook_snap_to_scroll/block.php';
 

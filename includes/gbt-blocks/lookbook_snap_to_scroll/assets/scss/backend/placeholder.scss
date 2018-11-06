@@ -1,0 +1,65 @@
+//==============================================================================
+//  Placeholder Content Styles
+//==============================================================================
+.editor-block-list__block[data-type="getbowtied/lookbook-snap-to-scroll-product"] {
+    .gbt_18_placeholder_lookbook_sts_products_wrapper {
+        overflow: auto;
+        display: table;
+        width: 100%;
+
+        ul.gbt_18_placeholder_lookbook_sts_products {
+
+            display: table-cell;
+            vertical-align: middle;
+
+            li.gbt_18_placeholder_lookbook_sts_product {
+
+                float: left;
+                width: 50%;
+                list-style-type: none;
+                text-align: center;
+                margin-bottom: 0;
+                padding: 0 10px 10px;
+
+                .gbt_18_placeholder_lookbook_sts_product_thumbnail {
+                    background-color: #eeeeee;
+                    background-position: center;
+                    padding-bottom: 100%;
+                    height: 0;
+                    width: 100%;
+                }
+
+                .gbt_18_placeholder_lookbook_sts_product_title {
+                    height: 15px;
+                    width: 70%;
+                    margin: 15px auto 0;
+                    background-color: #eeeeee;
+                }
+
+                .gbt_18_placeholder_lookbook_sts_product_price {
+                    height: 10px;
+                    width: 30%;
+                    margin: 15px auto;
+                    background-color: #eeeeee;
+                }
+
+                .gbt_18_placeholder_lookbook_sts_product_button {
+                    background: #eeeeee;
+                    display: block;
+                    color: #333;
+                    cursor: pointer;
+                    font-weight: 600;
+                    border: none;
+                    padding: 8px 17px;
+                    margin: 10px auto 0;
+                    font-size: 13px;
+                    outline: 0;
+
+                    &:hover {
+                        background: #e4e4e4;
+                    }
+                }
+            }
+        }
+    }
+}
