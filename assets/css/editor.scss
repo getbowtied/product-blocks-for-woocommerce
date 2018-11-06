@@ -44,6 +44,10 @@
         overflow-x: hidden;
         margin-top: -9px;
         
+        .no-results {
+            display: inline-block;
+            margin: 20px 12px;
+        }
         .single-result {
             display: flex;
             align-items: center;

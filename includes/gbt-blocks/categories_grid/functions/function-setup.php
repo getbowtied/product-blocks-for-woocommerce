@@ -14,8 +14,8 @@ if ( ! function_exists( 'getbowtied_categories_grid_editor_assets' ) ) {
 			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 		);
 
-		wp_localize_script( 'getbowtied-categories-grid-editor-scripts', 'ajax_object',
-	            array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+		wp_localize_script( 'getbowtied-categories-grid-editor-scripts', 'getbowtied_pbw',
+	            array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'woo_placeholder_image'	=>	function_exists('wc_placeholder_img_src')? wc_placeholder_img_src() : '' ));
 
 		wp_register_style(
 			'getbowtied-categories-grid-editor-styles',
@@ -61,15 +61,23 @@ register_block_type( 'getbowtied/categories-grid', array(
 	'editor_style'  	=> 'getbowtied-categories-grid-editor-styles',
 	'editor_script'		=> 'getbowtied-categories-grid-editor-scripts',
 	'attributes'      	=> array(
+		'queryDisplayType'				=> array(
+			'type'						=> 'string',
+			'default'					=> 'all_categories',
+		),
+		'categoryIDs'					=> array(
+			'type'						=> 'string',
+			'default'					=> '',
+		),
 		'orderby' 						=> array(
 			'type'						=> 'string',
-			'default'					=> 'title',
+			'default'					=> 'menu_order',
 		),
-		'number'						=> array(
+		'limit'							=> array(
 			'type'						=> 'integer',
 			'default'					=> 8,
 		),
-		'hide_empty'  					=> array(
+		'hideEmpty'  					=> array(
 			'type'    					=> 'boolean',
 			'default' 					=> false,
 		),
@@ -77,15 +85,11 @@ register_block_type( 'getbowtied/categories-grid', array(
 			'type'    					=> 'boolean',
 			'default' 					=> true,
 		),
-		'order'		  					=> array(
-			'type'	  					=> 'string',
-			'default' 					=> 'ASC',
-		),
 		'columns'						=> array(
 			'type'						=> 'number',
 			'default'					=> '3'
 		),
-		'parent_only'					=> array(
+		'parentOnly'					=> array(
 			'type'						=> 'boolean',
 			'default'					=> false,
 		),
