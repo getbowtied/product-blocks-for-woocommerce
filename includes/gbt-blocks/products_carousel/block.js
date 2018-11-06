@@ -134,39 +134,44 @@
 					{
 						key: 'products-carousel-inspector'
 					},
-					el('hr'),
 					el(
-						SelectControl,
+						'div',
 						{
-							key: 'products-carousel-order-by',
-							options:
-								[
-									{ value: 'datef',   label: 'Newest - newest first' },
-									{ value: 'menu_order', label: 'Menu Order' },
-								],
-              				label: i18n.__( 'Order By' ),
-              				value: attributes.orderby,
-              				onChange: function( newOrderBy ) {
-              					props.setAttributes( { orderby: newOrderBy } );
-								createProductsSlider();
-							},
-						}
-					),
-					el(
-						RangeControl,
-						{
-							key: "products-carousel-columns",
-							value: attributes.columns,
-							allowReset: false,
-							initialPosition: 3,
-							min: 1,
-							max: 4,
-							label: i18n.__( 'Columns' ),
-							onChange: function( newColumns ) {
-								props.setAttributes( { columns: newColumns } );
-								reinitSlider( newColumns );
-							},
-						}
+							className: 'products-main-inspector-wrapper',
+						},
+						el(
+							SelectControl,
+							{
+								key: 'products-carousel-order-by',
+								options:
+									[
+										{ value: 'datef',   label: 'Newest - newest first' },
+										{ value: 'menu_order', label: 'Menu Order' },
+									],
+	              				label: i18n.__( 'Order By' ),
+	              				value: attributes.orderby,
+	              				onChange: function( newOrderBy ) {
+	              					props.setAttributes( { orderby: newOrderBy } );
+									createProductsSlider();
+								},
+							}
+						),
+						el(
+							RangeControl,
+							{
+								key: "products-carousel-columns",
+								value: attributes.columns,
+								allowReset: false,
+								initialPosition: 3,
+								min: 1,
+								max: 4,
+								label: i18n.__( 'Columns' ),
+								onChange: function( newColumns ) {
+									props.setAttributes( { columns: newColumns } );
+									reinitSlider( newColumns );
+								},
+							}
+						),
 					),
 				),
 				el( "div",

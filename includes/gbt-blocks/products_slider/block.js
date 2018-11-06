@@ -216,16 +216,16 @@
 					);
 				}
 				if ( productElements.length == 0 ) {
-					productElements.push(el( "div", { className: "gbt_18_editor_slide_dummy_content_item", key: "gbt_18_slide_dummy_content_item"},
-						el( "div", { className: "gbt_18_editor_slide_dummy_content_left", key: "gbt_18_editor_slide_dummy_content_left"},
-							el("div", { className: "gbt_18_editor_slide_dummy_title", key: "gbt_18_slide_dummy_title"}),
-							el("div",{className:"gbt_18_editor_slide_dummy_p1", key:"gbt_18_editor_slide_dummy_p1"} ),
-							el("div",{className:"gbt_18_editor_slide_dummy_p2", key:"gbt_18_editor_slide_dummy_p2"} ),
-							el("div",{className:"gbt_18_editor_slide_dummy_p3", key:"gbt_18_editor_slide_dummy_p3"} ),
-							el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_dummy_add_to_cart"}, "Add To Cart"),
+					productElements.push(el( "div", { className: "gbt_18_editor_slide_placeholder_content_item", key: "gbt_18_slide_placeholder_content_item"},
+						el( "div", { className: "gbt_18_editor_slide_placeholder_content_left", key: "gbt_18_editor_slide_placeholder_content_left"},
+							el("div", { className: "gbt_18_editor_slide_placeholder_title", key: "gbt_18_slide_placeholder_title"}),
+							el("div",{className:"gbt_18_editor_slide_placeholder_p1", key:"gbt_18_editor_slide_placeholder_p1"} ),
+							el("div",{className:"gbt_18_editor_slide_placeholder_p2", key:"gbt_18_editor_slide_placeholder_p2"} ),
+							el("div",{className:"gbt_18_editor_slide_placeholder_p3", key:"gbt_18_editor_slide_placeholder_p3"} ),
+							el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_placeholder_add_to_cart"}, "Add To Cart"),
 						),
-						el( "div", { className: "gbt_18_editor_slide_dummy_content_right", key: "gbt_18_editor_slide_dummy_content_right"},
-							el( "div", { className: "gbt_18_editor_dummy_image", key: "gbt_18_editor_dummy_image"})
+						el( "div", { className: "gbt_18_editor_slide_placeholder_content_right", key: "gbt_18_editor_slide_placeholder_content_right"},
+							el( "div", { className: "gbt_18_editor_placeholder_image", key: "gbt_18_editor_placeholder_image"})
 						)
 					));
 				}
@@ -479,7 +479,6 @@
 					{
 						key: 'products-slider-inspector',
 					},
-					el( "hr", {}),
 					el(
 						'div',
 						{

@@ -159,18 +159,18 @@
 
 				} else { //generate placeholder content
 
-					var class_prefix = 'gbt_18_editor_dummy_lookbook_product';
+					var class_prefix = 'gbt_18_editor_placeholder_lookbook_product';
 
 					wrapper.push(
 						el( 'div', 
 							{ 
 								key: 		class_prefix + '_wrapper',
-								className: 	'gbt_18_editor_lookbook_product_wrapper dummy'
+								className: 	'gbt_18_editor_lookbook_product_wrapper placeholder'
 							},
 							el( 'div', 
 								{
 									key: 		class_prefix + '_content',
-									className: 	'gbt_18_editor_lookbook_product_content dummy'
+									className: 	'gbt_18_editor_lookbook_product_content placeholder'
 								},
 								el( 'div', 
 									{
@@ -230,64 +230,69 @@
 					{
 						key: 'lookbook-distortion-inspector'
 					},
-					el('hr'),
 					el(
-						SelectControl,
+						'div',
 						{
-							key: 'lookbook-distortion-order-by',
-							options:
-								[
-									{ value: 'datef',   label: 'Newest - newest first' },
-									{ value: 'menu_order', label: 'Menu Order' },
-								],
-              				label: i18n.__( 'Order By' ),
-              				value: attributes.orderby,
-              				onChange: function( newOrderBy ) {
-              					props.setAttributes( { orderby: newOrderBy } );
-								createProduct();
-							},
-						}
-					),
-					el(
-						SelectControl,
-						{
-							key: 'lookbook-distortion-animation',
-							options:
-								[
-									{ value: 'animation-1',   label: 'Animation 1' },
-									{ value: 'animation-2',   label: 'Animation 2' },
-									{ value: 'animation-3',   label: 'Animation 3' },
-								],
-              				label: i18n.__( 'Animation Type' ),
-              				value: attributes.animation,
-              				onChange: function( newAnimation ) {
-              					props.setAttributes( { animation: newAnimation } );
-							},
-						}
-					),
-					el(
-						ColorSettings,
-						{
-							key: 'lookbook-distortion-colors',
-							title: i18n.__( 'Colors' ),
-							colors: colors,
-							colorSettings: [
-								{ 
-									label: i18n.__( 'Background Color' ),
-									value: attributes.bg_color,
-									onChange: function( newColor) {
-										props.setAttributes( { bg_color: newColor } );
-									},
-								},
-								{ 
-									label: i18n.__( 'Text Color' ),
-									value: attributes.text_color,
-									onChange: function( newColor) {
-										props.setAttributes( { text_color: newColor } );
-									},
-								},
-							]
+							className: 'products-main-inspector-wrapper',
 						},
+						el(
+							SelectControl,
+							{
+								key: 'lookbook-distortion-order-by',
+								options:
+									[
+										{ value: 'datef',   label: 'Newest - newest first' },
+										{ value: 'menu_order', label: 'Menu Order' },
+									],
+	              				label: i18n.__( 'Order By' ),
+	              				value: attributes.orderby,
+	              				onChange: function( newOrderBy ) {
+	              					props.setAttributes( { orderby: newOrderBy } );
+									createProduct();
+								},
+							}
+						),
+						el(
+							SelectControl,
+							{
+								key: 'lookbook-distortion-animation',
+								options:
+									[
+										{ value: 'animation-1',   label: 'Animation 1' },
+										{ value: 'animation-2',   label: 'Animation 2' },
+										{ value: 'animation-3',   label: 'Animation 3' },
+									],
+	              				label: i18n.__( 'Animation Type' ),
+	              				value: attributes.animation,
+	              				onChange: function( newAnimation ) {
+	              					props.setAttributes( { animation: newAnimation } );
+								},
+							}
+						),
+						el(
+							ColorSettings,
+							{
+								key: 'lookbook-distortion-colors',
+								title: i18n.__( 'Colors' ),
+								colors: colors,
+								colorSettings: [
+									{ 
+										label: i18n.__( 'Background Color' ),
+										value: attributes.bg_color,
+										onChange: function( newColor) {
+											props.setAttributes( { bg_color: newColor } );
+										},
+									},
+									{ 
+										label: i18n.__( 'Text Color' ),
+										value: attributes.text_color,
+										onChange: function( newColor) {
+											props.setAttributes( { text_color: newColor } );
+										},
+									},
+								]
+							},
+						),
 					),
 				),
 				renderResults()
