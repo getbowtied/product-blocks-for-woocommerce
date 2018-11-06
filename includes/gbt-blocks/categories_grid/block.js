@@ -539,6 +539,24 @@
 						{
 							className: 'products-main-inspector-wrapper',
 						},
+					/* Columns */
+						props.className.indexOf('is-style-layout-1') !== -1 && [
+						el(
+							RangeControl,
+							{
+								key: "categories-grid-layout-1-columns",
+								value: props.attributes.columns,
+								allowReset: false,
+								initialPosition: 3,
+								min: 2,
+								max: 6,
+								label: i18n.__( 'Columns' ),
+								onChange: function( newColumns ) {
+									props.setAttributes( { columns: newColumns } );
+								},
+							}
+						),
+						el('hr',{})],
 						el(
 							SelectControl,
 							{
@@ -687,22 +705,6 @@
 					],
 					/* All products */
 
-					/* Columns */
-					props.className.indexOf('is-style-layout-1') !== -1 && el(
-						RangeControl,
-						{
-							key: "categories-grid-layout-1-columns",
-							value: props.attributes.columns,
-							allowReset: false,
-							initialPosition: 3,
-							min: 2,
-							max: 6,
-							label: i18n.__( 'Columns' ),
-							onChange: function( newColumns ) {
-								props.setAttributes( { columns: newColumns } );
-							},
-						}
-					),
 					/* Load all products */
 						el(
 							'button',
