@@ -14,11 +14,82 @@
     transition: all .4s ease-in-out;
 
 	.gbt_18_product_carousel_wrapper {
+
+		position: relative;
+
+		.toggle-prev {
+			left: -60px;
+		}
+
+		.toggle-next {
+			right: -60px;
+		}
+		.toggle-prev,
+		.toggle-next {
+
+			position: absolute;
+			top: 0;
+			border: none;
+			outline: none;
+			background: none;
+			transition: all .3s ease-in-out;
+			top: 50%;
+			transform: translateY(-100%);
+			cursor: pointer;
+
+			&:before {
+				font-family: 'product-blocks';
+				speak: none;
+				font-style: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+
+				/* Better Font Rendering =========== */
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			&:disabled {
+				opacity: .3;
+				pointer-events: none;
+			}
+		}
+
+		.toggle-prev:before {
+			font-family: "product-blocks";
+			font-size: 20px;
+			content: '\e900';
+			color: #000;
+		}
+
+		.toggle-next:before {
+			font-family: "product-blocks";
+			font-size: 20px;
+			content: '\e901';
+			color: #000;
+		}
 		   
 		ul.gbt_18_carousel_products {
 
 			position: relative;
 			transition: opacity .2s ease-in-out;
+			width: 100%;
+			
+			&:after {
+				clear: both;
+				content: '';
+				display: block;
+			}
+
+			@for $i from 1 through 6 {
+				&.columns-#{$i} {
+					li {
+						width: calc(100% / #{$i});
+					}
+				}
+			}
 
 			li.gbt_18_carousel_product {
 
@@ -26,6 +97,11 @@
 		    	list-style-type: none;
 		    	text-align: center;
 		    	padding: 0 10px 10px;
+		    	display: none;
+		    	
+		    	&.is-visible {
+		    		display: block;
+		    	}
 
 		    	.gbt_18_carousel_product_content_wrapper {
 		    		cursor: pointer;
@@ -79,50 +155,6 @@
 		    	}
 			}
 
-			.slick-prev,
-			.slick-next {
-
-				transition: all .3s ease-in-out;
-
-				&:before {
-					/* use !important to prevent issues with browser extensions that change fonts */
-					font-family: 'product-blocks';
-					speak: none;
-					font-style: normal;
-					font-weight: normal;
-					font-variant: normal;
-					text-transform: none;
-					line-height: 1;
-
-					/* Better Font Rendering =========== */
-					-webkit-font-smoothing: antialiased;
-					-moz-osx-font-smoothing: grayscale;
-				}
-			}
-
-			.slick-prev {
-				opacity: 0;
-				left: -11px;
-			}
-
-			.slick-next {
-				opacity: 0;
-				right: -11px;
-			}
-
-			.slick-prev:before {
-				font-family: "product-blocks";
-				font-size: 20px;
-				content: '\e900';
-				color: #000;
-			}
-
-			.slick-next:before {
-				font-family: "product-blocks";
-				font-size: 20px;
-				content: '\e901';
-				color: #000;
-			}
 		}
 	}
 
@@ -133,12 +165,12 @@
 
 			ul.gbt_18_carousel_products {
 
-				.slick-prev {
+				.toggle-prev {
 					opacity: 1;
 					left: -50px;
 				}
 
-				.slick-next {
+				.toggle-next {
 					opacity: 1;
 					right: -50px;
 				}
@@ -158,11 +190,11 @@
 
 			ul.gbt_18_carousel_products {
 
-				.slick-prev {
+				.toggle-prev {
 					left: -32px;
 				}
 
-				.slick-next {
+				.toggle-next {
 					right: -32px;
 				}
 			}

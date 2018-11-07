@@ -70,18 +70,26 @@ if ( ! function_exists( 'getbowtied_products_carousel_assets' ) ) {
 //==============================================================================
 register_block_type( 'getbowtied/products-carousel', array(
 	'attributes'      	=> array(
-		'product_ids' 					=> array(
-			'type'						=> 'array',
-			'default'					=> [],
-		),
-		'columns'						=> array(
-			'type'						=> 'number',
-			'default'					=> '3'
+		'productIDs' 					=> array(
+			'type'						=> 'string',
+			'default'					=>  '',
 		),
 		'align'							=> array(
 			'type'						=> 'string',
-			'default'					=> 'center',
+			'default'					=> '',
 		),
+		'queryOrder'					=> array(
+			'type'						=> 'string',
+			'default'					=> '',
+		),
+		'columns'						=> array(
+			'type'						=> 'int',
+			'default'					=> 3,
+		),
+		'queryDisplayType'				=> array(
+			'type'						=> 'string',
+			'default'					=> 'all_products'
+		)
 	),
 
 	'render_callback' => 'getbowtied_render_frontend_products_carousel',

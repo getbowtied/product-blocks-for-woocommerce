@@ -15,6 +15,7 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 		'productIDs'		=> '',
 		'align'				=> 'center',
 		'queryOrder'		=> '',
+		'queryDisplayType'	=> 'all_products'
 	), $attributes ) );
 
 	switch ( $queryOrder ) {
@@ -49,7 +50,7 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
 	ob_start();
 
-	if ($orderby == 'none') {
+	if ($queryDisplayType == 'specific') {
 		$sorted = [];
 		foreach ( explode(',',$productIDs) as $id) {
 			foreach ($products as $unsorted) {
