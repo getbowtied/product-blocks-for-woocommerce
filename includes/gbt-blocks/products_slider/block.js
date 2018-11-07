@@ -345,35 +345,35 @@
 										key: 'gbt_18_slide_content_arrows',
 										className: 'gbt_18_slide_content_arrows'
 									},
-								),
-								el(
-									'button',
-									{
-										className: 'toggle-next toggle-arrow',
-										onClick: function onClick() {
-											let idx = props.attributes.selectedSlide;
-											if ( idx + 1 < productElements.length) {
-												props.setAttributes({ selectedSlide: idx + 1});
-											} else {
-												props.setAttributes({ selectedSlide: 0 });
+									el(
+										'button',
+										{
+											className: 'toggle-next toggle-arrow',
+											onClick: function onClick() {
+												let idx = props.attributes.selectedSlide;
+												if ( idx + 1 < productElements.length) {
+													props.setAttributes({ selectedSlide: idx + 1});
+												} else {
+													props.setAttributes({ selectedSlide: 0 });
+												}
+											},
+										},
+									),
+									el(
+										'button',
+										{
+											className: 'toggle-next toggle-arrow',
+											onClick: function onClick() {
+												let idx = props.attributes.selectedSlide;
+												console.log(idx + 1);
+												if ( idx + 1 < productElements.length) {
+													props.setAttributes({ selectedSlide: idx + 1});
+												} else {
+													props.setAttributes({ selectedSlide: 0 });
+												}
 											}
 										},
-									},
-								),
-								el(
-									'button',
-									{
-										className: 'toggle-next toggle-arrow',
-										onClick: function onClick() {
-											let idx = props.attributes.selectedSlide;
-											console.log(idx + 1);
-											if ( idx + 1 < productElements.length) {
-												props.setAttributes({ selectedSlide: idx + 1});
-											} else {
-												props.setAttributes({ selectedSlide: 0 });
-											}
-										}
-									},
+									)
 								)
 							)
 						)
