@@ -358,22 +358,22 @@
 												props.setAttributes({ selectedSlide: 0 });
 											}
 										},
-									),
-									el(
-										'button',
-										{
-											className: 'toggle-next toggle-arrow',
-											onClick: function onClick() {
-												let idx = props.attributes.selectedSlide;
-												console.log(idx + 1);
-												if ( idx + 1 < productElements.length) {
-													props.setAttributes({ selectedSlide: idx + 1});
-												} else {
-													props.setAttributes({ selectedSlide: 0 });
-												}
+									},
+								),
+								el(
+									'button',
+									{
+										className: 'toggle-next toggle-arrow',
+										onClick: function onClick() {
+											let idx = props.attributes.selectedSlide;
+											console.log(idx + 1);
+											if ( idx + 1 < productElements.length) {
+												props.setAttributes({ selectedSlide: idx + 1});
+											} else {
+												props.setAttributes({ selectedSlide: 0 });
 											}
-										},
-									)
+										}
+									},
 								)
 							)
 						)
