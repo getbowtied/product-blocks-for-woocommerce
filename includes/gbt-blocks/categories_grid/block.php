@@ -49,41 +49,25 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
 		}
 	}
 
-	// if( $orderby == 'title' ) {
-	// 	$args['orderby'] = $orderby;
-	// 	$args['order'] = $order;
-	// } else {
-	// 	$args['menu_order'] = $order;
-	// }
-
-	// $args['hide_empty'] = $hide_empty;
-	// $args['number'] = $number;
-
-	// if ( $parent_only ) {
-	// 	$args['parent'] = 0 ;
-	// } else {
-	// 	$args['pad_counts'] = true;
-	// }
-
 	$product_categories = get_terms( $args );
 
-	$sorted = [];
-	function _sortCategories( $index, $arr, &$newarr, $level = 0) {
-		for ( $i=0; $i< sizeof($arr); $i++ ) {
-			if ( $arr[$i]->parent == $index) {
-				$newarr[] = $arr[$i];
-				_sortCategories($arr[$i]->term_id, $arr, $newarr, $level + 1 );
-			}
-		}
-		return $newarr;
-	}
+	// $sorted = [];
+	// function _sortCategories( $index, $arr, &$newarr, $level = 0) {
+	// 	for ( $i=0; $i< sizeof($arr); $i++ ) {
+	// 		if ( $arr[$i]->parent == $index) {
+	// 			$newarr[] = $arr[$i];
+	// 			_sortCategories($arr[$i]->term_id, $arr, $newarr, $level + 1 );
+	// 		}
+	// 	}
+	// 	return $newarr;
+	// }
 
-	if ($orderby == 'menu_order' && $queryDisplayType == 'all_categories') {
-		$sorted = _sortCategories(0, $product_categories, $sorted);
-		if (sizeof($product_categories) == sizeof($sorted)) {
-			$product_categories = $sorted;
-		}
-	}
+	// if ($orderby == 'menu_order' && $queryDisplayType == 'all_categories') {
+	// 	$sorted = _sortCategories(0, $product_categories, $sorted);
+	// 	if (sizeof($product_categories) == sizeof($sorted)) {
+	// 		$product_categories = $sorted;
+	// 	}
+	// }
 	ob_start();
 
 	if ( $product_categories ) :
