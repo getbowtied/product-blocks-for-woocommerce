@@ -119,10 +119,12 @@
 		},
 		edit: function( props ) {
 
+			var className = props.className;
+
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-			if( props.className.indexOf('is-style-layout') == -1 ) { props.className += ' is-style-layout-2'; }
+			if( className.indexOf('is-style-layout') == -1 ) { className += ' is-style-layout-2'; }
 
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
@@ -319,7 +321,7 @@
 					el(	'div',
 					{
 						key: 'gbt_18_editor_categories_grid_wrapper',
-						className: props.className + ' gbt_18_editor_categories_grid_wrapper'
+						className: className + ' gbt_18_editor_categories_grid_wrapper'
 					},
 						el( 'div',
 						{
