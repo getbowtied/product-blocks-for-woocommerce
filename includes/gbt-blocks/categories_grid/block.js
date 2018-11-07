@@ -119,12 +119,10 @@
 		},
 		edit: function( props ) {
 
-			var className = props.className;
-
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-			if( className.indexOf('is-style-layout') == -1 ) { className += ' is-style-layout-2'; }
+			if( props.className.indexOf('is-style-layout') == -1 ) { props.className += ' is-style-layout-2'; }
 
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
@@ -284,30 +282,30 @@
 					categoryElements.push(
 						el( 'div',
 							{	
-								key: 		class_prefix + i,
+								key: 		class_prefix,
 								className: 	class_prefix
 							},
 							el( 'a',
 								{
-									key: 		class_prefix + '_img' + i,
+									key: 		class_prefix + '_img',
 									className: 	class_prefix + '_img'
 								},
 								el( 'img',
 									{
-										key: 		class_prefix + '_thumb' + i,
+										key: 		class_prefix + '_thumb',
 										className: 	class_prefix + '_thumb',
 										src: 		img
 									}
 									),
 								el( 'h4',
 									{
-										key: 		class_prefix + '_title' + i,
+										key: 		class_prefix + '_title',
 										className: 	class_prefix + '_title'
 									},
 									categories[i]['name'].replace(/&amp;/g, '&'),
 									props.attributes.productCount === true && el( 'span',
 										{
-											key: 						class_prefix + '_count' + i,
+											key: 						class_prefix + '_count',
 											className: 					class_prefix + '_count',
 										},
 										categories[i]['count']
@@ -321,7 +319,7 @@
 					el(	'div',
 					{
 						key: 'gbt_18_editor_categories_grid_wrapper',
-						className: className + ' gbt_18_editor_categories_grid_wrapper'
+						className: props.className + ' gbt_18_editor_categories_grid_wrapper'
 					},
 						el( 'div',
 						{
@@ -742,7 +740,8 @@
 				),
 				el(
 					'div',
-					{},
+					{
+					},
 					renderResults(),
 				),
 			];
