@@ -198,34 +198,124 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
 					productElements.push(
-						el( "div", {
-							 className: "gbt_18_editor_slide_content_item slide " + isSelectedSlide(i), 
-							 key: "gbt_18_slide_content_item"},
-							el( "div", { className: "gbt_18_editor_slide_content_left", key: "gbt_18_editor_slide_content_left"},
-								el( "div", { className: "gbt_18_editor_slide_content_left_inner", key: "gbt_18_editor_slide_content_left_inner"},
-									el("h2", { className: "gbt_18_editor_slide_title", key: "gbt_18_slide_title"}, products[i]['name'] ),
-									el("p",{className:"gbt_18_editor_slide_price", key:"gbt_18_slide_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-									el("div",{className:"gbt_18_editor_slide_text", key:"gbt_18_slide_text", dangerouslySetInnerHTML: { __html: products[i]['short_description'] } } ),
-									el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_add_to_cart"}, "Add To Cart"),
+						el( 'div',
+							{
+								key: 		'gbt_18_slide_content_item' + i,
+							 	className: 	'gbt_18_editor_slide_content_item slide ' + isSelectedSlide(i)
+							},
+							el( 'div', 
+								{
+									key: 		'gbt_18_editor_slide_content_left' + i,
+									className: 	'gbt_18_editor_slide_content_left'
+								},
+								el( 'div', 
+									{
+										key: 		'gbt_18_editor_slide_content_left_inner' + i,
+										className: 	'gbt_18_editor_slide_content_left_inner'
+									},
+									el( 'h2',
+										{
+											key: 		'gbt_18_slide_title' + i,
+											className: 	'gbt_18_editor_slide_title',
+										},
+										products[i]['name']
+									),
+									el( 'p', 
+										{
+											key: 					 'gbt_18_slide_price' + i,
+											className: 				 'gbt_18_editor_slide_price',
+											dangerouslySetInnerHTML: { __html: products[i]['price_html'] }
+										}
+									),
+									el( 'div',
+										{
+											key: 					 'gbt_18_slide_text' + i,
+											className: 				 'gbt_18_editor_slide_text',
+											dangerouslySetInnerHTML: { __html: products[i]['short_description'] }
+										}
+									),
+									el( 'button',
+										{
+											key: 		'gbt_18_editor_add_to_cart' + i,
+											className: 	'gbt_18_editor_add_to_cart'
+										}, 
+										i18n.__( 'Add To Cart' )
+									),
 								),
 							),
-							el( "div", { className: "gbt_18_editor_slide_content_right", key: "gbt_18_editor_slide_content_right"},
-								el( "div", { className: "gbt_18_editor_image", key: "gbt_18_image", style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} })
+							el( 'div', 
+								{ 
+									key: 		'gbt_18_editor_slide_content_right' + i,
+									className: 	'gbt_18_editor_slide_content_right'
+								},
+								el( 'div', 
+									{
+										key: 		'gbt_18_image' + i,
+										className: 	'gbt_18_editor_image',
+										style: 		{ backgroundImage: 'url('+products[i]['images'][0]['src']+')' } 
+									}
+								)
 							)
 						)
 					);
 				}
+
+				// placeholder
 				if ( productElements.length == 0 ) {
-					productElements.push(el( "div", { className: "gbt_18_editor_slide_placeholder_content_item", key: "gbt_18_slide_placeholder_content_item"},
-						el( "div", { className: "gbt_18_editor_slide_placeholder_content_left", key: "gbt_18_editor_slide_placeholder_content_left"},
-							el("div", { className: "gbt_18_editor_slide_placeholder_title", key: "gbt_18_slide_placeholder_title"}),
-							el("div",{className:"gbt_18_editor_slide_placeholder_p1", key:"gbt_18_editor_slide_placeholder_p1"} ),
-							el("div",{className:"gbt_18_editor_slide_placeholder_p2", key:"gbt_18_editor_slide_placeholder_p2"} ),
-							el("div",{className:"gbt_18_editor_slide_placeholder_p3", key:"gbt_18_editor_slide_placeholder_p3"} ),
-							el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_placeholder_add_to_cart"}, "Add To Cart"),
+					productElements.push(
+						el( 'div', 
+							{
+								key: 		'gbt_18_slide_placeholder_content_item',
+								className: 	'gbt_18_editor_slide_placeholder_content_item'
+							},
+						el( 'div',
+							{
+								key: 		'gbt_18_editor_slide_placeholder_content_left',
+								className: 	'gbt_18_editor_slide_placeholder_content_left'
+							},
+							el( 'div', 
+								{
+									key: 		'gbt_18_slide_placeholder_title',
+									className: 	'gbt_18_editor_slide_placeholder_title'
+								}
+							),
+							el( 'div',
+								{
+									key: 		'gbt_18_editor_slide_placeholder_p1',
+									className: 	'gbt_18_editor_slide_placeholder_p1'
+								}
+							),
+							el( 'div',
+								{
+									key: 		'gbt_18_editor_slide_placeholder_p2',
+									className: 	'gbt_18_editor_slide_placeholder_p2'
+								}
+							),
+							el( 'div',
+								{
+									key: 		'gbt_18_editor_slide_placeholder_p3',
+									className: 	'gbt_18_editor_slide_placeholder_p3'
+								}
+							),
+							el( 'button',
+								{
+									key: 		'gbt_18_editor_placeholder_add_to_cart',
+									className: 	'gbt_18_editor_add_to_cart'
+								}, 
+								i18n.__( 'Add To Cart' )
+							),
 						),
-						el( "div", { className: "gbt_18_editor_slide_placeholder_content_right", key: "gbt_18_editor_slide_placeholder_content_right"},
-							el( "div", { className: "gbt_18_editor_placeholder_image", key: "gbt_18_editor_placeholder_image"})
+						el( 'div', 
+							{
+								key: 		'gbt_18_editor_slide_placeholder_content_right',
+								className: 	'gbt_18_editor_slide_placeholder_content_right'
+							},
+							el( 'div', 
+								{ 
+									key: 		'gbt_18_editor_placeholder_image',
+									className: 	'gbt_18_editor_placeholder_image'
+								}
+							)
 						)
 					));
 				}
@@ -233,51 +323,57 @@
 				wrapper.push(el( 
 							'div',
 							{
-								className: 'gbt_18_editor_content',
-								key: 'gbt_18_content',	
+								key: 		'gbt_18_content',
+								className: 	'gbt_18_editor_content'	
 							},
 							el( 
 								'div',
 								{
-									className: 'gbt_18_editor_content_wrapper',
-									key: 'gbt_18_content_wrapper',	
+									key: 		'gbt_18_content_wrapper',
+									className: 	'gbt_18_editor_content_wrapper',
 								},
 								el( 
 									'div',
 									{
-										className: 'gbt_18_editor_slide_content slider',
-										key: 'gbt_18_slide_content',
+										key: 		'gbt_18_slide_content',
+										className: 	'gbt_18_editor_slide_content slider'
 									},
 									productElements,
 								),
-								el(
-									'button',
+								el( 'div',
 									{
-										className: 'toggle-prev toggle-arrow',
-										onClick: function onClick() {
-											let idx = props.attributes.selectedSlide;
-											if ( idx - 1 >= 0) {
-												props.setAttributes({ selectedSlide: idx - 1});
-											} else {
-												props.setAttributes({ selectedSlide: productElements.length - 1});
-											}
-										}
+										key: 'gbt_18_slide_content_arrows',
+										className: 'gbt_18_slide_content_arrows'
 									},
-								),
-								el(
-									'button',
-									{
-										className: 'toggle-next toggle-arrow',
-										onClick: function onClick() {
-											let idx = props.attributes.selectedSlide;
-											console.log(idx + 1);
-											if ( idx + 1 < productElements.length) {
-												props.setAttributes({ selectedSlide: idx + 1});
-											} else {
-												props.setAttributes({ selectedSlide: 0 });
+									el(
+										'button',
+										{
+											className: 'toggle-prev toggle-arrow',
+											onClick: function onClick() {
+												let idx = props.attributes.selectedSlide;
+												if ( idx - 1 >= 0) {
+													props.setAttributes({ selectedSlide: idx - 1});
+												} else {
+													props.setAttributes({ selectedSlide: productElements.length - 1});
+												}
 											}
-										}
-									},
+										},
+									),
+									el(
+										'button',
+										{
+											className: 'toggle-next toggle-arrow',
+											onClick: function onClick() {
+												let idx = props.attributes.selectedSlide;
+												console.log(idx + 1);
+												if ( idx + 1 < productElements.length) {
+													props.setAttributes({ selectedSlide: idx + 1});
+												} else {
+													props.setAttributes({ selectedSlide: 0 });
+												}
+											}
+										},
+									)
 								)
 							)
 						)
@@ -349,12 +445,13 @@
 				var products = props.attributes.querySearchResults;
 				for ( var i = 0; i < products.length; i++ ) {
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						var img = el('span', { key: 'img-wrapper' + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span', 
 							{
+								key: _searchResultClass(products[i].id) + i,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -363,11 +460,13 @@
 							el(
 								'label', 
 								{
+									key: 'title-wrapper' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'title-input' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -394,8 +493,8 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'dashicons-yes' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'dashicons-no-alt' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -418,24 +517,27 @@
 
 				for ( var i = 0; i < products.length; i++ ) {
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						var img = el('span', { key: 'img-wrapper' + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span', 
 							{
-								className:'single-result', 
+								key: 'single-result' + i,
+								className: 'single-result', 
 								title: products[i].name,
 							}, 
 							img, 
 							el(
 								'label', 
 								{
+									key: 'title-wrapper' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'title-input' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -462,7 +564,7 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'dashicons-no-alt' + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
