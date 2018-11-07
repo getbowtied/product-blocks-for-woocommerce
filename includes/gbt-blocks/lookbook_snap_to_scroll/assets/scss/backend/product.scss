@@ -10,6 +10,10 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
 
     &.image-left {
         flex-direction: row-reverse;
+
+        .gbt_18_editor_lookbook_sts_product_content_left {
+            padding: 30px 30px 30px 45px;
+        }
     }
 
     .gbt_18_editor_lookbook_sts_product_content_left,
@@ -20,7 +24,7 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
     }
 
     .gbt_18_editor_lookbook_sts_product_content_left {
-        padding: 30px 30px 30px 40px;
+        padding: 30px 45px 30px 30px;
 
         .gbt_18_placeholder_lookbook_sts_products_wrapper {
             height: 100%;
@@ -109,6 +113,7 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
                 .gbt_18_lookbook_sts_product {
                     width: 100%;
                     padding: 50px;
+                    margin: 0;
                 }
             }
 
@@ -116,6 +121,7 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
                 .gbt_18_lookbook_sts_product {
                     width: 50%;
                     padding: 0 10px;
+                    margin: 0;
                 }
             }
 
@@ -123,6 +129,7 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
                 .gbt_18_lookbook_sts_product {
                     width: 33.3333333%;
                     padding: 0 10px;
+                    margin: 0;
                 }
             }
 
