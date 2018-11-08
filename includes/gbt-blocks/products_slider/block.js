@@ -245,7 +245,7 @@
 									productElements,
 								),
 								el(
-									'button',
+									'div',
 									{
 										key: 'gbt_18_slide_content_arrows',
 										className: 'gbt_18_slide_content_arrows'
@@ -253,15 +253,15 @@
 									el(
 										'button',
 										{
-											className: 'toggle-next toggle-arrow',
+											className: 'toggle-prev toggle-arrow',
 											onClick: function onClick() {
 												let idx = props.attributes.selectedSlide;
-												if ( idx + 1 < productElements.length) {
-													props.setAttributes({ selectedSlide: idx + 1});
+												if ( idx - 1 >= 0) {
+													props.setAttributes({ selectedSlide: idx - 1});
 												} else {
-													props.setAttributes({ selectedSlide: 0 });
+													props.setAttributes({ selectedSlide: productElements.length - 1});
 												}
-											},
+											}
 										},
 									),
 									el(
