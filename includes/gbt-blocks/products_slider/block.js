@@ -71,17 +71,13 @@
 			old_align: {
 				type: 'string',
 				default: '',
-			},
-			selectedSlide: {
-				type: 'int',
-				default: 0,
 			}
 		},
 		edit: function( props ) {
 
 			let attributes = props.attributes;
 			attributes.selectedIDS = attributes.selectedIDS || [];
-
+			attributes.selectedSlide = attributes.selectedSlide || 0;
 
 		//==============================================================================
 		//	Helper functions
