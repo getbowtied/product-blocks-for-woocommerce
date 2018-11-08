@@ -1,16 +1,4 @@
 <?php
-add_filter( 'block_categories', function( $categories, $post ) {
-	return array_merge(
-		array(
-			array(
-				'slug' => 'product_blocks',
-				'title' => __( 'Product Blocks for WooCommerce', 'gbt-blocks' ),
-			),
-		),
-		$categories
-	);
-}, 10, 2 );
-
 //==============================================================================
 //	Main Editor Styles
 //==============================================================================
@@ -20,10 +8,26 @@ wp_enqueue_style(
 	array( 'wp-edit-blocks' )
 );
 
+//==============================================================================
+//	Main JS
+//==============================================================================
+add_action( 'admin_init', 'getbowtied_product_blocks_scripts' );
+if ( ! function_exists( 'getbowtied_product_blocks_scripts' ) ) {
+	function getbowtied_product_blocks_scripts() {
+
+		wp_enqueue_script(
+			'getbowtied-product-blocks-editor-scripts',
+			plugins_url( 'assets/js/main.js', dirname(dirname(__FILE__)) ),
+			array( 'wp-blocks', 'jquery' )
+		);
+
+	}
+}
+
 // require_once 'block_1/block.php';
 require_once 'products_slider/block.php';
 require_once 'categories_grid/block.php';
-require_once 'products_main/block.php';
+// require_once 'products_main/block.php';
 require_once 'products_carousel/block.php';
 require_once 'expanding_grid/block.php';
 require_once 'lookbook_distortion/block.php';

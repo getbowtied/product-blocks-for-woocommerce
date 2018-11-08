@@ -17,7 +17,7 @@
 	registerBlockType( 'getbowtied/products-main', {
 		title: i18n.__( 'GetBowtied Products' ),
 		icon: 'layout',
-		category: 'widgets',
+		category: 'product_blocks',
 		supports: {
 			align: [ 'wide', 'full' ],
 		},

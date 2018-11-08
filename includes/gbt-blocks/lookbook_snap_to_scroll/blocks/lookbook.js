@@ -24,7 +24,7 @@
 				el( Circle, {cx: "11", cy: "9", r: "1"}),
 				el( Path, { d:"M5.88 19.75c0 1.1.9 2 2 2h1.45l-3.45-8.34v6.34z" })
 			  ),
-		category: 'widgets',
+		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
 		},
