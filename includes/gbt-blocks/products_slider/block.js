@@ -2,19 +2,21 @@
 
 	"use strict";
 
-	var el = element.createElement;
+	let blocksCounter = 0;
+
+	let el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	let registerBlockType   = blocks.registerBlockType;
 
-	var InspectorControls 	= editor.InspectorControls;
+	let InspectorControls 	= editor.InspectorControls;
 
-	var TextControl 		= components.TextControl;
-	var Button 				= components.Button;
-	var SVG 				= components.SVG;
-	var Path 				= components.Path;
+	let TextControl 		= components.TextControl;
+	let Button 				= components.Button;
+	let SVG 				= components.SVG;
+	let Path 				= components.Path;
 	
-	var apiFetch 			= wp.apiFetch;
+	let apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-slider', {
@@ -64,10 +66,6 @@
 				type: 'bool',
 				default: false,
 			},
-			querySearchSelectedIDs: {
-				type: 'array',
-				default: [],
-			},
 			querySearchSelected: {
 				type: 'array',
 				default: [],
@@ -83,12 +81,16 @@
 		},
 		edit: function( props ) {
 
+			let attributes = props.attributes;
+			attributes.selectedIDS = attributes.selectedIDS || [];
+
+
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
 			
 			function _searchResultClass(theID){
-				var index = props.attributes.querySearchSelectedIDs.indexOf(theID);
+				let index = attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -97,9 +99,9 @@
 			}
 
 			function _sortByKeys(keys, products) {
-				var sorted =[];
-				for ( var i = 0; i < keys.length; i++ ) {
-					for ( var j = 0; j < products.length; j++ ) {
+				let sorted =[];
+				for ( let i = 0; i < keys.length; i++ ) {
+					for ( let j = 0; j < products.length; j++ ) {
 						if ( keys[i] == products[j].id ) {
 							sorted.push(products[j]);
 							break;
@@ -125,7 +127,7 @@
 			}
 
 			function _isChecked( needle, haystack ) {
-				var idx = haystack.indexOf(needle.toString());
+				let idx = haystack.indexOf(needle.toString());
 				if ( idx != - 1) {
 					return true;
 				}
@@ -133,11 +135,11 @@
 			}
 
 			function _isDonePossible() {
-				return ( (props.attributes.queryProducts.length == 0) || (props.attributes.queryProducts === props.attributes.queryProductsLast) );
+				return ( (attributes.queryProducts.length == 0) || (attributes.queryProducts === attributes.queryProductsLast) );
 			}
 
 			function _isLoading() {
-				if ( props.attributes.isLoading  === true ) {
+				if ( attributes.isLoading  === true ) {
 					return 'is-busy';
 				} else {
 					return '';
@@ -145,7 +147,7 @@
 			}
 
 			function _isLoadingText(){
-				if ( props.attributes.isLoading  === false ) {
+				if ( attributes.isLoading  === false ) {
 					return i18n.__('Update');
 				} else {
 					return i18n.__('Updating');
@@ -160,7 +162,7 @@
 			}
 
 			function getProducts() {
-				var query = props.attributes.queryProducts;
+				let query = attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
 				if (query != '') {
@@ -178,15 +180,15 @@
 			}
 
 			function renderResults() {
-				var products = props.attributes.result;
-				var wrapper = [];
+				let products = attributes.result;
+				let wrapper = [];
 
-				var productElements = [];
+				let productElements = [];
 				let dots;
 				let selectedSlide = 0;
 
 				function isSelectedSlide( idx ) {
-					if ( props.attributes.selectedSlide == idx ) {
+					if ( attributes.selectedSlide == idx ) {
 						return 'selected';
 					}
 					else return '';
@@ -310,7 +312,7 @@
 										{
 											className: 'toggle-prev toggle-arrow',
 											onClick: function onClick() {
-												let idx = props.attributes.selectedSlide;
+												let idx = attributes.selectedSlide;
 												if ( idx - 1 >= 0) {
 													props.setAttributes({ selectedSlide: idx - 1});
 												} else {
@@ -324,7 +326,7 @@
 										{
 											className: 'toggle-next toggle-arrow',
 											onClick: function onClick() {
-												let idx = props.attributes.selectedSlide;
+												let idx = attributes.selectedSlide;
 												if ( idx + 1 < productElements.length) {
 													props.setAttributes({ selectedSlide: idx + 1});
 												} else {
@@ -342,8 +344,8 @@
 			}
 
 			function _queryOrder(value) {
-				var query = props.attributes.queryProducts;
-				var idx = query.indexOf('&orderby');
+				let query = attributes.queryProducts;
+				let idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
 				}
@@ -369,9 +371,9 @@
 			}
 
 			function _getQueryOrder() {
-				if ( props.attributes.queryOrder.length < 1) return '';
-				var order = '';
-				switch ( props.attributes.queryOrder ) {
+				if ( attributes.queryOrder.length < 1) return '';
+				let order = '';
+				switch ( attributes.queryOrder ) {
 					case 'date_desc':
 						order = '&orderby=date&order=desc';
 					break;
@@ -396,21 +398,22 @@
 		//	Display ajax results
 		//==============================================================================
 			function renderSearchResults() {
-				var productElements = [];
+				let productElements = [];
 
-				if ( props.attributes.querySearchNoResults === true) {
+				if ( attributes.querySearchNoResults === true) {
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
-				var products = props.attributes.querySearchResults;
-				for ( var i = 0; i < products.length; i++ ) {
+				let products = attributes.querySearchResults;
+				for (let i = 0; i < products.length; i++ ) {
+					let img;
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span', 
 							{
-								key: 		'item-' + products[i].id,
+								key: 		'item-' + products[i].id +i + blocksCounter,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -424,20 +427,21 @@
 								el(
 									'input',
 									{
+										key: 'some fucking key',
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
-											var qSR = props.attributes.querySearchSelectedIDs;
-											var index = qSR.indexOf(products[evt.target.value].id);
+											let _this = evt.target;
+											let qSR = attributes.selectedIDS;
+											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSR });
+											props.setAttributes({ selectedIDS: qSR });
 											
-											var query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -460,21 +464,23 @@
 			}
 
 			function renderSearchSelected() {
-				var productElements = [];
-				var i;
+				let productElements = [];
+				let i;
 
-				var products = props.attributes.querySearchSelected;
-				if ( props.attributes.querySearchSelectedIDs.length < 1 ) {
-					var bugFixer = [];
-					for ( var i = 0; i < products.length; i++ ) {
-						bugFixer.push(products[i].id);
-					}
-					props.setAttributes({ querySearchSelectedIDs: bugFixer});
-				}
+				let products = attributes.querySearchSelected;
+				// if ( attributes.selectedIDS.length < 1 ) {
+				// 	let bugFixer = [];
+				// 	for ( let i = 0; i < products.length; i++ ) {
+				// 		bugFixer.push(products[i].id);
+				// 	}
+				//console.log('setting selected IDS');// 	
+				//props.setAttributes({ selectedIDS: bugFixer});
+				// }
 
-				for ( var i = 0; i < products.length; i++ ) {
+				for ( let i = 0; i < products.length; i++ ) {
+					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
@@ -496,17 +502,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
+											let _this = evt.target;
 
 											
-											var qSS = props.attributes.querySearchSelectedIDs;
-											var index = qSS.indexOf(products[evt.target.value].id);
+											let qSS = attributes.selectedIDS;
+											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSS });
+											props.setAttributes({ selectedIDS: qSS });
 											
-											var query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -534,7 +540,6 @@
 				el(
 					InspectorControls,
 					{
-						key: 'products-slider-inspector',
 					},
 					el(
 						'div',
@@ -553,13 +558,13 @@
 									key: 'query-panel-string',
 			          				type: 'search',
 			          				className: 'products-ajax-search',
-			          				value: props.attributes.querySearchString,
+			          				value: attributes.querySearchString,
 			          				placeholder: i18n.__( 'Search for products to display'),
 			          				onChange: function( newQuery ) {
 			          					props.setAttributes({ querySearchString: newQuery});
 			          					if (newQuery.length < 3) return;
 
-								        var query = getQuery('?per_page=10&search=' + newQuery);
+								        let query = getQuery('?per_page=10&search=' + newQuery);
 								        apiFetch({ path: query }).then(function (products) {
 								        	if ( products.length == 0) {
 								        		props.setAttributes({ querySearchNoResults: true});
@@ -573,14 +578,14 @@
 								},
 							),
 						),
-						props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
+						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
 						),
-						props.attributes.querySearchSelected.length > 0 && el(
+						attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
 								className: 'products-selected-results-wrapper',
