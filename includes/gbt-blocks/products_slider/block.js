@@ -178,7 +178,6 @@
 				let wrapper = [];
 
 				let productElements = [];
-				let dots;
 				let selectedSlide = 0;
 
 				function isSelectedSlide( idx ) {
@@ -188,7 +187,21 @@
 					else return '';
 				}
 				for ( let i = 0; i < products.length; i++ ) {
-					if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
+
+					let description = products[i]['short_description'].replace(/<\/?[^>]+(>|$)/g, "");
+					if( description.length > 100) {
+						description = description.substring(0, 100) + '...';
+					} else {
+						description = description.substring(0, 100);
+					}
+
+					let name = products[i]['name'];
+					if( name.length > 35) {
+						name = name.substring(0, 35) + '...';
+					} else {
+						name = name.substring(0, 35);
+					}
+
 					productElements.push(
 						el( 
 							"div", 
@@ -214,7 +227,7 @@
 											className: "gbt_18_editor_slide_title", 
 											key: "gbt_18_slide_title"
 										}, 
-										products[i]['name'] 
+										name
 									),
 									el(
 										"p",
@@ -229,7 +242,7 @@
 										{
 											className:"gbt_18_editor_slide_text", 
 											key:"gbt_18_slide_text", 
-											dangerouslySetInnerHTML: { __html: products[i]['short_description'] } 
+											dangerouslySetInnerHTML: { __html: description } 
 										},
 									),
 									el(
@@ -267,7 +280,7 @@
 							el("div",{className:"gbt_18_editor_slide_placeholder_p1", key:"gbt_18_editor_slide_placeholder_p1"} ),
 							el("div",{className:"gbt_18_editor_slide_placeholder_p2", key:"gbt_18_editor_slide_placeholder_p2"} ),
 							el("div",{className:"gbt_18_editor_slide_placeholder_p3", key:"gbt_18_editor_slide_placeholder_p3"} ),
-							el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_placeholder_add_to_cart"}, "Add To Cart"),
+							el("div",{className:"gbt_18_editor_slide_placeholder_button", key:"gbt_18_editor_slide_placeholder_button"}),
 						),
 						el( "div", { className: "gbt_18_editor_slide_placeholder_content_right", key: "gbt_18_editor_slide_placeholder_content_right"},
 							el( "div", { className: "gbt_18_editor_placeholder_image", key: "gbt_18_editor_placeholder_image"})
@@ -295,7 +308,7 @@
 									},
 									productElements,
 								),
-								el(
+								productElements.length > 1 && el(
 									'div',
 									{
 										key: 'gbt_18_slide_content_arrows',
