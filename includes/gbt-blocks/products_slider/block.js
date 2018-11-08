@@ -79,7 +79,7 @@
 		},
 		edit: function( props ) {
 
-			const attributes = props.attributes;
+			let attributes = props.attributes;
 			attributes.selectedIDS = attributes.selectedIDS || [];
 
 
@@ -97,7 +97,7 @@
 			}
 
 			function _sortByKeys(keys, products) {
-				const sorted =[];
+				let sorted =[];
 				for ( let i = 0; i < keys.length; i++ ) {
 					for ( let j = 0; j < products.length; j++ ) {
 						if ( keys[i] == products[j].id ) {
@@ -178,10 +178,10 @@
 			}
 
 			function renderResults() {
-				const products = attributes.result;
-				const wrapper = [];
+				let products = attributes.result;
+				let wrapper = [];
 
-				const productElements = [];
+				let productElements = [];
 				let dots;
 				let selectedSlide = 0;
 
@@ -342,7 +342,7 @@
 			}
 
 			function _queryOrder(value) {
-				const query = attributes.queryProducts;
+				let query = attributes.queryProducts;
 				const idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
@@ -396,12 +396,12 @@
 		//	Display ajax results
 		//==============================================================================
 			function renderSearchResults() {
-				const productElements = [];
+				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
-				const products = attributes.querySearchResults;
+				let products = attributes.querySearchResults;
 				for (let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
@@ -430,8 +430,8 @@
 										value: i,
 										onChange: function onChange(evt) {
 											const _this = evt.target;
-											const qSR = attributes.selectedIDS;
-											const index = qSR.indexOf(products[evt.target.value].id);
+											let qSR = attributes.selectedIDS;
+											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
@@ -439,7 +439,7 @@
 											}
 											props.setAttributes({ selectedIDS: qSR });
 											
-											const query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -462,7 +462,7 @@
 			}
 
 			function renderSearchSelected() {
-				const productElements = [];
+				let productElements = [];
 				const products = attributes.querySearchSelected;
 
 				for ( let i = 0; i < products.length; i++ ) {
@@ -493,14 +493,14 @@
 											const _this = evt.target;
 
 											
-											const qSS = attributes.selectedIDS;
-											const index = qSS.indexOf(products[evt.target.value].id);
+											let qSS = attributes.selectedIDS;
+											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS });
 											
-											const query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {

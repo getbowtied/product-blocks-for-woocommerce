@@ -2,22 +2,22 @@
 
 	"use strict";
 
-	var el = element.createElement;
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   = blocks.registerBlockType;
 
-	var InspectorControls 	= editor.InspectorControls;
+	const InspectorControls 	= editor.InspectorControls;
 
-	var TextControl 		= components.TextControl;
-	var SelectControl		= components.SelectControl;
-	var ToggleControl		= components.ToggleControl;
-	var RangeControl		= components.RangeControl;
-	var Button 				= components.Button;
-	var SVG 				= components.SVG;
-	var Path 				= components.Path;
+	const TextControl 		= components.TextControl;
+	const SelectControl		= components.SelectControl;
+	const ToggleControl		= components.ToggleControl;
+	const RangeControl		= components.RangeControl;
+	const Button 				= components.Button;
+	const SVG 				= components.SVG;
+	const Path 				= components.Path;
 
-	var apiFetch 			= wp.apiFetch;
+	const apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/categories-grid', {
@@ -74,10 +74,6 @@
 				type: 'bool',
 				default: false,
 			},
-			querySearchSelectedIDs: {
-				type: 'array',
-				default: [],
-			},
 			querySearchSelected: {
 				type: 'array',
 				default: [],
@@ -121,7 +117,9 @@
 		},
 		edit: function( props ) {
 
-			var className = props.className;
+			let className = props.className;
+			let attributes = props.attributes;
+			attributes.selectedIDS = attributes.selectedIDS || [];
 
 		//==============================================================================
 		//	Helper functions
@@ -137,7 +135,7 @@
 			}
 
 			function _searchResultClass(theID){
-				var index = props.attributes.querySearchSelectedIDs.indexOf(theID);
+				const index = attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -158,9 +156,9 @@
 			}
 
 			function _sortByKeys(keys, products) {
-				var sorted =[];
-				for ( var i = 0; i < keys.length; i++ ) {
-					for ( var j = 0; j < products.length; j++ ) {
+				let sorted =[];
+				for ( let i = 0; i < keys.length; i++ ) {
+					for ( let j = 0; j < products.length; j++ ) {
 						if ( keys[i] == products[j].id ) {
 							sorted.push(products[j]);
 							break;
@@ -177,7 +175,7 @@
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
 				props.setAttributes({ querySearchSelected: []});
-				props.setAttributes({ querySearchSelectedIDs: []});
+				props.setAttributes({ selectedIDS: []});
 				props.setAttributes({ queryAttributesOptionsSelected: [] });
 				props.setAttributes({ queryCategorySelected: [] });
 				props.setAttributes({result: []});
@@ -189,7 +187,7 @@
 			}
 
 			function _isChecked( needle, haystack ) {
-				var idx = haystack.indexOf(needle.toString());
+				const idx = haystack.indexOf(needle.toString());
 				if ( idx != - 1) {
 					return true;
 				}
@@ -197,11 +195,11 @@
 			}
 
 			function _isDonePossible() {
-				return ( (props.attributes.queryCategories.length == 0) || (_buildQuery(props.attributes.limit, props.attributes.orderby, props.attributes.parentOnly, props.attributes.hideEmpty) === props.attributes.queryCategoriesLast) );
+				return ( (attributes.queryCategories.length == 0) || (_buildQuery(attributes.limit, attributes.orderby, attributes.parentOnly, attributes.hideEmpty) === attributes.queryCategoriesLast) );
 			}
 
 			function _isLoading() {
-				if ( props.attributes.isLoading  === true ) {
+				if ( attributes.isLoading  === true ) {
 					return 'is-busy';
 				} else {
 					return '';
@@ -209,7 +207,7 @@
 			}
 
 			function _isLoadingText(){
-				if ( props.attributes.isLoading  === false ) {
+				if ( attributes.isLoading  === false ) {
 					return i18n.__('Update');
 				} else {
 					return i18n.__('Updating');
@@ -226,16 +224,16 @@
 			function getResult() {
 				let query;
 
-				if ( props.attributes.queryDisplayType == 'all_categories' ) {
-					query = _buildQuery(props.attributes.limit, props.attributes.orderby, props.attributes.parentOnly, props.attributes.hideEmpty);
+				if ( attributes.queryDisplayType == 'all_categories' ) {
+					query = _buildQuery(attributes.limit, attributes.orderby, attributes.parentOnly, attributes.hideEmpty);
 				} else {
-					query = props.attributes.queryCategories;
+					query = attributes.queryCategories;
 				}
 				props.setAttributes({ queryCategoriesLast: query});
 
 				if (query != '') {
 					apiFetch({ path: query }).then(function (categories) {
-						if ( props.attributes.orderby == 'menu_order' && props.attributes.queryDisplayType == 'all_categories') {
+						if ( attributes.orderby == 'menu_order' && attributes.queryDisplayType == 'all_categories') {
 							categories = _sortCategories(0, categories);
 						}
 						props.setAttributes({ result: categories});
@@ -250,8 +248,8 @@
 			}
 
 			function renderResults() {
-				if ( props.attributes.firstLoad === true ) {
-					let query = _buildQuery(props.attributes.limit, props.attributes.orderby, props.attributes.parentOnly, props.attributes.hideEmpty);
+				if ( attributes.firstLoad === true ) {
+					let query = _buildQuery(attributes.limit, attributes.orderby, attributes.parentOnly, attributes.hideEmpty);
 					apiFetch({ path: query }).then(function (categories) {
 						categories = _sortCategories(0, categories);
 						props.setAttributes({ result: categories });
@@ -269,16 +267,16 @@
 
 				function getColumns() {
 					if ( props.className.indexOf('is-style-layout-1') !== -1)  {
-						return 'columns-' + props.attributes.columns;
+						return 'columns-' + attributes.columns;
 					} else {
 						return '';
 					}
 				}
-				var categories = props.attributes.result;
-				var categoryElements = [];
-				var wrapper = [];
+				let categories = attributes.result;
+				let categoryElements = [];
+				let wrapper = [];
 
-				var class_prefix = 'gbt_18_editor_category_grid_item';
+				const class_prefix = 'gbt_18_editor_category_grid_item';
 
 				for ( let i = 0; i < categories.length; i++ ) {
 					let img = '';
@@ -304,7 +302,7 @@
 										className: 	class_prefix + '_title'
 									},
 									categories[i]['name'].replace(/&amp;/g, '&'),
-									props.attributes.productCount === true && el( 'span',
+									attributes.productCount === true && el( 'span',
 										{
 											className: 					class_prefix + '_count',
 										},
@@ -340,10 +338,10 @@
 			}
 
 			function _buildQuery(limit = 10, orderby='menu_order', parentOnly=true, hideEmpty=true) {
-				if ( props.attributes.queryDisplayType === 'specific' ) {
-					return props.attributes.queryCategories;
+				if ( attributes.queryDisplayType === 'specific' ) {
+					return attributes.queryCategories;
 				}
-				var query = getQuery('?per_page=' + limit);
+				let query = getQuery('?per_page=' + limit);
 
 				switch (orderby) {
 					case 'menu_order':
@@ -369,9 +367,9 @@
 			}
 
 			function _getQueryOrder() {
-				if ( props.attributes.queryOrder.length < 1) return '';
-				var order = '';
-				switch ( props.attributes.queryOrder ) {
+				if ( attributes.queryOrder.length < 1) return '';
+				let order = '';
+				switch ( attributes.queryOrder ) {
 					case 'date_desc':
 						order = '&orderby=date&order=desc';
 					break;
@@ -396,17 +394,18 @@
 		//	Display ajax results
 		//==============================================================================
 			function renderSearchResults() {
-				var categoryElements = [];
+				let categoryElements = [];
 
-				if ( props.attributes.querySearchNoResults == true) {
+				if ( attributes.querySearchNoResults == true) {
 					return el('span', {className: 'no-results'}, i18n.__('No categories matching.'));
 				}
-				var categories = props.attributes.querySearchResults;
-				for ( var i = 0; i < categories.length; i++ ) {
+				let categories = attributes.querySearchResults;
+				for ( let i = 0; i < categories.length; i++ ) {
+					let img;
 					if ( categories[i].image !== null && categories[i].image.src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
 					} else {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					categoryElements.push(
 						el(
@@ -429,17 +428,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
-											var qSR = props.attributes.querySearchSelectedIDs;
-											var index = qSR.indexOf(categories[evt.target.value].id);
+											let _this = evt.target;
+											let qSR = attributes.selectedIDS;
+											let index = qSR.indexOf(categories[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(categories[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSR });
+											props.setAttributes({ selectedIDS: qSR });
 											
-											var query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryCategories: query});
 											} else {
@@ -462,23 +461,24 @@
 			}
 
 			function renderSearchSelected() {
-				var categoryElements = [];
-				var i;
+				let categoryElements = [];
+				let i;
 
-				var categories = props.attributes.querySearchSelected;
-				if ( props.attributes.querySearchSelectedIDs.length < 1 ) {
-					var bugFixer = [];
-					for ( var i = 0; i < categories.length; i++ ) {
+				let categories = attributes.querySearchSelected;
+				if ( attributes.selectedIDS.length < 1 ) {
+					let bugFixer = [];
+					for ( let i = 0; i < categories.length; i++ ) {
 						bugFixer.push(categories[i].id);
 					}
-					props.setAttributes({ querySearchSelectedIDs: bugFixer});
+					props.setAttributes({ selectedIDS: bugFixer});
 				}
 
-				for ( var i = 0; i < categories.length; i++ ) {
+				for ( let i = 0; i < categories.length; i++ ) {
+					let img ='';
 					if ( categories[i].image !== null && categories[i].image.src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
 					} else {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					categoryElements.push(
 						el(
@@ -500,17 +500,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
+											let _this = evt.target;
 
 											
-											var qSS = props.attributes.querySearchSelectedIDs;
-											var index = qSS.indexOf(categories[evt.target.value].id);
+											let qSS = attributes.selectedIDS;
+											let index = qSS.indexOf(categories[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSS });
+											props.setAttributes({ selectedIDS: qSS });
 											
-											var query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryCategories: query});
 											} else {
@@ -550,7 +550,7 @@
 							{
 								key: 'query-panel-select',
 								label: i18n.__('Source:'),
-								value: props.attributes.queryDisplayType,
+								value: attributes.queryDisplayType,
 								options: [{
 									label: i18n.__('Manually pick'),
 									value: 'specific'
@@ -564,7 +564,7 @@
 							}
 						),
 					/* Pick specific producs */
-						props.attributes.queryDisplayType === 'specific' && el(
+						attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{
 								className: 'products-ajax-search-wrapper',
@@ -575,13 +575,13 @@
 									key: 'query-panel-string',
 			          				type: 'search',
 			          				className: 'products-ajax-search',
-			          				value: props.attributes.querySearchString,
+			          				value: attributes.querySearchString,
 			          				placeholder: i18n.__( 'Search for categories to display'),
 			          				onChange: function( newQuery ) {
 			          					props.setAttributes({ querySearchString: newQuery});
 			          					if (newQuery.length < 3) return;
 
-								        var query = getQuery('?per_page=10&search=' + newQuery);
+								        let query = getQuery('?per_page=10&search=' + newQuery);
 								        apiFetch({ path: query }).then(function (categories) {
 								        	if ( categories.length == 0) {
 								        		props.setAttributes({ querySearchNoResults: true});
@@ -595,14 +595,14 @@
 								},
 							),
 						),
-						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchString != '' && el(
+						attributes.queryDisplayType === 'specific' && attributes.querySearchString != '' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
 						),
-						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchSelected.length > 0 && el(
+						attributes.queryDisplayType === 'specific' && attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
 								className: 'products-selected-results-wrapper',
@@ -620,7 +620,7 @@
 								renderSearchSelected(),
 							),
 						),
-						props.attributes.queryDisplayType === 'all_categories' && [
+						attributes.queryDisplayType === 'all_categories' && [
 						el(
 							SelectControl,
 							{
@@ -632,7 +632,7 @@
 										{ value: 'title_desc',  label: 'Alphabetical Descending' },
 									],
 	              				label: i18n.__( 'Order By' ),
-	              				value: props.attributes.orderby,
+	              				value: attributes.orderby,
 	              				onChange: function( value ) {
 	              					props.setAttributes( { orderby: value } );
 								},
@@ -644,7 +644,7 @@
 								key: 'categories-grid-display-number',
 	              				label: i18n.__( 'How many product categories to display?' ),
 	              				type: 'number',
-	              				value: props.attributes.limit,
+	              				value: attributes.limit,
 	              				onChange: function( value ) {
 	              					props.setAttributes( { limit: value } );
 								},
@@ -656,7 +656,7 @@
 								id: "categories-grid-display",
 								key: 'categories-grid-display',
 	              				label: i18n.__( 'Parent Categories Only' ),
-	              				checked: props.attributes.parentOnly,
+	              				checked: attributes.parentOnly,
 	              				onChange: function( value ) {
 		              				props.setAttributes( { parentOnly: value } );
 								},
@@ -667,7 +667,7 @@
 							{
 								key: "categories-grid-hide-empty",
 	              				label: i18n.__( 'Hide Empty' ),
-	              				checked: props.attributes.hideEmpty,
+	              				checked: attributes.hideEmpty,
 	              				onChange: function( value ) {
 	              					props.setAttributes( { hideEmpty: value } );
 								},
@@ -684,7 +684,6 @@
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
 									props.setAttributes({ isLoading: true });
-									// _buildQuery(props.attributes.limit, props.attributes.orderby, props.attributes.parentOnly, props.attributes.hideEmpty);
 									_destroyTempAtts();
 									getResult();
 								},
@@ -698,7 +697,7 @@
 						{
 							key: "categories-grid-product-count",
               				label: i18n.__( 'Product Count' ),
-              				checked: props.attributes.productCount,
+              				checked: attributes.productCount,
               				onChange: function( value ) {
               					props.setAttributes({ productCount: value });
 							},
@@ -710,7 +709,7 @@
 							RangeControl,
 							{
 								key: "categories-grid-layout-1-columns",
-								value: props.attributes.columns,
+								value: attributes.columns,
 								allowReset: false,
 								initialPosition: 3,
 								min: 2,
