@@ -1,5 +1,7 @@
 ( function( blocks, components, editor, i18n, element ) {
 
+	"use strict";
+
 	var el = element.createElement;
 
 	/* Blocks */
@@ -192,19 +194,72 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
 					productElements.push(
-						el( "div", {
-							 className: "gbt_18_editor_slide_content_item slide " + isSelectedSlide(i), 
-							 key: "gbt_18_slide_content_item"},
-							el( "div", { className: "gbt_18_editor_slide_content_left", key: "gbt_18_editor_slide_content_left"},
-								el( "div", { className: "gbt_18_editor_slide_content_left_inner", key: "gbt_18_editor_slide_content_left_inner"},
-									el("h2", { className: "gbt_18_editor_slide_title", key: "gbt_18_slide_title"}, products[i]['name'] ),
-									el("p",{className:"gbt_18_editor_slide_price", key:"gbt_18_slide_price", dangerouslySetInnerHTML: { __html: products[i]['price_html'] } } ),
-									el("div",{className:"gbt_18_editor_slide_text", key:"gbt_18_slide_text", dangerouslySetInnerHTML: { __html: products[i]['short_description'] } } ),
-									el("button",{className:"gbt_18_editor_add_to_cart", key:"gbt_18_editor_add_to_cart"}, "Add To Cart"),
+						el( 
+							"div", 
+							{
+								className: "gbt_18_editor_slide_content_item slide " + isSelectedSlide(i), 
+								key: "gbt_18_slide_content_item" + 'item-' + products[i].id
+							},
+							el( 
+								"div", 
+								{
+									className: "gbt_18_editor_slide_content_left", 
+									key: "gbt_18_editor_slide_content_left"
+								},
+								el( 
+									"div", 
+									{ 
+										className: "gbt_18_editor_slide_content_left_inner", 
+										key: "gbt_18_editor_slide_content_left_inner"
+									},
+									el(
+										"h2", 
+										{ 
+											className: "gbt_18_editor_slide_title", 
+											key: "gbt_18_slide_title"
+										}, 
+										products[i]['name'] 
+									),
+									el(
+										"p",
+										{
+											className:"gbt_18_editor_slide_price", 
+											key:"gbt_18_slide_price", 
+											dangerouslySetInnerHTML: { __html: products[i]['price_html'] } 
+										},
+									),
+									el(
+										"div",
+										{
+											className:"gbt_18_editor_slide_text", 
+											key:"gbt_18_slide_text", 
+											dangerouslySetInnerHTML: { __html: products[i]['short_description'] } 
+										},
+									),
+									el(
+										"button",
+										{
+											className:"gbt_18_editor_add_to_cart", 
+											key:"gbt_18_editor_add_to_cart"
+										}, 
+										i18n.__("Add To Cart"),
+									),
 								),
 							),
-							el( "div", { className: "gbt_18_editor_slide_content_right", key: "gbt_18_editor_slide_content_right"},
-								el( "div", { className: "gbt_18_editor_image", key: "gbt_18_image", style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} })
+							el( 
+								"div", 
+								{ 
+									className: "gbt_18_editor_slide_content_right", 
+									key: "gbt_18_editor_slide_content_right"
+								},
+								el( 
+									"div", 
+									{ 
+										className: "gbt_18_editor_image", 
+										key: "gbt_18_image", 
+										style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} 
+									},
+								),
 							)
 						)
 					);
@@ -270,7 +325,6 @@
 											className: 'toggle-next toggle-arrow',
 											onClick: function onClick() {
 												let idx = props.attributes.selectedSlide;
-												console.log(idx + 1);
 												if ( idx + 1 < productElements.length) {
 													props.setAttributes({ selectedSlide: idx + 1});
 												} else {
@@ -356,6 +410,7 @@
 						el(
 							'span', 
 							{
+								key: 		'item-' + products[i].id,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -425,6 +480,7 @@
 						el(
 							'span', 
 							{
+								key: 		'item-' + products[i].id,
 								className:'single-result', 
 								title: products[i].name,
 							}, 
