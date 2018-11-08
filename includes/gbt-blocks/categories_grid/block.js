@@ -291,25 +291,21 @@
 							},
 							el( 'a',
 								{
-									key: 		class_prefix + '_img',
 									className: 	class_prefix + '_img'
 								},
 								el( 'img',
 									{
-										key: 		class_prefix + '_thumb',
 										className: 	class_prefix + '_thumb',
 										src: 		img
 									}
 									),
 								el( 'h4',
 									{
-										key: 		class_prefix + '_title',
 										className: 	class_prefix + '_title'
 									},
 									categories[i]['name'].replace(/&amp;/g, '&'),
 									props.attributes.productCount === true && el( 'span',
 										{
-											key: 						class_prefix + '_count',
 											className: 					class_prefix + '_count',
 										},
 										categories[i]['count']
@@ -549,24 +545,6 @@
 						{
 							className: 'products-main-inspector-wrapper',
 						},
-					/* Columns */
-						props.className.indexOf('is-style-layout-1') !== -1 && [
-						el(
-							RangeControl,
-							{
-								key: "categories-grid-layout-1-columns",
-								value: props.attributes.columns,
-								allowReset: false,
-								initialPosition: 3,
-								min: 2,
-								max: 6,
-								label: i18n.__( 'Columns' ),
-								onChange: function( newColumns ) {
-									props.setAttributes( { columns: newColumns } );
-								},
-							}
-						),
-						el('hr',{})],
 						el(
 							SelectControl,
 							{
@@ -729,6 +707,23 @@
 							},
 						}
 					),
+					/* Columns */
+						props.className.indexOf('is-style-layout-1') !== -1 && 
+						el(
+							RangeControl,
+							{
+								key: "categories-grid-layout-1-columns",
+								value: props.attributes.columns,
+								allowReset: false,
+								initialPosition: 3,
+								min: 2,
+								max: 6,
+								label: i18n.__( 'Columns' ),
+								onChange: function( newColumns ) {
+									props.setAttributes( { columns: newColumns } );
+								},
+							}
+						),
 				),
 				el(
 					'div',
