@@ -1,21 +1,23 @@
 ( function( blocks, components, editor, i18n, element ) {
 
-	var el = element.createElement;
+	"use strict";
+
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   = blocks.registerBlockType;
 
-	var InspectorControls 	= editor.InspectorControls;
+	const InspectorControls 	= editor.InspectorControls;
 
-	var TextControl 		= components.TextControl;
-	var SelectControl		= components.SelectControl;
-	var ToggleControl		= components.ToggleControl;
-	var RangeControl		= components.RangeControl;
-	var Button 				= components.Button;
-	var SVG 				= components.SVG;
-	var Path 				= components.Path;
+	const TextControl 		= components.TextControl;
+	const SelectControl		= components.SelectControl;
+	const ToggleControl		= components.ToggleControl;
+	const RangeControl		= components.RangeControl;
+	const Button 				= components.Button;
+	const SVG 				= components.SVG;
+	const Path 				= components.Path;
 
-	var apiFetch 			= wp.apiFetch;
+	const apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-carousel', {
@@ -64,10 +66,6 @@
 			querySearchNoResults: {
 				type: 'bool',
 				default: false,
-			},
-			querySearchSelectedIDs: {
-				type: 'array',
-				default: [],
 			},
 			querySearchSelected: {
 				type: 'array',
@@ -122,13 +120,12 @@
 				type: 'int',
 				default: 3
 			},
-		/* Selected Slide */
-			selectedSlide: {
-				type: 'int',
-				default: 0,
-			},
 		},
 		edit: function( props ) {
+
+			let attributes = props.attributes;
+			attributes.selectedIDS = attributes.selectedIDS || [];
+			attributes.selectedSlide = attributes.selectedSlide || 0;
 
 		//==============================================================================
 		//	Helper functions
@@ -142,7 +139,7 @@
 			}
 
 			function _searchResultClass(theID){
-				var index = props.attributes.querySearchSelectedIDs.indexOf(theID);
+				let index = attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -151,7 +148,7 @@
 			}
 
 			function _sortCategories( index, arr, newarr = [], level = 0) {
-				for ( var i = 0; i < arr.length; i++ ) {
+				for ( let i = 0; i < arr.length; i++ ) {
 					if ( arr[i].parent == index) {
 						arr[i].level = level;
 						newarr.push(arr[i]);
@@ -163,9 +160,9 @@
 			}
 
 			function _sortByKeys(keys, products) {
-				var sorted =[];
-				for ( var i = 0; i < keys.length; i++ ) {
-					for ( var j = 0; j < products.length; j++ ) {
+				let sorted =[];
+				for ( let i = 0; i < keys.length; i++ ) {
+					for ( let j = 0; j < products.length; j++ ) {
 						if ( keys[i] == products[j].id ) {
 							sorted.push(products[j]);
 							break;
@@ -182,7 +179,7 @@
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
 				props.setAttributes({ querySearchSelected: []});
-				props.setAttributes({ querySearchSelectedIDs: []});
+				props.setAttributes({ selectedIDS: []});
 				props.setAttributes({ queryAttributesOptionsSelected: [] });
 				props.setAttributes({ queryCategorySelected: [] });
 				props.setAttributes({result: []});
@@ -194,7 +191,7 @@
 			}
 
 			function _isChecked( needle, haystack ) {
-				var idx = haystack.indexOf(needle.toString());
+				let idx = haystack.indexOf(needle.toString());
 				if ( idx != - 1) {
 					return true;
 				}
@@ -202,11 +199,11 @@
 			}
 
 			function _isDonePossible() {
-				return ( (props.attributes.queryProducts.length == 0) || (props.attributes.queryProducts === props.attributes.queryProductsLast) );
+				return ( (attributes.queryProducts.length == 0) || (attributes.queryProducts === attributes.queryProductsLast) );
 			}
 
 			function _isLoading() {
-				if ( props.attributes.isLoading  === true ) {
+				if ( attributes.isLoading  === true ) {
 					return 'is-busy';
 				} else {
 					return '';
@@ -214,7 +211,7 @@
 			}
 
 			function _isLoadingText(){
-				if ( props.attributes.isLoading  === false ) {
+				if ( attributes.isLoading  === false ) {
 					return i18n.__('Update');
 				} else {
 					return i18n.__('Updating');
@@ -229,7 +226,7 @@
 			}
 
 			function getProducts() {
-				var query = props.attributes.queryProducts;
+				let query = attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
 				if (query != '') {
@@ -247,13 +244,14 @@
 			}
 
 			function renderResults() {
-				if ( props.attributes.firstLoad === true ) {
+				if ( attributes.firstLoad === true ) {
 					apiFetch({ path: 'wc/v2/products?per_page=10' }).then(function (products) {
 						props.setAttributes({ result: products });
 						props.setAttributes({ firstLoad: false });
-						var query = getQuery('?per_page=100');
+						let query = getQuery('?per_page=100');
 						props.setAttributes({queryProducts: query});
 						props.setAttributes({ queryDisplayType: 'all_products' });
+						props.setAttributes({ queryProductsLast: query});
 						let IDs = '';
 						for ( let i = 0; i < products.length; i++) {
 							IDs += products[i].id + ',';
@@ -262,12 +260,12 @@
 					});
 				}
 
-				var products = props.attributes.result;
-				var productElements = [];
-				var wrapper = [];
+				let products = attributes.result;
+				let productElements = [];
+				let wrapper = [];
 
 				function _isVisible(idx) {
-					if ( props.attributes.selectedSlide <= idx && idx < props.attributes.selectedSlide + props.attributes.columns ) {
+					if ( attributes.selectedSlide <= idx && idx < attributes.selectedSlide + attributes.columns ) {
 						return ' is-visible';
 					}
 
@@ -275,16 +273,16 @@
 				}
 
 				function _isNext() {
-					return (products.length-1 < props.attributes.selectedSlide + props.attributes.columns);
+					return (products.length-1 < attributes.selectedSlide + attributes.columns);
 				}
 
 				function _isPrev() {
-					return (props.attributes.selectedSlide == 0);
+					return (attributes.selectedSlide == 0);
 				}
 
 				if( products.length > 0) {
 
-					var class_prefix = 'gbt_18_carousel_product';
+					let class_prefix = 'gbt_18_carousel_product';
 
 					for ( let i = 0; i < products.length; i++ ) {
 						productElements.push(
@@ -292,6 +290,7 @@
 								{	
 									key: 		class_prefix,
 									className: 	class_prefix + _isVisible(i),
+									style: 		{ width: 100/products.length+"%"}
 								},
 								el( 'div',
 									{
@@ -337,21 +336,26 @@
 							key: 		'gbt_18_product_carousel_wrapper',
 							className: 	'gbt_18_product_carousel_wrapper'	
 						},
-							el( 'ul',
+							el(
+								'div',
 								{
-									key: 		'gbt_18_carousel_products gbt_18_carousel_slider ',
-									className: 	'gbt_18_carousel_products gbt_18_carousel_slider columns-'+props.attributes.columns
+									className: 'scrollable_wrapper',
 								},
-								productElements,
+								el( 'ul',
+									{
+										key: 		'gbt_18_carousel_products gbt_18_carousel_slider ',
+										className: 	'gbt_18_carousel_products gbt_18_carousel_slider columns-'+attributes.columns,
+										style: 		{ width: productElements.length*100/attributes.columns+"%", marginLeft: -attributes.selectedSlide*(100/attributes.columns)+"%"}
+									},
+									productElements,
+								),
 							),
 							el( 'button',
 								{
 									className: 	'toggle-prev',
 									disabled: 	_isPrev(),
 									onClick: 	function onClick() {
-										let idx = props.attributes.selectedSlide;
-										console.log(idx -1 );
-										console.log(productElements.length);
+										let idx = attributes.selectedSlide;
 										if ( idx - 1 >= 0) {
 											props.setAttributes({ selectedSlide: idx - 1});
 										} else {
@@ -365,9 +369,7 @@
 									className: 	'toggle-next',
 									disabled:  _isNext(),
 									onClick: 	function onClick() {
-										let idx = props.attributes.selectedSlide;
-										console.log(idx + 1);
-										console.log(productElements.length);
+										let idx = attributes.selectedSlide;
 										if ( idx + 1 < productElements.length) {
 											props.setAttributes({ selectedSlide: idx + 1});
 										} else {
@@ -378,78 +380,15 @@
 							),
 						),
 					);
-					
 				} 
-				// else {
-
-				// 	var class_prefix = 'gbt_18_placeholder_grid_product';
-
-				// 	for ( i = 0; i < 2; i++ ) {
-				// 		productElements.push(
-				// 			el( 'li',
-				// 				{	
-				// 					key: 		class_prefix,
-				// 					className: 	class_prefix
-				// 				},
-				// 				el( 'div',
-				// 					{
-				// 						key: 		class_prefix + '_content_wrapper',
-				// 						className: 	class_prefix + '_content_wrapper'
-				// 					},
-				// 					el( 'div',
-				// 						{
-				// 							key: 		class_prefix + '_thumbnail',
-				// 							className: 	class_prefix + '_thumbnail',
-				// 						}
-				// 					),
-				// 					el( 'div',
-				// 						{
-				// 							key: 		class_prefix + '_title',
-				// 							className: 	class_prefix + '_title'
-				// 						},
-				// 					),
-				// 					el( 'div',
-				// 						{
-				// 							key: 						class_prefix + '_price',
-				// 							className: 					class_prefix + '_price',
-				// 						}
-				// 					),
-				// 					el( 'button',
-				// 						{
-				// 							key: 		class_prefix + '_button',
-				// 							className: 	class_prefix + '_button'
-				// 						}, 
-				// 						i18n.__("Add To Cart")
-				// 					)
-				// 				)
-				// 			)
-				// 		);
-				// 	}
-
-				// 	wrapper.push(
-				// 		el( 'div',
-				// 		{
-				// 			key: 		'gbt_18_placeholder_expanding_grid_wrapper',
-				// 			className: 	'gbt_18_placeholder_expanding_grid_wrapper'	
-				// 		},
-				// 			el( 'ul',
-				// 				{
-				// 					key: 		'gbt_18_placeholder_expanding_grid_products ',
-				// 					className: 	'gbt_18_placeholder_expanding_grid_products columns-'+props.attributes.columns
-				// 				},
-				// 				productElements,
-				// 			)
-				// 		),
-				// 	);
-				// }
-
+				
 				return wrapper;
 			}
 
 			function _queryOrder(value) {
-				var query = props.attributes.queryProducts;
+				let query = attributes.queryProducts;
 				if ( query.length < 1) return;
-				var idx = query.indexOf('&orderby');
+				let idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
 				}
@@ -475,9 +414,9 @@
 			}
 
 			function _getQueryOrder() {
-				if ( props.attributes.queryOrder.length < 1) return '';
-				var order = '';
-				switch ( props.attributes.queryOrder ) {
+				if ( attributes.queryOrder.length < 1) return '';
+				let order = '';
+				switch ( attributes.queryOrder ) {
 					case 'date_desc':
 						order = '&orderby=date&order=desc';
 					break;
@@ -502,15 +441,18 @@
 		//	Display ajax results
 		//==============================================================================
 			function renderSearchResults() {
-				var productElements = [];
+				let productElements = [];
 
-				if ( props.attributes.querySearchNoResults === true) {
+				if ( attributes.querySearchNoResults === true) {
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
-				var products = props.attributes.querySearchResults;
-				for ( var i = 0; i < products.length; i++ ) {
+				let products = attributes.querySearchResults;
+				for ( let i = 0; i < products.length; i++ ) {
+					let img = '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
@@ -532,17 +474,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
-											var qSR = props.attributes.querySearchSelectedIDs;
-											var index = qSR.indexOf(products[evt.target.value].id);
+											let _this = evt.target;
+											let qSR = attributes.selectedIDS;
+											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSR });
+											props.setAttributes({ selectedIDS: qSR });
 											
-											var query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -565,21 +507,24 @@
 			}
 
 			function renderSearchSelected() {
-				var productElements = [];
-				var i;
+				let productElements = [];
+				let i;
 
-				var products = props.attributes.querySearchSelected;
-				if ( props.attributes.querySearchSelectedIDs.length < 1 ) {
-					var bugFixer = [];
-					for ( var i = 0; i < products.length; i++ ) {
+				let products = attributes.querySearchSelected;
+				if ( attributes.selectedIDS.length < 1 ) {
+					let bugFixer = [];
+					for ( let i = 0; i < products.length; i++ ) {
 						bugFixer.push(products[i].id);
 					}
-					props.setAttributes({ querySearchSelectedIDs: bugFixer});
+					props.setAttributes({ selectedIDS: bugFixer});
 				}
 
-				for ( var i = 0; i < products.length; i++ ) {
+				for ( let i = 0; i < products.length; i++ ) {
+					let img = '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
@@ -600,17 +545,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
+											let _this = evt.target;
 
 											
-											var qSS = props.attributes.querySearchSelectedIDs;
-											var index = qSS.indexOf(products[evt.target.value].id);
+											let qSS = attributes.selectedIDS;
+											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSS });
+											props.setAttributes({ selectedIDS: qSS });
 											
-											var query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -632,11 +577,11 @@
 			}
 
 			function renderCategories( parent = 0, level = 0 ) {
-				var categoryElements = [];
-				var catArr = props.attributes.queryCategoryOptions;
+				let categoryElements = [];
+				let catArr = attributes.queryCategoryOptions;
 				if ( catArr.length > 0 )
 				{
-					for ( var i = 0; i < catArr.length; i++ ) {
+					for ( let i = 0; i < catArr.length; i++ ) {
 						if ( catArr[i].parent !=  parent ) { continue; };
 						categoryElements.push(
 							el(
@@ -657,18 +602,18 @@
 											value: catArr[i].value,
 											'data-index': i,
 											'data-parent': catArr[i].parent,
-											checked: _isChecked(catArr[i].value, props.attributes.queryCategorySelected),
+											checked: _isChecked(catArr[i].value, attributes.queryCategorySelected),
 											onChange: function onChange(evt){
-												var idx = Number(evt.target.dataset.index);
+												let idx = Number(evt.target.dataset.index);
 												if (evt.target.checked === true) {
-													var qCS = props.attributes.queryCategorySelected;
-													var index = qCS.indexOf(evt.target.value);
+													let qCS = attributes.queryCategorySelected;
+													let index = qCS.indexOf(evt.target.value);
 													if (index == -1) {
 														qCS.push(evt.target.value);
 													}
-													for (var j = idx + 1; j < catArr.length - 1; j++) {
+													for (let j = idx + 1; j < catArr.length - 1; j++) {
 														if ( catArr[idx].level < catArr[j].level) {
-															var index2 = qCS.indexOf(catArr[j].value.toString());
+															let index2 = qCS.indexOf(catArr[j].value.toString());
 															if (index2 == -1) {
 																qCS.push(catArr[j].value.toString());
 															}
@@ -678,14 +623,14 @@
 													}
 													props.setAttributes({ queryCategorySelected: qCS });
 												} else {
-													var qCS = props.attributes.queryCategorySelected;
-													var index = qCS.indexOf(evt.target.value);
+													let qCS = attributes.queryCategorySelected;
+													let index = qCS.indexOf(evt.target.value);
 													if (index > -1) {
 													  qCS.splice(index, 1);
 													}
-													for (var j = idx + 1; j < catArr.length - 1; j++) {
+													for (let j = idx + 1; j < catArr.length - 1; j++) {
 														if ( catArr[idx].level < catArr[j].level) {
-															var index2 = qCS.indexOf(catArr[j].value.toString());
+															let index2 = qCS.indexOf(catArr[j].value.toString());
 															if (index2 > -1) {
 																qCS.splice(index2, 1);
 															}
@@ -695,8 +640,8 @@
 													}
 													props.setAttributes({ queryCategorySelected: qCS });
 												};
-												if ( props.attributes.queryCategorySelected.length > 0 ) {
-													var query = getQuery('?per_page=100&category=' + props.attributes.queryCategorySelected.join(','));
+												if ( attributes.queryCategorySelected.length > 0 ) {
+													let query = getQuery('?per_page=100&category=' + attributes.queryCategorySelected.join(','));
 													query = query + _getQueryOrder();
 													props.setAttributes({ queryProducts: query});
 												} else {
@@ -720,7 +665,7 @@
 					} 
 				}	
 				if (categoryElements.length > 0 ) {
-					var wrapper = el('ul', {className: 'level-' + level}, categoryElements);
+					let wrapper = el('ul', {className: 'level-' + level}, categoryElements);
 					return wrapper;		
 				} else {
 					return;
@@ -728,11 +673,11 @@
 			}
 
 			function renderAttributes() {
-				var attributeElements = [];
-				var attArr = props.attributes.queryAttributesOptionsValues;
+				let attributeElements = [];
+				let attArr = attributes.queryAttributesOptionsValues;
 				if ( attArr.length > 0 )
 				{
-					for ( i = 0; i < attArr.length; i++ ) {
+					for ( let i = 0; i < attArr.length; i++ ) {
 						attributeElements.push(
 							el(
 							'label',
@@ -745,25 +690,25 @@
 										type:  'checkbox',
 										key:   'attribute-checkbox-' + attArr[i].value,
 										value: attArr[i].value,
-										checked: _isChecked(attArr[i].value, props.attributes.queryAttributesOptionsSelected),
+										checked: _isChecked(attArr[i].value, attributes.queryAttributesOptionsSelected),
 										onChange: function onChange(evt){
 											if (evt.target.checked === true) {
-												var qCS = props.attributes.queryAttributesOptionsSelected;
-												var index = qCS.indexOf(evt.target.value);
+												let qCS = attributes.queryAttributesOptionsSelected;
+												let index = qCS.indexOf(evt.target.value);
 												if (index == -1) {
 													qCS.push(evt.target.value);
 												}
 												props.setAttributes({ queryAttributesOptionsSelected: qCS });
 											} else {
-												var qCS = props.attributes.queryAttributesOptionsSelected;
-												var index = qCS.indexOf(evt.target.value);
+												let qCS = attributes.queryAttributesOptionsSelected;
+												let index = qCS.indexOf(evt.target.value);
 												if (index > -1) {
 												  qCS.splice(index, 1);
 												}
 												props.setAttributes({ queryAttributesOptionsSelected: qCS });
 											};
-											if ( props.attributes.queryAttributesOptionsSelected.length > 0 ) {
-												var query = getQuery('?attribute=' + props.attributes.queryAttributesSelectedSlug + '&attribute_term='+ props.attributes.queryAttributesOptionsSelected.join(','));
+											if ( attributes.queryAttributesOptionsSelected.length > 0 ) {
+												let query = getQuery('?attribute=' + attributes.queryAttributesSelectedSlug + '&attribute_term='+ attributes.queryAttributesOptionsSelected.join(','));
 												query = query + _getQueryOrder();
 												props.setAttributes({ queryProducts: query});
 											} else {
@@ -786,14 +731,14 @@
 			}
 
 			function renderOrderby() {
-				var _returnArr= [];
+				let _returnArr= [];
 				_returnArr.push(
 					el(
 						SelectControl,
 						{
 							key: 'query-panel-orderby',
 							label: i18n.__('Order By:'),
-							value: props.attributes.queryOrder,
+							value: attributes.queryOrder,
 							className: 'orderby-wrapper',
 							options: [{
 								label: i18n.__('Newness - newest first'),
@@ -823,16 +768,16 @@
 		//	Get ajax results
 		//==============================================================================
 			function getCategories() {
-				var query = getQuery('/categories?&per_page=100');
-				var options = [];
-				var sorted = [];
+				let query = getQuery('/categories?&per_page=100');
+				let options = [];
+				let sorted = [];
 
 				apiFetch({ path: query }).then(function (categories) {
-				 	for( i = 0; i < categories.length; i++ ) {
+				 	for ( let i = 0; i < categories.length; i++ ) {
 		        		options[i] = {'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id, 'parent': categories[i].parent, 'count': categories[i].count };
 		        	}
 
-		        	for ( i = 0; i < options.length; i++ ) {
+		        	for ( let i = 0; i < options.length; i++ ) {
 
 		        	}
 		        	sorted = _sortCategories(0, options);
@@ -841,12 +786,12 @@
 			}
 
 			function getAttributes() {
-				var query = getQuery('/attributes');
-				var options = [];
+				let query = getQuery('/attributes');
+				let options = [];
 				options.push({'label': 'Choose', 'value': ' '});
 
 				apiFetch({ path: query }).then(function (categories) {
-				 	for( i = 0; i < categories.length; i++ ) {
+				 	for ( let i = 0; i < categories.length; i++ ) {
 		        		options.push({'label': categories[i].name.replace(/&amp;/g, '&'), 'value': categories[i].id });
 		        	}
 
@@ -855,19 +800,19 @@
 			}
 
 			function getAttributesOptions( term ) {
-				var query = getQuery('/attributes/'+term+'/terms');
-				var options = [];
+				let query = getQuery('/attributes/'+term+'/terms');
+				let options = [];
 				apiFetch({ path: query }).then(function (attributes) {
-				 	for( i = 0; i < attributes.length; i++ ) {
+				 	for ( let i = 0; i < attributes.length; i++ ) {
 		        		options[i] = {'label': attributes[i].name.replace(/&amp;/g, '&'), 'value': attributes[i].id, 'count': attributes[i].count};
 		        	}
 
 		        	props.setAttributes({queryAttributesOptionsValues: options});
 				});
 
-				var query = getQuery('/attributes/'+term);
+				let query2 = getQuery('/attributes/'+term);
 
-				apiFetch({ path: query }).then(function (attributes) {
+				apiFetch({ path: query2 }).then(function (attributes) {
 			     	props.setAttributes({queryAttributesSelectedSlug: attributes.slug});
 				});
 			}
@@ -891,7 +836,7 @@
 							{
 								key: 'query-panel-select',
 								label: i18n.__('Source:'),
-								value: props.attributes.queryDisplayType,
+								value: attributes.queryDisplayType,
 								options: [{
 									label: i18n.__('Choose an Option'),
 									value: 'default'
@@ -909,7 +854,7 @@
 									value: 'all_products'
 								}],
 								onChange: function onChange(value) {
-									if ( props.attributes.queryProducts != '' ) {
+									if ( attributes.queryProducts != '' ) {
 										if ( window.confirm(i18n.__("Changing the product source will lose the current selection.")) === false) {
 											return;
 										}
@@ -919,7 +864,7 @@
 										getCategories();
 									}
 									if ( value === 'all_products') {
-										var query = getQuery('?per_page=100');
+										let query = getQuery('?per_page=100');
 										props.setAttributes({queryProducts: query});
 									}
 									return props.setAttributes({ queryDisplayType: value });
@@ -927,7 +872,7 @@
 							}
 						),
 					/* Pick specific producs */
-						props.attributes.queryDisplayType === 'specific' && el(
+						attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{
 								className: 'products-ajax-search-wrapper',
@@ -938,13 +883,13 @@
 									key: 'query-panel-string',
 			          				type: 'search',
 			          				className: 'products-ajax-search',
-			          				value: props.attributes.querySearchString,
+			          				value: attributes.querySearchString,
 			          				placeholder: i18n.__( 'Search for products to display'),
 			          				onChange: function( newQuery ) {
 			          					props.setAttributes({ querySearchString: newQuery});
 			          					if (newQuery.length < 3) return;
 
-								        var query = getQuery('?per_page=10&search=' + newQuery);
+								        let query = getQuery('?per_page=10&search=' + newQuery);
 								        apiFetch({ path: query }).then(function (products) {
 								        	if ( products.length == 0) {
 								        		props.setAttributes({ querySearchNoResults: true});
@@ -958,14 +903,14 @@
 								},
 							),
 						),
-						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
+						attributes.queryDisplayType === 'specific' && attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
 						),
-						props.attributes.queryDisplayType === 'specific' && props.attributes.querySearchSelected.length > 0 && el(
+						attributes.queryDisplayType === 'specific' && attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
 								className: 'products-selected-results-wrapper',
@@ -984,21 +929,21 @@
 							),
 						),
 					/* Display by category */
-						props.attributes.queryDisplayType === 'by_category' && el(
+						attributes.queryDisplayType === 'by_category' && el(
 							'div',
 							{
 								className: 'category-result-wrapper',
 							},
 							renderCategories(),
 						),
-						props.attributes.queryDisplayType === 'by_category' && renderOrderby(),
+						attributes.queryDisplayType === 'by_category' && renderOrderby(),
 					/* Filter by */
-						props.attributes.queryDisplayType === 'filter_by'  && el (
+						attributes.queryDisplayType === 'filter_by'  && el (
 							SelectControl,
 							{
 								key: 'query-panel-filter',
 								// label: i18n.__('Pick one or more categories'),
-								value: props.attributes.queryFilterSelected,
+								value: attributes.queryFilterSelected,
 								options: [{
 											label: 'Filter by',
 											value: '',
@@ -1022,20 +967,20 @@
 									if (value === 'attributes') {
 										getAttributes();
 									} else {
-										var query = getQuery('?'+value+'=1');
+										let query = getQuery('?'+value+'=1');
 										// query = query + _getQueryOrder();
 										props.setAttributes({ queryProducts: query });
 									}
 								}
 							},
 						),
-						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && el (
+						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected === 'attributes' && el (
 							SelectControl,
 							{
 								key: 'query-panel-attributes',
 								// label: i18n.__('Pick one or more categories'),
-								value: props.attributes.queryAttributesSelected,
-								options: props.attributes.queryAttributesOptions,
+								value: attributes.queryAttributesSelected,
+								options: attributes.queryAttributesOptions,
 								onChange: function onChange(value) {
 									_destroyQuery();
 									props.setAttributes({ queryAttributesSelected: value });
@@ -1043,16 +988,16 @@
 								}
 							},
 						),
-						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected === 'attributes' && props.attributes.queryAttributesSelected !== '' && el (
+						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected === 'attributes' && attributes.queryAttributesSelected !== '' && el (
 							'div',
 							{ 
 								className: 'attributes-results-wrapper'
 							},
 							renderAttributes(),
 						),
-						props.attributes.queryDisplayType === 'filter_by' && props.attributes.queryFilterSelected != '' && renderOrderby(),
+						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected != '' && renderOrderby(),
 					/* All products */
-						props.attributes.queryDisplayType === 'all_products'
+						attributes.queryDisplayType === 'all_products'
 						 && renderOrderby(),
 					/* Load all products */
 						el(
@@ -1072,7 +1017,7 @@
 						el(
 							RangeControl,
 							{
-								value: props.attributes.columns,
+								value: attributes.columns,
 								allowReset: false,
 								initialPosition: 3,
 								min: 2,
@@ -1094,8 +1039,7 @@
 			];
 		},
 
-		save: function( props ) {
-			props.attributes.selectedSlide= 0;
+		save: function() {
         	return null;
 		},
 	} );

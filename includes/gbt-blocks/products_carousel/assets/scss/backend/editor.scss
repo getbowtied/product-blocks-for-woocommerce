@@ -70,12 +70,16 @@
 			content: '\e901';
 			color: #000;
 		}
-		   
+		.scrollable_wrapper{
+			width: 100%;
+			overflow: hidden;
+		}
 		ul.gbt_18_carousel_products {
 
 			position: relative;
 			transition: opacity .2s ease-in-out;
 			width: 100%;
+			transition: all .3s ease-in-out;
 			
 			&:after {
 				clear: both;
@@ -97,11 +101,11 @@
 		    	list-style-type: none;
 		    	text-align: center;
 		    	padding: 0 10px 10px;
-		    	display: none;
+		    	// display: none;
 		    	
-		    	&.is-visible {
-		    		display: block;
-		    	}
+		    	// &.is-visible {
+		    	// 	display: block;
+		    	// }
 
 		    	.gbt_18_carousel_product_content_wrapper {
 		    		cursor: pointer;
