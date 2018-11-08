@@ -1,4 +1,7 @@
 ( function( blocks, components, editor, i18n, element ) {
+
+	"use strict";
+
 	var el = element.createElement;
 
 	/* Blocks */
@@ -248,7 +251,7 @@
 
 			function renderResults() {
 				if ( props.attributes.firstLoad === true ) {
-					query = _buildQuery(props.attributes.limit, props.attributes.orderby, props.attributes.parentOnly, props.attributes.hideEmpty);
+					let query = _buildQuery(props.attributes.limit, props.attributes.orderby, props.attributes.parentOnly, props.attributes.hideEmpty);
 					apiFetch({ path: query }).then(function (categories) {
 						categories = _sortCategories(0, categories);
 						props.setAttributes({ result: categories });
@@ -277,13 +280,13 @@
 
 				var class_prefix = 'gbt_18_editor_category_grid_item';
 
-				for ( i = 0; i < categories.length; i++ ) {
+				for ( let i = 0; i < categories.length; i++ ) {
 					let img = '';
 					if ( categories[i].image !== null ) { img = categories[i]['image']['src'] } else { img= getbowtied_pbw.woo_placeholder_image };
 					categoryElements.push(
 						el( 'div',
 							{	
-								key: 		class_prefix,
+								key: 		'item-' + categories[i].id,
 								className: 	class_prefix
 							},
 							el( 'a',
@@ -413,6 +416,7 @@
 						el(
 							'span', 
 							{
+								key: 	   'item-' + categories[i].id,
 								className: _searchResultClass(categories[i].id),
 								title: categories[i].name.replace(/&amp;/g, '&'),
 								'data-index': i,
@@ -484,6 +488,7 @@
 						el(
 							'span', 
 							{
+								key 	 : 'item-' + categories[i].id,
 								className:'single-result', 
 								title: categories[i].name.replace(/&amp;/g, '&'),
 							}, 
@@ -579,19 +584,6 @@
 									value: 'all_categories'
 								}],
 								onChange: function onChange(value) {
-									// if ( props.attributes.queryCategories != '' ) {
-									// 	if ( window.confirm(i18n.__("Changing the product source will lose the current selection.")) === false) {
-									// 		return;
-									// 	}
-									// }
-		       						//    					_destroyQuery();
-									// if ( value === 'by_category') {
-									// 	getCategories();
-									// }
-									// if ( value === 'all_categories') {
-									// 	var query = getQuery('?per_page=-1');
-									// 	props.setAttributes({queryCategories: query});
-									// }
 									return props.setAttributes({ queryDisplayType: value });
 								}
 							}
@@ -679,7 +671,6 @@
 	              				type: 'number',
 	              				value: props.attributes.limit,
 	              				onChange: function( value ) {
-	              					// console.log(value);
 	              					props.setAttributes( { limit: value } );
 								},
 							},
