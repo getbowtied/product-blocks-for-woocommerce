@@ -2,21 +2,19 @@
 
 	"use strict";
 
-	let blocksCounter = 0;
-
-	let el = element.createElement;
+	const el = element.createElement;
 
 	/* Blocks */
-	let registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   = blocks.registerBlockType;
 
-	let InspectorControls 	= editor.InspectorControls;
+	const InspectorControls 	= editor.InspectorControls;
 
-	let TextControl 		= components.TextControl;
-	let Button 				= components.Button;
-	let SVG 				= components.SVG;
-	let Path 				= components.Path;
+	const TextControl 		= components.TextControl;
+	const Button 				= components.Button;
+	const SVG 				= components.SVG;
+	const Path 				= components.Path;
 	
-	let apiFetch 			= wp.apiFetch;
+	const apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-slider', {
@@ -81,7 +79,7 @@
 		},
 		edit: function( props ) {
 
-			let attributes = props.attributes;
+			const attributes = props.attributes;
 			attributes.selectedIDS = attributes.selectedIDS || [];
 
 
@@ -90,7 +88,7 @@
 		//==============================================================================
 			
 			function _searchResultClass(theID){
-				let index = attributes.selectedIDS.indexOf(theID);
+				const index = attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -99,7 +97,7 @@
 			}
 
 			function _sortByKeys(keys, products) {
-				let sorted =[];
+				const sorted =[];
 				for ( let i = 0; i < keys.length; i++ ) {
 					for ( let j = 0; j < products.length; j++ ) {
 						if ( keys[i] == products[j].id ) {
@@ -127,7 +125,7 @@
 			}
 
 			function _isChecked( needle, haystack ) {
-				let idx = haystack.indexOf(needle.toString());
+				const idx = haystack.indexOf(needle.toString());
 				if ( idx != - 1) {
 					return true;
 				}
@@ -162,7 +160,7 @@
 			}
 
 			function getProducts() {
-				let query = attributes.queryProducts;
+				const query = attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
 				if (query != '') {
@@ -180,10 +178,10 @@
 			}
 
 			function renderResults() {
-				let products = attributes.result;
-				let wrapper = [];
+				const products = attributes.result;
+				const wrapper = [];
 
-				let productElements = [];
+				const productElements = [];
 				let dots;
 				let selectedSlide = 0;
 
@@ -312,7 +310,7 @@
 										{
 											className: 'toggle-prev toggle-arrow',
 											onClick: function onClick() {
-												let idx = attributes.selectedSlide;
+												const idx = attributes.selectedSlide;
 												if ( idx - 1 >= 0) {
 													props.setAttributes({ selectedSlide: idx - 1});
 												} else {
@@ -326,7 +324,7 @@
 										{
 											className: 'toggle-next toggle-arrow',
 											onClick: function onClick() {
-												let idx = attributes.selectedSlide;
+												const idx = attributes.selectedSlide;
 												if ( idx + 1 < productElements.length) {
 													props.setAttributes({ selectedSlide: idx + 1});
 												} else {
@@ -344,8 +342,8 @@
 			}
 
 			function _queryOrder(value) {
-				let query = attributes.queryProducts;
-				let idx = query.indexOf('&orderby');
+				const query = attributes.queryProducts;
+				const idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
 				}
@@ -398,14 +396,14 @@
 		//	Display ajax results
 		//==============================================================================
 			function renderSearchResults() {
-				let productElements = [];
+				const productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
-				let products = attributes.querySearchResults;
+				const products = attributes.querySearchResults;
 				for (let i = 0; i < products.length; i++ ) {
-					let img;
+					let img = '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					}
@@ -413,7 +411,7 @@
 						el(
 							'span', 
 							{
-								key: 		'item-' + products[i].id +i + blocksCounter,
+								key: 		'item-' + products[i].id +i,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -431,9 +429,9 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											let _this = evt.target;
-											let qSR = attributes.selectedIDS;
-											let index = qSR.indexOf(products[evt.target.value].id);
+											const _this = evt.target;
+											const qSR = attributes.selectedIDS;
+											const index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
@@ -441,7 +439,7 @@
 											}
 											props.setAttributes({ selectedIDS: qSR });
 											
-											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											const query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -464,18 +462,8 @@
 			}
 
 			function renderSearchSelected() {
-				let productElements = [];
-				let i;
-
-				let products = attributes.querySearchSelected;
-				// if ( attributes.selectedIDS.length < 1 ) {
-				// 	let bugFixer = [];
-				// 	for ( let i = 0; i < products.length; i++ ) {
-				// 		bugFixer.push(products[i].id);
-				// 	}
-				//console.log('setting selected IDS');// 	
-				//props.setAttributes({ selectedIDS: bugFixer});
-				// }
+				const productElements = [];
+				const products = attributes.querySearchSelected;
 
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
@@ -502,17 +490,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											let _this = evt.target;
+											const _this = evt.target;
 
 											
-											let qSS = attributes.selectedIDS;
-											let index = qSS.indexOf(products[evt.target.value].id);
+											const qSS = attributes.selectedIDS;
+											const index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS });
 											
-											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											const query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -564,7 +552,7 @@
 			          					props.setAttributes({ querySearchString: newQuery});
 			          					if (newQuery.length < 3) return;
 
-								        let query = getQuery('?per_page=10&search=' + newQuery);
+								        const query = getQuery('?per_page=10&search=' + newQuery);
 								        apiFetch({ path: query }).then(function (products) {
 								        	if ( products.length == 0) {
 								        		props.setAttributes({ querySearchNoResults: true});
