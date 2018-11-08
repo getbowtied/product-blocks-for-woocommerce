@@ -552,9 +552,6 @@
 								label: i18n.__('Source:'),
 								value: props.attributes.queryDisplayType,
 								options: [{
-									label: i18n.__('Choose an Option'),
-									value: 'default'
-								}, {
 									label: i18n.__('Manually pick'),
 									value: 'specific'
 								}, {
