@@ -1,0 +1,200 @@
+@font-face {
+  font-family: 'product-blocks';
+  src: url("fonts/product-blocks.woff2?f6hoyl") format("woff2"), url("fonts/product-blocks.ttf?f6hoyl") format("truetype"), url("fonts/product-blocks.woff?f6hoyl") format("woff"), url("fonts/product-blocks.svg?f6hoyl#product-blocks") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide {
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    -webkit-transition: opacity .4s ease-in-out;
+    -o-transition: opacity .4s ease-in-out;
+    transition: opacity .4s ease-in-out; }
+    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide.selected {
+      opacity: 1;
+      height: 100%;
+      visibility: visible; }
+    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_left,
+    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_right {
+      width: 50%;
+      float: left; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_image {
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 100%;
+    height: 0;
+    width: 100%; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart {
+    background: #eeeeee;
+    display: block;
+    color: #333;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    padding: 8px 17px;
+    outline: 0;
+    margin-top: 25px; }
+    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart:hover {
+      background: #e4e4e4; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
+    margin-left: 2%;
+    position: absolute;
+    bottom: 15px; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'product-blocks';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    border: none;
+    outline: 0;
+    display: inline;
+    padding: 3px;
+    cursor: pointer;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev {
+    margin-right: 3px; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before {
+    content: '\e903';
+    color: #000; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
+    content: '\e902';
+    color: #000; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev,
+.editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next {
+  z-index: 100; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev:before,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next:before {
+    font-size: 18px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev {
+  left: 7px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next {
+  left: 30px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left {
+  text-align: left; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title {
+  line-height: 1.5;
+  font-size: 18px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price,
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title {
+  margin: 0.5em 0; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_text {
+  font-size: 14px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_add_to_cart,
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price {
+  font-size: 13px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left {
+  padding: 2%; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_content_left {
+  padding: 5%; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_add_to_cart,
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_price {
+  font-size: 14px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_text {
+  font-size: 16px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_slide_content_arrows {
+  margin-left: 5%;
+  position: absolute;
+  bottom: 58px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev:before,
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next:before {
+  font-size: 20px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev {
+  left: 35px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next {
+  left: 60px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_default_slider {
+  padding: 0 16px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_content_left {
+  padding: 5%; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_title {
+  line-height: 1.5;
+  font-size: 24px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_text {
+  margin: 2rem 0;
+  font-size: 16px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_slide_content_arrows {
+  margin-left: 4%;
+  position: absolute;
+  bottom: 10%; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_add_to_cart,
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_price,
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_text p {
+  font-size: 16px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .toggle-prev:before,
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .toggle-next:before {
+  font-size: 20px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .toggle-prev {
+  left: 35px; }
+
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .toggle-next {
+  left: 60px; }
+
+@media screen and (max-width: 1024px) {
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
+    padding: 2%; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
+    font-size: 16px; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
+    font-size: 11px; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
+    margin-left: 2%;
+    bottom: 0; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
+    font-size: 15px; } }
+
+@media screen and (min-width: 1025px) and (max-width: 1240px) {
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
+    font-size: 18px; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
+    margin-left: 10px;
+    bottom: 2%; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
+    padding: 3%; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
+    font-size: 12px; }
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
+  .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
+    font-size: 15px; } }
