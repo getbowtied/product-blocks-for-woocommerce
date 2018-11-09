@@ -465,7 +465,7 @@
 				let i;
 
 				let categories = attributes.querySearchSelected;
-				if ( attributes.selectedIDS.length < 1 ) {
+				if ( attributes.selectedIDS.length < 1 && categories.length > 0) {
 					let bugFixer = [];
 					for ( let i = 0; i < categories.length; i++ ) {
 						bugFixer.push(categories[i].id);

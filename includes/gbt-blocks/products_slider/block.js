@@ -415,6 +415,8 @@
 					let img = '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
@@ -474,10 +476,20 @@
 				let productElements = [];
 				const products = attributes.querySearchSelected;
 
+				if ( attributes.selectedIDS.length < 1 && products.length > 0) {
+					let bugFixer = [];
+					for ( let i = 0; i < products.length; i++ ) {
+						bugFixer.push(products[i].id);
+					}
+					props.setAttributes({ selectedIDS: bugFixer});
+				}
+
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
