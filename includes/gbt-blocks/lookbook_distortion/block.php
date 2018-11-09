@@ -12,21 +12,21 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'product_id'					=> '',
-		'bg_color'						=> '#abb7c3',
-		'text_color'					=> '#ffffff',
+		'productIDs'					=> '',
+		'bgColor'						=> '#abb7c3',
+		'textColor'					=> '#ffffff',
 		'animation'						=> 'animation-1',
 		'align'							=> 'center',
 	), $attributes ) );
 
 	ob_start();
 
-	if( $product_id ) :
+	if( $productIDs ) :
 
 		$products = wc_get_products( [
 			'status' 			=> 'publish',
 			'posts_per_page' 	=> 1,
-			'include' 			=> [$product_id]
+			'include' 			=> [$productIDs]
 		] );
 
 		if ( $products ) :
@@ -49,11 +49,11 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                    <img src="<?php echo $image; ?>" alt="Imafdsge"/>
 		                    <img src="<?php echo $image2; ?>" alt="Imfdsage"/>
 		                </div>
-		                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bg_color; ?>;">
+		                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bgColor; ?>;">
 		                    <div class="gbt_18_text_wrapper">
-		                        <h2 style="color:<?php echo $text_color; ?>"><?php echo $product->get_name(); ?></h2>
-		                        <p style="color:<?php echo $text_color; ?>"><?php echo $product->get_short_description(); ?></p>
-		                        <span class="gbt_18_product_price" style="color:<?php echo $text_color; ?>">
+		                        <h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
+		                        <p style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></p>
+		                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">
 		                            <?php echo $product->get_price_html(); ?>
 		                        </span>
 		                        <?php if ( $product->get_type() == 'simple' ): ?>

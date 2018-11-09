@@ -4,6 +4,8 @@
   padding-top: 15px; }
   .products-main-inspector-wrapper .products-ajax-search-wrapper {
     position: relative; }
+    .products-main-inspector-wrapper .products-ajax-search-wrapper.is-disabled .components-base-control__field {
+      opacity: .3; }
     .products-main-inspector-wrapper .products-ajax-search-wrapper .components-base-control__field:before {
       display: inline-block;
       width: 20px;

@@ -1,14 +1,16 @@
 ( function( blocks, components, editor, i18n, element ) {
 
-	var el = element.createElement;
+	"use strict";
+
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   = blocks.registerBlockType;
 
-	var InnerBlock 			= editor.InnerBlocks;
+	const InnerBlock 			= editor.InnerBlocks;
 	
-	var SVG 				= components.SVG;
-	var Path 				= components.Path;
+	const SVG 				= components.SVG;
+	const Path 				= components.Path;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-distortion', {
@@ -21,7 +23,7 @@
 
 		edit: function( props ) {
 
-			var attributes = props.attributes;
+			let attributes = props.attributes;
 
 			return [
 				el( 'div',

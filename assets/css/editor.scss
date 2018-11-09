@@ -4,6 +4,12 @@
         padding-top: 15px;
     .products-ajax-search-wrapper {
         position: relative;
+        
+        &.is-disabled{
+            .components-base-control__field {
+                opacity: .3;
+            }
+        }
         .components-base-control__field {
             &:before {
                 display: inline-block;

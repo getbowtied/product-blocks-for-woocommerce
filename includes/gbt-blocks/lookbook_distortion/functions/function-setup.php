@@ -81,15 +81,15 @@ if ( ! function_exists( 'getbowtied_lookbook_distortion_assets' ) ) {
 register_block_type( 'getbowtied/lookbook-distortion-product', array(
 
 	'attributes'      	=> array(
-		'product_id' 					=> array(
-			'type'						=> 'number',
+		'productIDs' 					=> array(
+			'type'						=> 'string',
 			'default'					=> '',
 		),
-		'bg_color'						=> array(
+		'bgColor'						=> array(
 			'type'						=> 'string',
 			'default'					=> '#abb7c3'
 		),
-		'text_color'					=> array(
+		'textColor'					=> array(
 			'type'						=> 'string',
 			'default'					=> '#ffffff'
 		),
