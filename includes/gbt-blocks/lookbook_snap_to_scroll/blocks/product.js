@@ -1,21 +1,23 @@
 ( function( blocks, components, editor, i18n, element ) {
 
-	var el = element.createElement;
+	"use strict";
+
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   = blocks.registerBlockType;
 
-	var InspectorControls 	= editor.InspectorControls;
-	var MediaUpload			= editor.MediaUpload;
+	const InspectorControls 	= editor.InspectorControls;
+	const MediaUpload			= editor.MediaUpload;
 
-	var Button				= components.Button;
-	var TextControl 		= components.TextControl;
-	var SelectControl		= components.SelectControl;
-	var RangeControl		= components.RangeControl;
-	var SVG 				= components.SVG;
-	var Path 				= components.Path;
+	const Button				= components.Button;
+	const TextControl 		= components.TextControl;
+	const SelectControl		= components.SelectControl;
+	const RangeControl		= components.RangeControl;
+	const SVG 				= components.SVG;
+	const Path 				= components.Path;
 
-	var apiFetch 			= wp.apiFetch;
+	const apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-snap-to-scroll-product', {
@@ -81,10 +83,6 @@
 				type: 'bool',
 				default: false,
 			},
-			querySearchSelectedIDs: {
-				type: 'array',
-				default: [],
-			},
 			querySearchSelected: {
 				type: 'array',
 				default: [],
@@ -101,9 +99,10 @@
 
 		edit: function( props ) {
 
-			var attributes = props.attributes;
+			let attributes = props.attributes;
+			attributes.selectedIDS = attributes.selectedIDS || [];
 
-			var colors = [
+			const colors = [
 				{ name: 'red', 				color: '#d02e2e' },
 				{ name: 'orange', 			color: '#f76803' },
 				{ name: 'yellow', 			color: '#fbba00' },
@@ -114,12 +113,12 @@
 				{ name: 'black', 			color: '#000' 	 },
 			];
 
-			//==============================================================================
+		//==============================================================================
 		//	Helper functions
 		//==============================================================================
 			
 			function _searchResultClass(theID){
-				var index = props.attributes.querySearchSelectedIDs.indexOf(theID);
+				const index = props.attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -128,9 +127,9 @@
 			}
 
 			function _sortByKeys(keys, products) {
-				var sorted =[];
-				for ( var i = 0; i < keys.length; i++ ) {
-					for ( var j = 0; j < products.length; j++ ) {
+				let sorted =[];
+				for ( let i = 0; i < keys.length; i++ ) {
+					for ( let j = 0; j < products.length; j++ ) {
 						if ( keys[i] == products[j].id ) {
 							sorted.push(products[j]);
 							break;
@@ -156,7 +155,7 @@
 			}
 
 			function _isChecked( needle, haystack ) {
-				var idx = haystack.indexOf(needle.toString());
+				const idx = haystack.indexOf(needle.toString());
 				if ( idx != - 1) {
 					return true;
 				}
@@ -183,6 +182,14 @@
 				}
 			}
 
+			function _isSearchDisabled() {
+				return attributes.querySearchSelected.length > 5;
+			}
+
+			function _searchDisabledClass() {
+				return attributes.querySearchSelected.length > 5 ? "is-disabled" : "";
+			}
+
 		//==============================================================================
 		//	Show products functions
 		//==============================================================================
@@ -191,7 +198,7 @@
 			}
 
 			function getProducts() {
-				var query = props.attributes.queryProducts;
+				const query = props.attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
 				if (query != '') {
@@ -209,16 +216,24 @@
 			}
 
 			function renderResults() {
-				var products = props.attributes.result;
+				let products = props.attributes.result;
 
-				var productElements = [];
-				var wrapper = [];
+				let productElements = [];
+				let wrapper = [];
+
+				if ( attributes.selectedIDS.length < 1 && products.length > 0) {
+					let bugFixer = [];
+					for ( let i = 0; i < products.length; i++ ) {
+						bugFixer.push(products[i].id);
+					}
+					props.setAttributes({ selectedIDS: bugFixer});
+				}
 
 				if( products.length > 0) {
 
-					var class_prefix = 'gbt_18_lookbook_sts_product';
+					const class_prefix = 'gbt_18_lookbook_sts_product';
 
-					for ( i = 0; i < products.length; i++ ) {
+					for ( let i = 0; i < products.length; i++ ) {
 						productElements.push(
 							el( 'li',
 								{	
@@ -284,9 +299,9 @@
 					
 				} else {
 
-					var class_prefix = 'gbt_18_placeholder_lookbook_sts_product';
+					const class_prefix = 'gbt_18_placeholder_lookbook_sts_product';
 
-					for ( i = 0; i < 2; i++ ) {
+					for ( let i = 0; i < 2; i++ ) {
 						productElements.push(
 							el( 'li',
 								{	
@@ -349,8 +364,8 @@
 			}
 
 			function _queryOrder(value) {
-				var query = props.attributes.queryProducts;
-				var idx = query.indexOf('&orderby');
+				let query = props.attributes.queryProducts;
+				const idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
 				}
@@ -377,7 +392,7 @@
 
 			function _getQueryOrder() {
 				if ( props.attributes.queryOrder.length < 1) return '';
-				var order = '';
+				let order = '';
 				switch ( props.attributes.queryOrder ) {
 					case 'date_desc':
 						order = '&orderby=date&order=desc';
@@ -403,15 +418,18 @@
 		//	Display ajax results
 		//==============================================================================
 			function renderSearchResults() {
-				var productElements = [];
+				let productElements = [];
 
 				if ( props.attributes.querySearchNoResults === true) {
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
-				var products = props.attributes.querySearchResults;
-				for ( var i = 0; i < products.length; i++ ) {
+				let products = props.attributes.querySearchResults;
+				for ( let i = 0; i < products.length; i++ ) {
+					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
@@ -433,17 +451,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
-											var qSR = props.attributes.querySearchSelectedIDs;
-											var index = qSR.indexOf(products[evt.target.value].id);
+											let _this = evt.target;
+											let qSR = props.attributes.selectedIDS;
+											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSR });
+											props.setAttributes({ selectedIDS: qSR });
 											
-											var query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -466,21 +484,16 @@
 			}
 
 			function renderSearchSelected() {
-				var productElements = [];
-				var i;
+				let productElements = [];
 
-				var products = props.attributes.querySearchSelected;
-				if ( props.attributes.querySearchSelectedIDs.length < 1 ) {
-					var bugFixer = [];
-					for ( var i = 0; i < products.length; i++ ) {
-						bugFixer.push(products[i].id);
-					}
-					props.setAttributes({ querySearchSelectedIDs: bugFixer});
-				}
+				let products = props.attributes.querySearchSelected;
 
-				for ( var i = 0; i < products.length; i++ ) {
+				for ( let i = 0; i < products.length; i++ ) {
+					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						var img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+					} else {
+						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
@@ -501,17 +514,17 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											var _this = evt.target;
+											let _this = evt.target;
 
 											
-											var qSS = props.attributes.querySearchSelectedIDs;
-											var index = qSS.indexOf(products[evt.target.value].id);
+											let qSS = props.attributes.selectedIDS;
+											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ querySearchSelectedIDs: qSS });
+											props.setAttributes({ selectedIDS: qSS });
 											
-											var query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
+											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
 											} else {
@@ -550,7 +563,7 @@
 						el(
 							'div',
 							{
-								className: 'products-ajax-search-wrapper',
+								className: 'products-ajax-search-wrapper ' + _searchDisabledClass(),
 							},
 							el(
 								TextControl,
@@ -558,13 +571,14 @@
 									key: 'query-panel-string',
 			          				type: 'search',
 			          				className: 'products-ajax-search',
-			          				value: props.attributes.querySearchString,
+			          				value: attributes.querySearchString,
 			          				placeholder: i18n.__( 'Search for products to display'),
+			          				disabled: _isSearchDisabled(),
 			          				onChange: function( newQuery ) {
 			          					props.setAttributes({ querySearchString: newQuery});
 			          					if (newQuery.length < 3) return;
 
-								        var query = getQuery('?per_page=10&search=' + newQuery);
+								        const query = getQuery('?per_page=10&search=' + newQuery);
 								        apiFetch({ path: query }).then(function (products) {
 								        	if ( products.length == 0) {
 								        		props.setAttributes({ querySearchNoResults: true});

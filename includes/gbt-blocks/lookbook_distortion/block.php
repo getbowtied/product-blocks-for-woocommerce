@@ -40,7 +40,7 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                	<?php 
 								$image = wp_get_attachment_image_src( $product->get_image_id(), 'full' )[0];
 
-								$gallery_ids = $product->get_gallery_attachment_ids();
+								$gallery_ids = $product->get_gallery_image_ids();
 	                			if( $gallery_ids[0] ) {
 	                				$image2 = wp_get_attachment_image_src( $gallery_ids[0], 'full' )[0];
 	                			}               

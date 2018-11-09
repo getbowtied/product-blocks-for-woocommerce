@@ -1,20 +1,22 @@
 ( function( blocks, components, editor, i18n, element ) {
 
-	var el = element.createElement;
+	"use strict";
+
+	const el = element.createElement;
 
 	/* Blocks */
-	var registerBlockType   = blocks.registerBlockType;
+	const registerBlockType   = blocks.registerBlockType;
 
-	var InnerBlock 			= editor.InnerBlocks;
-	var RichText			= editor.RichText;
-	var MediaUpload			= editor.MediaUpload;
-	var ColorSettings		= editor.PanelColorSettings;
-	var InspectorControls 	= editor.InspectorControls;
+	const InnerBlock 			= editor.InnerBlocks;
+	const RichText				= editor.RichText;
+	const MediaUpload			= editor.MediaUpload;
+	const ColorSettings			= editor.PanelColorSettings;
+	const InspectorControls 	= editor.InspectorControls;
 	
-	var Button				= components.Button;
-	var SVG 				= components.SVG;
-	var Path 				= components.Path;
-	var Circle				= components.Circle;
+	const Button				= components.Button;
+	const SVG 					= components.SVG;
+	const Path 					= components.Path;
+	const Circle				= components.Circle;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-snap-to-scroll', {
@@ -49,11 +51,11 @@
 	            type: 'string',
 	            attribute: 'alt',
 	        },
-	        bg_color: {
+	        bgColor: {
 	        	type: 'string',
 	        	default: '#d3d5d9'
 	        },
-	        text_color: {
+	        textColor: {
 	        	type: 'string',
 	        	default: '#000'
 	        },
@@ -61,9 +63,9 @@
 
 		edit: function( props ) {
 
-			var attributes = props.attributes;
+			let attributes = props.attributes;
 
-			var colors = [
+			const colors = [
 				{ name: 'red', 				color: '#d02e2e' },
 				{ name: 'orange', 			color: '#f76803' },
 				{ name: 'yellow', 			color: '#fbba00' },
@@ -93,16 +95,16 @@
 								colorSettings: [
 									{ 
 										label: i18n.__( 'Background Color' ),
-										value: attributes.bg_color,
+										value: attributes.bgColor,
 										onChange: function( newColor) {
-											props.setAttributes( { bg_color: newColor } );
+											props.setAttributes( { bgColor: newColor } );
 										},
 									},
 									{ 
 										label: i18n.__( 'Text Color' ),
-										value: attributes.text_color,
+										value: attributes.textColor,
 										onChange: function( newColor) {
-											props.setAttributes( { text_color: newColor } );
+											props.setAttributes( { textColor: newColor } );
 										},
 									},
 								]
@@ -173,7 +175,7 @@
 							className: 	'gbt_18_lookbook_sts_hero_section_content',
 							style:
 							{
-								backgroundColor: attributes.bg_color,
+								backgroundColor: attributes.bgColor,
 								backgroundImage: 'url(' + attributes.imgURL + ')'
 							},
 						},
@@ -193,7 +195,7 @@
 									placeholder: i18n.__( 'Lookbook Title' ),
 									style:
 									{
-										color: attributes.text_color
+										color: attributes.textColor
 									},
 									onChange: function( newTitle) {
 										props.setAttributes( { title: newTitle } );
@@ -211,7 +213,7 @@
 									placeholder: i18n.__( 'Lookbook Subtitle' ),
 									style:
 									{
-										color: attributes.text_color
+										color: attributes.textColor
 									},
 									onChange: function( newTitle) {
 										props.setAttributes( { subtitle: newTitle } );
@@ -224,8 +226,8 @@
 									className: 	'gbt_18_lookbook_sts_scroll_down_button',
 									style:
 									{
-										color: attributes.text_color,
-										border: '1px solid ' + attributes.text_color
+										color: attributes.textColor,
+										border: '1px solid ' + attributes.textColor
 									}
 								},
 							)
