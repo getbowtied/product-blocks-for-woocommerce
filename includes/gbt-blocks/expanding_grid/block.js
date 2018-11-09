@@ -262,7 +262,7 @@
 						productElements.push(
 							el( 'li',
 								{	
-									key: 		class_prefix,
+									key: 		class_prefix + '_item-' + products[i].id,
 									className: 	class_prefix + ' item-' + products[i].id,
 								},
 								el( 'div',
@@ -327,8 +327,8 @@
 						productElements.push(
 							el( 'li',
 								{	
-									key: 		class_prefix,
-									className: 	class_prefix + ' item-' +i,
+									key: 		class_prefix + '_item-' + i,
+									className: 	class_prefix + ' item-' + i,
 								},
 								el( 'div',
 									{
