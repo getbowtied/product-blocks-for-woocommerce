@@ -33,10 +33,10 @@
 				default: '',
 			},
 		/* Products source */
-			result: {
-				type: 'array',
-				default: [],
-			},
+			// result: {
+			// 	type: 'array',
+			// 	default: [],
+			// },
 			queryProducts: {
 				type: 'string',
 				default: '',
@@ -126,6 +126,7 @@
 			let attributes = props.attributes;
 			attributes.selectedIDS = attributes.selectedIDS || [];
 			attributes.selectedSlide = attributes.selectedSlide || 0;
+			attributes.result = attributes.result || [];
 
 		//==============================================================================
 		//	Helper functions
@@ -511,13 +512,6 @@
 				let i;
 
 				let products = attributes.querySearchSelected;
-				if ( attributes.selectedIDS.length < 1 && products.length > 0) {
-					let bugFixer = [];
-					for ( let i = 0; i < products.length; i++ ) {
-						bugFixer.push(products[i].id);
-					}
-					props.setAttributes({ selectedIDS: bugFixer});
-				}
 
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
@@ -545,10 +539,16 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
+											let qSS = attributes.selectedIDS;
+
+											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
+												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
+													qSS.push(attributes.querySearchSelected[i].id);
+												}
+											}
+
 											let _this = evt.target;
 
-											
-											let qSS = attributes.selectedIDS;
 											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
@@ -1034,6 +1034,7 @@
 					'div',
 					{
 					},
+					attributes.result.length < 1 && getProducts(),
 					renderResults(),
 				),
 			];

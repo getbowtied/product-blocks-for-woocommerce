@@ -57,6 +57,9 @@
       -o-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
       cursor: pointer; }
+      .products-main-inspector-wrapper .products-ajax-search-results .single-result.is-disabled {
+        opacity: .3;
+        pointer-events: none; }
       .products-main-inspector-wrapper .products-ajax-search-results .single-result:hover {
         background: #F8FCFF; }
         .products-main-inspector-wrapper .products-ajax-search-results .single-result:hover .dashicons-yes {
@@ -136,7 +139,7 @@
       cursor: default; }
     .products-main-inspector-wrapper .products-selected-results-wrapper .products-selected-results {
       border: 1px solid  #E8EBEF;
-      max-height: 261px;
+      max-height: 235px;
       overflow-y: auto;
       overflow-x: hidden;
       padding-left: 2px; }

@@ -476,14 +476,6 @@
 				let productElements = [];
 				const products = attributes.querySearchSelected;
 
-				if ( attributes.selectedIDS.length < 1 && products.length > 0) {
-					let bugFixer = [];
-					for ( let i = 0; i < products.length; i++ ) {
-						bugFixer.push(products[i].id);
-					}
-					props.setAttributes({ selectedIDS: bugFixer});
-				}
-
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
@@ -515,6 +507,11 @@
 
 											
 											let qSS = attributes.selectedIDS;
+											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
+												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
+													qSS.push(attributes.querySearchSelected[i].id);
+												}
+											}
 											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);

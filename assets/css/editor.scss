@@ -55,6 +55,10 @@
             margin: 20px 12px;
         }
         .single-result {
+            &.is-disabled{
+                opacity: .3;
+                pointer-events: none;
+            }
             display: flex;
             align-items: center;
             height: 52px;
@@ -162,7 +166,7 @@
         .products-selected-results
         {
             border: 1px solid  #E8EBEF;
-            max-height: 261px;
+            max-height: 235px;
             overflow-y: auto;
             overflow-x: hidden;
             padding-left: 2px;

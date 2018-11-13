@@ -118,7 +118,7 @@
 		//==============================================================================
 			
 			function _searchResultClass(theID){
-				const index = props.attributes.selectedIDS.indexOf(theID);
+				const index = attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -163,11 +163,11 @@
 			}
 
 			function _isDonePossible() {
-				return ( (props.attributes.queryProducts.length == 0) || (props.attributes.queryProducts === props.attributes.queryProductsLast) );
+				return ( (attributes.queryProducts.length == 0) || (attributes.queryProducts === attributes.queryProductsLast) );
 			}
 
 			function _isLoading() {
-				if ( props.attributes.isLoading  === true ) {
+				if ( attributes.isLoading  === true ) {
 					return 'is-busy';
 				} else {
 					return '';
@@ -175,7 +175,7 @@
 			}
 
 			function _isLoadingText(){
-				if ( props.attributes.isLoading  === false ) {
+				if ( attributes.isLoading  === false ) {
 					return i18n.__('Update');
 				} else {
 					return i18n.__('Updating');
@@ -187,7 +187,7 @@
 			}
 
 			function _searchDisabledClass() {
-				return attributes.querySearchSelected.length > 5 ? "is-disabled" : "";
+				return (attributes.querySearchSelected.length > 5 || attributes.selectedIDS.length > 5) ? "is-disabled" : "";
 			}
 
 		//==============================================================================
@@ -198,7 +198,7 @@
 			}
 
 			function getProducts() {
-				const query = props.attributes.queryProducts;
+				const query = attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
 				if (query != '') {
@@ -216,18 +216,10 @@
 			}
 
 			function renderResults() {
-				let products = props.attributes.result;
+				let products = attributes.result;
 
 				let productElements = [];
 				let wrapper = [];
-
-				if ( attributes.selectedIDS.length < 1 && products.length > 0) {
-					let bugFixer = [];
-					for ( let i = 0; i < products.length; i++ ) {
-						bugFixer.push(products[i].id);
-					}
-					props.setAttributes({ selectedIDS: bugFixer});
-				}
 
 				if( products.length > 0) {
 
@@ -364,7 +356,7 @@
 			}
 
 			function _queryOrder(value) {
-				let query = props.attributes.queryProducts;
+				let query = attributes.queryProducts;
 				const idx = query.indexOf('&orderby');
 				if ( idx > -1) {
 					query = query.substring(idx, -25);
@@ -391,9 +383,9 @@
 			}
 
 			function _getQueryOrder() {
-				if ( props.attributes.queryOrder.length < 1) return '';
+				if ( attributes.queryOrder.length < 1) return '';
 				let order = '';
-				switch ( props.attributes.queryOrder ) {
+				switch ( attributes.queryOrder ) {
 					case 'date_desc':
 						order = '&orderby=date&order=desc';
 					break;
@@ -420,10 +412,10 @@
 			function renderSearchResults() {
 				let productElements = [];
 
-				if ( props.attributes.querySearchNoResults === true) {
+				if ( attributes.querySearchNoResults === true) {
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
-				let products = props.attributes.querySearchResults;
+				let products = attributes.querySearchResults;
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
@@ -435,7 +427,7 @@
 						el(
 							'span', 
 							{
-								className: _searchResultClass(products[i].id),
+								className: _searchResultClass(products[i].id) + ' ' + _searchDisabledClass(),
 								title: products[i].name,
 								'data-index': i,
 							}, 
@@ -451,8 +443,9 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
+											if ( attributes.selectedIDS.length > 5) return;
 											let _this = evt.target;
-											let qSR = props.attributes.selectedIDS;
+											let qSR = attributes.selectedIDS;
 											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
@@ -486,7 +479,7 @@
 			function renderSearchSelected() {
 				let productElements = [];
 
-				let products = props.attributes.querySearchSelected;
+				let products = attributes.querySearchSelected;
 
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
@@ -514,10 +507,18 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
+
+											let qSS = attributes.selectedIDS;
+
+											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
+												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
+													qSS.push(attributes.querySearchSelected[i].id);
+												}
+											}
 											let _this = evt.target;
 
 											
-											let qSS = props.attributes.selectedIDS;
+											
 											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
@@ -592,14 +593,14 @@
 								},
 							),
 						),
-						props.attributes.querySearchResults.length > 0 && props.attributes.querySearchString != '' && el(
+						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
 							{ 
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
 						),
-						props.attributes.querySearchSelected.length > 0 && el(
+						attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
 								className: 'products-selected-results-wrapper',
