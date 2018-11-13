@@ -142,7 +142,7 @@
 			}
 
 			function _searchDisabledClass() {
-				return attributes.querySearchSelected.length > 0 ? "is-disabled" : "";
+				return (attributes.querySearchSelected.length > 0 || attributes.selectedIDS.length > 0) ? "is-disabled" : "";
 			}
 
 		//==============================================================================
@@ -342,7 +342,7 @@
 							'span', 
 							{
 								key: 		'item-' + products[i].id +i,
-								className: _searchResultClass(products[i].id),
+								className: _searchResultClass(products[i].id) + ' ' + _searchDisabledClass(),
 								title: products[i].name,
 								'data-index': i,
 							}, 
@@ -359,6 +359,7 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
+											if ( attributes.selectedIDS.length > 0) return;
 											const _this = evt.target;
 											let qSR = attributes.selectedIDS;
 											let index = qSR.indexOf(products[evt.target.value].id);
@@ -420,10 +421,16 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
+											let qSS = attributes.selectedIDS;
+
+											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
+												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
+													qSS.push(attributes.querySearchSelected[i].id);
+												}
+											}
 											const _this = evt.target;
 
 											
-											let qSS = attributes.selectedIDS;
 											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
