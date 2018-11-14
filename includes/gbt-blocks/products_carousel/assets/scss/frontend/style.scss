@@ -9,116 +9,7 @@
   font-style: normal;
 }
 
-.slick-prev,
-.slick-next {
 
-	&:before {
-		/* use !important to prevent issues with browser extensions that change fonts */
-		font-family: 'product-blocks';
-		speak: none;
-		font-style: normal;
-		font-weight: normal;
-		font-variant: normal;
-		text-transform: none;
-		line-height: 1;
-
-		/* Better Font Rendering =========== */
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-}
-
-.slick-prev:before {
-	content: '\e903';
-	color: #000;
-}
-
-.slick-next:before {
-	content: '\e902';
-	color: #000;
-}
-
-.flex-nav-prev .flex-prev,
-.flex-nav-next .flex-next {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'product-blocks' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-// .flex-direction-nav a {
-// 	top: 45% !important;
-// }
-
-.flex-direction-nav {
-
-	.flex-nav-prev .flex-prev,
-	.flex-nav-next .flex-next {
-	    font-size: 0;
-	    opacity: 1;
-	}
-
-	.flex-nav-prev .flex-prev:before {
-		font-family: "product-blocks"  !important;
-		content: '\e900';
-		font-size: 24px;
-		color: #000;
-	}
-
-	.flex-nav-next .flex-next:before {
-		font-family: "product-blocks"  !important;
-		content: '\e901';
-		font-size: 24px;
-		color: #000;
-	}
-}
-
-.flexslider .flex-control-nav li a,
-.flexslider .flex-control-paging li a {
-    width: 8px;
-    height: 8px;
-    background: transparent;
-    border: 1px solid #000!important;
-    background-image: none !important;
-    text-shadow: none;
-    box-shadow: none;
-    font-size: 0px;
-    border-radius: 50%;
-    display: block !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-    	transition: all 0.2s ease-in-out;
-    }
-}
-
-.flexslider .flex-direction-nav .flex-next,
-.flexslider .flex-direction-nav .flex-prev {
-	opacity: 1;
-	display: block;
-	background-image: none;
-}
-
-.flexslider:hover .flex-direction-nav .flex-prev {
-	left: -50px !important;
-}
-
-.flexslider:hover .flex-direction-nav .flex-next {
-	right: -50px !important;
-}
-
-.flexslider .products li .shop-product-box .product-info {
-	padding-bottom: 0;
-}
 
 .wp-block-getbowtied-categories-grid
 {
@@ -136,5 +27,48 @@
 		margin-left: calc( -75vw / 2 + 100% / 2 );
 	    margin-right: calc( -75vw / 2 + 100% / 2 );
 	    max-width: 75vw;
+	}
+
+	.swiper-wrapper {
+		.swiper-slide {
+			ul {
+				&.products {
+					width: 100%;
+					
+					li {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	.swiper-button-prev,
+	.swiper-button-next {
+		background: none;
+		&:before {
+			/* use !important to prevent issues with browser extensions that change fonts */
+			font-family: 'product-blocks';
+			speak: none;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+
+			/* Better Font Rendering =========== */
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+	}
+
+	.swiper-button-prev:before {
+		content: '\e900';
+		color: #000;
+	}
+
+	.swiper-button-next:before {
+		content: '\e901';
+		color: #000;
 	}
 }

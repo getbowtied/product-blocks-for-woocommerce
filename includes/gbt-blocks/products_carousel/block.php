@@ -89,7 +89,7 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	$loop = new WP_Query( $args );
 	ob_start();
 	if ( $loop->have_posts() ) { ?>
-		<div class="swiper-container <?php echo $align; ?>" data-columns="<?php echo $columns; ?>">
+		<div class="wp-block-getbowtied-categories-grid swiper-container <?php echo $align; ?>" data-columns="<?php echo $columns; ?>">
 			<div class="swiper-wrapper">
 				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 					<div class="swiper-slide">
