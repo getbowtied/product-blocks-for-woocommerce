@@ -28,18 +28,10 @@
 			align: [ 'center', 'wide', 'full' ],
 		},
 		attributes: {
-			productIDs: {
-				type: 'string',
-				default: '',
-			},
 		/* Products source */
-			// result: {
-			// 	type: 'array',
-			// 	default: [],
-			// },
 			queryProducts: {
 				type: 'string',
-				default: '',
+				default: 'wc/v3/products?per_page=10',
 			},
 			queryProductsLast: {
 				type: 'string',
@@ -49,23 +41,10 @@
 				type: 'string',
 				default: 'all_products',
 			},
-		/* loader */
-			isLoading: {
-				type: 'bool',
-				default: false,
-			},
 		/* Manually pick products */
-			querySearchString: {
+			productIDs: {
 				type: 'string',
 				default: '',
-			},
-			querySearchResults: {
-				type: 'array',
-				default: [],
-			},
-			querySearchNoResults: {
-				type: 'bool',
-				default: false,
 			},
 			querySearchSelected: {
 				type: 'array',
@@ -74,7 +53,7 @@
 		/* Display by category */
 			queryCategoryOptions: {
 				type: 'array',
-				default: [],
+				default: ''
 			},
 			queryCategorySelected: {
 				type: 'array',
@@ -85,20 +64,20 @@
 				type: 'string',
 				default: '',
 			},
-			queryAttributesOptions: {
-				type: 'array',
-				default: '',
-			},
 			queryAttributesSelected: {
 				type: 'string',
 				default: '',
 			},
-			queryAttributesSelectedSlug: {
-				type: 'string',
-				default: '',
+			queryAttributesOptions: {
+				type: 'array',
+				default: [],
 			},
 			queryAttributesOptionsValues: {
 				type: 'array',
+				default: []
+			},
+			queryAttributesSelectedSlug: {
+				type: 'string',
 				default: '',
 			},
 			queryAttributesOptionsSelected: {
@@ -110,11 +89,6 @@
 				type: 'string',
 				default: '',
 			},
-		/* First Load */
-			firstLoad: {
-				type: 'bool',
-				default: true,
-			},
 		/* Columns */
 			columns: {
 				type: 'int',
@@ -124,9 +98,14 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			attributes.selectedIDS = attributes.selectedIDS || [];
-			attributes.selectedSlide = attributes.selectedSlide || 0;
-			attributes.result = attributes.result || [];
+			attributes.selectedIDS		 			= attributes.selectedIDS || [];
+			attributes.selectedSlide 				= attributes.selectedSlide || 0;
+			attributes.result 						= attributes.result || [];
+			attributes.isLoading 					= attributes.isLoading || false;
+			attributes.querySearchString    		= attributes.querySearchString || '';
+			attributes.querySearchResults   		= attributes.querySearchResults || [];
+			attributes.querySearchNoResults 		= attributes.querySearchNoResults || false;
+			attributes.doneFirstLoad 				= attributes.doneFirstLoad || false;
 
 		//==============================================================================
 		//	Helper functions
@@ -181,9 +160,9 @@
 				props.setAttributes({ querySearchResults: []});
 				props.setAttributes({ querySearchSelected: []});
 				props.setAttributes({ selectedIDS: []});
-				props.setAttributes({ queryAttributesOptionsSelected: [] });
+				props.setAttributes({ queryAttributesOptionsSelected: []});
 				props.setAttributes({ queryCategorySelected: [] });
-				props.setAttributes({result: []});
+				props.setAttributes({ result: []});
 			}
 
 			function _destroyTempAtts() {
@@ -223,7 +202,7 @@
 		//	Show products functions
 		//==============================================================================
 			function getQuery( query ) {
-				return '/wc/v2/products' + query;
+				return '/wc/v3/products' + query;
 			}
 
 			function getProducts() {
@@ -232,35 +211,21 @@
 
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
+						console.log(products);
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
+						props.setAttributes({ doneFirstLoad: true});
 						let IDs = '';
 						for ( let i = 0; i < products.length; i++) {
 							IDs += products[i].id + ',';
 						}
 						props.setAttributes({ productIDs: IDs});
-						props.setAttributes({ selectedSlide: 0 });
+						props.setAttributes({ selectedSlide: 0});
 					});
 				}
 			}
 
 			function renderResults() {
-				if ( attributes.firstLoad === true ) {
-					apiFetch({ path: 'wc/v2/products?per_page=10' }).then(function (products) {
-						props.setAttributes({ result: products });
-						props.setAttributes({ firstLoad: false });
-						let query = getQuery('?per_page=100');
-						props.setAttributes({queryProducts: query});
-						props.setAttributes({ queryDisplayType: 'all_products' });
-						props.setAttributes({ queryProductsLast: query});
-						let IDs = '';
-						for ( let i = 0; i < products.length; i++) {
-							IDs += products[i].id + ',';
-						}
-						props.setAttributes({ productIDs: IDs});
-					});
-				}
-
 				let products = attributes.result;
 				let productElements = [];
 				let wrapper = [];
@@ -286,6 +251,12 @@
 					let class_prefix = 'gbt_18_carousel_product';
 
 					for ( let i = 0; i < products.length; i++ ) {
+						let img = '';
+						if ( typeof products[i].images[0] !== 'undefined' && products[i].images[0].src != '' ) {
+							img = products[i].images[0].src;
+						} else {
+							img = getbowtied_pbw.woo_placeholder_image;
+						}
 						productElements.push(
 							el( 'li',
 								{	
@@ -302,7 +273,7 @@
 										{
 											key: 		class_prefix + '_thumbnail',
 											className: 	class_prefix + '_thumbnail',
-											style: { backgroundImage: "url("+products[i]['images'][0]['src']+")" }
+											style: { backgroundImage: "url("+img+")" }
 										}
 									),
 									el( 'h4',
@@ -1034,7 +1005,7 @@
 					'div',
 					{
 					},
-					attributes.result.length < 1 && getProducts(),
+					attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 					renderResults(),
 				),
 			];

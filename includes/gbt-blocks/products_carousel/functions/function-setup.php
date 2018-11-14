@@ -44,16 +44,21 @@ if ( ! function_exists( 'getbowtied_products_carousel_assets' ) ) {
 	function getbowtied_products_carousel_assets() {
 
 		wp_enqueue_script(
-			'getbowtied-slick-scripts',
-			plugins_url( '../vendor/slick/js/slick.min.js', dirname(__FILE__) ),
+			'getbowtied-swiper-scripts',
+			plugins_url( 'js/vendor/swiper.min.js', dirname(__FILE__) ),
 			array( 'jquery' )
 		);
 
+		wp_enqueue_script(
+			'getbowtied-products-carousel-scripts',
+			plugins_url( 'js/frontend.js', dirname(__FILE__) ),
+			array( 'jquery', 'getbowtied-swiper-scripts' )
+		);
+
 		wp_enqueue_style(
-			'getbowtied-slick-styles',
-			plugins_url( '../vendor/slick/css/slick-styles.css', dirname(__FILE__) ),
-			array(),
-			filemtime( plugin_dir_path( dirname(__FILE__) ) . '../vendor/slick/css/slick-styles.css' )
+			'getbowtied-swiper-styles',
+			plugins_url( 'assets/css/frontend/swiper.min.css', dirname(__FILE__) ),
+			array()
 		);
 
 		wp_enqueue_style(
@@ -89,7 +94,11 @@ register_block_type( 'getbowtied/products-carousel', array(
 		'queryDisplayType'				=> array(
 			'type'						=> 'string',
 			'default'					=> 'all_products'
-		)
+		),
+		'queryProducts'					=> array(
+			'type'						=> 'string',
+			'default'					=> 'wc/v3/products?per_page=10'
+		),
 	),
 
 	'render_callback' => 'getbowtied_render_frontend_products_carousel',

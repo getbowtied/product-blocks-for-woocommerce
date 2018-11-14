@@ -12,74 +12,95 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_products_carousel( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'productIDs'		=> '',
-		'align'				=> 'center',
-		'queryOrder'		=> '',
-		'columns'			=> 3,
-		'queryDisplayType'	=> 'all_products'
+		'productIDs'					=> '',
+		'align'							=> 'center',
+		'queryOrder'					=> '',
+		'columns'						=> 3,
+		'queryDisplayType'				=> 'all_products',
+		'queryProducts'					=> 'wc/v3/products?per_page=10'
 	), $attributes ) );
 	
-
-	switch ( $queryOrder ) {
-		case 'date_desc':
-			$orderby= 'date';
-			$order= 'desc';
-		break;
-		case 'date_asc':
-			$orderby= 'date';
-			$order= 'asc';
-		break;
-		case 'title_desc':
-			$orderby= 'title';
-			$order= 'desc';
-		break;
-		case 'title_asc':
-			$orderby= 'title';
-			$order= 'asc';
-		break;
-		default: 
-			$orderby = 'none';
-			$order = '';
-		break;
-	}
-
-	if ( $queryDisplayType == 'specific') {
-		$orderby = 'post__in';
+	$queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
+	$query = explode('&',$queryProducts);
+	$a = [];
+	foreach ($query as $q) {
+		$temp = explode('=', $q);
+		if(isset($temp[0]) && isset($temp[1])) $a[$temp[0]] = $temp[1];
 	}
 
 	$args = [
-		'post_type' 		=> 'product',
-		'status' 			=> 'publish',
-		'posts_per_page' 	=> -1,
-		'post__in' 			=> explode(',',$productIDs),
-		'orderby'			=> $orderby,
-		'order'				=> $order
+		'post_type'      => 'product',
+		'post_status'    => 'publish',
+		'posts_per_page' => 99,
+		'tax_query'		 => array(array(
+            'taxonomy'  => 'product_visibility',
+            'terms'     => array('exclude-from-catalog'),
+            'field'     => 'name',
+            'operator'  => 'NOT IN',
+        )),
 	];
+	switch ($queryDisplayType) {
+		case 'specific':
+			$args['post__in'] 	= explode(',',$productIDs);
+			$args['orderby']	= 'post__in';
+			break;
+		case 'all_products':
+			break;
+		case 'filter_by':
+			if (isset($a['featured'])){
+				$args['tax_query'][] = array(
+				    'taxonomy' => 'product_visibility',
+				    'field'    => 'name',
+				    'terms'    => 'featured',
+				    'operator' => 'IN'
+				);
+			}
+			if (isset($a['on_sale'])){
+				$args['post__in'] = wc_get_product_ids_on_sale();
+			}
+			if (isset($a['attribute']) && isset($a['attribute_term'])){
+				$args['tax_query'][] = array(
+			        'taxonomy'        => $a['attribute'],
+			        'field'           => 'id',
+			        'terms'           =>  explode(',',$a['attribute_term']),
+			        'operator'        => 'IN',
+			    );
+			}
+			break;
+		case 'by_category': 
+			if (isset($a['category'])) 
+				$args['tax_query'][] = array(
+			        'taxonomy'        => 'product_cat',
+			        'field'           => 'id',
+			        'terms'           =>  explode(',',$a['category']),
+			        'operator'        => 'IN',
+			    );
+			break;
+
+		default:
+		break;
+	}
+
+	if ($queryDisplayType != 'specific'){
+		$args['order'] 		= isset($a['order'])? $a['order'] : 'date';
+		$args['orderby'] 	= isset($a['orderby'])? $a['orderby'] : 'desc';
+	}
 
 	$loop = new WP_Query( $args );
 	ob_start();
-	printf('<script type="text/javascript">
-		jQuery(function($) {
-			"use strict";
-			  $(".slider").slick({
-				slidesToShow: %d,
-				slidesToScroll: %d,
-				speed: 600,
-				arrows: true,
-				fade: false,
-				dots: false,
-				touchMove: false,
-				adaptiveHeight: true
-			}); 	  
-		});
-	</script>', $columns, $columns);
 	if ( $loop->have_posts() ) { ?>
-		<div class="wp-block-getbowtied-products-carousel <?php echo $align; ?>">
-			<ul class="products slider">
+		<div class="swiper-container <?php echo $align; ?>" data-columns="<?php echo $columns; ?>">
+			<div class="swiper-wrapper">
 				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-					<?php wc_get_template_part( 'content', 'product' ); ?>
+					<div class="swiper-slide">
+						<ul class="products">
+							<?php wc_get_template_part( 'content', 'product' ); ?>
+						</ul>
+					</div>
 				<?php endwhile; ?>
-			</ul>
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>
 	<?php } wp_reset_postdata();
  return ob_get_clean();
