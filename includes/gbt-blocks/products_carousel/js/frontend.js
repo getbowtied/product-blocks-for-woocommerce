@@ -6,7 +6,7 @@
 		var swiper = [];
 		$('.swiper-container').each(function(){
 			let columns = $(this).attr('data-columns');
-			swiper.push(new Swiper ('.swiper-container', {
+			swiper.push(new Swiper ($(this), {
 				direction: 'horizontal',
 				loop: true,
 				autoHeight: true,
