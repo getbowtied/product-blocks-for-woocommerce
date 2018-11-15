@@ -94,6 +94,11 @@
 				type: 'int',
 				default: 3
 			},
+		/* Limit */
+			limit: {
+				type: 'int',
+				default: 10
+			}
 		},
 		edit: function( props ) {
 
@@ -209,9 +214,9 @@
 				let query = attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
+
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
-						console.log(products);
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
 						props.setAttributes({ doneFirstLoad: true});
@@ -355,6 +360,35 @@
 				} 
 				
 				return wrapper;
+			}
+
+			function _queryLimit(limit){
+				let query = attributes.queryProducts;
+
+				let buildQ = query;
+				let newQ;
+				buildQ = buildQ.replace('/wc/v3/products?', '');
+				buildQ = buildQ.split('&');
+				
+				let flag = false;
+				for ( let j = 0; j < buildQ.length; j++) {
+					let temp = [];
+					temp = buildQ[j].split('=');
+					if (temp[0] === 'per_page'){
+						buildQ[j] = 'per_page='+limit;
+						flag= true;
+						break;
+					}
+				}
+
+				if ( flag === true) {
+					newQ = '/wc/v3/products?' + buildQ.join('&');
+				} else {
+					newQ = '/wc/v3/products?per_page=' + limit + '&' + buildQ.join('&');
+				}
+				
+				props.setAttributes({ queryProducts: newQ});
+				return newQ;
 			}
 
 			function _queryOrder(value) {
@@ -612,7 +646,7 @@
 													props.setAttributes({ queryCategorySelected: qCS });
 												};
 												if ( attributes.queryCategorySelected.length > 0 ) {
-													let query = getQuery('?per_page=100&category=' + attributes.queryCategorySelected.join(','));
+													let query = getQuery('?per_page=' + attributes.limit + '&category=' + attributes.queryCategorySelected.join(','));
 													query = query + _getQueryOrder();
 													props.setAttributes({ queryProducts: query});
 												} else {
@@ -679,7 +713,7 @@
 												props.setAttributes({ queryAttributesOptionsSelected: qCS });
 											};
 											if ( attributes.queryAttributesOptionsSelected.length > 0 ) {
-												let query = getQuery('?attribute=' + attributes.queryAttributesSelectedSlug + '&attribute_term='+ attributes.queryAttributesOptionsSelected.join(','));
+												let query = getQuery('?per_page=' + attributes.limit + '&attribute=' + attributes.queryAttributesSelectedSlug + '&attribute_term='+ attributes.queryAttributesOptionsSelected.join(','));
 												query = query + _getQueryOrder();
 												props.setAttributes({ queryProducts: query});
 											} else {
@@ -835,7 +869,7 @@
 										getCategories();
 									}
 									if ( value === 'all_products') {
-										let query = getQuery('?per_page=100');
+										let query = getQuery('?per_page='+attributes.limit);
 										props.setAttributes({queryProducts: query});
 									}
 									return props.setAttributes({ queryDisplayType: value });
@@ -938,7 +972,7 @@
 									if (value === 'attributes') {
 										getAttributes();
 									} else {
-										let query = getQuery('?'+value+'=1');
+										let query = getQuery('?per_page=' + attributes.limit + '&' +value+'=1');
 										// query = query + _getQueryOrder();
 										props.setAttributes({ queryProducts: query });
 									}
@@ -970,6 +1004,21 @@
 					/* All products */
 						attributes.queryDisplayType === 'all_products'
 						 && renderOrderby(),
+ 						attributes.queryDisplayType !== 'specific' && el(
+							RangeControl,
+							{
+								value: attributes.limit,
+								allowReset: false,
+								initialPosition: 10,
+								min: 2,
+								max: 20,
+								label: i18n.__( 'Number of Products' ),
+								onChange: function( value ) {
+									props.setAttributes( { limit: value } );
+									_queryLimit(value);
+								},
+							}
+						),
 					/* Load all products */
 						el(
 							'button',

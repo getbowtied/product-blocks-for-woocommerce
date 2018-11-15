@@ -31,7 +31,7 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	$args = [
 		'post_type'      => 'product',
 		'post_status'    => 'publish',
-		'posts_per_page' => 99,
+		'posts_per_page' =>  isset($a['per_page'])? $a['per_page'] : 10,
 		'tax_query'		 => array(array(
             'taxonomy'  => 'product_visibility',
             'terms'     => array('exclude-from-catalog'),
@@ -86,12 +86,15 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 		$args['orderby'] 	= isset($a['orderby'])? $a['orderby'] : 'desc';
 	}
 
-	$loop = new WP_Query( $args );
+	$lc = new WP_Query( $args );
 	ob_start();
-	if ( $loop->have_posts() ) { ?>
+	// echo '<pre>';
+	// var_dump($lc);
+	// echo '</pre>';
+	if ( $lc->have_posts() ) { ?>
 		<div class="wp-block-getbowtied-categories-grid swiper-container <?php echo $align; ?>" data-columns="<?php echo $columns; ?>">
 			<div class="swiper-wrapper">
-				<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+				<?php while ( $lc->have_posts() ) : $lc->the_post(); ?>
 					<div class="swiper-slide">
 						<ul class="products">
 							<?php wc_get_template_part( 'content', 'product' ); ?>
