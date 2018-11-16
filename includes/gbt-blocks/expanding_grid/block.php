@@ -12,62 +12,93 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_expanding_grid( $attributes ) {
 
 	extract( shortcode_atts( array(
-		'productIDs'		=> '',
-		'align'				=> 'center',
-		'queryOrder'		=> '',
-		'queryDisplayType'	=> 'all_products'
+		'productIDs'					=> '',
+		'align'							=> 'center',
+		'queryOrder'					=> '',
+		'queryDisplayType'				=> 'all_products',
+		'queryProducts'					=> 'wc/v3/products?per_page=10'
 	), $attributes ) );
 
-	switch ( $queryOrder ) {
-		case 'date_desc':
-			$orderby= 'date';
-			$order= 'desc';
-		break;
-		case 'date_asc':
-			$orderby= 'date';
-			$order= 'asc';
-		break;
-		case 'title_desc':
-			$orderby= 'title';
-			$order= 'desc';
-		break;
-		case 'title_asc':
-			$orderby= 'title';
-			$order= 'asc';
-		break;
-		default: 
-			$orderby = 'none';
-			$order = '';
+$queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
+	$query = explode('&',$queryProducts);
+	$a = [];
+	foreach ($query as $q) {
+		$temp = explode('=', $q);
+		if(isset($temp[0]) && isset($temp[1])) $a[$temp[0]] = $temp[1];
+	}
+
+	$args = [
+		'post_type'      => 'product',
+		'post_status'    => 'publish',
+		'posts_per_page' =>  isset($a['per_page'])? $a['per_page'] : 10,
+		'tax_query'		 => array(array(
+            'taxonomy'  => 'product_visibility',
+            'terms'     => array('exclude-from-catalog'),
+            'field'     => 'name',
+            'operator'  => 'NOT IN',
+        )),
+	];
+	switch ($queryDisplayType) {
+		case 'specific':
+			$args['post__in'] 	= explode(',',$productIDs);
+			$args['orderby']	= 'post__in';
+			break;
+		case 'all_products':
+			break;
+		case 'filter_by':
+			if (isset($a['featured'])){
+				$args['tax_query'][] = array(
+				    'taxonomy' => 'product_visibility',
+				    'field'    => 'name',
+				    'terms'    => 'featured',
+				    'operator' => 'IN'
+				);
+			}
+			if (isset($a['on_sale'])){
+				$args['post__in'] = wc_get_product_ids_on_sale();
+			}
+			if (isset($a['attribute']) && isset($a['attribute_term'])){
+				$args['tax_query'][] = array(
+			        'taxonomy'        => $a['attribute'],
+			        'field'           => 'id',
+			        'terms'           =>  explode(',',$a['attribute_term']),
+			        'operator'        => 'IN',
+			    );
+			}
+			break;
+		case 'by_category': 
+			if (isset($a['category'])) 
+				$args['tax_query'][] = array(
+			        'taxonomy'        => 'product_cat',
+			        'field'           => 'id',
+			        'terms'           =>  explode(',',$a['category']),
+			        'operator'        => 'IN',
+			    );
+			break;
+
+		default:
 		break;
 	}
 
-	$products = wc_get_products( [
-		'include' 			=> explode(',',$productIDs),
-		'limit'				=> -1,
-		'orderby'			=> $orderby,
-		'order'				=> $order
-	] );
+	if ($queryDisplayType != 'specific'){
+		$args['order'] 		= isset($a['order'])? $a['order'] : 'date';
+		$args['orderby'] 	= isset($a['orderby'])? $a['orderby'] : 'desc';
+	}
 
+	$lc = new WP_Query( $args );
 	ob_start();
 
-	if ($queryDisplayType == 'specific') {
-		$sorted = [];
-		foreach ( explode(',',$productIDs) as $id) {
-			foreach ($products as $unsorted) {
-				if ($unsorted->get_id() == $id) {
-					$sorted[] = $unsorted;
-					break;
-				}
-			}
-		}
+	$products = [];
 
-	  	if (sizeof($sorted) == sizeof($products)) {
-	  		$products= $sorted;
-	  	}
-	}
+	if ($lc->have_posts()) :
+		while ($lc->have_posts()):
+			$lc->the_post();
+			$products[] = wc_get_product(get_the_ID());
+		endwhile;
+		wp_reset_postdata();
+	endif;
 
-	if ( $products ) :
-
+	if ($products):
 	?>
 
 		<div class="gbt_18_expanding_grid <?php echo $align; ?>">
@@ -158,9 +189,5 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
         </div>
 
 	<?php endif;
-	wp_reset_postdata(); ?>
-
-<?php
-
  return ob_get_clean();
 }
