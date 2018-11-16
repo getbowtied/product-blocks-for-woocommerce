@@ -100,15 +100,10 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
 
 	if ($products):
 	?>
-
 		<div class="gbt_18_expanding_grid <?php echo $align; ?>">
-
             <div class="gbt_18_grid">
-
             	<?php foreach( $products as $product ) : ?>
-
 					<div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanding_grid_item">
-
 						<?php 
 							$image 			= wp_get_attachment_image_src( $product->get_image_id(), 'full' );
 							$image_link  	= wp_get_attachment_url( $product->get_image_id() );
@@ -125,22 +120,16 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
 	                        </span>
 	                    </div>
 	                </div>
-
                	<?php endforeach; ?>
-
             </div>
-
             <?php foreach( $products as $product ) : ?>
-
             <div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanded_content">
                 <span class="gbt_18_close_content">X</span>
                 <div class="gbt_18_expanded_bg"></div>
                 <div class="gbt_18_product_details">
                     <div class="summary entry-summary">
                         <h1 class="product_title entry-title"><?php echo $product->get_name(); ?></h1>
-
                         <?php echo $product->get_price_html(); ?>
-
                         <div class="woocommerce-product-details__short-description">
                             <p><?php echo $product->get_short_description(); ?></p>
                         </div>
@@ -170,9 +159,7 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
 						<?php endif; ?>
                     </div>
                 </div>
-
                 <?php $attachment_ids = $product->get_gallery_image_ids(); ?>
-                
                 <div class="gbt_18_product_image">
                 	<?php foreach( $attachment_ids as $attachment_id ) : ?>
 
@@ -185,9 +172,7 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
             </div>
 
             <?php endforeach; ?>
-
         </div>
-
 	<?php endif;
  return ob_get_clean();
 }
