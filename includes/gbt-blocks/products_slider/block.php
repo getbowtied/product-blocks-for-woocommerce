@@ -11,7 +11,7 @@ include_once 'functions/function-setup.php';
 function getbowtied_render_frontend_products_slider( $attributes ) {
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
-		'align'							=> '',
+		'align'							=> 'center',
 	), $attributes ) );
 
 	$products = wc_get_products( [
@@ -35,7 +35,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
 	ob_start();
 	 if ( $products ) :
-		printf('<div class="gbt_18_default_slider %s">', $align);
+		printf('<div class="wp-block-getbowtied-vertical-slider gbt_18_default_slider align%s">', $align);
 	 		printf('<div class="gbt_18_content">');
 				printf('<div class="gbt_18_content_wrapper">');
 					printf('<div class="gbt_18_slide_header"><span class="gbt_18_line"></span></div>');

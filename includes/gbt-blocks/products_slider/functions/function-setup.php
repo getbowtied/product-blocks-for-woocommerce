@@ -57,7 +57,7 @@ register_block_type( 'getbowtied/products-slider', array(
 		),
 		'align'							=> array(
 			'type'						=> 'string',
-			'default'					=> '',
+			'default'					=> 'center',
 		),
 	),
 

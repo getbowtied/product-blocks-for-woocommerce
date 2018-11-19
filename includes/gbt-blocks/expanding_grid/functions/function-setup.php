@@ -56,7 +56,7 @@ register_block_type( 'getbowtied/expanding-grid', array(
 		),
 		'align'							=> array(
 			'type'						=> 'string',
-			'default'					=> '',
+			'default'					=> 'center',
 		),
 		'queryOrder'					=> array(
 			'type'						=> 'string',

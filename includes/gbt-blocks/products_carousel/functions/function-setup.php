@@ -81,7 +81,7 @@ register_block_type( 'getbowtied/products-carousel', array(
 		),
 		'align'							=> array(
 			'type'						=> 'string',
-			'default'					=> '',
+			'default'					=> 'center',
 		),
 		'queryOrder'					=> array(
 			'type'						=> 'string',

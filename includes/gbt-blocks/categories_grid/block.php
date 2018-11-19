@@ -54,7 +54,7 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
 
 	ob_start();
 	if ( $product_categories ) :
-		printf('<section class="wp-block-getbowtied-categories-grid gbt_18_categories_grid_wrapper %s %s"><div class="gbt_18_categories_grid %s">', $className, $align, $columns);
+		printf('<section class="wp-block-getbowtied-categories-grid gbt_18_categories_grid_wrapper %s align%s"><div class="gbt_18_categories_grid %s">', $className, $align, $columns);
 		foreach ($product_categories as $cat): ?>
             <div class="gbt_18_category_grid_item">
                 <a class="gbt_18_category_grid_item_img" href="<?php echo get_term_link( $cat->slug, 'product_cat' ); ?>">
