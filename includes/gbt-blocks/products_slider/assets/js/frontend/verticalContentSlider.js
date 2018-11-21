@@ -15,7 +15,7 @@
 				var $this = this; //THIS SLIDE SELECTOR
 				var activeImage = '.gbt_18_img .gbt_18_image_link.gbt_18_active'; // ACTIVE IMAGE SELECTOR
 				var slideImage = '.gbt_18_img .gbt_18_image_link'; // ALL IMAGE SELECTOR
-				var slideLength = $('.gbt_18_img_wrapper a', this).length < 10 ? '0' + ($('.gbt_18_img_wrapper a', this).length) : $('.gbt_18_img_wrapper a', this).length; //ADD 0 BEFORE SLIDE COUNT
+				var slideLength = $('.gbt_18_img_wrapper a', this).length < 9 ? '0' + ($('.gbt_18_img_wrapper a', this).length) : $('.gbt_18_img_wrapper a', this).length; //ADD 0 BEFORE SLIDE COUNT
 				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>'; //SLIDE COUNT ELEMENT
 				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON LEFT
 				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON RIGHT
@@ -40,7 +40,7 @@
 				function showSlideIndex(){
 					var getCurentSlideIndex = $('.gbt_18_img .gbt_18_image_link.gbt_18_active').index();
 					setTimeout(function () {
-						if (getCurentSlideIndex < 10) {
+						if (getCurentSlideIndex < 9) {
 							$('.gbt_18_content .gbt_18_current_slide', $this).text('0' + (getCurentSlideIndex + 1));
 						}
 						else{
