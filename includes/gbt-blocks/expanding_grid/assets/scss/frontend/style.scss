@@ -68,6 +68,8 @@ body{
 	    &.gbt_18_visible{
 	    	pointer-events: auto;
 	    	overflow: auto;
+			z-index: 999999;
+			opacity: 1;
 	    }
 	    .gbt_18_close_content{
 			display: table;

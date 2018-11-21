@@ -1,7 +1,7 @@
-body{
-	margin: 0;
-	padding:0;
-}
+// body{
+// 	margin: 0;
+// 	padding:0;
+// }
 .gbt_18_pagination{
 	position: fixed;
 	top: 50%;
@@ -43,6 +43,12 @@ body{
 	}
 }
 .gbt_18_snap_look_book{
+	h1{
+		margin: 0;
+		font-size: 100px;
+		display: block;
+		text-align: center;
+	}
 	img{
 		max-width: 100%;
 		display: block;
@@ -338,11 +344,4 @@ body{
 			}
 		}
 	}
-}
-
-h1{
-	margin: 0;
-	font-size: 100px;
-	display: block;
-	text-align: center;
 }

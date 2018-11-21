@@ -104,12 +104,9 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
             <div class="gbt_18_grid">
             	<?php foreach( $products as $product ) : ?>
 					<div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanding_grid_item">
-						<?php 
-							$image 			= wp_get_attachment_image_src( $product->get_image_id(), 'full' );
-							$image_link  	= wp_get_attachment_url( $product->get_image_id() );
-	    				?>
+						<?php $image 	= wp_get_attachment_image( $product->get_image_id(), 'large' );	?>
 	                    <div class="gbt_18_feature_image">
-	                        <img src="<?php echo $image[0]; ?>" alt="">
+	                        <?php echo !$image? wc_placeholder_img() : $image; ?>
 	                    </div>
 	                    <div class="gbt_18_product-info">
 	                        <h2 class="gbt_18_product_title">
@@ -123,51 +120,78 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
                	<?php endforeach; ?>
             </div>
             <?php foreach( $products as $product ) : ?>
-            <div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanded_content">
+            <div id="product-<?php echo $product->get_id(); ?>" class="product gbt_18_expanded_content">
                 <span class="gbt_18_close_content">X</span>
                 <div class="gbt_18_expanded_bg"></div>
                 <div class="gbt_18_product_details">
                     <div class="summary entry-summary">
-                        <h1 class="product_title entry-title"><?php echo $product->get_name(); ?></h1>
-                        <?php echo $product->get_price_html(); ?>
-                        <div class="woocommerce-product-details__short-description">
-                            <p><?php echo $product->get_short_description(); ?></p>
-                        </div>
-                        <p class="stock in-stock">2 in stock</p>
-                        <?php if ( $product->get_type() == 'simple' ): ?>
-							<?php 
-							woocommerce_quantity_input( array(
-								'min_value'   => $product->get_min_purchase_quantity(),
-								'max_value'   => $product->get_max_purchase_quantity(),
-								'input_value' => $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
-							), $product);
-							?>
-							<button type="submit" 
-									class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
-									value="<?php echo $product->get_id(); ?>"
-									data-product_id="<?php echo $product->get_id(); ?>"
-									data-quantity="1"
-									href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-									<?php echo $product->add_to_cart_text(); ?>
-							</button>
-						<?php else: ?>
-							<button type="submit" 
-									class="single_add_to_cart_button button alt" 
-									href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-									<?php echo $product->add_to_cart_text(); ?>
-							</button>
-						<?php endif; ?>
+                    	<?php // Product title ?>
+                        	<h1 class="product_title entry-title"><?php echo $product->get_name(); ?></h1>
+
+                        <?php // Product rating ?>
+                        <?php if ( $product->get_review_count() > 0 ): ?>
+	                        <div class="woocommerce-product-rating">
+	                        	<div class="star-rating">
+	                        	<?php echo wc_get_star_rating_html($product->get_average_rating(), $product->get_review_count());?>
+	                        	</div>
+	                        </div>
+                    	<?php endif; ?>
+
+                    	<?php // Product price ?>
+                        	<p class="price"><?php echo $product->get_price_html(); ?></p>
+
+                        <?php // Product description ?>
+	                        <div class="woocommerce-product-details__short-description">
+	                            <p><?php echo $product->get_short_description(); ?></p>
+	                        </div>
+                        
+                        <?php // Product add to cart button ?>
+	                        <div class="cart">
+	                        <?php if ( $product->get_type() == 'simple' ): ?>
+								<?php 
+								woocommerce_quantity_input( array(
+									'min_value'   => $product->get_min_purchase_quantity(),
+									'max_value'   => $product->get_max_purchase_quantity(),
+									'input_value' => $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+								), $product);
+								?>
+								<button type="submit" 
+										class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
+										value="<?php echo $product->get_id(); ?>"
+										data-product_id="<?php echo $product->get_id(); ?>"
+										data-quantity="1"
+										href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+										<?php echo $product->add_to_cart_text(); ?>
+								</button>
+							<?php else: ?>
+								<a 		target="_blank"
+										class="single_add_to_cart_button button alt" 
+										href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+										<?php echo $product->add_to_cart_text(); ?>
+								</a>
+							<?php endif; ?>
+							</div>
+
                     </div>
                 </div>
-                <?php $attachment_ids = $product->get_gallery_image_ids(); ?>
+	        	<?php // Product Images
+                $attachment_ids = $product->get_gallery_image_ids(); ?>
                 <div class="gbt_18_product_image">
-                	<?php foreach( $attachment_ids as $attachment_id ) : ?>
-
-                		<?php $image_url = wp_get_attachment_image_src( $attachment_id, 'full' )[0]; ?>
+                	<?php 
+                		// Main Image 
+                		$image 	= wp_get_attachment_image( $product->get_image_id(), 'large' ); ?>
                 		<div class="gbt_18_product_image_item">
-	                        <img src="<?php echo $image_url; ?>" alt="img 01"/>
-	                    </div>
-                	<?php endforeach ?>
+							<?php echo !$image? wc_placeholder_img() : $image; ?>
+                		</div>
+                		<?php // Gallery Images
+                		foreach( $attachment_ids as $attachment_id ) :
+                			$image = wp_get_attachment_image( $attachment_id, 'large' ); 
+                			if (!empty($image)): ?>
+	                		<div class="gbt_18_product_image_item">
+		                       <?php echo $image; ?>
+		                    </div>
+		                <?php endif;
+		            endforeach ?>
                 </div>
             </div>
 
