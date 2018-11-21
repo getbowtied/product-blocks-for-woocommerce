@@ -55,10 +55,6 @@ register_block_type( 'getbowtied/products-slider', array(
 			'type'						=> 'string',
 			'default'					=>  '',
 		),
-		'align'							=> array(
-			'type'						=> 'string',
-			'default'					=> 'center',
-		),
 	),
 
 	'render_callback' => 'getbowtied_render_frontend_products_slider',

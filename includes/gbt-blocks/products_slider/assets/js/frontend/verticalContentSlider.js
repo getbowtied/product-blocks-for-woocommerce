@@ -52,13 +52,13 @@
 				//SET DEFAULT TEXT ANIMATION 
 				var activeContentSelector = $('.gbt_18_slide_content_item.gbt_18_active ', $this);
 
-				activeContentSelector.prev().find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+				activeContentSelector.prev().find('.gbt_18_slide_content_wrapper').css({
 					transform: 'translateY(-10%)',
 				});
-				activeContentSelector.next().find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+				activeContentSelector.next().find('.gbt_18_slide_content_wrapper').css({
 					transform: 'translateY(10%)',
 				});
-				activeContentSelector.find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+				activeContentSelector.find('.gbt_18_slide_content_wrapper').css({
 					transform: 'translateY(0)',
 				});
 
@@ -69,24 +69,24 @@
 
 					var activeContentSelector = $('.gbt_18_slide_content_item.gbt_18_active ', $this);
 
-					activeContentSelector.prev().find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+					activeContentSelector.prev().find('.gbt_18_slide_content_wrapper').css({
 						transform: 'translateY(-10%)',
 					});
-					activeContentSelector.next().find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+					activeContentSelector.next().find('.gbt_18_slide_content_wrapper').css({
 						transform: 'translateY(10%)',
 					});
-					activeContentSelector.find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+					activeContentSelector.find('.gbt_18_slide_content_wrapper').css({
 						transform: 'translateY(0)',
 					});
 
 					if (activeContentSelector.next('.gbt_18_slide_content_item').length == 0) {
-						$('.gbt_18_slide_content_item', $this).eq(0).find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+						$('.gbt_18_slide_content_item', $this).eq(0).find('.gbt_18_slide_content_wrapper').css({
 							transform: 'translateY(10%)',
 						});
 
 					}
 					if (activeContentSelector.prev('.gbt_18_slide_content_item').length == 0){
-						$('.gbt_18_slide_content_item', $this).eq(-1).find('.gbt_18_slide_text, .gbt_18_slide_title').css({
+						$('.gbt_18_slide_content_item', $this).eq(-1).find('.gbt_18_slide_content_wrapper').css({
 							transform: 'translateY(-10%)',
 						});
 					}
