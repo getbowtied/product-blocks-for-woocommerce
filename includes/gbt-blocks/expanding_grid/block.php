@@ -152,7 +152,7 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
                         
                         <?php // Product add to cart button ?>
 	                        <div class="cart">
-	                        <?php if ( $product->get_type() == 'simple' && $product->is_in_stock()): ?>
+	                        <?php if ( $product->get_type() == 'simple' && $product->is_in_stock() && $product->is_purchasable()): ?>
 								<?php 
 								woocommerce_quantity_input( array(
 									'min_value'   => $product->get_min_purchase_quantity(),

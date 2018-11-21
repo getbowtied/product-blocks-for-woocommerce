@@ -60,17 +60,14 @@ function getbowtied_render_frontend_categories_grid( $attributes ) {
                 <a class="gbt_18_category_grid_item_img" href="<?php echo get_term_link( $cat->slug, 'product_cat' ); ?>">
                     <?php 
                     	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
-					    $image = wp_get_attachment_image_src( $thumbnail_id, 'large');
-					    $image = isset($image[0]) ? $image[0] : wc_placeholder_img_src();
-					    if ( isset($image) ) {
-						    echo '<img src="' . $image . '" alt="' . $cat->name . '" />';
-						}
+					    $image = wp_get_attachment_image( $thumbnail_id, 'large');
+					    echo !$image? wc_placeholder_img() : $image;
                     ?>
                 </a>
                 <h4 class="gbt_18_category_grid_item_title">
                     <?php echo esc_html($cat->name); ?>
                     <?php if( $productCount ) { ?>
-                    	<span class="gbt_18_category_grid_item_count"><sup><?php echo esc_attr($cat->count); ?></sup></span>
+                    	<span class="gbt_18_category_grid_item_count"><?php echo esc_attr($cat->count); ?></span>
                     <?php } ?>
                 </h4>
             </div>
