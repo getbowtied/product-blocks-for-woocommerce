@@ -38,7 +38,7 @@
 
 				$('body').addClass('gbt_18_overflow');
 				$('#'+id+'.gbt_18_expanded_content').addClass('gbt_18_visible').scrollTop(0);
-				$('#'+id+'.gbt_18_expanded_content').css({opacity: 1});
+				// $('#'+id+'.gbt_18_expanded_content').css({opacity: 1});
 
 				//PRODUCT IMG POSITION
 				productImg = $(this).find('.gbt_18_feature_image img')

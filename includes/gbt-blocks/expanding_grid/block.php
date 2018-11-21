@@ -144,10 +144,15 @@ $queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
 	                        <div class="woocommerce-product-details__short-description">
 	                            <p><?php echo $product->get_short_description(); ?></p>
 	                        </div>
+
+	                    <?php // Product Stock 
+	                    	if ( $product->is_in_stock() === false ): ?>
+								<p class="stock <?php echo $product->get_availability()['class']; ?>"><?php echo $product->get_availability()['availability']; ?></p><br/>
+	                    	<?php endif;?>
                         
                         <?php // Product add to cart button ?>
 	                        <div class="cart">
-	                        <?php if ( $product->get_type() == 'simple' ): ?>
+	                        <?php if ( $product->get_type() == 'simple' && $product->is_in_stock()): ?>
 								<?php 
 								woocommerce_quantity_input( array(
 									'min_value'   => $product->get_min_purchase_quantity(),
