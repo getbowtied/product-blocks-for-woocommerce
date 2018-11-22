@@ -38,12 +38,12 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 					<section class="gbt_18_distorsion_lookbook_item">
 		                <div class="gbt_18_distorsion_image" data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
 		                	<?php 
-								$image = wp_get_attachment_image( $product->get_image_id(), 'full' );
+								$image = wp_get_attachment_image( $product->get_image_id(), 'square' );
 								$image = !$image? wc_placeholder_img() : $image;
 
 								$gallery_ids = $product->get_gallery_image_ids();
 	                			if( isset($gallery_ids[0]) ) {
-	                				$image2 = wp_get_attachment_image( $gallery_ids[0], 'full' );
+	                				$image2 = wp_get_attachment_image( $gallery_ids[0], 'square' );
 	                			}    
 	                			$image2 = !$image2? $image : $image2;           
 		    				?>
