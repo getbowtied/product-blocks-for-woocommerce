@@ -114,6 +114,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		position: relative;
+		
+		&:after {
+			display: block;
+			clear: both;
+			content: '';
+		}
 		.gbt_18_shop_this_book{
 			position: absolute;
 			bottom: 120px;

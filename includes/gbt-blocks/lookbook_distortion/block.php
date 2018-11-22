@@ -38,16 +38,19 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 					<section class="gbt_18_distorsion_lookbook_item">
 		                <div class="gbt_18_distorsion_image" data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
 		                	<?php 
-								$image = wp_get_attachment_image_src( $product->get_image_id(), 'full' )[0];
+								$image = wp_get_attachment_image( $product->get_image_id(), 'full' );
+								$image = !$image? wc_placeholder_img() : $image;
 
 								$gallery_ids = $product->get_gallery_image_ids();
-	                			if( $gallery_ids[0] ) {
-	                				$image2 = wp_get_attachment_image_src( $gallery_ids[0], 'full' )[0];
-	                			}               
+	                			if( isset($gallery_ids[0]) ) {
+	                				$image2 = wp_get_attachment_image( $gallery_ids[0], 'full' );
+	                			}    
+	                			$image2 = !$image2? $image : $image2;           
 		    				?>
-
-		                    <img src="<?php echo $image; ?>" alt="Imafdsge"/>
-		                    <img src="<?php echo $image2; ?>" alt="Imfdsage"/>
+								<?php 
+									echo $image;
+									echo $image2;
+								?>
 		                </div>
 		                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bgColor; ?>;">
 		                    <div class="gbt_18_text_wrapper">
@@ -56,29 +59,11 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">
 		                            <?php echo $product->get_price_html(); ?>
 		                        </span>
-		                        <?php if ( $product->get_type() == 'simple' ): ?>
-									<?php 
-									woocommerce_quantity_input( array(
-										'min_value'   => $product->get_min_purchase_quantity(),
-										'max_value'   => $product->get_max_purchase_quantity(),
-										'input_value' => $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
-									), $product);
-									?>
-									<button type="submit" 
-											class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
-											value="<?php echo $product->get_id(); ?>"
-											data-product_id="<?php echo $product->get_id(); ?>"
-											data-quantity="1"
-											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-											<?php echo $product->add_to_cart_text(); ?>
-									</button>
-								<?php else: ?>
-									<button type="submit" 
-											class="single_add_to_cart_button button alt" 
-											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-											<?php echo $product->add_to_cart_text(); ?>
-									</button>
-								<?php endif; ?>
+								<a 		style="color:<?php echo $textColor; ?>" 
+										class="single_add_to_cart_button button alt" 
+										href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+										<?php echo $product->add_to_cart_text(); ?>
+								</a>
 		                    </div>
 		                </div>
 		            </section>

@@ -57,28 +57,27 @@ function getbowtied_render_frontend_lookbook_snap_to_scroll_product( $attributes
                         <div class="gbt_18_item_wrapper">
                             <div class="gbt_18_look_product_image">
                             	<?php
-									$image_link = wp_get_attachment_url( $product->get_image_id() );
+									$image = wp_get_attachment_image( $product->get_image_id(), 'shop_catalog' );
                             	?>
                                 <a href="<?php echo get_permalink($product->get_id()); ?>">
-                                    <img src="<?php echo $image_link; ?>" alt="test">
+                                   <?php echo !$image? wc_placeholder_img() : $image; ?>
                                 </a>
                             </div>
                             <div class="gbt_18_look_product_info">
-                            	<?php if( $product->get_average_rating() > 0 ) : ?>
-	                                <div class="star-rating">
-	                                    <span style="width:<?php echo $product->get_average_rating() * 20; ?>%">
-	                                        Rated <strong class="rating"><?php echo $product->get_average_rating(); ?></strong> out of 5
-	                                    </span>
-	                                </div>
-	                            <?php endif; ?>
+                        	<?php if ( $product->get_review_count() > 0 ): ?>
+		                        <div class="woocommerce-product-rating">
+		                        	<div class="star-rating">
+		                        	<?php echo wc_get_star_rating_html($product->get_average_rating(), $product->get_review_count());?>
+		                        	</div>
+		                        </div>
+	                    	<?php endif; ?>
                                 <a href="<?php echo get_permalink($product->get_id()); ?>" class="gbt_18_look_product_title" >
                                     <h2 class="woocommerce-loop-product__title">
                                         <?php echo $product->get_name(); ?>
                                     </h2>
                                 </a>
-                                <span class="gbt_18_product_price">
-                                    <?php echo $product->get_price_html(); ?>
-                                </span>
+                                <?php // Product price ?>
+                        			<p class="price"><?php echo $product->get_price_html(); ?></p>
                             </div>
                         </div>
                     </div>
