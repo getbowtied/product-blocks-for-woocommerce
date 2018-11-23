@@ -2,14 +2,7 @@
 	.gbt_18_distorsion_lookbook {
 		&:nth-child(odd) {
 			.gbt_18_distorsion_lookbook_item {
-				.gbt_18_distorsion_image{
-					left: 0;
-					right: unset;
-				}
-				.gbt_18_distorsion_lookbook_content{
-					right:0;
-					left: unset;
-				}
+				flex-direction: row-reverse;
 			}
 		}
 	}
@@ -17,14 +10,9 @@
 
 .gbt_18_distorsion_lookbook{
 	.gbt_18_distorsion_lookbook_item{
-		height: 0;
-		padding-bottom:50%;
 		position: relative;
-		// &:before {
-		// 	content: ' ';
-		// 	display: block;
-		// 	padding-top:100%;
-		// }
+		display: flex;
+
 		&:hover{
 			.gbt_18_distorsion_image{
 				img{
@@ -35,39 +23,46 @@
 			}
 		}
 		.gbt_18_distorsion_image{
-			position: absolute;
-			height: 100%;
-			width: 50%;
-			right: 0;
-			// position: relative;
+			// flex: 1;
+			position: relative;
 			overflow: hidden;
+			width: 50%;
 			
-		    img{
-		    	display: none;
-				max-width: 100%;
-				height: 100%;
-				width: 100%;
-				object-fit: cover;
-				&:nth-child(2) {
-					position: absolute;
-					top: 0;
-					left: 0;
-					opacity: 0;
-					transition: opacity 0.3s;
-				}
+			img {
+				display: none;
 			}
+			
+			.scene {
+				width:410px;
+				height: 410px;
+				display: block;
+			}
+			
+		 //    img{
+		 //    	width: 100%;
+		 //    	height: auto;
+		 //    	max-height: unset;
+			// 	&:nth-child(2) {
+			// 		display: none;
+			// 		// position: absolute;
+			// 		// top: 0;
+			// 		// left: 0;
+			// 		// opacity: 0;
+			// 		// transition: opacity 0.3s;
+			// 	}
+			// }
 			canvas {
-			    position: absolute;
-			    top: 0;
-			    left: 0;
+			    // position: absolute;
+			    // top: 0;
+			    // left: 0;
+			    // width: 100% !important;
+			    // height: 100% !important;
 			}
 			
 		}
 		.gbt_18_distorsion_lookbook_content{
-			position: absolute;
-			height: 100%;
+			// flex:1;
 			width: 50%;
-			left: 0;
 			.gbt_18_text_wrapper{
 				max-width: 400px;
 				margin: 0 auto;

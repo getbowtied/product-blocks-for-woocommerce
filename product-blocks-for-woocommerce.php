@@ -80,3 +80,7 @@ if( !function_exists('is_wp_version') ) {
 	}
 }
 
+function gbt_image_sizes() {
+	add_image_size('gbt_square', 900, 900, true);
+}
+add_action('init', 'gbt_image_sizes');
