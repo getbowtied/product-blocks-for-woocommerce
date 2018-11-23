@@ -217,17 +217,24 @@
 									}
 								}
 							),
-							el( 'span',
+							el( SVG,
 								{
 									key: 		'gbt_18_lookbook_sts_scroll_down_button',
 									className: 	'gbt_18_lookbook_sts_scroll_down_button',
+									xmlns: 		'http://www.w3.org/2000/svg',
+									viewBox: 	'0 0 24 24',
 									style:
 									{
-										color: attributes.textColor,
+										fill: attributes.textColor,
 										border: '1px solid ' + attributes.textColor
 									}
 								},
-							)
+								el( Path,
+									{
+										d:"M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" 
+									}
+								),
+						  	)
 						),
 					),
 				),

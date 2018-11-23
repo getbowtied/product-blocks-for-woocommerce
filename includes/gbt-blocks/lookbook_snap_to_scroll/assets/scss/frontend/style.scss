@@ -113,7 +113,8 @@
 	.gbt_18_look_book_item{
 		width: 100%;
 		min-height: 100vh;
-		max-height: 100vh;
+		height: auto;
+		// max-height: 100vh;
 		display: flex;
 		flex-wrap: wrap;
 		position: relative;

@@ -1,15 +1,106 @@
-@font-face {
-  font-family: 'product-blocks';
-  src:
-    url('fonts/product-blocks.woff2?f6hoyl') format('woff2'),
-    url('fonts/product-blocks.ttf?f6hoyl') format('truetype'),
-    url('fonts/product-blocks.woff?f6hoyl') format('woff'),
-    url('fonts/product-blocks.svg?f6hoyl#product-blocks') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+.gbt_18_product_carousel {
 
-.editor-block-list__block[data-type="getbowtied/products-carousel"] {
+	//==============================================================================
+	//	Placeholder Content Styles
+	//==============================================================================
+	.gbt_18_product_carousel_placeholder_wrapper {
+		overflow: auto;
+
+		.toggle-prev-button,
+		.toggle-next-button {
+			cursor: default;
+		}
+
+		ul.gbt_18_carousel_products_placeholder {
+
+			li.gbt_18_carousel_placeholder_product {
+
+				float: left;
+		    	width: 33.3333333%;
+		    	list-style-type: none;
+		    	text-align: center;
+	    	    margin-bottom: 0;
+	    	    padding: 5px 10px 0;
+
+				.gbt_18_carousel_placeholder_product_thumbnail {
+					background-color: #eeeeee;
+					background-position: center;
+					padding-bottom: 100%;
+					height: 0;
+					width: 100%;
+				}
+
+				.gbt_18_carousel_placeholder_product_title {
+				    height: 15px;
+				    width: 70%;
+				    margin: 15px auto 0;
+				    background-color: #eeeeee;
+				}
+
+				.gbt_18_carousel_placeholder_product_price {
+				    height: 10px;
+				    width: 30%;
+				    margin: 15px auto;
+				    background-color: #eeeeee;
+				}
+
+				.gbt_18_carousel_placeholder_product_button {
+				    background: #eeeeee;
+				    display: block;
+				    color: #333;
+				    cursor: pointer;
+				    font-weight: 600;
+				    border: none;
+				    padding: 8px 17px;
+				    margin: 10px auto 0;
+				    font-size: 13px;
+				    outline: 0;
+
+				    &:hover {
+				    	background: #e4e4e4;
+				    }
+		    	}
+			}
+		}
+	}
+
+	//==============================================================================
+	//	Arrows Styles
+	//==============================================================================
+	.toggle-prev-button,
+	.toggle-next-button {
+		position: absolute;
+		top: 50%;
+		transition: all .3s ease-in-out;
+		transform: translateY(-100%);
+		border: none;
+		outline: none;
+		background: none;
+		cursor: pointer;
+
+		&:disabled {
+			opacity: .3;
+			pointer-events: none;
+		}
+	}
+
+	.toggle-prev-button {
+		left: -60px;
+	}
+
+	.toggle-next-button {
+		right: -60px;
+	}
+
+	.toggle-prev,
+	.toggle-next {
+		opacity: 1;
+		width: 22px;
+	}
+
+	//==============================================================================
+	//	Product Carousel Styles
+	//==============================================================================
 
     transition: all .4s ease-in-out;
 
@@ -17,60 +108,6 @@
 
 		position: relative;
 
-		.toggle-prev {
-			left: -60px;
-		}
-
-		.toggle-next {
-			right: -60px;
-		}
-		.toggle-prev,
-		.toggle-next {
-
-			position: absolute;
-			top: 0;
-			border: none;
-			outline: none;
-			background: none;
-			transition: all .3s ease-in-out;
-			top: 50%;
-			transform: translateY(-100%);
-			cursor: pointer;
-			opacity: 1;
-
-			&:before {
-				font-family: 'product-blocks';
-				speak: none;
-				font-style: normal;
-				font-weight: normal;
-				font-variant: normal;
-				text-transform: none;
-				line-height: 1;
-
-				/* Better Font Rendering =========== */
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-			}
-
-			&:disabled {
-				opacity: .3;
-				pointer-events: none;
-			}
-		}
-
-		.toggle-prev:before {
-			font-family: "product-blocks";
-			font-size: 20px;
-			content: '\e900';
-			color: #000;
-		}
-
-		.toggle-next:before {
-			font-family: "product-blocks";
-			font-size: 20px;
-			content: '\e901';
-			color: #000;
-		}
 		.scrollable_wrapper{
 			width: 100%;
 			overflow: hidden;
@@ -186,6 +223,7 @@
 		}
 	}
 }
+
 
 .editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] {
 	max-width: 100% !important;

@@ -329,7 +329,7 @@
 							),
 							el( 'button',
 								{
-									className: 	'toggle-prev',
+									className: 	'toggle-prev-button',
 									disabled: 	_isPrev(),
 									onClick: 	function onClick() {
 										let idx = attributes.selectedSlide;
@@ -340,10 +340,22 @@
 										}
 									},
 								},
+								el( SVG,
+									{
+										className: 'gbt_18_carousel_products_placeholder_toggle toggle-prev',
+										xmlns:"http://www.w3.org/2000/svg",
+										viewBox:"0 0 24 24"
+									},
+									el( Path,
+										{
+											d:"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+										}
+									)
+								),
 							),
 							el( 'button',
 								{
-									className: 	'toggle-next',
+									className: 	'toggle-next-button',
 									disabled:  _isNext(),
 									onClick: 	function onClick() {
 										let idx = attributes.selectedSlide;
@@ -354,10 +366,117 @@
 										}
 									},
 								},
+								el( SVG,
+									{
+										className: 'gbt_18_carousel_products_placeholder_toggle toggle-next',
+										xmlns:"http://www.w3.org/2000/svg",
+										viewBox:"0 0 24 24"
+									},
+									el( Path,
+										{
+											d:"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+										}
+									)
+								),
 							),
 						),
 					);
-				} 
+
+				} else {
+					let class_prefix = 'gbt_18_carousel_placeholder_product';
+
+					for( let j = 0; j <= 2; j++ ) {
+						productElements.push(
+							el( 'li',
+								{	
+									key: 		class_prefix + '_item-' + j,
+									className: 	class_prefix + ' item-' + j,
+								},
+								el( 'div',
+									{
+										key: 		class_prefix + '_content_wrapper',
+										className: 	class_prefix + '_content_wrapper'
+									},
+									el( 'div',
+										{
+											key: 		class_prefix + '_thumbnail',
+											className: 	class_prefix + '_thumbnail',
+										}
+									),
+									el( 'div',
+										{
+											key: 		class_prefix + '_title',
+											className: 	class_prefix + '_title'
+										},
+									),
+									el( 'div',
+										{
+											key: 		class_prefix + '_price',
+											className: 	class_prefix + '_price',
+										}
+									),
+									el( 'button',
+										{
+											key: 		class_prefix + '_button',
+											className: 	class_prefix + '_button'
+										}, 
+										i18n.__("Add To Cart")
+									)
+								)
+							)
+						);
+					}
+
+					wrapper.push(
+						el( 'div',
+							{
+								key: 		'gbt_18_product_carousel_placeholder_wrapper',
+								className: 	'gbt_18_product_carousel_placeholder_wrapper'	
+							},
+							el( 'ul',
+								{
+									key: 		'gbt_18_carousel_products_placeholder',
+									className: 	'gbt_18_carousel_products_placeholder',
+								},
+								productElements,
+							),
+							el( 'button',
+								{
+									className: 'toggle-prev-button',
+								},
+								el( SVG,
+									{
+										className: 'gbt_18_carousel_products_placeholder_toggle toggle-prev',
+										xmlns:"http://www.w3.org/2000/svg",
+										viewBox:"0 0 24 24"
+									},
+									el( Path,
+										{
+											d:"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+										}
+									)
+								),
+							),
+							el( 'button',
+								{
+									className: 'toggle-next-button',
+								},
+								el( SVG,
+									{
+										className: 'gbt_18_carousel_products_placeholder_toggle toggle-next',
+										xmlns:"http://www.w3.org/2000/svg",
+										viewBox:"0 0 24 24"
+									},
+									el( Path,
+										{
+											d:"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+										}
+									)
+								),
+							),
+						),
+					);
+				}
 				
 				return wrapper;
 			}
@@ -1053,6 +1172,7 @@
 				el(
 					'div',
 					{
+						className: 'gbt_18_product_carousel'
 					},
 					attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 					renderResults(),
