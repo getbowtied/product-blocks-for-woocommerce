@@ -4,14 +4,16 @@
 	var snapLookbook = {
 		init: function() {
 			this.snapScrollFunction();
-			this.hoverImageFunction();
+			// this.hoverImageFunction();
 		},
 
 		snapScrollFunction: function(){
 			$.scrollify({
 				section:".gbt_18_look_book_item",
-			    scrollbars:true,
-			   	updateHash: false,
+			    scrollbars: false,
+			    overflowScroll:true,
+			   	standardScrollElements: ".scroll-wrapper",
+
 			    before:function(i,panels) {
 
 					var ref = panels[i].attr("data-section-name");
@@ -102,5 +104,34 @@
 	$( document ).ready( function(){
 		snapLookbook.init();		
 	});
+
+	// $(document).on('DOMMouseScroll mousewheel', '.scroll-wrapper', function(ev) {
+	//     var $this = $(this),
+	//         scrollTop = this.scrollTop,
+	//         scrollHeight = this.scrollHeight,
+	//         height = $this.innerHeight(),
+	//         delta = (ev.type == 'DOMMouseScroll' ?
+	//             ev.originalEvent.detail * -40 :
+	//             ev.originalEvent.wheelDelta),
+	//         up = delta > 0;
+
+	//     var prevent = function() {
+	//         ev.stopPropagation();
+	//         ev.preventDefault();
+	//         ev.returnValue = false;
+	//         $(".gbt_18_pagination a").trigger('click');
+	//         return false;
+	//     }
+
+	//     if (!up && -delta > scrollHeight - height - scrollTop) {
+	//     	let next = parseInt($this.parents('section').attr('data-section-name')) + 1;
+	//     	$.scrollify.move('#'+next);
+	//         return prevent();
+	//     } else if (up && delta > scrollTop) {
+	//         // Scrolling up, but this will take us past the top.
+	//         // $this.scrollTop(0);
+	//         return prevent();
+	//     }
+	// });
 	
 }( jQuery ) );

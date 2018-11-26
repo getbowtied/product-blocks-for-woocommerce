@@ -46,6 +46,7 @@
     width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
+    
 	h1{
 		margin: 0;
 		font-size: 100px;
@@ -111,23 +112,17 @@
 	    background-repeat: no-repeat;
 	}
 	.gbt_18_look_book_item{
-		width: 100%;
-		min-height: 100vh;
-		height: auto;
-		// max-height: 100vh;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		flex-wrap: wrap;
 		position: relative;
+		
 		
 		&.image-right {
 			flex-direction:row-reverse;
 		}
 		
-		&:after {
-			display: block;
-			clear: both;
-			content: '';
-		}
 		.gbt_18_shop_this_book{
 			position: absolute;
 			bottom: 120px;
@@ -169,7 +164,21 @@
 			align-items: center;
 			justify-content: center;
 			box-sizing: border-box;
-			padding: 70px;
+			// padding: 200px;
+			height: 100vh;
+			
+			> .scroll-wrapper {
+				max-height: 100%;
+				overflow-y: auto;
+				overflow-x: hidden;
+			}
+			
+			// &.rows-2 {
+			// 	> .woocommerce {
+			// 		max-width: 60%;
+			// 		// max-height: 
+			// 	}
+			// }
 		}
 		// &.gbt_18_look_book_type_column{
 		// 	.gbt_18_look_product_box{
