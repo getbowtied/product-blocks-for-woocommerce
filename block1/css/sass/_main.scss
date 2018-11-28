@@ -170,7 +170,15 @@ body{
 		}
 	}
 }
-// DEFAULT SLIDER ANIMATION
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+// SLIDER ANIMATION
 @keyframes gbt_18_hideUp {
     49% {
 		transform: translatey(-100%);
@@ -203,4 +211,3 @@ body{
 		transform: scale(1);
 	}
 }
-// EXPANDING PREVIEW ANIMATION
