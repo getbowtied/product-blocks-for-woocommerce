@@ -11,9 +11,9 @@
 			$.scrollify({
 				section:".gbt_18_look_book_item",
 			    scrollbars: false,
-			    overflowScroll:true,
+			    overflowScroll: false,
 			   	standardScrollElements: ".scroll-wrapper",
-
+			   	updateHash: false,
 			    before:function(i,panels) {
 
 					var ref = panels[i].attr("data-section-name");
@@ -33,6 +33,20 @@
 			      	var activeClass;
 			      	var lookBookImage;
 			      	var getItemIndex;
+
+			      	$('.scroll-wrapper').on('scroll', function(){
+ 			      		var scrollIsBottom = $(this).prop('scrollHeight') - $(this).innerHeight();
+ 			      		// console.log($(this).scrollTop())
+			      		if ($(this).scrollTop() == 0) {
+			      			//console.log('move up');
+			      			$.scrollify.previous();
+			      		}
+			      		else if( $(this).scrollTop() == scrollIsBottom ){
+			      			//console.log('move down');
+			      			$.scrollify.next();
+			      		}
+			      	});
+
 			      	$(".gbt_18_look_book_item").each(function(i) {
 
 			      		i = (i + 1);
