@@ -43,7 +43,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 								 printf('<div class="gbt_18_slide_content_item product">
 								 			<div class="gbt_18_slide_content_wrapper">
 								 				<div class="summary entry-summary">
-								 					<h2 class="product-title entry-title gbt_18_slide_title"><a target="_blank" href="%s">%s</a></h2>
+								 					<h2 class="product-title entry-title gbt_18_slide_title"><a href="%s">%s</a></h2>
 													<p class="price">%s</p>
 													<p class="gbt_18_slide_text"><span class="gbt_18_p_wrapper">%s</span></p>',
 								esc_url(get_permalink($product->get_id())),	
@@ -73,7 +73,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 											<?php echo $product->add_to_cart_text(); ?>
 									</button>
 								<?php else: ?>
-									<a 		target="_blank"
+									<a 		
 											class="single_add_to_cart_button button alt" 
 											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
 											<?php echo $product->add_to_cart_text(); ?>
@@ -83,6 +83,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 						<?php printf('</div></div></div>');
 						endforeach;
 					printf('</div>');
+					printf('<div class="gbt_18_slide_link"><a href="%s"><i class="gbt_18_icon_right"></i>%s</a></div>', esc_url(get_permalink($product->get_id())), __("View Product Page", "block-shop"));
 					printf('<div class="gbt_18_slide_controls"></div>');
 				printf('</div>');
 			printf('</div>');
@@ -91,7 +92,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 				printf('<div class="gbt_18_img_wrapper">');
 					foreach( $products as $product ) : 
 						$image 			= wp_get_attachment_image( $product->get_image_id(), 'large' );
-						printf('<a target="_blank" class="gbt_18_image_link" href="%s">%s</a>', get_permalink($product->get_id()), !$image? wc_placeholder_img() : $image);
+						printf('<a class="gbt_18_image_link" href="%s">%s</a>', get_permalink($product->get_id()), !$image? wc_placeholder_img() : $image);
 					endforeach;
 				printf('</div>');
 			printf('</div>');
