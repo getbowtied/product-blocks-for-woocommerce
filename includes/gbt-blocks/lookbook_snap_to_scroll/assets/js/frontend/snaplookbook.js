@@ -34,18 +34,18 @@
 			      	var lookBookImage;
 			      	var getItemIndex;
 
-			      	$('.scroll-wrapper').on('scroll', function(){
- 			      		var scrollIsBottom = $(this).prop('scrollHeight') - $(this).innerHeight();
- 			      		// console.log($(this).scrollTop())
-			      		if ($(this).scrollTop() == 0) {
-			      			//console.log('move up');
-			      			$.scrollify.previous();
-			      		}
-			      		else if( $(this).scrollTop() == scrollIsBottom ){
-			      			//console.log('move down');
-			      			$.scrollify.next();
-			      		}
-			      	});
+			      	// $('.scroll-wrapper').on('scroll', function(){
+ 			      // 		var scrollIsBottom = $(this).prop('scrollHeight') - $(this).innerHeight();
+ 			      // 		// console.log($(this).scrollTop())
+			      	// 	if ($(this).scrollTop() == 0) {
+			      	// 		//console.log('move up');
+			      	// 		$.scrollify.previous();
+			      	// 	}
+			      	// 	else if( $(this).scrollTop() == scrollIsBottom ){
+			      	// 		//console.log('move down');
+			      	// 		$.scrollify.next();
+			      	// 	}
+			      	// });
 
 			      	$(".gbt_18_look_book_item").each(function(i) {
 
@@ -119,33 +119,46 @@
 		snapLookbook.init();		
 	});
 
-	// $(document).on('DOMMouseScroll mousewheel', '.scroll-wrapper', function(ev) {
-	//     var $this = $(this),
-	//         scrollTop = this.scrollTop,
-	//         scrollHeight = this.scrollHeight,
-	//         height = $this.innerHeight(),
-	//         delta = (ev.type == 'DOMMouseScroll' ?
-	//             ev.originalEvent.detail * -40 :
-	//             ev.originalEvent.wheelDelta),
-	//         up = delta > 0;
+    let canSnap = true;
 
-	//     var prevent = function() {
-	//         ev.stopPropagation();
-	//         ev.preventDefault();
-	//         ev.returnValue = false;
-	//         $(".gbt_18_pagination a").trigger('click');
-	//         return false;
-	//     }
+	$(document).on('DOMMouseScroll mousewheel', '.scroll-wrapper', function(ev) {
+	    var $this = $(this),
+	        scrollTop = this.scrollTop,
+	        scrollHeight = this.scrollHeight,
+	        height = $this.innerHeight(),
+	        delta = (ev.type == 'DOMMouseScroll' ?
+	            ev.originalEvent.detail * -40 :
+	            ev.originalEvent.wheelDelta),
+	        up = delta > 0;
 
-	//     if (!up && -delta > scrollHeight - height - scrollTop) {
-	//     	let next = parseInt($this.parents('section').attr('data-section-name')) + 1;
-	//     	$.scrollify.move('#'+next);
-	//         return prevent();
-	//     } else if (up && delta > scrollTop) {
-	//         // Scrolling up, but this will take us past the top.
-	//         // $this.scrollTop(0);
-	//         return prevent();
-	//     }
-	// });
+	    var prevent = function() {
+	        ev.stopPropagation();
+	        ev.preventDefault();
+	        ev.returnValue = false;
+	        return false;
+	    }
+
+	    if (!up && -delta > scrollHeight - height - scrollTop) {
+	    	if (canSnap === true) {
+	    		canSnap = false;
+		    	setTimeout(function(){
+		    		console.log('triggering next');
+			    	$.scrollify.next();
+			    	canSnap = true;
+	    		}, 300);
+		    };
+	        return prevent();
+	    } else if (up && delta > scrollTop) {
+	        if (canSnap === true) {
+	        	canSnap = false;
+		    	setTimeout(function(){
+		    		console.log('trigger previous');
+			    	$.scrollify.previous();
+			    	canSnap = true;
+	    		}, 300);
+		    };
+	        return prevent();
+	    }
+	});
 	
 }( jQuery ) );
