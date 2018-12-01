@@ -44,8 +44,10 @@
 }
 .gbt_18_snap_look_book{
     width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    margin-left: calc( -100vw / 2 + 100% / 2);
+    margin-right: calc( -100vw / 2 + 100% / 2);
+    // margin-left: 50%;
+    // transform: translateX(-50%);
     
 	h1{
 		margin: 0;
@@ -113,14 +115,32 @@
 	}
 	.gbt_18_look_book_item{
 		width: 100vw;
-		height: 100vh;
-		display: flex;
-		flex-wrap: wrap;
+		min-height: 100vh;
+		display: inline-block;
 		position: relative;
 		
 		
 		&.image-right {
-			flex-direction:row-reverse;
+			.gbt_18_look_image {
+				float: right;
+			}
+			.gbt_18_look_product_box {
+				float: left;
+			}
+		}
+
+		&.active {
+			.gbt_18_look_image {
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+			&.image-right {
+				.gbt_18_look_image {
+					left: 50%;
+					right: 0;
+				}
+			}
 		}
 		
 		.gbt_18_shop_this_book{
@@ -138,24 +158,16 @@
 				margin: 0;
 			}
 		}
-		// &:nth-child(2n + 3){
-		// 	flex-direction: row-reverse;
-		// 	.gbt_18_shop_this_book{
-		// 		text-align: right;
-		// 		position: absolute;
-		// 		top: 120px;
-		// 		bottom: auto;
-		// 		left: auto;
-		// 		right: 110px;
-		// 	}
-		// }
+
 		.gbt_18_look_image{
 			width: 50%;
-			img{
-				max-height: 100vh;
-				width: 100%;
-				object-fit: cover;
-			}
+			min-height:100vh;
+			height: 100%;
+			float: left;
+			background-attachment: fixed;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    background-size: cover;
 		}
 		.gbt_18_look_product_box{
 			width: 50%;
@@ -164,14 +176,9 @@
 			align-items: center;
 			justify-content: center;
 			box-sizing: border-box;
-			padding: 200px;
-			height: 100vh;
-			
-			> .scroll-wrapper {
-				max-height: 100%;
-				overflow-y: auto;
-				overflow-x: hidden;
-			}
+			min-height: 100vh;
+			height: 150vh;
+			float: right;
 			
 			// &.rows-2 {
 			// 	> .woocommerce {

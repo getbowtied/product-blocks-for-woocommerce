@@ -47,7 +47,7 @@ function getbowtied_render_frontend_lookbook_snap_to_scroll_product( $attributes
 
 	?>
 		<section class="gbt_18_look_book_item gbt_18_look_book_type_grid <?php echo $image_position; ?>">
-            <div class="gbt_18_look_image" <?php if (!empty($imgURL)) { echo 'style="background:url('.esc_url($imgURL).') center center no-repeat; background-size:cover"';}; ?>>
+            <div class="gbt_18_look_image" <?php if (!empty($imgURL)) { echo 'style="background-image:url('.esc_url($imgURL).')"';}; ?>>
                 <div class="gbt_18_shop_this_book">
                     <h5><?php echo __( 'Shop this look', 'gbt-blocks'); ?></h5>
                 </div>
