@@ -12,6 +12,7 @@
 				section:".gbt_18_look_book_item",
 			    // scrollbars: false,
 			    overflowScroll: true,
+			    offset: 32,
 			   	// standardScrollElements: ".scroll-wrapper",
 			   	// updateHash: false,
 			    before:function(idx, panels) {

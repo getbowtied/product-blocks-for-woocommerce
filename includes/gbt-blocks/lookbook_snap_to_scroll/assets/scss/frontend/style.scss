@@ -129,19 +129,19 @@
 			}
 		}
 
-		&.active {
-			.gbt_18_look_image {
-				position: fixed;
-				top: 0;
-				left: 0;
-			}
-			&.image-right {
-				.gbt_18_look_image {
-					left: 50%;
-					right: 0;
-				}
-			}
-		}
+		// &.active {
+		// 	.gbt_18_look_image {
+		// 		position: fixed;
+		// 		top: 0;
+		// 		left: 0;
+		// 	}
+		// 	&.image-right {
+		// 		.gbt_18_look_image {
+		// 			left: 50%;
+		// 			right: 0;
+		// 		}
+		// 	}
+		// }
 		
 		.gbt_18_shop_this_book{
 			position: absolute;
