@@ -71,6 +71,9 @@ register_block_type( 'getbowtied/lookbook-snap-to-scroll-product', array(
 			'type'						=> 'string',
 			'default'					=>  '',
 		),
+		'imgID'							=> array(
+			'type'						=> 'int',
+		),
 		'image_position'				=> array(
 			'type'						=> 'string',
 			'default'					=>  'image-right',

@@ -12,7 +12,6 @@
 				section:".gbt_18_look_book_item",
 			    // scrollbars: false,
 			    overflowScroll: true,
-			    offset: 32,
 			   	// standardScrollElements: ".scroll-wrapper",
 			   	// updateHash: false,
 			    before:function(idx, panels) {
@@ -68,7 +67,7 @@
 
 			        	getItemIndex = (($(this).index() + 1) < 10) ? '0' + ($(this).index() + 1) : $(this).index() + 1;
 			        	
-			        	lookBookImage = $(this).find('.gbt_18_look_item:first-child .gbt_18_look_product_image img');
+			        	lookBookImage = $(this).find('.gbt_18_look_thumb img');
                      
 			        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
 			        	

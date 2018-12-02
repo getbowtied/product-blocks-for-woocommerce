@@ -14,6 +14,7 @@ function getbowtied_render_frontend_lookbook_snap_to_scroll_product( $attributes
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
 		'imgURL'						=> '',
+		'imgID'							=> '',
 		'image_position'				=> 'image-right',
 		'align'							=> 'center',
 	), $attributes ) );
@@ -42,12 +43,17 @@ function getbowtied_render_frontend_lookbook_snap_to_scroll_product( $attributes
 	$columns = $columns %2 == 0 && !($columns %3 == 0)? 2 : $columns;
 	$columns = $columns %3 == 0 || $columns == 5? 3 : $columns;
 	ob_start();
-
 	// if ( $products ) :
 
 	?>
 		<section class="gbt_18_look_book_item gbt_18_look_book_type_grid <?php echo $image_position; ?>">
             <div class="gbt_18_look_image" <?php if (!empty($imgURL)) { echo 'style="background-image:url('.esc_url($imgURL).')"';}; ?>>
+            	<div class="gbt_18_look_thumb">
+					<?php 
+						$thumb = wp_get_attachment_image($imgID, 'thumbnail');
+						if ($thumb) echo $thumb;
+					?>	
+            	</div>
                 <div class="gbt_18_shop_this_book">
                     <h5><?php echo __( 'Shop this look', 'gbt-blocks'); ?></h5>
                 </div>

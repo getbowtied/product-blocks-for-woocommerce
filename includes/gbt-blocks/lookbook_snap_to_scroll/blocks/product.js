@@ -42,7 +42,7 @@
 	            default: '',
 	        },
 	        imgID: {
-	            type: 'number',
+	            type: 'int',
 	        },
 	        imgAlt: {
 	            type: 'string',
