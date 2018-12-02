@@ -100,7 +100,9 @@
 	};
 
 	$( document ).ready( function(){
-		snapLookbook.init();		
+		snapLookbook.init();	
+		let _off = $('.wp-block-getbowtied-lookbook-snap-to-scroll').offset();
+		console.log(_off.left);	
 	});
 	
 }( jQuery ) );

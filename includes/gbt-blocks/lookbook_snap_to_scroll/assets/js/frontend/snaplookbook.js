@@ -124,23 +124,17 @@
 		}
 	};
 
-	// function getOffset( el ) {
-	//     var _x = 0;
-	//     var _y = 0;
-	//     while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
-	//         _x += el.offsetLeft - el.scrollLeft;
-	//         _y += el.offsetTop - el.scrollTop;
-	//         el = el.offsetParent;
-	//     }
-	//     return { top: _y, left: _x };
-	// }
-	// var x = getOffset( document.getElementById('yourElId') ).left; 
 
 	// function centerLookbook() {
-	// 	let element =  document.getElementsByClassName('gbt_18_snap_look_book')[0];
-	// 	let rect = getOffset( element );
-	// 	console.log(rect);
-	// 	element.style.marginLeft = -rect.left + "px"; 
+	// 	let _el = $('.wp-block-getbowtied-lookbook-snap-to-scroll')
+	// 	let _off = $('.wp-block-getbowtied-lookbook-snap-to-scroll').offset();
+	// 	console.log(_off.left);	
+	// 	console.log(_el.css('marginLeft'));
+	// 	let _diff = parseInt(_el.css('marginLeft').replace('px', '')) - _off.left;
+	// 	console.log(_diff);
+	// 	if (_off.left < 5.5 ) {
+	// 		_el.css('marginLeft', _diff);
+	// 	}
 	// }
 
 	$( document ).ready( function(){
