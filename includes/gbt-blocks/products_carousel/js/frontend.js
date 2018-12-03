@@ -8,7 +8,7 @@
 			let columns = $(this).attr('data-columns');
 			swiper.push(new Swiper ($(this), {
 				direction: 'horizontal',
-				loop: true,
+				loop: false,
 				autoHeight: true,
 				slidesPerView: columns,
 			    navigation: {
