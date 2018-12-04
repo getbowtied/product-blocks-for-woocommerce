@@ -92,18 +92,21 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	// var_dump($lc);
 	// echo '</pre>';
 	if ( $lc->have_posts() ) { ?>
-		<div class="wp-block-getbowtied-categories-grid swiper-container align<?php echo $align; ?>" data-columns="<?php echo $columns; ?>">
-			<div class="swiper-wrapper">
-				<?php while ( $lc->have_posts() ) : $lc->the_post(); ?>
-					<div class="swiper-slide">
-						<ul class="products">
-							<?php wc_get_template_part( 'content', 'product' ); ?>
-						</ul>
-					</div>
-				<?php endwhile; ?>
+		<div class="wp-block-getbowtied-categories-grid align<?php echo $align; ?>">
+			<div class="swiper-container" data-columns="<?php echo $columns; ?>">
+				<div class="swiper-wrapper">
+					<?php while ( $lc->have_posts() ) : $lc->the_post(); ?>
+						<div class="swiper-slide">
+							<ul class="products">
+								<?php wc_get_template_part( 'content', 'product' ); ?>
+							</ul>
+						</div>
+					<?php endwhile; ?>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-pagination"></div>
 			</div>
-			<div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div>
 		</div>
 	<?php } wp_reset_postdata();
  return ob_get_clean();

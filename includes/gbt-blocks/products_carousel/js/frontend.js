@@ -11,9 +11,15 @@
 				loop: false,
 				autoHeight: true,
 				slidesPerView: columns,
+				spaceBetween: 49,
+				centerInsufficientSlides: true,
 			    navigation: {
-			      nextEl: '.swiper-button-next',
-			      prevEl: '.swiper-button-prev',
+			    	nextEl: '.swiper-button-next',
+			    	prevEl: '.swiper-button-prev',
+			    },
+			    pagination: {
+			        el: '.swiper-pagination',
+			        dynamicBullets: true,
 			    },
 			}));
 		})

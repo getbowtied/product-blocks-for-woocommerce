@@ -14,11 +14,12 @@
 .wp-block-getbowtied-categories-grid
 {
 	margin-bottom: 1.25rem;
-
+	
+	.swiper-container {
+		padding: 0 49px 49px;
+	}
 	.swiper-wrapper {
 		.swiper-slide {
-			padding: 0 25px;
-			box-sizing: border-box;
 			ul {
 				margin: 0;
 				padding: 0;
@@ -26,6 +27,9 @@
 					width: 100%;
 					
 					li {
+						opacity: 1;
+						display: block;
+						transform: none;
 						margin: 0;
 						padding: 0;
 						width: 100%;
@@ -42,6 +46,7 @@
 	.swiper-button-prev,
 	.swiper-button-next {
 		background: none;
+		transition: opacity .3s ease-in-out;
 		&:before {
 			/* use !important to prevent issues with browser extensions that change fonts */
 			font-family: 'product-blocks';
@@ -58,6 +63,27 @@
 		}
 	}
 
+	.swiper-button-prev {
+		left: 0px;
+		text-align: left;
+	}
+
+	.swiper-button-next {
+		right: 0px;
+		text-align: right;
+	}
+
+	&.alignfull {
+		max-width: calc(100vw - 150px);
+		// .swiper-button-prev {
+		// 	left: 10px;
+		// }
+
+		// .swiper-button-next {
+		// 	right: 10px;
+		// }
+	}
+
 	.swiper-button-prev:before {
 		content: '\e900';
 		color: #000;
@@ -66,5 +92,20 @@
 	.swiper-button-next:before {
 		content: '\e901';
 		color: #000;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: #000;
+	}
+
+	.swiper-pagination-bullet {
+		background: transparent;
+		border: solid 1px #000;
+		opacity: 1;
+		// transform: none;
+		&.swiper-pagination-bullet-active {
+			border: none;
+			background: #000;
+		}
 	}
 }
