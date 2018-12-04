@@ -13,10 +13,26 @@
 
 .wp-block-getbowtied-categories-grid
 {
-	margin-bottom: 1.25rem;
+	padding: 0;
 	
+	.swiper-navigation-container {
+			margin: 0 -50px;
+			position: relative;
+			overflow: hidden;
+			
+			&:hover {
+				.swiper-button-prev {
+					transform: translateX(70px);
+				}
+
+				.swiper-button-next {
+					transform: translateX(-70px);
+				}
+			}
+	}
 	.swiper-container {
-		padding: 0 49px 49px;
+		margin: 0 50px 50px;
+		
 	}
 	.swiper-wrapper {
 		.swiper-slide {
@@ -46,7 +62,7 @@
 	.swiper-button-prev,
 	.swiper-button-next {
 		background: none;
-		transition: opacity .3s ease-in-out;
+		transition: all .35s ease-in-out;
 		&:before {
 			/* use !important to prevent issues with browser extensions that change fonts */
 			font-family: 'product-blocks';
@@ -64,24 +80,22 @@
 	}
 
 	.swiper-button-prev {
-		left: 0px;
+		left: -50px;
 		text-align: left;
 	}
 
 	.swiper-button-next {
-		right: 0px;
+		right: -50px;
 		text-align: right;
 	}
 
 	&.alignfull {
-		max-width: calc(100vw - 150px);
-		// .swiper-button-prev {
-		// 	left: 10px;
-		// }
-
-		// .swiper-button-next {
-		// 	right: 10px;
-		// }
+		.swiper-navigation-container {
+			margin: 0;
+			.swiper-container {
+				margin: 0 0 50px;
+			}
+		}
 	}
 
 	.swiper-button-prev:before {

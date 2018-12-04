@@ -4,18 +4,18 @@
 
 	$(document).ready(function () {
 		var swiper = [];
-		$('.swiper-container').each(function(){
+		$('.swiper-container').each(function(i){
 			let columns = $(this).attr('data-columns');
 			swiper.push(new Swiper ($(this), {
 				direction: 'horizontal',
 				loop: false,
 				autoHeight: true,
 				slidesPerView: columns,
-				spaceBetween: 49,
+				spaceBetween: 50,
 				centerInsufficientSlides: true,
 			    navigation: {
-			    	nextEl: '.swiper-button-next',
-			    	prevEl: '.swiper-button-prev',
+			    	nextEl: $('.swiper-button-next')[i],
+			    	prevEl: $('.swiper-button-prev')[i],
 			    },
 			    pagination: {
 			        el: '.swiper-pagination',
