@@ -84,12 +84,24 @@
 			{
 				&:nth-child(n){
 					width: 49vw;
-					height: 49vw;
+					height: 45vw;
+					max-width: 48%;
 					float: right;
 				}
 				
 				&:nth-child(2n+1) {
 					float: left;
+				}
+
+				.gbt_18_category_grid_item_title {
+					font-size: 14px;
+					left: 12px;
+					bottom: 12px;
+					
+					.gbt_18_category_grid_item_count {
+						font-size: 12px;
+						margin-left: 0;
+					}
 				}
 			}
 		}
