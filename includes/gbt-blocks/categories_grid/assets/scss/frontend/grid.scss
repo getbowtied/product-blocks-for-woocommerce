@@ -1,13 +1,14 @@
 .wp-block-getbowtied-categories-grid.gbt_18_categories_grid_wrapper
 {
 	margin-bottom: 1.25rem;
+	
 
 	.gbt_18_categories_grid
 	{
 		overflow: hidden;
 		margin: 0 !important;
 		width: 100%;
-
+		
 		.gbt_18_category_grid_item
 		{
 			margin-bottom: 16px;
@@ -15,6 +16,10 @@
 			opacity: 0;
             transform: scale(0.90);
             will-change: opacity, transform;
+            
+             @media screen and (max-width: 1024px) {
+				height:340px;
+             }
 
             &.animated
             {
@@ -69,4 +74,37 @@
 			}
 		}
 	}
+
+    @media screen and (max-width: 1023px) {
+
+    	&.is-style-layout-1,
+    	&.is-style-layout-2,
+    	&.is-style-layout-3{
+    		.gbt_18_category_grid_item
+			{
+				&:nth-child(n){
+					width: 49vw;
+					height: 49vw;
+					float: right;
+				}
+				
+				&:nth-child(2n+1) {
+					float: left;
+				}
+			}
+		}
+    }
+
+    @media screen and (min-width: 1024px) and (max-width: 1024px) {
+    	&.is-style-layout-1,
+    	&.is-style-layout-2,
+    	&.is-style-layout-3{
+    		.gbt_18_category_grid_item
+			{
+				&:nth-child(n){
+					height: 340px !important;
+				}
+			}
+		}
+    }
 }
