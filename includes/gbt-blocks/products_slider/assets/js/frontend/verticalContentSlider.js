@@ -211,7 +211,7 @@
 				}
 
 				//CLICK NEXT SLIDE, STOP CLICK WHEN ANIMATION RUN
-				$('.gbt_18_slide_controls .gbt_18_next_slide', this).on('click', function(e){
+				$('.gbt_18_slide_controls .gbt_18_next_slide', $this).on('click', function(e){
 					if ($('.gbt_18_current_slide').hasClass('gbt_18_slide_up') || $('.gbt_18_current_slide').hasClass('gbt_18_slide_down')) {
 						return false;
 					}
@@ -222,12 +222,14 @@
 				});
 
 				//CLICK PREV SLIDE, STOP CLICK WHEN ANIMATION RUN
-				$('.gbt_18_slide_controls .gbt_18_prev_slide', this).on('click', function(){
+				$('.gbt_18_slide_controls .gbt_18_prev_slide', $this).on('click', function(){
 					if ($('.gbt_18_current_slide').hasClass('gbt_18_slide_up') || $('.gbt_18_current_slide').hasClass('gbt_18_slide_down')) {
+						console.log('pizdet')
 						return false;
 					}
 					else{
 						slideLeftM();
+						console.log('iii zbs')
 					}
 				});
 			});
