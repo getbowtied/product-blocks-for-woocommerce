@@ -2,7 +2,7 @@
 {
 	&.is-style-layout-2
 	{
-		@media screen and (min-width: 1024px) {
+		@media screen and (min-width: 768px) {
 
 			.gbt_18_categories_grid
 			{
@@ -10,13 +10,9 @@
 				{
 					float: left;
 					width: 33.33333333%;
-					padding: 0;
+					padding: 0 8px;
 					margin-bottom: 16px;
 					height: 332px;
-					
-					&:nth-child(2n+1) {
-						padding-right: 16px;
-					}
 
 					&:nth-child(1)
 					{

@@ -224,12 +224,10 @@
 				//CLICK PREV SLIDE, STOP CLICK WHEN ANIMATION RUN
 				$('.gbt_18_slide_controls .gbt_18_prev_slide', $this).on('click', function(){
 					if ($('.gbt_18_current_slide').hasClass('gbt_18_slide_up') || $('.gbt_18_current_slide').hasClass('gbt_18_slide_down')) {
-						console.log('pizdet')
 						return false;
 					}
 					else{
 						slideLeftM();
-						console.log('iii zbs')
 					}
 				});
 			});

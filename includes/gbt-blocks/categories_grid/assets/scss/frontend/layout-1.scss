@@ -2,12 +2,10 @@
 {
 	&.is-style-layout-1
 	{
-		@media screen and (min-width: 1024px) {
+		@media screen and (min-width: 768px) {
 
 			.gbt_18_categories_grid
 			{
-				margin-left: -16px !important;
-				width: calc(100% + 16px);
 				&.columns-1 {
 					.gbt_18_category_grid_item {
 						width: 100%;
@@ -78,10 +76,6 @@
 				    .gbt_18_category_grid_item_img
 				    {
 			    	    position: absolute;
-				    }
-
-				    .gbt_18_category_grid_item_title {
-				    	left: 48px;
 				    }
 				}
 			}

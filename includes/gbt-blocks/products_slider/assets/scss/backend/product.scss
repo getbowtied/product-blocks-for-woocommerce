@@ -201,7 +201,7 @@
 //==============================================================================
 //	Full Alignment Specific Styles
 //==============================================================================
-.wp-block.editor-block-list__block[data-type="getbowtied/products-slider"] {
+.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] {
 
     .gbt_18_editor_default_slider {
     	padding: 0 16px;
@@ -222,23 +222,9 @@
 	}
 
 	.gbt_18_slide_content_arrows {
-		margin-left: 5%;
+		margin-left: 4%;
 	    position: absolute;
 		bottom: 10%;
-	}
-
-	.gbt_18_slide_link{
-		position: absolute;
-		bottom: 20%;
-		margin-left: 5%;
-		text-transform: uppercase;
-		font-size:14px;
-		i{
-			margin-right: 10px;
-			top: 2px;
-			position: relative;
-			font-size: 16px;
-		} 
 	}
 
 	.gbt_18_editor_add_to_cart,
