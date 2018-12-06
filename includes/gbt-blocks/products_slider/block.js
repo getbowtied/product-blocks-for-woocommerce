@@ -305,6 +305,19 @@
 									},
 									productElements,
 								),
+								el(
+									'div',
+									{
+										className: 'gbt_18_slide_link'
+									},
+									el(
+										'i',
+										{
+											className: 'gbt_18_icon_right',
+										},
+									),
+									i18n.__('View Product Page'),						
+								),
 								productElements.length > 1 && el(
 									'div',
 									{
