@@ -218,7 +218,7 @@
 					else{
 						slideRightM();
 					}
-					
+					//console.log('test');
 				});
 
 				//CLICK PREV SLIDE, STOP CLICK WHEN ANIMATION RUN
