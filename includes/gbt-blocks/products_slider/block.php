@@ -34,7 +34,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 
 	ob_start();
 	 if ( $products ) :
-		printf('<div class="wp-block-getbowtied-vertical-slider gbt_18_default_slider">');
+		printf('<div class="wp-block-getbowtied-vertical-slider gbt_18_default_slider alignfull">');
 	 		printf('<div class="gbt_18_content">');
 				printf('<div class="gbt_18_content_wrapper">');
 					printf('<div class="gbt_18_slide_header"><span class="gbt_18_line"></span></div>');
