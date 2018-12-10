@@ -71,7 +71,6 @@ body.admin-bar {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	margin: 11px -15px 1.25rem -15px!important;
 	height: 100vh;
 	position: relative;
 	.gbt_18_content{
@@ -229,11 +228,7 @@ body.admin-bar {
 		flex-direction: row;
 		align-items: stretch;
 		position: relative;
-		width: 100vw;
-		margin: 11px 0 40px 50%!important;
-		-webkit-transform: translateX(-50%);
-		-ms-transform: translateX(-50%);
-		transform: translateX(-50%);
+
 		.gbt_18_content{
 			width: 50%;
 			order: 0;
