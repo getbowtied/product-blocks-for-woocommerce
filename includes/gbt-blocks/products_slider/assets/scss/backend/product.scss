@@ -74,6 +74,20 @@
     		bottom: 15px;
 		}
 
+		.gbt_18_editor_slide_link {
+			margin-left: 4%;
+		    position: absolute;
+    		bottom: 20%;
+    		text-transform: uppercase;
+    		font-size: 14px;
+    		line-height: 14px;
+    		
+    		i {
+    			margin: 0 10px 0 6px;
+				font-size: 12px;
+    		}
+		}
+
 
 		.toggle-prev,
 		.toggle-next {
@@ -201,52 +215,52 @@
 //==============================================================================
 //	Full Alignment Specific Styles
 //==============================================================================
-.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] {
+.editor-block-list__block[data-type="getbowtied/products-slider"] {
 
-    .gbt_18_editor_default_slider {
+    .gbt_18_editor_default_slider.force-full {
     	padding: 0 16px;
-    }
 
-    .gbt_18_editor_slide_content_left {
-        padding: 5%;
-    }
+	    .gbt_18_editor_slide_content_left {
+	        padding: 5%;
+	    }
 
-    .gbt_18_editor_slide_title {
-	   line-height: 1.5;
-       font-size: 24px;
-	}
-
-	.gbt_18_editor_slide_text {
-		margin: 2rem 0;
-		font-size: 16px;
-	}
-
-	.gbt_18_slide_content_arrows {
-		margin-left: 4%;
-	    position: absolute;
-		bottom: 10%;
-	}
-
-	.gbt_18_editor_add_to_cart,
-	.gbt_18_editor_slide_price,
-	.gbt_18_editor_slide_text p {
-		font-size: 16px;
-	}
-
-	.toggle-prev,
-	.toggle-next {
-
-		&:before {
-			font-size: 20px;
+	    .gbt_18_editor_slide_title {
+		   line-height: 1.5;
+	       font-size: 24px;
 		}
-	}
 
-	.toggle-prev {
-		left: 35px;
-	}
+		.gbt_18_editor_slide_text {
+			margin: 2rem 0;
+			font-size: 16px;
+		}
 
-	.toggle-next {
-		left: 60px;
+		.gbt_18_slide_content_arrows {
+			margin-left: 4%;
+		    position: absolute;
+			bottom: 10%;
+		}
+
+		.gbt_18_editor_add_to_cart,
+		.gbt_18_editor_slide_price,
+		.gbt_18_editor_slide_text p {
+			font-size: 16px;
+		}
+
+		.toggle-prev,
+		.toggle-next {
+
+			&:before {
+				font-size: 20px;
+			}
+		}
+
+		.toggle-prev {
+			left: 35px;
+		}
+
+		.toggle-next {
+			left: 60px;
+		}
 	}
 }
 

@@ -289,7 +289,20 @@
 										style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} 
 									},
 								),
-							)
+							),
+							el(
+								'div',
+								{
+									className: 'gbt_18_editor_slide_link',
+								},
+								el(
+									'i',
+									{
+										className: 'gbt_18_icon_right',
+									}	
+								),
+								i18n.__('View Product Page'),
+							),
 						)
 					);
 				}
@@ -654,7 +667,7 @@
 					el( 
 						'div',
 						{
-							className: 'gbt_18_editor_default_slider',
+							className: 'gbt_18_editor_default_slider force-full',
 							key: 'gbt_18_default_slider',	
 						},
 						renderResults(),
