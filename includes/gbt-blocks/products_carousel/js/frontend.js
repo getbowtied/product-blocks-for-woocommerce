@@ -5,6 +5,7 @@
 	$(document).ready(function () {
 		var swiper = [];
 		$('.swiper-container').each(function(i){
+			let _this = $(this);
 			let columns = $(this).attr('data-columns');
 			swiper.push(new Swiper ($(this), {
 				direction: 'horizontal',
@@ -21,6 +22,11 @@
 			        el: '.swiper-pagination',
 			        dynamicBullets: true,
 			    },
+			    on: {
+			    	init: function() {
+			    		_this.addClass('loaded');
+			    	}
+			    }
 			}));
 		})
   });

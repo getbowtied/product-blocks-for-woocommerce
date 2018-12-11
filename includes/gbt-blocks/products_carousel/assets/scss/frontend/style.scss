@@ -11,9 +11,20 @@
 
 
 
-.wp-block-getbowtied-categories-grid
+.wp-block-getbowtied-carousel
 {
 	padding: 0;
+	
+	.swiper-container {
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 1s ease-in-out;
+		
+		&.loaded {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 	
 	.swiper-navigation-container {
 			margin: 0 -50px;

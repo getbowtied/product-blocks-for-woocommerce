@@ -92,7 +92,7 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 	// var_dump($lc);
 	// echo '</pre>';
 	if ( $lc->have_posts() ) { ?>
-		<div class="wp-block-getbowtied-categories-grid align<?php echo $align; ?>">
+		<div class="wp-block-getbowtied-carousel align<?php echo $align; ?>">
 			<div class="swiper-navigation-container">
 				<div class="swiper-container" data-columns="<?php echo $columns; ?>">
 					<div class="swiper-wrapper">
