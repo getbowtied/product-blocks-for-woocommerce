@@ -12,7 +12,6 @@
 					width: 33.33333333%;
 					padding: 0 8px;
 					margin-bottom: 16px;
-					height: 540px;
 
 					&:nth-child(4n+1)
 					{
@@ -23,6 +22,16 @@
 					{
 						width: 66.66666666%;
 					}
+				}
+			}
+		}
+
+		@media screen and (min-width: 1024px) {
+			.gbt_18_categories_grid
+			{
+				.gbt_18_category_grid_item
+				{
+					height: 340px;
 				}
 			}
 		}

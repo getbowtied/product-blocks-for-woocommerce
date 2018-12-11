@@ -17,6 +17,21 @@
 					&:nth-child(1)
 					{
 						width: 66.66666666%;
+					}
+				}
+			}
+		}
+
+		@media screen and (min-width: 1024px) {
+			.gbt_18_categories_grid
+			{
+				.gbt_18_category_grid_item
+				{
+					height: 332px;
+					
+					&:nth-child(1)
+					{
+						width: 66.66666666%;
 						height: 540px;
 					}
 
