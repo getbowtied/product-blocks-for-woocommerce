@@ -31,7 +31,7 @@
 		/* Products source */
 			queryProducts: {
 				type: 'string',
-				default: 'wc/v3/products?per_page=10',
+				default: 'wc/v2/products?per_page=10',
 			},
 			queryProductsLast: {
 				type: 'string',
@@ -42,6 +42,10 @@
 				default: 'all_products',
 			},
 		/* Manually pick products */
+			selectedIDS: {
+				type: 'string',
+				default: '',
+			},
 			productIDs: {
 				type: 'string',
 				default: '',
@@ -103,7 +107,6 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			attributes.selectedIDS		 			= attributes.selectedIDS || [];
 			attributes.selectedSlide 				= attributes.selectedSlide || 0;
 			attributes.result 						= attributes.result || [];
 			attributes.isLoading 					= attributes.isLoading || false;
@@ -115,6 +118,7 @@
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
+		
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
 					return 'parent parent-' + value;
@@ -123,8 +127,25 @@
 				}
 			}
 
+			function toArray(s) {
+				let ret = [];
+				if ( s.length > 0 ) {
+					ret = s.split(",");
+				}
+				for ( let i = 0; i < ret.length; i++) {
+					if ( ret[i] == '') {
+						ret.splice(i, 1);
+					} else {
+						ret[i] = Number(ret[i]);
+					}
+				}
+
+				return ret;
+
+			}
 			function _searchResultClass(theID){
-				let index = attributes.selectedIDS.indexOf(theID);
+				let haystack = toArray(attributes.selectedIDS);
+				const index = haystack.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -207,7 +228,7 @@
 		//	Show products functions
 		//==============================================================================
 			function getQuery( query ) {
-				return '/wc/v3/products' + query;
+				return '/wc/v2/products' + query;
 			}
 
 			function getProducts() {
@@ -257,7 +278,7 @@
 
 					for ( let i = 0; i < products.length; i++ ) {
 						let img = '';
-						if ( typeof products[i].images[0] !== 'undefined' && products[i].images[0].src != '' ) {
+						if ( products[i].images.length && typeof products[i].images[0] !== 'undefined' && products[i].images[0].src != '' ) {
 							img = products[i].images[0].src;
 						} else {
 							img = getbowtied_pbw.woo_placeholder_image;
@@ -486,7 +507,7 @@
 
 				let buildQ = query;
 				let newQ;
-				buildQ = buildQ.replace('/wc/v3/products?', '');
+				buildQ = buildQ.replace('/wc/v2/products?', '');
 				buildQ = buildQ.split('&');
 				
 				let flag = false;
@@ -501,9 +522,9 @@
 				}
 
 				if ( flag === true) {
-					newQ = '/wc/v3/products?' + buildQ.join('&');
+					newQ = '/wc/v2/products?' + buildQ.join('&');
 				} else {
-					newQ = '/wc/v3/products?per_page=' + limit + '&' + buildQ.join('&');
+					newQ = '/wc/v2/products?per_page=' + limit + '&' + buildQ.join('&');
 				}
 				
 				props.setAttributes({ queryProducts: newQ});
@@ -572,9 +593,10 @@
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
 				let products = attributes.querySearchResults;
+				console.log(products);
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
-					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
@@ -599,15 +621,15 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											let _this = evt.target;
-											let qSR = attributes.selectedIDS;
+											const _this = evt.target;
+											let qSR = toArray(attributes.selectedIDS);
 											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ selectedIDS: qSR });
+											props.setAttributes({ selectedIDS: qSR.join(',') });
 											
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
@@ -639,7 +661,7 @@
 
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
-					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
@@ -663,21 +685,22 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											let qSS = attributes.selectedIDS;
+											const _this = evt.target;
+
+											
+											let qSS = toArray(attributes.selectedIDS);
+											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
 													qSS.push(attributes.querySearchSelected[i].id);
 												}
 											}
-
-											let _this = evt.target;
-
 											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ selectedIDS: qSS });
+											props.setAttributes({ selectedIDS: qSS.join(',') });
 											
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {

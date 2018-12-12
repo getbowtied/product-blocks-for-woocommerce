@@ -71,6 +71,10 @@
 				default: false,
 			},
 		/* Manually pick products */
+			selectedIDS: {
+				type: 'string',
+				default: '',
+			},
 			querySearchString: {
 				type: 'string',
 				default: '',
@@ -100,7 +104,7 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			attributes.selectedIDS = attributes.selectedIDS || [];
+			// attributes.selectedIDS = attributes.selectedIDS || [];
 
 			const colors = [
 				{ name: 'red', 				color: '#d02e2e' },
@@ -117,8 +121,25 @@
 		//	Helper functions
 		//==============================================================================
 			
+			function toArray(s) {
+				let ret = [];
+				if ( s.length > 0 ) {
+					ret = s.split(",");
+				}
+				for ( let i = 0; i < ret.length; i++) {
+					if ( ret[i] == '') {
+						ret.splice(i, 1);
+					} else {
+						ret[i] = Number(ret[i]);
+					}
+				}
+
+				return ret;
+
+			}
 			function _searchResultClass(theID){
-				const index = attributes.selectedIDS.indexOf(theID);
+				let haystack = toArray(attributes.selectedIDS);
+				const index = haystack.indexOf(theID);
 				if ( index == -1) {
 					return 'single-result';
 				} else {
@@ -444,15 +465,15 @@
 										value: i,
 										onChange: function onChange(evt) {
 											if ( attributes.selectedIDS.length > 5) return;
-											let _this = evt.target;
-											let qSR = attributes.selectedIDS;
+											const _this = evt.target;
+											let qSR = toArray(attributes.selectedIDS);
 											let index = qSR.indexOf(products[evt.target.value].id);
 											if (index == -1) {
 												qSR.push(products[evt.target.value].id);
 											} else {
 												qSR.splice(index,1);
 											}
-											props.setAttributes({ selectedIDS: qSR });
+											props.setAttributes({ selectedIDS: qSR.join(',') });
 											
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
@@ -507,23 +528,22 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
+											const _this = evt.target;
 
-											let qSS = attributes.selectedIDS;
+											
+											let qSS = toArray(attributes.selectedIDS);
+											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
 													qSS.push(attributes.querySearchSelected[i].id);
 												}
 											}
-											let _this = evt.target;
-
-											
-											
 											let index = qSS.indexOf(products[evt.target.value].id);
 											if (index != -1) {
 												qSS.splice(index,1);
 											}
-											props.setAttributes({ selectedIDS: qSS });
+											props.setAttributes({ selectedIDS: qSS.join(',') });
 											
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {

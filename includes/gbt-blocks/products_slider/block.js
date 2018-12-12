@@ -446,7 +446,7 @@
 				let products = attributes.querySearchResults;
 				for (let i = 0; i < products.length; i++ ) {
 					let img = '';
-					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
@@ -511,7 +511,7 @@
 
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
-					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
+					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
 						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});

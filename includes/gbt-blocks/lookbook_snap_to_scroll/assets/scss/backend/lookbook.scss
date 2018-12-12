@@ -117,42 +117,43 @@
 }
 
 .editor-block-list__block[data-type="getbowtied/lookbook-snap-to-scroll"] {
-    
-    max-width: 100vw;
-    .editor-block-list__block-edit {
-        padding: 0 15px;
-    }
+    @media screen and (min-width: 1px) {
+        max-width: 100vw;
+        .editor-block-list__block-edit {
+            padding: 0 15px;
+        }
 
-    .gbt_18_lookbook_sts_hero_media_upload {
-        left: 35px;
-    }
+        .gbt_18_lookbook_sts_hero_media_upload {
+            left: 35px;
+        }
 
-    .gbt_18_hero_section_text {
-        padding-left: 150px;
-        padding-right: 150px;
-    }
-    
-    .gbt_18_lookbook_sts_hero_item
-    .gbt_18_lookbook_sts_hero_section_content {
-        min-height: 600px;
-    }
+        .gbt_18_hero_section_text {
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+        
+        .gbt_18_lookbook_sts_hero_item
+        .gbt_18_lookbook_sts_hero_section_content {
+            min-height: 600px;
+        }
 
-    .gbt_18_hero_section_title {
-        font-size: 48px;
-    }
+        .gbt_18_hero_section_title {
+            font-size: 48px;
+        }
 
-    .gbt_18_hero_section_subtitle {
-        font-size: 14px;
-    }
+        .gbt_18_hero_section_subtitle {
+            font-size: 14px;
+        }
 
-    .gbt_18_lookbook_sts_scroll_down_button {
-        width: 46px;
-        height: 46px;
-        border-radius: 46px;
+        .gbt_18_lookbook_sts_scroll_down_button {
+            width: 46px;
+            height: 46px;
+            border-radius: 46px;
 
-        &:before {
-            padding: 7px;
-            top: 28%;
+            &:before {
+                padding: 7px;
+                top: 28%;
+            }
         }
     }
 }
