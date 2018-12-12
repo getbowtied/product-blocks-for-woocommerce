@@ -115,4 +115,15 @@
 			}
 		}
 	}
+
+	&.alignfull {
+		@media screen and (min-width: 768px) {
+
+			&.is-style-layout-1 {
+				.gbt_18_categories_grid {
+					margin: 0 0 0 -8px;
+				}
+			}
+		}
+	}
 }
