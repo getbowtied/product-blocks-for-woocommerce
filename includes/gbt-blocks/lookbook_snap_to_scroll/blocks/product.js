@@ -208,7 +208,7 @@
 			}
 
 			function _searchDisabledClass() {
-				return (attributes.querySearchSelected.length > 5 || attributes.selectedIDS.length > 5) ? "is-disabled" : "";
+				return (attributes.querySearchSelected.length > 5 || toArray(attributes.selectedIDS).length > 5) ? "is-disabled" : "";
 			}
 
 		//==============================================================================
@@ -464,7 +464,7 @@
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
-											if ( attributes.selectedIDS.length > 5) return;
+											if ( toArray(attributes.selectedIDS).length > 5) return;
 											const _this = evt.target;
 											let qSR = toArray(attributes.selectedIDS);
 											let index = qSR.indexOf(products[evt.target.value].id);
