@@ -109,6 +109,22 @@ function getbowtied_render_frontend_products_carousel( $attributes ) {
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
 			</div>
+			<div class="swiper-navigation-container mobile">
+				<div class="swiper-container mobile" data-columns="1">
+					<div class="swiper-wrapper">
+						<?php while ( $lc->have_posts() ) : $lc->the_post(); ?>
+							<div class="swiper-slide">
+								<ul class="products">
+									<?php wc_get_template_part( 'content', 'product' ); ?>
+								</ul>
+							</div>
+						<?php endwhile; ?>
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
 		</div>
 	<?php } wp_reset_postdata();
  return ob_get_clean();

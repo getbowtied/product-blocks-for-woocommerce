@@ -30,6 +30,10 @@
 			margin: 0 -50px;
 			position: relative;
 			overflow: hidden;
+			display: none;
+			@media screen and (min-width: 768px) {
+				display: block;
+			}
 			
 			&:hover {
 				.swiper-button-prev {
@@ -38,6 +42,13 @@
 
 				.swiper-button-next {
 					transform: translateX(-70px);
+				}
+			}
+
+			&.mobile {
+				display: block;
+				@media screen and (min-width: 768px) {
+					display: none;
 				}
 			}
 	}
