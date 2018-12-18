@@ -273,6 +273,8 @@ body.admin-bar {
 					overflow-y: auto;
 					height: 440px;
 					max-height: 50vh;
+					padding-right: 20px;
+					box-sizing: content-box;
 					.gbt_18_slide_content_item{
 						display: block;
 						position: relative;
@@ -307,6 +309,7 @@ body.admin-bar {
 								}
 								.gbt_18_slide_text{
 									display: block;
+									margin-bottom: 1.475rem;
 								}
 								.stock{
 									display: flex;
