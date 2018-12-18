@@ -54,9 +54,21 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
                 					$ratio = $image[1] / $image[2];
                 				}
                 			}
+
+                			if (isset($ratio)) {
+                				if ($ratio >= 1) { // landscape image
+                					$c_height = 50;
+                					$c_width  = 50 * $ratio;
+                					$margins  = ($c_width - 50) / 2;
+                				} else {
+                					$c_height = 50 / $ratio;
+                					$c_width = 50;
+                					$margins = 0;
+                				}
+                			}
 						?>
 						<?php if ($distortion === true): ?>
-			                <div class="gbt_18_distorsion_image" style="width: 50%; height: 0; padding-bottom: calc(50% / <?php echo $ratio; ?>);" data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
+			                <div class="gbt_18_distorsion_image" style="margin: 0 -<?php echo $margins; ?>%; width: <?php echo $c_width; ?>%; height: 0; padding-bottom: <?php echo $c_height?>%;" data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
 			                	<?php echo $iobj, $iobj2; ?>
 			                </div>
 		                <?php else : ?>
@@ -69,7 +81,6 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                    <div class="gbt_18_text_wrapper">
 		                        <h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
 		                        <p style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></p>
-		                        <div class="gbt_18_price_button">
 		                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">
 		                            <?php echo $product->get_price_html(); ?>
 		                        </span>
@@ -78,7 +89,6 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 										href="<?php echo esc_url($product->add_to_cart_url()); ?>">
 										<?php echo $product->add_to_cart_text(); ?>
 								</a>
-								</div>
 		                    </div>
 		                </div>
 		            </section>

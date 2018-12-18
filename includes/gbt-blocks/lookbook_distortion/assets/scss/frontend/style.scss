@@ -1,8 +1,12 @@
 .gbt_18_lookbook_distortion_wrapper {
 	.gbt_18_distorsion_lookbook {
-		&:nth-child(odd) {
-			.gbt_18_distorsion_lookbook_item {
-				flex-direction: row-reverse;
+		&:nth-child(even) {
+			.gbt_18_distorsion_lookbook_content{
+				left: 50%;
+			}
+			.gbt_18_distorsion_image,
+			.gbt_18_fade_images{
+				left: 0;
 			}
 		}
 	}
@@ -19,7 +23,6 @@
 		left: 0;
 		top: 0;
 		width: 100%;
-		display: flex;
 		overflow: hidden;
 
 		&:hover{
@@ -32,10 +35,12 @@
 			}
 		}
 		.gbt_18_fade_images {
-			position: relative;
-			overflow: hidden;
+			position: absolute;
+			left: 50%;
+			top: 0;
 			width: 50%;
-			
+			height: 100%;
+						
 			img {
 				object-fit: cover;
 				object-position: 50% 50% !important;
@@ -66,8 +71,10 @@
 		}
 
 		.gbt_18_distorsion_image{
-			// flex: 1;
-			position: relative;
+			position: absolute;
+			left: 50%;
+			top: 0;
+			
 			overflow: hidden;
 			width: 50%;
 			
@@ -78,6 +85,7 @@
 				height: 100%;
 				position: absolute;
 				z-index: -1;
+				display: none;
 			}
 			
 			.scene {
@@ -113,13 +121,21 @@
 			
 		}
 		.gbt_18_distorsion_lookbook_content{
-			// flex:1;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
 			width: 50%;
 			.gbt_18_text_wrapper{
 				max-width: 400px;
 				margin: 0 auto;
 				padding: 100px 0;
 				color: #fff;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+  				
 				h2{
 					// max-width: 460px;
 					// font-size: 54px;
@@ -129,6 +145,7 @@
 					// max-width: 460px;
 				}
 				.gbt_18_product_price{
+					margin-top: 20%;
 					// font-size: 54px;
 				}
 				.button{
