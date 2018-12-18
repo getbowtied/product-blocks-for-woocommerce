@@ -45,7 +45,7 @@ function getbowtied_render_frontend_products_slider( $attributes ) {
 								 				<div class="summary entry-summary">
 								 					<h2 class="product-title entry-title gbt_18_slide_title"><a href="%s">%s</a></h2>
 													<p class="price">%s</p>
-													<p class="gbt_18_slide_text"><span class="gbt_18_p_wrapper">%s</span></p>',
+													<div class="gbt_18_slide_text"><span class="gbt_18_p_wrapper">%s</span></div>',
 								esc_url(get_permalink($product->get_id())),	
 								$product->get_name(),
 								$product->get_price_html(),
