@@ -79,16 +79,20 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                <?php endif; ?>
 		                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bgColor; ?>;">
 		                    <div class="gbt_18_text_wrapper">
-		                        <h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
-		                        <p style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></p>
-		                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">
-		                            <?php echo $product->get_price_html(); ?>
-		                        </span>
-								<a 		style="color:<?php echo $textColor; ?>" 
-										class="single_add_to_cart_button button alt" 
-										href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-										<?php echo $product->add_to_cart_text(); ?>
-								</a>
+		                    	<div class="gbt_18_content_top">
+			                        <h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
+			                        <p style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></p>
+			                    </div>
+			                    <div class="gbt_18_content_bottom">
+			                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">
+			                            <?php echo $product->get_price_html(); ?>
+			                        </span>
+									<a 		style="color:<?php echo $textColor; ?>" 
+											class="single_add_to_cart_button button alt" 
+											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+											<?php echo $product->add_to_cart_text(); ?>
+									</a>
+								</div>
 		                    </div>
 		                </div>
 		            </section>

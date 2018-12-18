@@ -129,12 +129,14 @@
 			.gbt_18_text_wrapper{
 				max-width: 400px;
 				margin: 0 auto;
-				padding: 100px 0;
+				padding: 10% 50px;
+				box-sizing: content-box;
 				color: #fff;
-				height: 100%;
+				height: 80%;
 				display: flex;
 				flex-direction: column;
-				justify-content: center;
+				justify-content: space-between;
+				// padding: 60px 120px;
   				
 				h2{
 					// max-width: 460px;
