@@ -30,10 +30,7 @@
 			margin: 0 -50px;
 			position: relative;
 			overflow: hidden;
-			display: none;
-			@media screen and (min-width: 768px) {
-				display: block;
-			}
+			
 			
 			&:hover {
 				.swiper-button-prev {
@@ -45,12 +42,6 @@
 				}
 			}
 
-			&.mobile {
-				display: block;
-				@media screen and (min-width: 768px) {
-					display: none;
-				}
-			}
 	}
 	.swiper-container {
 		margin: 0 50px 50px;
@@ -86,6 +77,7 @@
 	.swiper-button-next {
 		background: none;
 		transition: all .35s ease-in-out;
+		display: none;
 		&:before {
 			/* use !important to prevent issues with browser extensions that change fonts */
 			font-family: 'product-blocks';
@@ -99,6 +91,10 @@
 			/* Better Font Rendering =========== */
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
+		}
+
+		@media screen and (min-width: 768px) {
+			display: block;
 		}
 	}
 
