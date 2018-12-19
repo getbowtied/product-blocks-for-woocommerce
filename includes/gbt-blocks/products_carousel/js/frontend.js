@@ -16,7 +16,7 @@
 
 			if ( $(window).width() < 768 ) {
 				mobile = true;
-				_columns = 1;
+				_columns = 2;
 			} else {
 				mobile = false;
 				_columns = columns[i];
