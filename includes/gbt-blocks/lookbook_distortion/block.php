@@ -115,7 +115,7 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
 		                    <div class="gbt_18_text_wrapper">
 		                    	<div class="gbt_18_content_top">
 			                        <h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
-			                        <div style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></div>
+			                        <div class="gbt_18_description" style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></div>
 			                    </div>
 			                    <div class="gbt_18_content_bottom">
 			                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">

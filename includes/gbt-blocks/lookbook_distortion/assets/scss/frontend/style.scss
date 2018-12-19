@@ -12,6 +12,18 @@
 			}
 		}
 	}
+
+	&.aligncenter {
+		.gbt_18_description {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.gbt_18_description {
+			display: none;
+		}
+	}
 }
 
 .gbt_18_distorsion_lookbook{
