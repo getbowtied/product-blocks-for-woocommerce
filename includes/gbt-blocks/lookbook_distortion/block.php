@@ -60,16 +60,48 @@ function getbowtied_render_frontend_lookbook_distortion_product( $attributes ) {
                 					$c_height = 50;
                 					$c_width  = 50 * $ratio;
                 					$margins  = "margin: 0 " . -($c_width - 50) / 2 . "%";
+
+                					$mob_c_height = 100;
+                					$mob_c_width  = 100 * $ratio;
+                					$mob_margins  = "margin: 0 " . -($mob_c_width - 100) / 2 . "%";
                 				} else {
                 					$c_height = 50 / $ratio;
                 					$c_width = 50;
                 					$margins = "margin: " . ($c_width - $c_height) / 2 . "% 0";
+
+                					$mob_c_height = 100 / $ratio;
+                					$mob_c_width  = 100;
+                					$mob_margins  = "margin: " . ($mob_c_width - $mob_c_height) / 2 . "% 0";
                 				}
                 			}
+
+                			$ident = uniqid('distortion_');
 						?>
 						<a href="<?php echo $product->get_permalink(); ?>">
 							<?php if ($distortion === true): ?>
-				                <div class="gbt_18_distorsion_image" style="<?php echo $margins; ?>; width: <?php echo $c_width; ?>%; height: 0; padding-bottom: <?php echo $c_height?>%;" data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
+								<style>
+									@media screen and (min-width: 768px) {
+										.<?php echo $ident; ?> {
+											<?php echo $margins; ?> !important;
+											width: <?php echo $c_width; ?>% !important;
+											height: 0 !important;
+											padding-bottom: <?php echo $c_height?>% !important;
+										}
+									}
+									@media screen and (max-width: 767px) {
+										.<?php echo $ident; ?> {
+											<?php echo $mob_margins; ?> !important;
+											width: <?php echo $mob_c_width; ?>% !important;
+											height: 0 !important;
+											padding-bottom: <?php echo $mob_c_height?>% !important;
+										}
+									}
+								</style>
+				                <div class="gbt_18_distorsion_image <?php echo $ident; ?>" 
+				                	data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" 
+				                	data-intensity="-0.65" 
+				                	data-speedIn="1.2" 
+				                	data-speedOut="1.2">
 				                	<?php echo $iobj, $iobj2; ?>
 				                </div>
 			                <?php else : ?>

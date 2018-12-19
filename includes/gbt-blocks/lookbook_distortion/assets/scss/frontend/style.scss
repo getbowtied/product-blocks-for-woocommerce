@@ -1,12 +1,14 @@
 .gbt_18_lookbook_distortion_wrapper {
 	.gbt_18_distorsion_lookbook {
-		&:nth-child(even) {
-			.gbt_18_distorsion_lookbook_content{
-				left: 50%;
-			}
-			.gbt_18_distorsion_image,
-			.gbt_18_fade_images{
-				left: 0;
+		@media screen and (min-width: 768px) {
+			&:nth-child(even) {
+				.gbt_18_distorsion_lookbook_content{
+					left: 50%;
+				}
+				.gbt_18_distorsion_image,
+				.gbt_18_fade_images{
+					left: 0;
+				}
 			}
 		}
 	}
@@ -14,8 +16,49 @@
 
 .gbt_18_distorsion_lookbook{
 	height: 0;
-	padding-bottom: calc(100% / 2);
 	position: relative;
+	
+	@media screen and (max-width: 767px) {
+		padding-bottom: 200%;
+		
+		.gbt_18_fade_images {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 50%;
+		}
+
+		.gbt_18_distorsion_image {
+			top: 0;
+			left: 0;
+		}
+
+		.gbt_18_distorsion_lookbook_content {
+			top: 50%;
+			left: 0;
+			width: 100%;
+			height: 50%;
+		}
+	}
+
+	@media screen and (min-width: 768px) {
+		padding-bottom: calc(100% / 2);
+		
+		.gbt_18_fade_images,
+		.gbt_18_distorsion_image {
+			left: 50%;
+			top: 0;
+			width: 50%;
+			height: 100%;
+		}
+
+		.gbt_18_distorsion_lookbook_content {
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 50%;
+		}
+	}
 
 	.gbt_18_distorsion_lookbook_item{
 		height: 100%;
@@ -36,10 +79,6 @@
 		}
 		.gbt_18_fade_images {
 			position: absolute;
-			left: 50%;
-			top: 0;
-			width: 50%;
-			height: 100%;
 						
 			img {
 				object-fit: cover;
@@ -72,11 +111,6 @@
 
 		.gbt_18_distorsion_image{
 			position: absolute;
-			left: 50%;
-			top: 0;
-			
-			overflow: hidden;
-			width: 50%;
 			
 			img {
 				object-fit: cover;
@@ -122,10 +156,7 @@
 		}
 		.gbt_18_distorsion_lookbook_content{
 			position: absolute;
-			left: 0;
-			top: 0;
-			height: 100%;
-			width: 50%;
+			
 			.gbt_18_text_wrapper{
 				// max-width: 400px;
 				margin: 0 auto;
@@ -147,7 +178,10 @@
 					// max-width: 460px;
 				}
 				.gbt_18_product_price{
-					margin-top: 20%;
+					// margin-top: 20%;
+					font-size: 2rem;
+					margin-bottom: 20px;
+					display: inline-block;
 					// font-size: 54px;
 				}
 				.button{
