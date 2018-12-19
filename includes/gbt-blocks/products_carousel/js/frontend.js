@@ -50,7 +50,7 @@
 		if ( $(window).width() < 768 ) {
 			if (mobile !== true) {
 				for ( let i = 0; i < swiper.length; i++) {
-					swiper[i].params.slidesPerView = 1;
+					swiper[i].params.slidesPerView = 2;
 					swiper[i].update();
 				}
 			mobile = true;
