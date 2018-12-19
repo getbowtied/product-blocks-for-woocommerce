@@ -29,7 +29,6 @@
 				slidesPerView: _columns,
 				spaceBetween: 50,
 				centerInsufficientSlides: true,
-				threshold: 50,
 			    navigation: {
 			    	nextEl: $('.swiper-button-next')[i],
 			    	prevEl: $('.swiper-button-prev')[i],
