@@ -51,6 +51,20 @@
 			width: 100%;
 			height: 50%;
 		}
+
+		.gbt_18_text_wrapper {
+			padding: 10%;
+			
+			h2,
+			.gbt_18_product_price {
+				font-size: 1.2rem;
+			}
+
+			// .gbt_18_product_price,
+			.button {
+				font-size: 1rem;
+			}
+		}
 	}
 
 	@media screen and (min-width: 768px) {
@@ -70,6 +84,7 @@
 			height: 100%;
 			width: 50%;
 		}
+
 	}
 
 	.gbt_18_distorsion_lookbook_item{
@@ -191,14 +206,19 @@
 				}
 				.gbt_18_product_price{
 					// margin-top: 20%;
-					font-size: 2rem;
+					
+					@media screen and (min-width: 768px) {
+						font-size: 2rem;
+					}
 					margin-bottom: 20px;
 					display: inline-block;
 					// font-size: 54px;
 				}
 				.button{
 					display: table;
-					font-size: 18px;
+					@media screen and (min-width: 768px) {
+						font-size: 18px;
+					}
 					color: #fff;
 				}
 
