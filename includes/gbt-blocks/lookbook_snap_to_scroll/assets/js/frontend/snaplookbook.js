@@ -139,7 +139,7 @@
 
 	$( document ).ready( function(){
 		// centerLookbook();
-		snapLookbook.init();
+		// snapLookbook.init();
 	});
 
 	// let doit;

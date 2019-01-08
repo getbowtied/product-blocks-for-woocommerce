@@ -234,7 +234,7 @@
 	};
 
 	$( document ).ready( function(){
-		expadingProductModal.init();		
+		// expadingProductModal.init();		
 	});
 	
 }( jQuery ) );
