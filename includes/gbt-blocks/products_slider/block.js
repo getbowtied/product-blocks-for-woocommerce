@@ -469,7 +469,6 @@
 								el(
 									'input',
 									{
-										key: 'some fucking key',
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
