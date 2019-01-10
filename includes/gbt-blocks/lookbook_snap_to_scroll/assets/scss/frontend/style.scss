@@ -129,7 +129,8 @@
 
 		&.image-right {
 			.gbt_18_look_image {
-				float: right;
+				left: auto;
+				right: 0;
 			}
 			.gbt_18_look_product_box {
 				float: left;
@@ -166,15 +167,14 @@
 		}
 
 		.gbt_18_look_image{
+			position: absolute;
 			width: 50%;
 			min-height:100vh;
 			height: 100%;
-			float: left;
-			background-attachment: fixed;
-		    background-position: center;
+			left: 0;
+		    background-position: center center;
 		    background-repeat: no-repeat;
 		    background-size: cover;
-		    position: relative;
 		    
 		    .gbt_18_look_thumb {
 		    	opacity: 0;
@@ -189,7 +189,6 @@
 			justify-content: center;
 			box-sizing: border-box;
 			min-height: 100vh;
-			height: 150vh;
 			float: right;
 			padding: 70px;
 			

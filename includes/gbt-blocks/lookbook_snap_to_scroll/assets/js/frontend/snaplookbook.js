@@ -136,10 +136,71 @@
 	// 		_el.css('marginLeft', _diff);
 	// 	}
 	// }
+	
+	function gbt_18_lookbook_pagination() {
+		$("header").append('<div class="gbt_18_pagination"></div>');
+
+      	var getDataValue;
+      	var activeClass;
+      	var lookBookImage;
+      	var getItemIndex;
+
+      	$(".gbt_18_look_book_item").each(function(i) {
+
+      		i = (i + 1);
+
+      		$(this).attr("data-section-name", i );
+        	
+        	getDataValue = $(this).attr("data-section-name",);
+
+        	getItemIndex = (($(this).index() + 1) < 10) ? '0' + ($(this).index() + 1) : $(this).index() + 1;
+        	
+        	lookBookImage = $(this).find('.gbt_18_look_thumb img');
+         
+        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
+        	
+        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i - 1) : (i - 1) }</span>`);
+
+        	if (lookBookImage.length == 0) {
+        		$(".gbt_18_pagination").append(
+	        		`<div class="gbt_18_snap_page">
+		        		<a class="${activeClass}" href="#${getDataValue}">
+		        			<span> ${getItemIndex}</span>
+		        		</a>
+		        	</div>`
+	        	);
+        	}
+        	else{
+        		$(".gbt_18_pagination").append(
+	        		`<div class="gbt_18_snap_page">
+		        		<a class="${activeClass}" href="#${getDataValue}">
+		        			<span> ${getItemIndex}</span>
+		        		</a>
+		        		<div class="gbt_18_hover_image">
+		        			<img src="${lookBookImage.attr('src')}" alt="">
+		        		</div>
+		        	</div>`
+	        	);
+        	}
+      	});
+
+      
+		$(".gbt_18_pagination a").on("click",function(e) {
+			e.preventDefault();
+			let section = $(this).attr('href').substr(1);
+			console.log(section);
+			$('html, body').animate({
+				scrollTop: $('.gbt_18_look_book_item[data-section-name="'+section+'"]').offset().top
+			}, 500);
+		});
+
+		$('.gbt_18_scroll_down_button').on('click',function(){
+			$.scrollify.next();
+		});
+	}
 
 	$( document ).ready( function(){
-		// centerLookbook();
-		// snapLookbook.init();
+		gbt_18_lookbook_pagination();
 	});
 
 	// let doit;
