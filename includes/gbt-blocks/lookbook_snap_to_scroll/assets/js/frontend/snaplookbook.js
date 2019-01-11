@@ -188,7 +188,6 @@
 		$(".gbt_18_pagination a").on("click",function(e) {
 			e.preventDefault();
 			let section = $(this).attr('href').substr(1);
-			console.log(section);
 			$('html, body').animate({
 				scrollTop: $('.gbt_18_look_book_item[data-section-name="'+section+'"]').offset().top
 			}, 500);
@@ -199,9 +198,26 @@
 		});
 	}
 
+	function gbt_18_isScrolledIntoView(elem)
+	{
+	    var docViewTop = $(window).scrollTop();
+	    var docViewBottom = docViewTop + $(window).height();
+
+	    var elemTop = elem.offset().top;
+	    var elemBottom = elemTop + elem.height();
+
+	    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+	}
+
 	$( document ).ready( function(){
 		gbt_18_lookbook_pagination();
 	});
+
+	// $(window).scroll( function() {
+	// 	$('.gbt_18_look_book_item').each(function() {
+	// 		console.log(gbt_18_isScrolledIntoView($(this)));
+	// 	})
+	// })
 
 	// let doit;
 	// window.onresize = function(){
