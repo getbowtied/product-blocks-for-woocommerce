@@ -4,8 +4,11 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        display: table;
+        display: flex;
         width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
     }
 
     .gbt_18_lookbook_sts_hero_item
@@ -26,7 +29,7 @@
         vertical-align: middle;
         padding-left: 50px;
         padding-right: 50px;
-        position: relative;
+        // position: relative;
     }
 
     .gbt_18_hero_section_title,

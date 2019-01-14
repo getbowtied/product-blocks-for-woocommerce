@@ -260,7 +260,9 @@
 						className: 	'gbt_18_look_book_item gbt_18_hero_look_book_item',
 						style:
 						{
-							backgroundImage: 'url(' + props.attributes.imgURL + ')'
+							backgroundImage: 'url(' + props.attributes.imgURL + ')',
+							backgroundColor: props.attributes.bgColor,
+							color: props.attributes.textColor
 						}
 					},
 					el( 'div',
@@ -271,7 +273,11 @@
 						el( 'h1',
 							{
 								key: 		'gbt_18_hero_title',
-								className: 	'gbt_18_hero_title'
+								className: 	'gbt_18_hero_title',
+								style: 
+								{
+									color: props.attributes.textColor
+								}
 							},
 							props.attributes.title
 						),
@@ -286,7 +292,11 @@
 					el( 'span',
 						{
 							key: 		'gbt_18_scroll_down_button',
-							className: 	'gbt_18_scroll_down_button'
+							className: 	'gbt_18_scroll_down_button',
+							style:
+							{
+								borderColor: props.attributes.textColor
+							}
 						},
 					)
 				),

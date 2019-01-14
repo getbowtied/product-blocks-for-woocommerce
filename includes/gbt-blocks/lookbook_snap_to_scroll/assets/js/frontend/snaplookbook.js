@@ -194,7 +194,11 @@
 		});
 
 		$('.gbt_18_scroll_down_button').on('click',function(){
-			$.scrollify.next();
+			if ($('.gbt_18_look_book_item[data-section-name="2"]').length) {
+				$('html, body').animate({
+					scrollTop: $('.gbt_18_look_book_item[data-section-name="2"]').offset().top
+				}, 500);
+			}
 		});
 	}
 

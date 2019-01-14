@@ -59,9 +59,7 @@ function getbowtied_render_frontend_lookbook_snap_to_scroll_product( $attributes
                 </div>
             </div>
             <div class="gbt_18_look_product_box <?php echo $row; ?>">
-            	<div class="scroll-wrapper">
-            		<?php echo do_shortcode('[products columns="'.$columns.'" ids="'.$productIDs.'"]'); ?>
-            	</div>
+        		<?php echo do_shortcode('[products columns="'.$columns.'" ids="'.$productIDs.'"]'); ?>
 			</div>
 		</section>
 

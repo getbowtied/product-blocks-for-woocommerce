@@ -2,6 +2,18 @@
 // 	margin: 0;
 // 	padding:0;
 // }
+
+
+@keyframes gbt_18_fadeIn {
+    0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
 .gbt_18_pagination{
 	position: fixed;
 	top: 50%;
@@ -9,6 +21,9 @@
 	z-index: 99;
 	padding: 30px;
     transform: translateY(-50%);
+    opacity: 0;
+    animation: gbt_18_fadeIn 1.9s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    animation-fill-mode: forwards; 
 	a{
 		text-decoration: none;
 		font-size: 16px;
@@ -29,7 +44,7 @@
 		.gbt_18_hover_image{
 			position: absolute;
 		    top: 50%;
-		    left: 20px;
+		    left: 40px;
 		    transform: translateY(-50%);
 		    opacity: 0;
 		    visibility: hidden;
@@ -75,7 +90,6 @@
 	    transform: translateY(-50%);
 		.gbt_18_hero_title{
 			font-size: 72px;
-			color: #000;
 		}
 		.gbt_18_hero_subtitle{
 			text-transform: uppercase;
@@ -85,7 +99,8 @@
 	.gbt_18_scroll_down_button{
 		width: 46px;
 	    height: 46px;
-	    border: 1px solid #000;
+	    border-style: solid;
+	    border-width: 1px;
 	    position: relative;
 	    display: inline-block;
 	    border-radius: 46px;
@@ -97,7 +112,7 @@
 	   	cursor: pointer;
 		&:before{
 			content: '';
-		    border: solid black;
+		    border-style: solid;
 		    border-width: 0 1px 1px 0;
 		    display: inline-block;
 		    padding: 6px;
@@ -118,13 +133,15 @@
 	.gbt_18_look_book_item{
 		width: 100vw;
 		min-height: 100vh;
-		display: inline-block;
+		display: block;
 		position: relative;
+		float: left;
 		
 		&:nth-child(2n+1) {
 			.gbt_18_shop_this_book{
 				@media screen and (min-width: 1024px) {
-					top: 120px;
+					top: 100px;
+					bottom: unset;
 				}
 			}
 		}
@@ -151,13 +168,14 @@
 		
 		.gbt_18_shop_this_book{
 			position: absolute;
-			opacity: 1;
-			transition: opacity .3s ease-in-out;
+			opacity: 0;
 			bottom: 40px;
 			right: 40px;
+		    animation: gbt_18_fadeIn 1.9s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    		animation-fill-mode: forwards; 
 			@media screen and (min-width: 1024px) {
-				top: calc(100vh - 120px - 134px);
-				left: 110px;
+				bottom: 100px;
+				left: 100px;
 				right: unset;
 			}
 			transition-delay: 0.5s;
@@ -207,7 +225,11 @@
 			box-sizing: border-box;
 			min-height: 100vh;
 			float: right;
-			padding: 70px;
+			padding: 100px;
+			
+			> .woocommerce {
+				width: 100%;
+			}
 			
 			// &.rows-2 {
 			// 	> .woocommerce {
