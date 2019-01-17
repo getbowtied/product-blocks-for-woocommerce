@@ -24,10 +24,8 @@ if ( ! function_exists( 'getbowtied_product_blocks_scripts' ) ) {
 	}
 }
 
-// require_once 'block_1/block.php';
 require_once 'products_slider/block.php';
 require_once 'categories_grid/block.php';
-// require_once 'products_main/block.php';
 require_once 'products_carousel/block.php';
 require_once 'expanding_grid/block.php';
 require_once 'lookbook_distortion/block.php';

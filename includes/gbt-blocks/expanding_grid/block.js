@@ -21,8 +21,8 @@
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/expanding-grid', {
-		title: i18n.__( 'Product Grid with Expanding Preview' ),
-		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M21 15h2v2h-2v-2zm0-4h2v2h-2v-2zm2 8h-2v2c1 0 2-1 2-2zM13 3h2v2h-2V3zm8 4h2v2h-2V7zm0-4v2h2c0-1-1-2-2-2zM1 7h2v2H1V7zm16-4h2v2h-2V3zm0 16h2v2h-2v-2zM3 3C2 3 1 4 1 5h2V3zm6 0h2v2H9V3zM5 3h2v2H5V3zm-4 8v8c0 1.1.9 2 2 2h12V11H1zm2 8l2.5-3.21 1.79 2.15 2.5-3.22L13 19H3z"})),
+		title: i18n.__( 'Scattered Product List' ),
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M 7.1875 2.9941406 C 6.409 3.0139688 5.6767969 3.4902656 5.3730469 4.2597656 L 4.2929688 7 L 6.4433594 7 L 7.234375 4.9921875 L 12.326172 7 L 17.779297 7 L 7.96875 3.1328125 C 7.713 3.0320625 7.447 2.9875312 7.1875 2.9941406 z M 5 9 C 3.9069372 9 3 9.9069372 3 11 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 11 C 21 9.9069372 20.093063 9 19 9 L 5 9 z M 5 11 L 14 11 L 14 19 L 5 19 L 5 11 z M 16 11 L 19 11 L 19 19 L 16 19 L 16 11 z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],

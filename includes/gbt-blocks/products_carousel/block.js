@@ -22,7 +22,7 @@
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-carousel', {
 		title: i18n.__( 'Product Carousel' ),
-		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M2 6h4v11H2zm5 13h10V4H7v15zM9 6h6v11H9V6zm9 0h4v11h-4z"})),
+		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M 7 3 A 1.0001 1.0001 0 0 0 6 4 L 6 5 L 3 5 A 1.0001 1.0001 0 0 0 2 6 L 2 18 A 1.0001 1.0001 0 0 0 3 19 L 6 19 L 6 20 A 1.0001 1.0001 0 0 0 7 21 L 17 21 A 1.0001 1.0001 0 0 0 18 20 L 18 19 L 21 19 A 1.0001 1.0001 0 0 0 22 18 L 22 6 A 1.0001 1.0001 0 0 0 21 5 L 18 5 L 18 4 A 1.0001 1.0001 0 0 0 17 3 L 7 3 z M 8 5 L 16 5 L 16 5.8320312 A 1.0001 1.0001 0 0 0 16 6.1582031 L 16 17.832031 A 1.0001 1.0001 0 0 0 16 18.158203 L 16 19 L 8 19 L 8 18.167969 A 1.0001 1.0001 0 0 0 8 17.841797 L 8 6.1679688 A 1.0001 1.0001 0 0 0 8 5.8417969 L 8 5 z M 4 7 L 6 7 L 6 17 L 4 17 L 4 7 z M 18 7 L 20 7 L 20 17 L 18 17 L 18 7 z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
