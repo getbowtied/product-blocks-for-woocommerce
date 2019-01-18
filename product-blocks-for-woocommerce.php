@@ -26,50 +26,28 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
-// add_action( 'init', 'product_blocks_updater' );
-function product_blocks_updater() {
-
-	if ( !class_exists('WP_GitHub_Updater')) require_once 'core/class-updater.php';
-
-	if ( !defined('WP_GITHUB_FORCE_UPDATE')) define( 'WP_GITHUB_FORCE_UPDATE', true );
-
-	if ( is_admin() ) {
-
-		$config = array(
-			'slug' 				 => plugin_basename(__FILE__),
-			'proper_folder_name' => 'product-blocks-for-woocommerce',
-			'api_url' 			 => 'https://api.github.com/repos/getbowtied/product-blocks-for-woocommerce',
-			'raw_url' 			 => 'https://raw.github.com/getbowtied/product-blocks-for-woocommerce/master',
-			'github_url' 		 => 'https://github.com/getbowtied/product-blocks-for-woocommerce',
-			'zip_url' 			 => 'https://github.com/getbowtied/product-blocks-for-woocommerce/zipball/master',
-			'sslverify'			 => true,
-			'requires'			 => '5.0',
-			'tested'			 => '5.0',
-			'readme'			 => 'README.txt',
-			'access_token'		 => '',
-		);
-
-		// new WP_GitHub_Updater( $config );
-
-	}
-}
-
-function product_blocks_for_woocommerce() {
-
-	if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_wp_version('>=', '5.0-beta') ) {
-		include_once 'includes/gbt-blocks/index.php';
-	} else {
-		add_action( 'admin_notices', 'theme_warning' );
-	}
-}
 add_action( 'init', 'product_blocks_for_woocommerce' );
+if(!function_exists('product_blocks_for_woocommerce')) {
+	function product_blocks_for_woocommerce() {
+
+		if( is_plugin_active( 'gutenberg/gutenberg.php' ) || is_wp_version('>=', '5.0') ) {
+			include_once 'includes/gbt-blocks/index.php';
+		} else {
+			add_action( 'admin_notices', 'theme_warning' );
+		}
+	}
+}
 
 if( !function_exists('theme_warning') ) {
 	function theme_warning() {
 
-		echo '<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">';
-		echo '<p>Product Blocks for WooCommerce is enabled but not effective. Please activate Gutenberg plugin in order to work.</p>';
-		echo '</div>';
+		?>
+
+		<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
+			<p>Product Blocks for WooCommerce plugin couldn't find the Block Editor (Gutenberg) on this site. It requires WordPress 5+ or Gutenberg installed as a plugin.</p>
+		</div>
+
+		<?php
 	}
 }
 
@@ -82,7 +60,9 @@ if( !function_exists('is_wp_version') ) {
 	}
 }
 
-function gbt_image_sizes() {
-	add_image_size('gbt_square', 900, 900, true);
-}
 add_action('init', 'gbt_image_sizes');
+if( !function_exists('gbt_image_sizes') ) {
+	function gbt_image_sizes() {
+		add_image_size('gbt_square', 900, 900, true);
+	}
+}
