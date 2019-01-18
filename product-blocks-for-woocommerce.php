@@ -43,8 +43,8 @@ function product_blocks_updater() {
 			'github_url' 		 => 'https://github.com/getbowtied/product-blocks-for-woocommerce',
 			'zip_url' 			 => 'https://github.com/getbowtied/product-blocks-for-woocommerce/zipball/master',
 			'sslverify'			 => true,
-			'requires'			 => '4.9',
-			'tested'			 => '4.9.8',
+			'requires'			 => '5.0',
+			'tested'			 => '5.0',
 			'readme'			 => 'README.txt',
 			'access_token'		 => '',
 		);
