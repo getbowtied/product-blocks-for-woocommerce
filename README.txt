@@ -13,29 +13,41 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 **Product Blocks for WooCommerce** help you efortlessly create beautiful product displays, grids, lookbooks, carosels, etc for your WooCommerce store. Upon installation, the plugin will extend the functionality of the block editor with WooCommerce specific blocks.
 
-== Installation ==
+== Getting Started ==
 
-This section describes how to install the plugin and get it working.
+== Minimum Requirements ==
 
-e.g.
+* WordPress 4.9.x
+* Gutenberg plugin 4.6 or greater
+* WooCommerce 3.3.1 or greater
+* PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
+* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
-1. Upload `product-blocks.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+OR
 
-== Frequently Asked Questions ==
+* WordPress 5.0.x
+* WooCommerce 3.5.1 or greater
+* PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
+* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
-= A question that someone might have =
+== Automatic installation ==
 
-An answer to that question.
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of this plugin, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
 
-= What about foo bar? =
+In the search field type “Product Blocks for WooCommerce” and click Search Plugins. Once you’ve found this plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
 
-Answer to foo bar dilemma.
+== Manual installation ==
 
-== Screenshots ==
+The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
-1. Block Editor Preview
+== Available Blocks == 
+
+1. Product Slider
+2. Product Categories Grid
+3. Scattered Product List
+4. Product Carousel
+5. Lookbook - Shop by Outfit
+6. Lookbook - Distortion Motion Reveal
 
 == Changelog ==
 
