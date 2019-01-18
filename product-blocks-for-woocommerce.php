@@ -7,12 +7,12 @@
  * Version:           		1.0
  * Author:            		GetBowtied
  * Author URI:        		https://getbowtied.com
- * License: 			GPLv2
- * License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
+ * License: 				GPLv2
+ * License URI: 			http://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 		5.0
- * Tested up to: 		5.0.2
+ * Tested up to: 			5.0.3
  * WC requires at least: 	3.5
- * WC tested up to: 		3.5
+ * WC tested up to: 		3.5.3
  *
  * @package  Product Blocks for WooCommerce
  * @author   GetBowtied
