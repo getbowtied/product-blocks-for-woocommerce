@@ -9,7 +9,7 @@ include_once 'functions/function-setup.php';
 //==============================================================================
 //	Frontend Output
 //==============================================================================
-function getbowtied_render_frontend_products_carousel( $attributes ) {
+function pbfw_render_frontend_products_carousel( $attributes ) {
 
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',

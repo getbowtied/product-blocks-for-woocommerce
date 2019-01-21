@@ -8,7 +8,7 @@ include_once 'functions/function-setup.php';
 //==============================================================================
 //	Frontend Output
 //==============================================================================
-function getbowtied_render_frontend_products_slider( $attributes ) {
+function pbfw_render_frontend_products_slider( $attributes ) {
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
 	), $attributes ) );

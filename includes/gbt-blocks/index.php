@@ -11,18 +11,17 @@ wp_enqueue_style(
 //==============================================================================
 //	Main JS
 //==============================================================================
-add_action( 'admin_init', 'getbowtied_product_blocks_scripts' );
-if ( ! function_exists( 'getbowtied_product_blocks_scripts' ) ) {
-	function getbowtied_product_blocks_scripts() {
+add_action( 'admin_init', 'pbfw_scripts' );
+function pbfw_scripts() {
 
-		wp_enqueue_script(
-			'getbowtied-product-blocks-editor-scripts',
-			plugins_url( 'assets/js/main.js', dirname(dirname(__FILE__)) ),
-			array( 'wp-blocks', 'jquery' )
-		);
+	wp_enqueue_script(
+		'getbowtied-product-blocks-editor-scripts',
+		plugins_url( 'assets/js/main.js', dirname(dirname(__FILE__)) ),
+		array( 'wp-blocks', 'jquery' )
+	);
 
-	}
 }
+
 
 require_once 'products_slider/block.php';
 require_once 'categories_grid/block.php';

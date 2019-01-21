@@ -9,7 +9,7 @@ include_once 'functions/function-setup.php';
 //==============================================================================
 //	Frontend Output
 //==============================================================================
-function getbowtied_render_frontend_expanding_grid( $attributes ) {
+function pbfw_render_frontend_expanding_grid( $attributes ) {
 
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
@@ -19,7 +19,7 @@ function getbowtied_render_frontend_expanding_grid( $attributes ) {
 		'queryProducts'					=> 'wc/v3/products?per_page=10'
 	), $attributes ) );
 
-$queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
+	$queryProducts = str_replace('/wc/v3/products?', '',$queryProducts);
 	$query = explode('&',$queryProducts);
 	$a = [];
 	foreach ($query as $q) {

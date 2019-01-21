@@ -27,51 +27,38 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
 }
 
 add_action( 'init', 'product_blocks_for_woocommerce' );
-if(!function_exists('product_blocks_for_woocommerce')) {
-	function product_blocks_for_woocommerce() {
+function product_blocks_for_woocommerce() {
 
-		if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-			add_action( 'admin_notices', 'gbt_18_woocommerce_warning' );
-		} else if( ! (is_plugin_active( 'gutenberg/gutenberg.php' ) || is_wp_version('>=', '5.0')) ) {
-			add_action( 'admin_notices', 'gbt_18_gutenberg_warning' );
-		} else {
-			include_once 'includes/gbt-blocks/index.php';
-		}
+	if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+		add_action( 'admin_notices', 'pbfw_woocommerce_warning' );
+	} else if( ! (is_plugin_active( 'gutenberg/gutenberg.php' ) || pbfw_wp_version('>=', '5.0')) ) {
+		add_action( 'admin_notices', 'pbfw_gutenberg_warning' );
+	} else {
+		include_once 'includes/gbt-blocks/index.php';
 	}
 }
 
-if( !function_exists('gbt_18_woocommerce_warning') ) {
-	function gbt_18_woocommerce_warning() {
-
-		?>
-
-		<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-			<p><?php _e("Product Blocks for WooCommerce is enabled but not effective. It requires WooCommerce in order to work.", "getbowtied"); ?>.</p>
-		</div>
-
-		<?php
-	}
+function pbfw_woocommerce_warning() {
+	?>
+	<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
+		<p><?php _e("Product Blocks for WooCommerce is enabled but not effective. It requires WooCommerce in order to work.", "getbowtied"); ?>.</p>
+	</div>
+	<?php
 }
 
-if( !function_exists('gbt_18_gutenberg_warning') ) {
-	function gbt_18_gutenberg_warning() {
+function pbfw_gutenberg_warning() {
+	?>
 
-		?>
+	<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
+		<p><?php _e("Product Blocks for WooCommerce plugin couldn't find the Block Editor (Gutenberg) on this site. It requires WordPress 5+ or Gutenberg installed as a plugin.", "getbowtied"); ?></p>
+	</div>
 
-		<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-			<p><?php _e("Product Blocks for WooCommerce plugin couldn't find the Block Editor (Gutenberg) on this site. It requires WordPress 5+ or Gutenberg installed as a plugin.", "getbowtied"); ?></p>
-		</div>
-
-		<?php
-	}
+	<?php
 }
 
-if( !function_exists('is_wp_version') ) {
-	function is_wp_version( $operator = '>', $version = '4.0' ) {
-
-		global $wp_version;
-
-		return version_compare( $wp_version, $version, $operator );
-	}
+function pbfw_wp_version( $operator = '>', $version = '4.0' ) {
+	global $wp_version;
+	return version_compare( $wp_version, $version, $operator );
 }
+
 
