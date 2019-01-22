@@ -9,7 +9,7 @@ include_once 'functions/function-setup.php';
 //==============================================================================
 //	Frontend Output
 //==============================================================================
-function getbowtied_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
+function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
 
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
