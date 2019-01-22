@@ -249,6 +249,13 @@
 
 		save: function( props ) {
 
+			props.attributes.title = props.attributes.title || "";
+
+			props.attributes.subtitle 	= props.attributes.subtitle || ""; 
+			props.attributes.imgURL 	= props.attributes.imgURL || "";
+	        props.attributes.bgColor 	= props.attributes.bgColor || "";
+	        props.attributes.textColor 	= props.attributes.textColor || "";
+
 			return el( 'div',
 				{
 					key: 		'gbt_18_snap_look_book',
