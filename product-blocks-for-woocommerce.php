@@ -26,8 +26,8 @@ if ( ! function_exists( 'is_plugin_active' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
-add_action( 'init', 'product_blocks_for_woocommerce' );
-function product_blocks_for_woocommerce() {
+add_action( 'init', 'pbfw_includes' );
+function pbfw_includes() {
 
 	if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		add_action( 'admin_notices', 'pbfw_woocommerce_warning' );
