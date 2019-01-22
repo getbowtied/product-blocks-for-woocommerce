@@ -260,7 +260,7 @@
 						className: 	'gbt_18_look_book_item gbt_18_hero_look_book_item',
 						style:
 						{
-							backgroundImage: 'url(' + props.attributes.imgURL + ')',
+							backgroundImage: 'url(' + (props.attributes.imgURL || "") + ')',
 							backgroundColor: props.attributes.bgColor,
 							color: props.attributes.textColor
 						}
