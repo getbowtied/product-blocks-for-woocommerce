@@ -1,0 +1,156 @@
+body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-distortion-product"] {
+    max-width: 100%;
+}
+
+.gbt_18_lookbook_distortion_product_wrapper {
+
+    .gbt_18_editor_lookbook_product_content {
+        width: 100%;
+        overflow: auto;
+        display: flex;
+        min-height: 200px;
+
+        .gbt_18_editor_lookbook_product_content_left,
+        .gbt_18_editor_lookbook_product_content_right {
+            width: 50%;
+            float: left;
+            align-items: stretch;
+        }
+
+        .gbt_18_editor_lookbook_product_content_left {
+
+            .gbt_18_editor_lookbook_product_content_left_inner_top,
+            .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                text-align: left;
+            }
+
+            .gbt_18_editor_lookbook_product_content_left_inner_top {
+
+                .gbt_18_editor_lookbook_product_title {
+                    line-height: 1.3;
+                }
+            }
+
+            .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                width: 38%;
+                position: absolute;
+
+                .gbt_18_editor_lookbook_product_button {
+                    background: transparent;
+                    display: block;
+                    cursor: pointer;
+                    border-top: none;
+                    border-right: none;
+                    border-left: none;
+                    border-bottom: 1px solid;
+                    padding: 1px 0px;
+                    outline: 0;
+                }
+            }
+        }
+
+        .gbt_18_editor_lookbook_product_content_right {
+
+            .gbt_18_editor_lookbook_product_image {
+                background-size: cover;
+                background-position: center;
+                padding-bottom: 100%;
+                height: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"] {
+
+    .gbt_18_lookbook_distortion_product_wrapper {
+
+        .gbt_18_editor_lookbook_product_content {
+
+            .gbt_18_editor_lookbook_product_content_left {
+                padding: 25px 30px;
+
+                .gbt_18_editor_lookbook_product_content_left_inner_top {
+
+                    .gbt_18_editor_lookbook_product_title {
+                        font-size: 18px;
+                    }
+
+                    .gbt_18_editor_lookbook_product_text p {
+                        display: none;
+                        font-size: 12px;
+                    }
+                }
+
+                .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                    bottom: 55px;
+
+                    .gbt_18_editor_lookbook_product_price {
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                    }
+
+                    .gbt_18_editor_lookbook_product_button {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"][data-align="wide"],
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"][data-align="full"] {
+
+    .gbt_18_lookbook_distortion_product_wrapper {
+
+        .gbt_18_editor_lookbook_product_content {
+
+            .gbt_18_editor_lookbook_product_content_left {
+                padding: 60px;
+
+                .gbt_18_editor_lookbook_product_content_left_inner_top {
+
+                    .gbt_18_editor_lookbook_product_title {
+                        font-size: 30px;
+                    }
+
+                    .gbt_18_editor_lookbook_product_text p {
+                        display: block;
+                        font-size: 16px;
+                    }
+                }
+
+                .gbt_18_editor_lookbook_product_content_left_inner_bottom {
+                    bottom: 90px;
+
+                    .gbt_18_editor_lookbook_product_price {
+                        font-size: 28px;
+                        margin: 10px 0 15px 0;
+                    }
+
+                    .gbt_18_editor_lookbook_product_button {
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.editor-block-list__block[data-type="getbowtied/lookbook-distortion"][data-align="full"] {
+    
+    .editor-inner-blocks {
+
+        .gbt_18_lookbook_distortion_product_wrapper {
+
+            .gbt_18_editor_lookbook_product_content {
+
+                .gbt_18_editor_lookbook_product_content_left {
+                    padding: 60px 120px;
+                }
+            }
+        }
+    }
+}

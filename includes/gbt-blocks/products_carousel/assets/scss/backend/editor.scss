@@ -1,0 +1,219 @@
+.gbt_18_product_carousel {
+
+	//==============================================================================
+	//	Placeholder Content Styles
+	//==============================================================================
+	.gbt_18_product_carousel_placeholder_wrapper {
+		overflow: auto;
+
+		.toggle-prev-button,
+		.toggle-next-button {
+			cursor: default;
+		}
+
+		ul.gbt_18_carousel_products_placeholder {
+
+			li.gbt_18_carousel_placeholder_product {
+
+				float: left;
+		    	width: 33.3333333%;
+		    	list-style-type: none;
+		    	text-align: center;
+	    	    margin-bottom: 0;
+	    	    padding: 5px 10px 0;
+
+				.gbt_18_carousel_placeholder_product_thumbnail {
+					background-color: #eeeeee;
+					background-position: center;
+					padding-bottom: 100%;
+					height: 0;
+					width: 100%;
+				}
+
+				.gbt_18_carousel_placeholder_product_title {
+				    height: 15px;
+				    width: 70%;
+				    margin: 15px auto 0;
+				    background-color: #eeeeee;
+				}
+
+				.gbt_18_carousel_placeholder_product_price {
+				    height: 10px;
+				    width: 30%;
+				    margin: 15px auto;
+				    background-color: #eeeeee;
+				}
+
+				.gbt_18_carousel_placeholder_product_button {
+				    background: #eeeeee;
+				    display: block;
+				    color: #333;
+				    cursor: pointer;
+				    font-weight: 600;
+				    border: none;
+				    padding: 8px 17px;
+				    margin: 10px auto 0;
+				    font-size: 13px;
+				    outline: 0;
+
+				    &:hover {
+				    	background: #e4e4e4;
+				    }
+		    	}
+			}
+		}
+	}
+
+	//==============================================================================
+	//	Arrows Styles
+	//==============================================================================
+	.toggle-prev-button,
+	.toggle-next-button {
+		position: absolute;
+		top: 50%;
+		transition: all .3s ease-in-out;
+		transform: translateY(-100%);
+		border: none;
+		outline: none;
+		background: none;
+		cursor: pointer;
+
+		&:disabled {
+			opacity: .3;
+			pointer-events: none;
+		}
+	}
+
+	.toggle-prev-button {
+		left: -60px;
+	}
+
+	.toggle-next-button {
+		right: -60px;
+	}
+
+	.toggle-prev,
+	.toggle-next {
+		opacity: 1;
+		width: 22px;
+	}
+
+	//==============================================================================
+	//	Product Carousel Styles
+	//==============================================================================
+
+    transition: all .4s ease-in-out;
+
+	.gbt_18_product_carousel_wrapper {
+
+		position: relative;
+
+		.scrollable_wrapper{
+			width: 100%;
+			overflow: hidden;
+		}
+		ul.gbt_18_carousel_products {
+
+			position: relative;
+			transition: opacity .2s ease-in-out;
+			width: 100%;
+			transition: margin .3s ease-in-out;
+			
+			&:after {
+				clear: both;
+				content: '';
+				display: block;
+			}
+
+			@for $i from 1 through 6 {
+				&.columns-#{$i} {
+					li {
+						width: calc(100% / #{$i});
+					}
+				}
+			}
+
+			li.gbt_18_carousel_product {
+
+		    	float: left;
+		    	list-style-type: none;
+		    	text-align: center;
+		    	padding: 0 10px 10px;
+		    	opacity: 0;
+		    	visibility: hidden;
+		    	transition: all .6s ease-in-out;
+		    	
+		    	&.is-visible {
+		    		opacity: 1;
+		    		visibility: visible;
+		    	}
+
+		    	.gbt_18_carousel_product_content_wrapper {
+		    		cursor: pointer;
+		    	}
+
+		    	.gbt_18_carousel_product_thumbnail
+		    	{
+				    width: 100%;
+				    padding-bottom: 100%;
+				    background-size: cover;
+				    background-position: center;
+				}
+
+		    	.gbt_18_carousel_product_title,
+		    	.gbt_18_carousel_product_price
+		    	{
+				    font-size: 16px;
+				    color: #000;
+				    cursor: pointer;
+				    font-weight: normal;
+			        display: block;
+		    	}
+
+		    	.gbt_18_carousel_product_price
+		    	{
+		    		margin: 0;
+		    	}
+
+		    	.gbt_18_carousel_product_title
+		    	{
+		    		margin: 10px 0 10px;
+		    		line-height: 1.5;
+		    	}
+
+		    	.gbt_18_carousel_product_button
+		    	{
+				    background: #eeeeee;
+				    display: block;
+				    color: #333;
+				    cursor: pointer;
+				    font-weight: 600;
+				    border: none;
+				    padding: 8px 17px;
+				    margin: 10px auto 0;
+				    font-size: 13px;
+				    outline: 0;
+
+				    &:hover {
+				    	background: #e4e4e4;
+				    }
+		    	}
+			}
+
+		}
+	}
+
+}
+
+
+.editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] {
+	.gbt_18_product_carousel_wrapper {
+		.toggle-prev-button {
+			left: 0px;
+		}
+
+		.toggle-next-button {
+			right: 0px;
+		}
+	}
+}

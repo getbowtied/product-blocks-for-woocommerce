@@ -1,0 +1,129 @@
+.wp-block-getbowtied-categories-grid.gbt_18_categories_grid_wrapper
+{
+	margin-bottom: 1.25rem;
+	
+	@media screen and (max-width: 768px) {
+		.gbt_18_categories_grid
+		{
+			.gbt_18_category_grid_item
+			{
+				max-width: 100vw;
+				height: calc(100vw - 30px);
+			}
+		}
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 1024px) {
+		&.is-style-layout-1,
+		&.is-style-layout-2,
+		&.is-style-layout-3 
+		{
+			.gbt_18_categories_grid
+			{
+				.gbt_18_category_grid_item
+				{
+					height: 340px;
+				}
+			}
+		}
+	}
+
+	.gbt_18_categories_grid
+	{
+		overflow: hidden;
+		// margin: 0 !important;
+		width: 100%;
+
+		.gbt_18_category_grid_item
+		{
+			margin-bottom: 16px;
+			position: relative;
+			opacity: 0;
+            transform: scale(0.90);
+            will-change: opacity, transform;
+
+            &.animated
+            {
+                opacity: 1;
+                transform: scale(1);
+                transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+            }
+
+			.gbt_18_category_grid_item_img
+			{
+				display: block;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				transition: 0.2s ease-in-out;
+
+				&:hover
+				{
+					opacity: 0.5;
+				}
+
+				img
+				{
+					display: block;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+
+			.gbt_18_category_grid_item_title
+			{
+				// font-size: 1.15rem;
+				// font-weight: normal;
+				// color: #000;
+				position: absolute;
+			    bottom: 24px;
+			    left: 32px;
+			    line-height: 1;
+			    margin: 0;
+			    -webkit-backface-visibility: hidden;
+
+				.gbt_18_category_grid_item_count
+				{
+					// color: #888888;
+					// font-size: 1.15rem;
+					font-size: 14px;
+					vertical-align: top;
+					display: inline-block;
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+
+	&.alignwide,
+	&.aligncenter {
+		@media screen and (min-width: 768px) {
+			&.is-style-layout-2,
+			&.is-style-layout-3 {
+				.gbt_18_categories_grid {
+					margin: 0 -8px 0 -8px;
+					width: auto;
+				}
+			}
+
+			&.is-style-layout-1 {
+				.gbt_18_categories_grid {
+					margin: 0 0 0 -16px;
+					width: auto;
+				}
+			}
+		}
+	}
+
+	&.alignfull {
+		@media screen and (min-width: 768px) {
+
+			&.is-style-layout-1 {
+				.gbt_18_categories_grid {
+					margin: 0 0 0 -8px;
+				}
+			}
+		}
+	}
+}

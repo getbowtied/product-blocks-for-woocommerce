@@ -1,0 +1,39 @@
+.wp-block-getbowtied-categories-grid.gbt_18_categories_grid_wrapper
+{
+	&.is-style-layout-3
+	{
+		@media screen and (min-width: 768px) {
+
+			.gbt_18_categories_grid
+			{
+				.gbt_18_category_grid_item
+				{
+					float: left;
+					width: 33.33333333%;
+					padding: 0 8px;
+					margin-bottom: 16px;
+
+					&:nth-child(4n+1)
+					{
+						width: 66.66666666%;
+					}
+
+					&:nth-child(4n+4)
+					{
+						width: 66.66666666%;
+					}
+				}
+			}
+		}
+
+		@media screen and (min-width: 1024px) {
+			.gbt_18_categories_grid
+			{
+				.gbt_18_category_grid_item
+				{
+					height: 340px;
+				}
+			}
+		}
+	}
+}
