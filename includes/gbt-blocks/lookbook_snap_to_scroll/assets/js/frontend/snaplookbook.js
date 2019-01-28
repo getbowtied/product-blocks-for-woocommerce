@@ -125,18 +125,6 @@
 	};
 
 
-	// function centerLookbook() {
-	// 	let _el = $('.wp-block-getbowtied-lookbook-snap-to-scroll')
-	// 	let _off = $('.wp-block-getbowtied-lookbook-snap-to-scroll').offset();
-	// 	console.log(_off.left);	
-	// 	console.log(_el.css('marginLeft'));
-	// 	let _diff = parseInt(_el.css('marginLeft').replace('px', '')) - _off.left;
-	// 	console.log(_diff);
-	// 	if (_off.left < 5.5 ) {
-	// 		_el.css('marginLeft', _diff);
-	// 	}
-	// }
-	
 	function gbt_18_lookbook_pagination() {
 		$("header").append('<div class="gbt_18_pagination"></div>');
 
@@ -145,21 +133,21 @@
       	var lookBookImage;
       	var getItemIndex;
 
-      	$(".gbt_18_look_book_item").each(function(i) {
+      	$(".gbt_18_look_book_item").each(function(i, el) {
 
-      		i = (i + 1);
+      		console.log(i);
 
       		$(this).attr("data-section-name", i );
         	
         	getDataValue = $(this).attr("data-section-name",);
 
-        	getItemIndex = (($(this).index() + 1) < 10) ? '0' + ($(this).index() + 1) : $(this).index() + 1;
+        	getItemIndex = (($(this).index()) < 10) ? '0' + ($(this).index()) : $(this).index();
         	
         	lookBookImage = $(this).find('.gbt_18_look_thumb img');
          
         	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
         	
-        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i - 1) : (i - 1) }</span>`);
+        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i) : (i) }</span>`);
 
         	if (lookBookImage.length == 0) {
         		$(".gbt_18_pagination").append(
@@ -182,6 +170,8 @@
 		        	</div>`
 	        	);
         	}
+
+	   		// i++;
       	});
 
       

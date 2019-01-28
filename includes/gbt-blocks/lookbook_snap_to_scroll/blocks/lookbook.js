@@ -249,6 +249,13 @@
 
 		save: function( props ) {
 
+			props.attributes.title = props.attributes.title || "";
+
+			props.attributes.subtitle 	= props.attributes.subtitle || ""; 
+			props.attributes.imgURL 	= props.attributes.imgURL || "";
+	        props.attributes.bgColor 	= props.attributes.bgColor || "";
+	        props.attributes.textColor 	= props.attributes.textColor || "";
+
 			return el( 'div',
 				{
 					key: 		'gbt_18_snap_look_book',
@@ -260,7 +267,7 @@
 						className: 	'gbt_18_look_book_item gbt_18_hero_look_book_item',
 						style:
 						{
-							backgroundImage: 'url(' + props.attributes.imgURL + ')',
+							backgroundImage: 'url(' + (props.attributes.imgURL || "") + ')',
 							backgroundColor: props.attributes.bgColor,
 							color: props.attributes.textColor
 						}

@@ -32,10 +32,6 @@
 				default: '',
 			},
 		/* Products source */
-			result: {
-				type: 'array',
-				default: [],
-			},
 			queryProducts: {
 				type: 'string',
 				default: '',
@@ -91,7 +87,8 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			// attributes.selectedIDS = attributes.selectedIDS || [];
+			attributes.result = attributes.result || [];
+			attributes.doneFirstLoad = attributes.doneFirstLoad || false;
 
 			const colors = [
 				{ name: 'red', 				color: '#d02e2e' },
@@ -181,6 +178,7 @@
 					apiFetch({ path: query }).then(function (products) {
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
+						props.setAttributes({ doneFirstLoad: true});
 						let IDs = '';
 						for ( let i = 0; i < products.length; i++) {
 							IDs += products[i].id + ',';
@@ -607,7 +605,8 @@
 						),
 					),
 				),
-				renderResults()
+				attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
+				renderResults(),
 			];
 		},
 
