@@ -19,30 +19,13 @@ function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
 		'align'							=> 'center',
 	), $attributes ) );
 
-	// $products = wc_get_products( [
-	// 	'include' 			=> explode(',',$productIDs),
-	// 	'limit'				=> -1
-	// ] );
-
-	// $sorted = [];
-	// foreach ( explode(',',$productIDs) as $id) {
-	// 	foreach ($products as $unsorted) {
-	// 		if ($unsorted->get_id() == $id) {
-	// 			$sorted[] = $unsorted;
-	// 			break;
-	// 		}
-	// 	}
-	// }
-
-	// if (sizeof($sorted) == sizeof($products)) {
-	// 	$products= $sorted;
-	// }
 
 	$columns = count(explode(',',$productIDs)) - 1;
 	$row  = $columns > 3? 'rows-2' : '';
 	$columns = $columns %2 == 0 && !($columns %3 == 0)? 2 : $columns;
 	$columns = $columns %3 == 0 || $columns == 5? 3 : $columns;
 	ob_start();
+
 	// if ( $products ) :
 
 	?>
@@ -58,9 +41,11 @@ function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
                     <h5><?php echo __( 'Shop this look', 'gbt-blocks'); ?></h5>
                 </div>
             </div>
+            <?php if (!empty($productIDs)):?>
             <div class="gbt_18_look_product_box <?php echo $row; ?>">
         		<?php echo do_shortcode('[products columns="'.$columns.'" ids="'.$productIDs.'"]'); ?>
 			</div>
+			<?php endif; ?>
 		</section>
 
 		<?php

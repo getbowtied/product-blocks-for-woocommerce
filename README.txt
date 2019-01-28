@@ -52,6 +52,9 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
+= 1.1 = 
+*Fixed a bug with Lookbook Distortion products not updating in the backend to reflect new edits
+
 = 1.0 =
 * Initial Release
 
