@@ -27,10 +27,6 @@
 				default: '',
 			},
 		/* Products source */
-			result: {
-				type: 'array',
-				default: [],
-			},
 			queryProducts: {
 				type: 'string',
 				default: '',
@@ -53,18 +49,6 @@
 				type: 'string',
 				default: '',
 			},
-			querySearchString: {
-				type: 'string',
-				default: '',
-			},
-			querySearchResults: {
-				type: 'array',
-				default: [],
-			},
-			querySearchNoResults: {
-				type: 'bool',
-				default: false,
-			},
 			querySearchSelected: {
 				type: 'array',
 				default: [],
@@ -77,10 +61,14 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			// attributes.selectedIDS = attributes.selectedIDS || [];
 			attributes.selectedSlide = attributes.selectedSlide || 0;
+			attributes.result 						= attributes.result || [];
+			attributes.isLoading 					= attributes.isLoading || false;
+			attributes.querySearchString    		= attributes.querySearchString || '';
+			attributes.querySearchResults   		= attributes.querySearchResults || [];
+			attributes.querySearchNoResults 		= attributes.querySearchNoResults || false;
+			attributes.doneFirstLoad 				= attributes.doneFirstLoad || false;
 
-			console.log(attributes);
 
 		//==============================================================================
 		//	Helper functions
@@ -183,6 +171,10 @@
 					apiFetch({ path: query }).then(function (products) {
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
+						if ( attributes.doneFirstLoad === false ) {
+							props.setAttributes({ querySearchSelected: products });
+						}
+						props.setAttributes({ doneFirstLoad: true});
 						let IDs = '';
 						for ( let i = 0; i < products.length; i++) {
 							IDs += products[i].id + ',';
@@ -669,6 +661,7 @@
 							className: 'gbt_18_editor_default_slider force-full',
 							key: 'gbt_18_default_slider',	
 						},
+						attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 						renderResults(),
 					),
 				),
