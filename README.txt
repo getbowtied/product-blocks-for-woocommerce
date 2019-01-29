@@ -54,6 +54,9 @@ The manual installation method involves downloading the plugin and uploading it 
 
 = 1.1 = 
 *Fixed a bug with Lookbook Distortion products not updating in the backend to reflect new edits
+*Fixed an issue with numbering in Lookbook - Shop by Outfit
+*Lookbook - Shop by Outfit will no longer show all products by default if no product is selected
+*Fixed an issue with changes to products and categories not showing in the Gutenberg Editor
 
 = 1.0 =
 * Initial Release
