@@ -40,10 +40,6 @@
 				default: '',
 			},
 		/* Products source */
-			result: {
-				type: 'array',
-				default: [],
-			},
 			queryCategories: {
 				type: 'string',
 				default: '',
@@ -117,9 +113,11 @@
 		},
 		edit: function( props ) {
 
-			let className = props.className;
-			let attributes = props.attributes;
-			attributes.selectedIDS = attributes.selectedIDS || [];
+			let className 				= props.className;
+			let attributes 				= props.attributes;
+			attributes.selectedIDS 		= attributes.selectedIDS || [];
+			attributes.doneFirstLoad 	= attributes.doneFirstLoad || false;
+			attributes.result 			= attributes.result || [];
 
 		//==============================================================================
 		//	Helper functions
@@ -238,6 +236,10 @@
 						}
 						props.setAttributes({ result: categories});
 						props.setAttributes({ isLoading: false});
+						if ( attributes.doneFirstLoad === false ) {
+							props.setAttributes({ querySearchSelected: categories });
+						}
+						props.setAttributes({ doneFirstLoad: true});
 						let IDs = '';
 						for ( let i = 0; i < categories.length; i++) {
 							IDs += categories[i].id + ',';
@@ -725,6 +727,7 @@
 					'div',
 					{
 					},
+					attributes.result.length < 1 && attributes.doneFirstLoad === false && getResult(),
 					renderResults(),
 				),
 			];

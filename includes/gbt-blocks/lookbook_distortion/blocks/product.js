@@ -178,6 +178,9 @@
 					apiFetch({ path: query }).then(function (products) {
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
+						if ( attributes.doneFirstLoad === false ) {
+							props.setAttributes({ querySearchSelected: products });
+						}
 						props.setAttributes({ doneFirstLoad: true});
 						let IDs = '';
 						for ( let i = 0; i < products.length; i++) {
