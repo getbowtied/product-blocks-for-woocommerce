@@ -12,11 +12,30 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 == Description ==
 
-**Product Blocks for WooCommerce** help you efortlessly create beautiful product displays, grids, lookbooks, carosels, etc for your WooCommerce store. Upon installation, the plugin will extend the functionality of the block editor with WooCommerce specific blocks.
+**Product Blocks for WooCommerce** helps you effortlessly create beautiful product displays, grids, lookbooks, carousels, etc. for your WooCommerce store. Upon installation, the plugin will extend the functionality of the block editor with WooCommerce specific blocks.
 
-== Getting Started ==
+== Available Blocks == 
 
-== Minimum Requirements ==
+1. [Lookbook - Shop by Outfit](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/lookbook-shop-by-outfit/) 
+2. [Lookbook - Distortion Reveal](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/lookbook-distortion-reveal/)
+3. [Product Categories Grid](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/product-categories-grid/)
+4. [Product Carousel](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/product-carousel/)
+5. [Vertical Product Slider](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/block-vertical-product-slider/)
+6. [Product Carousel](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/product-carousel/)
+
+== Installation ==
+
+*Automatic installation*
+* In your WordPress admin dashboard navigate to the **Plugins** > **Add New**.
+* Search for “Product Blocks for WooCommerce”
+* Click the “Install” button.
+
+OR
+
+*Manual INstallation*
+The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+
+= Minimum Requirements =
 
 * WordPress 4.9.x
 * Gutenberg plugin 4.6 or greater
@@ -31,24 +50,9 @@ OR
 * PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
 * MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
 
-== Automatic installation ==
+== Screenshots ==
 
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of this plugin, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
-
-In the search field type “Product Blocks for WooCommerce” and click Search Plugins. Once you’ve found this plugin you can view details about it such as the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
-
-== Manual installation ==
-
-The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
-
-== Available Blocks == 
-
-1. Product Slider
-2. Product Categories Grid
-3. Scattered Product List
-4. Product Carousel
-5. Lookbook - Shop by Outfit
-6. Lookbook - Distortion Motion Reveal
+1. Customizer Preview
 
 == Changelog ==
 
