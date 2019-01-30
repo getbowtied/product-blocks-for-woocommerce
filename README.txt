@@ -52,7 +52,12 @@ OR
 
 == Screenshots ==
 
-1. Customizer Preview
+1. Lookbook - Shop by Outfit
+2. Lookbook - Distortion Reveal
+3. Product Categories Grid
+4. Product Carousel
+5. Vertical Product Slider
+6. Product Carousel
 
 == Changelog ==
 
