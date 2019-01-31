@@ -32,7 +32,7 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 OR
 
-*Manual INstallation*
+*Manual Installation*
 The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 = Minimum Requirements =
@@ -55,9 +55,9 @@ OR
 1. Lookbook - Shop by Outfit
 2. Lookbook - Distortion Reveal
 3. Product Categories Grid
-4. Product Carousel
-5. Vertical Product Slider
-6. Product Carousel
+4. Vertical Product Slider
+5. Product Carousel
+6. Scattered Product List
 
 == Changelog ==
 
