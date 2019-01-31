@@ -16,12 +16,12 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 == Available Blocks == 
 
-1. [Lookbook - Shop by Outfit](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/lookbook-shop-by-outfit/) 
-2. [Lookbook - Distortion Reveal](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/lookbook-distortion-reveal/)
-3. [Product Categories Grid](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/product-categories-grid/)
-4. [Product Carousel](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/product-carousel/)
-5. [Vertical Product Slider](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/block-vertical-product-slider/)
-6. [Product Carousel](https://product-blocks.wp-theme.design/product-blocks-for-woocommerce/product-carousel/)
+1. [Lookbook — Shop by Outfit](https://product-blocks.getbowtied.com/lookbook-shop-by-outfit/)
+2. [Lookbook - Distortion Reveal](https://product-blocks.getbowtied.com/lookbook-distortion-reveal/)
+3. [Vertical Product Slider](https://product-blocks.getbowtied.com/vertical-product-slider/)
+4. [Product Categories Grid](https://product-blocks.getbowtied.com/product-categories-grid/)
+5. [Scattered Product List](https://product-blocks.getbowtied.com/scattered-product-list/)
+6. [Product Carousel](https://product-blocks.getbowtied.com/product-carousel/)
 
 == Installation ==
 
@@ -32,7 +32,7 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 OR
 
-*Manual INstallation*
+*Manual Installation*
 The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 = Minimum Requirements =
@@ -55,9 +55,9 @@ OR
 1. Lookbook - Shop by Outfit
 2. Lookbook - Distortion Reveal
 3. Product Categories Grid
-4. Product Carousel
-5. Vertical Product Slider
-6. Product Carousel
+4. Vertical Product Slider
+5. Product Carousel
+6. Scattered Product List
 
 == Changelog ==
 
