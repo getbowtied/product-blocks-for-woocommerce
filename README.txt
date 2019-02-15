@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 5.0.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,6 +60,11 @@ OR
 6. Scattered Product List
 
 == Changelog ==
+= 1.1.2 =
+* Added Block Shop theme only styles for Lookbook Distortion
+* Fixed an issue with Gutenberg columns element
+* Fixed a conflict with swiper & product carousel
+
 = 1.1.1 =
 * Fixed an issue with Shop by Outfit pagination and Block Shop theme
 
