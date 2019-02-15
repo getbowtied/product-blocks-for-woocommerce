@@ -2,11 +2,14 @@
 //==============================================================================
 //	Main Editor Styles
 //==============================================================================
-wp_enqueue_style(
-	'getbowtied-product-blocks-editor-styles',
-	plugins_url( 'assets/css/editor.css', dirname(dirname(__FILE__) )),
-	array( 'wp-edit-blocks' )
-);
+
+add_action( 'enqueue_block_editor_assets', function() {
+	wp_enqueue_style(
+		'getbowtied-product-blocks-editor-styles',
+		plugins_url( 'assets/css/editor.css', dirname(dirname(__FILE__) )),
+		array( 'wp-edit-blocks' )
+	);
+});
 
 //==============================================================================
 //	Main JS

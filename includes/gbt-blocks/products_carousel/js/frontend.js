@@ -10,7 +10,7 @@
 		let _columns;
 
 
-		$('.swiper-container').each(function(i){
+		$('.wp-block-getbowtied-carousel .gbt_18_swiper-container').each(function(i){
 			let _this = $(this);
 			columns.push($(this).attr('data-columns'));
 

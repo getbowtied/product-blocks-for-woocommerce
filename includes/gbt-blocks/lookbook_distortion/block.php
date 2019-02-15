@@ -29,12 +29,9 @@ function pbfw_render_frontend_lookbook_distortion_product( $attributes ) {
 			'include' 			=> [$productIDs]
 		] );
 
-		if ( $products ) :
-
-		?>
+		if ( $products ) :?>
 			<div class="gbt_18_distorsion_lookbook">
 				<?php foreach( $products as $product ) : ?>
-
 					<section class="gbt_18_distorsion_lookbook_item">
 						<?php 
 							$image = wp_get_attachment_image_src( $product->get_image_id(), array(1000,1000) );
@@ -96,6 +93,22 @@ function pbfw_render_frontend_lookbook_distortion_product( $attributes ) {
 											padding-bottom: <?php echo $mob_c_height?>% !important;
 										}
 									}
+									<?php if (function_exists('blockshop_version') && function_exists('getbowtied_hex2rgb')):
+									$body_rgb 	  = getbowtied_hex2rgb($bgColor);
+									$text_rgb 	  = getbowtied_hex2rgb($textColor);
+									?>
+									a.blockshop_add_to_cart.single_add_to_cart_button.button.alt,
+									.gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_content .gbt_18_description a{
+										background-image: linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px); 
+										background-image: -webkit-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
+										background-image: -moz-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
+										background-image: -o-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
+										background-image: -ms-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px); 
+										border: none;
+					 
+										
+									}
+									<?php endif;?>
 								</style>
 				                <div class="gbt_18_distorsion_image <?php echo $ident; ?>" 
 				                	data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" 
@@ -121,28 +134,29 @@ function pbfw_render_frontend_lookbook_distortion_product( $attributes ) {
 			                        <span class="gbt_18_product_price" style="color:<?php echo $textColor; ?>">
 			                            <?php echo $product->get_price_html(); ?>
 			                        </span>
+			                        <?php if(!function_exists('blockshop_version')): ?>
 									<a 		style="color:<?php echo $bgColor; ?>; background-color: <?php echo $textColor; ?>;" 
 											class="single_add_to_cart_button button alt" 
 											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
 											<?php echo $product->add_to_cart_text(); ?>
 									</a>
+									<?php else: ?>
+									<a 		style="" 
+											class="blockshop_add_to_cart single_add_to_cart_button button alt" 
+											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+											<?php echo $product->add_to_cart_text(); ?>
+									</a>
+									<?php endif; ?>
 								</div>
 		                    </div>
 		                </div>
 		            </section>
-
 				<?php endforeach; ?>
-
 			</div>
-
 			<?php
-
 			wp_reset_postdata(); ?>
-
 	    <?php endif; ?>
-
    	<?php endif; ?>
-
 <?php
  return ob_get_clean();
 }

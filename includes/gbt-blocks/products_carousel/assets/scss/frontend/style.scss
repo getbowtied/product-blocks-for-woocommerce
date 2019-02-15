@@ -15,7 +15,7 @@
 {
 	padding: 0;
 	
-	.swiper-container {
+	.gbt_18_swiper-container{
 		opacity: 0;
 		visibility: hidden;
 		transition: opacity 1s ease-in-out;
@@ -43,7 +43,7 @@
 			}
 
 	}
-	.swiper-container {
+	.gbt_18_swiper-container{
 		margin: 0 50px 50px;
 		
 	}
@@ -111,7 +111,7 @@
 	&.alignfull {
 		.swiper-navigation-container {
 			margin: 0;
-			.swiper-container {
+			.gbt_18_swiper-container{
 				margin: 0 0 50px;
 			}
 		}
