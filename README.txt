@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 5.0.3
-Stable tag: 1.1
+Stable tag: 1.1.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,12 +60,14 @@ OR
 6. Scattered Product List
 
 == Changelog ==
+= 1.1.1 =
+* Fixed an issue with Shop by Outfit pagination and Block Shop theme
 
 = 1.1 = 
-*Fixed a bug with Lookbook Distortion products not updating in the backend to reflect new edits
-*Fixed an issue with numbering in Lookbook - Shop by Outfit
-*Lookbook - Shop by Outfit will no longer show all products by default if no product is selected
-*Fixed an issue with changes to products and categories not showing in the Gutenberg Editor
+* Fixed a bug with Lookbook Distortion products not updating in the backend to reflect new edits
+* Fixed an issue with numbering in Lookbook - Shop by Outfit
+* Lookbook - Shop by Outfit will no longer show all products by default if no product is selected
+* Fixed an issue with changes to products and categories not showing in the Gutenberg Editor
 
 = 1.0 =
 * Initial Release
