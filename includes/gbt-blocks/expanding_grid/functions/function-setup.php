@@ -20,24 +20,6 @@ function pbfw_expanding_grid_editor_assets() {
 }
 
 //==============================================================================
-//	Enqueue Frontend Assets
-//==============================================================================
-add_action( 'enqueue_block_assets', 'pbfw_expanding_grid_assets' );
-function pbfw_expanding_grid_assets() {
-	wp_enqueue_script(
-		'getbowtied-expanding-grid-scripts',
-		plugins_url( 'assets/js/frontend/expadingProductModal.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_style(
-		'getbowtied-expanding-grid-styles',
-		plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
-		array(),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
-	);
-}
-
-//==============================================================================
 //	Register Block
 //==============================================================================
 register_block_type( 'getbowtied/expanding-grid', array(

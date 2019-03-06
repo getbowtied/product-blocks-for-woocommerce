@@ -20,34 +20,6 @@ function pbfw_products_carousel_editor_assets() {
 }
 
 //==============================================================================
-//	Enqueue Frontend Assets
-//==============================================================================
-add_action( 'enqueue_block_assets', 'pbfw_products_carousel_assets' );
-function pbfw_products_carousel_assets() {
-	wp_enqueue_script(
-		'getbowtied-swiper-scripts',
-		plugins_url( 'js/vendor/swiper.min.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-products-carousel-scripts',
-		plugins_url( 'js/frontend.js', dirname(__FILE__) ),
-		array( 'jquery', 'getbowtied-swiper-scripts' )
-	);
-	wp_enqueue_style(
-		'getbowtied-swiper-styles',
-		plugins_url( 'assets/css/frontend/swiper.min.css', dirname(__FILE__) ),
-		array()
-	);
-	wp_enqueue_style(
-		'getbowtied-products-carousel-styles',
-		plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
-		array(),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
-	);
-}
-
-//==============================================================================
 //	Register Block
 //==============================================================================
 register_block_type( 'getbowtied/products-carousel', array(

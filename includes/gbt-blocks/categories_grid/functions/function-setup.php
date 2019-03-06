@@ -22,29 +22,6 @@ function pbfw_categories_grid_editor_assets() {
 }
 
 //==============================================================================
-//	Enqueue Frontend Assets
-//==============================================================================
-add_action( 'enqueue_block_assets', 'pbfw_categories_grid_assets' );
-function pbfw_categories_grid_assets() {
-	wp_enqueue_script(
-		'getbowtied-categories-grid-scripts',
-		plugins_url( 'assets/js/frontend/animation.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-categories-grid-imagesloaded',
-		plugins_url( 'assets/js/frontend/__imagesloaded.pkgd.min.js', dirname(__FILE__) ),
-		array()
-	);
-	wp_enqueue_style(
-		'getbowtied-categories-grid-styles',
-		plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
-		array(),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
-	);
-}
-
-//==============================================================================
 //	Register Block
 //==============================================================================
 register_block_type( 'getbowtied/categories-grid', array(
