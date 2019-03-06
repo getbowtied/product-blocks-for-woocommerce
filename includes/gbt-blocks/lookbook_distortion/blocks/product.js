@@ -459,12 +459,13 @@
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
+												apiFetch({ path: query }).then(function (products) {
+													props.setAttributes({ querySearchSelected: products});
+												});
 											} else {
 												props.setAttributes({queryProducts: ''});
+												props.setAttributes({ querySearchSelected: []});
 											}
-											apiFetch({ path: query }).then(function (products) {
-												props.setAttributes({ querySearchSelected: products});
-											});
 										},
 									},
 								),

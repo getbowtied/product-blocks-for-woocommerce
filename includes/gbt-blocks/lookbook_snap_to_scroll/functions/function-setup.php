@@ -28,29 +28,6 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 }
 
 //==============================================================================
-//	Enqueue Frontend Assets
-//==============================================================================
-add_action( 'enqueue_block_assets', 'pbfw_lookbook_snap_to_scroll_assets' );
-function pbfw_lookbook_snap_to_scroll_assets() {
-	wp_enqueue_script(
-		'getbowtied-lookbook-snap-to-scroll-scrollify-scripts',
-		plugins_url( 'assets/js/frontend/jquery.scrollify.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-lookbook-snap-to-scroll-snaplookbook-scripts',
-		plugins_url( 'assets/js/frontend/snaplookbook.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_style(
-		'getbowtied-lookbook-snap-to-scroll-styles',
-		plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
-		array(),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
-	);
-}
-
-//==============================================================================
 //	Register Block
 //==============================================================================
 register_block_type( 'getbowtied/lookbook-snap-to-scroll-product', array(

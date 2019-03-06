@@ -23,45 +23,7 @@ function pbfw_lookbook_distortion_editor_assets() {
 		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor.css' )
 	);
 }
-
-//==============================================================================
-//	Enqueue Frontend Assets
-//==============================================================================
-add_action( 'enqueue_block_assets', 'pbfw_lookbook_distortion_assets' );
-function pbfw_lookbook_distortion_assets() {
-	wp_enqueue_script(
-		'getbowtied-lookbook-distortion-imagesloaded-scripts',
-		plugins_url( 'assets/js/frontend/imagesloaded.pkgd.min.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-lookbook-distortion-three-scripts',
-		plugins_url( 'assets/js/frontend/three.min.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-lookbook-distortion-TweenMax-scripts',
-		'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js',
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-lookbook-distortion-hover-scripts',
-		plugins_url( 'assets/js/frontend/hover.js', dirname(__FILE__) ),
-		array( 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-lookbook-distortion-hover1-scripts',
-		plugins_url( 'assets/js/frontend/frontend.js', dirname(__FILE__) ),
-		array( ), false, true
-	);
-	wp_enqueue_style(
-		'getbowtied-lookbook-distortion-styles',
-		plugins_url( 'assets/css/frontend/style.css', dirname(__FILE__) ),
-		array(),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style.css' )
-	);
-}
-
+	
 //==============================================================================
 //	Register Block
 //==============================================================================

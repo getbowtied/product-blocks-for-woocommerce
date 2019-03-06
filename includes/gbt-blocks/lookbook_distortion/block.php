@@ -93,22 +93,6 @@ function pbfw_render_frontend_lookbook_distortion_product( $attributes ) {
 											padding-bottom: <?php echo $mob_c_height?>% !important;
 										}
 									}
-									<?php if (function_exists('blockshop_version') && function_exists('getbowtied_hex2rgb')):
-									$body_rgb 	  = getbowtied_hex2rgb($bgColor);
-									$text_rgb 	  = getbowtied_hex2rgb($textColor);
-									?>
-									a.blockshop_add_to_cart.single_add_to_cart_button.button.alt,
-									.gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_content .gbt_18_description a{
-										background-image: linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px); 
-										background-image: -webkit-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
-										background-image: -moz-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
-										background-image: -o-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
-										background-image: -ms-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px); 
-										border: none;
-					 
-										
-									}
-									<?php endif;?>
 								</style>
 				                <div class="gbt_18_distorsion_image <?php echo $ident; ?>" 
 				                	data-displacement="<?php echo plugins_url( 'assets/images/animations/' . $animation . '.jpg', __FILE__ ); ?>" 
@@ -124,7 +108,7 @@ function pbfw_render_frontend_lookbook_distortion_product( $attributes ) {
 								</div>
 			                <?php endif; ?>
 		            	</a>
-		                <div class="gbt_18_distorsion_lookbook_content" style="background-color: <?php echo $bgColor; ?>;">
+		                <div class="gbt_18_distorsion_lookbook_content product-<?php echo $product->get_id(); ?>" style="background-color: <?php echo $bgColor; ?>;">
 		                    <div class="gbt_18_text_wrapper">
 		                    	<div class="gbt_18_content_top">
 			                        <h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
@@ -136,16 +120,56 @@ function pbfw_render_frontend_lookbook_distortion_product( $attributes ) {
 			                        </span>
 			                        <?php if(!function_exists('blockshop_version')): ?>
 									<a 		style="color:<?php echo $bgColor; ?>; background-color: <?php echo $textColor; ?>;" 
-											class="single_add_to_cart_button button alt" 
-											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
-											<?php echo $product->add_to_cart_text(); ?>
-									</a>
-									<?php else: ?>
-									<a 		style="" 
+											<?php if ($product->is_type('simple') && $product->is_purchasable()): ?>
+											class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
+											data-quantity="1" 
+											data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
+											<?php else: ?>
 											class="blockshop_add_to_cart single_add_to_cart_button button alt" 
+											<?php endif; ?>
 											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
 											<?php echo $product->add_to_cart_text(); ?>
 									</a>
+									<?php else:
+										$link_id= uniqid($product->get_id()); 
+
+									 ?>
+									<a 		style=""
+											<?php if ($product->is_type('simple') && $product->is_purchasable()): ?>
+											class="blockshop_add_to_cart single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
+											data-quantity="1" 
+											data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
+											<?php else: ?>
+											class="blockshop_add_to_cart single_add_to_cart_button button alt" 
+											<?php endif; ?>
+											href="<?php echo esc_url($product->add_to_cart_url()); ?>">
+											<?php echo $product->add_to_cart_text(); ?>
+									</a>
+										<?php if (function_exists('blockshop_version') && function_exists('getbowtied_hex2rgb')):
+										$body_rgb 	  = getbowtied_hex2rgb($bgColor);
+										$text_rgb 	  = getbowtied_hex2rgb($textColor);
+										?>
+										<style type="text/css">
+										.product-<?php echo $product->get_id(); ?> a.blockshop_add_to_cart.single_add_to_cart_button.button.alt,
+										.product-<?php echo $product->get_id(); ?> a.added_to_cart.wc-forward,
+										.gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_content.product-<?php echo $product->get_id(); ?> .gbt_18_description a{
+											background-image: linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px); 
+											background-image: -webkit-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
+											background-image: -moz-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
+											background-image: -o-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px);
+											background-image: -ms-linear-gradient(to top, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgb(<?php  echo esc_attr($text_rgb); ?>) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px, rgba(<?php echo esc_attr($body_rgb); ?>, 0) 1px); 
+											border: none;
+						 					color: <?php echo $textColor; ?>;
+										}
+										.product-<?php echo $product->get_id(); ?> a.blockshop_add_to_cart.single_add_to_cart_button.button.alt.loading {
+											border-color: <?php echo $textColor; ?>;
+										}
+										.product-<?php echo $product->get_id(); ?> a.blockshop_add_to_cart.single_add_to_cart_button.button.alt.loading:after {
+											background-color: <?php echo $textColor; ?>
+										}	
+
+										</style>
+										<?php endif;?>
 									<?php endif; ?>
 								</div>
 		                    </div>
