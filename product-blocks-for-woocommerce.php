@@ -10,9 +10,9 @@
  * License: 				GPLv2
  * License URI: 			http://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 		5.0
- * Tested up to: 			5.0.3
+ * Tested up to: 			5.1
  * WC requires at least: 	3.5
- * WC tested up to: 		3.5.3
+ * WC tested up to: 		3.5.5
  *
  * @package  Product Blocks for WooCommerce
  * @author   GetBowtied
