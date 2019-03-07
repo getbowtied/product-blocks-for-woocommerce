@@ -60,6 +60,10 @@ OR
 6. Scattered Product List
 
 == Changelog ==
+= 1.1.3 = 
+* Improved loading of CSS & JS files to lessen impact on page loading
+* Fixed an issue with manually picking products
+
 = 1.1.2 =
 * Added Block Shop theme only styles for Lookbook Distortion
 * Fixed an issue with Gutenberg columns element
