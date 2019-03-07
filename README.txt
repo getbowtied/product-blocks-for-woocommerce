@@ -12,7 +12,7 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 == Description ==
 
-**Product Blocks for WooCommerce** helps you effortlessly create beautiful product displays, grids, lookbooks, carousels, etc. for your WooCommerce store. Upon installation, the plugin will extend the functionality of the block editor with WooCommerce specific blocks.
+**Product Blocks for WooCommerce** helps you effortlessly create beautiful product displays, grids, lookbooks, carousels, etc. for your WooCommerce store. Upon installation, the plugin will extend the functionality of the Gutenberg Block Editor with WooCommerce specific blocks.
 
 == Available Blocks == 
 
@@ -60,6 +60,10 @@ OR
 6. Scattered Product List
 
 == Changelog ==
+= 1.1.3 = 
+* Improved loading of CSS & JS files to lessen impact on page loading
+* Fixed an issue with manually picking products
+
 = 1.1.2 =
 * Added Block Shop theme only styles for Lookbook Distortion
 * Fixed an issue with Gutenberg columns element
