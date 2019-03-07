@@ -515,12 +515,13 @@
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryCategories: query});
+												apiFetch({ path: query }).then(function (categories) {
+													props.setAttributes({ querySearchSelected: categories});
+												});
 											} else {
 												props.setAttributes({queryCategories: ''});
+												props.setAttributes({ querySearchSelected: []});
 											}
-											apiFetch({ path: query }).then(function (categories) {
-												props.setAttributes({ querySearchSelected: categories});
-											});
 										},
 									},
 								),

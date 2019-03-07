@@ -71,7 +71,7 @@ function getbowtied_product_blocks_frontend_styles() {
 	wp_enqueue_script(
 		'getbowtied-product-blocks-frontend-scripts',
 		plugins_url( 'assets/frontend/js/scripts.min.js', dirname(dirname(__FILE__))),
-		array( 'jquery' ),
+		array( 'jquery', 'imagesloaded' ),
 		PBFW_VERSION,
 		true
 	);
