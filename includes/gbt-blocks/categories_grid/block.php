@@ -59,7 +59,7 @@ function pbfw_render_frontend_categories_grid( $attributes ) {
             <div class="gbt_18_category_grid_item">
                 <a class="gbt_18_category_grid_item_img" href="<?php echo get_term_link( $cat->slug, 'product_cat' ); ?>">
                     <?php 
-                    	$thumbnail_id = get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true );
+                    	$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
 					    $image = wp_get_attachment_image( $thumbnail_id, 'large');
 					    echo !$image? wc_placeholder_img() : $image;
                     ?>
