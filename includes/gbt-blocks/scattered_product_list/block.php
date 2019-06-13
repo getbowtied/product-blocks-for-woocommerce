@@ -100,7 +100,7 @@ function pbfw_render_frontend_expanding_grid( $attributes ) {
 
 	if ($products):
 	?>
-		<div class="wp-block-getbowtied-expanding-grid gbt_18_expanding_grid align<?php echo $align; ?>">
+		<div class="wp-block-getbowtied-scattered-product-list gbt_18_expanding_grid align<?php echo $align; ?>">
             <div class="gbt_18_grid">
             	<?php foreach( $products as $product ) : ?>
 					<div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanding_grid_item">

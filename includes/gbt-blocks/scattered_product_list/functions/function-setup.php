@@ -7,12 +7,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action( 'admin_init', 'pbfw_expanding_grid_editor_assets' );
 function pbfw_expanding_grid_editor_assets() {
 	wp_enqueue_script(
-		'getbowtied-expanding-grid-editor-scripts',
+		'getbowtied-scattered-product-list-editor-scripts',
 		plugins_url( 'block.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 	);
 	wp_enqueue_style(
-		'getbowtied-expanding-grid-editor-styles',
+		'getbowtied-scattered-product-list-editor-styles',
 		plugins_url( 'assets/css/backend/editor.css', dirname(__FILE__) ),
 		array( 'wp-edit-blocks' ),
 		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor.css' )
@@ -22,7 +22,7 @@ function pbfw_expanding_grid_editor_assets() {
 //==============================================================================
 //	Register Block
 //==============================================================================
-register_block_type( 'getbowtied/expanding-grid', array(
+register_block_type( 'getbowtied/scattered-product-list', array(
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',

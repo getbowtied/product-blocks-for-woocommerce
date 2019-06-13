@@ -8,19 +8,19 @@ add_action( 'admin_init', 'pbfw_lookbook_snap_to_scroll_editor_assets' );
 function pbfw_lookbook_snap_to_scroll_editor_assets() {
 
 	wp_enqueue_script(
-		'getbowtied-lookbook-snap-to-scroll-editor-lookbook-scripts',
+		'getbowtied-lookbook-shop-by-outfit-editor-lookbook-scripts',
 		plugins_url( 'blocks/lookbook.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 	);
 
 	wp_enqueue_script(
-		'getbowtied-lookbook-snap-to-scroll-editor-lookbook-product-scripts',
+		'getbowtied-lookbook-shop-by-outfit-editor-lookbook-product-scripts',
 		plugins_url( 'blocks/product.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 	);
 
 	wp_enqueue_style(
-		'getbowtied-lookbook-snap-to-scroll-editor-styles',
+		'getbowtied-lookbook-shop-by-outfit-editor-styles',
 		plugins_url( 'assets/css/backend/editor.css', dirname(__FILE__) ),
 		array( 'wp-edit-blocks' ),
 		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor.css' )
@@ -30,7 +30,7 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 //==============================================================================
 //	Register Block
 //==============================================================================
-register_block_type( 'getbowtied/lookbook-snap-to-scroll-product', array(
+register_block_type( 'getbowtied/lookbook-shop-by-outfit-product', array(
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',

@@ -2,8 +2,8 @@
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
-Tested up to: 5.1
-Stable tag: 1.1.3
+Tested up to: 5.2.1
+Stable tag: 1.2
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -36,14 +36,6 @@ OR
 The manual installation method involves downloading the plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](https://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
 = Minimum Requirements =
-
-* WordPress 4.9.x
-* Gutenberg plugin 4.6 or greater
-* WooCommerce 3.3.1 or greater
-* PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
-* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
-
-OR
 
 * WordPress 5.0.x
 * WooCommerce 3.5.1 or greater
