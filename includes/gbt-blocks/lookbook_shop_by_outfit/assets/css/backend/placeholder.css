@@ -1,0 +1,57 @@
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper {
+  overflow: auto;
+  display: table;
+  width: 100%; }
+  .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products {
+    display: table-cell;
+    vertical-align: middle; }
+    .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product {
+      float: left;
+      width: 50%;
+      list-style-type: none;
+      text-align: center;
+      margin-bottom: 0;
+      padding: 0 10px; }
+      .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_thumbnail {
+        background-color: #eeeeee;
+        background-position: center;
+        padding-bottom: 100%;
+        height: 0;
+        width: 100%; }
+      .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title {
+        height: 12px;
+        width: 70%;
+        margin: 10px auto 0;
+        background-color: #eeeeee; }
+      .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price {
+        height: 12px;
+        width: 30%;
+        margin: 10px auto 0;
+        background-color: #eeeeee; }
+      .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button {
+        background: #eeeeee;
+        display: none;
+        color: #333;
+        cursor: pointer;
+        font-weight: 600;
+        border: none;
+        padding: 8px 17px;
+        margin: 15px auto 0;
+        font-size: 13px;
+        outline: 0; }
+        .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button:hover {
+          background: #e4e4e4; }
+
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title,
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title {
+  height: 15px;
+  margin: 15px auto 0; }
+
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price,
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price {
+  height: 10px;
+  margin: 15px auto 0; }
+
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button,
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button {
+  display: block; }
