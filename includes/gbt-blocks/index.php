@@ -80,7 +80,7 @@ function getbowtied_product_blocks_frontend_styles() {
 require_once 'products_slider/block.php';
 require_once 'categories_grid/block.php';
 require_once 'products_carousel/block.php';
-require_once 'expanding_grid/block.php';
+require_once 'scattered_product_list/block.php';
 require_once 'lookbook_distortion/block.php';
 require_once 'lookbook_shop_by_outfit/block.php';
 

@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 5.2.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,7 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 == Available Blocks == 
 
 1. [Lookbook — Shop by Outfit](https://product-blocks.getbowtied.com/lookbook-shop-by-outfit/)
-2. [Lookbook - Distortion Reveal](https://product-blocks.getbowtied.com/lookbook-distortion-reveal/)
+2. [Lookbook — Distortion Reveal](https://product-blocks.getbowtied.com/lookbook-distortion-reveal/)
 3. [Vertical Product Slider](https://product-blocks.getbowtied.com/vertical-product-slider/)
 4. [Product Categories Grid](https://product-blocks.getbowtied.com/product-categories-grid/)
 5. [Scattered Product List](https://product-blocks.getbowtied.com/scattered-product-list/)
@@ -52,6 +52,15 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+= 1.2.1 = 
+* Fixed a bug
+
+= 1.2 = 
+* Updated for compatibility with latest WooCommerce version
+* Renamed Lookbook Snap to Scroll block to - Lookbook -Shop by Outfit
+* Renamed Expanding Grid block to Scattered Product List
+* Older versions of the blocks will have to be manually deleted and re-added
+
 = 1.1.3 = 
 * Improved loading of CSS & JS files to lessen impact on page loading
 * Fixed an issue with manually picking products
