@@ -19,13 +19,13 @@
 	const apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
-	registerBlockType( 'getbowtied/lookbook-distortion-product', {
+	registerBlockType( 'getbowtied/lookbook-reveal-product', {
 		title: i18n.__( 'Lookbook Product' ),
 		icon: 	el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
-					el( Path, { d:'M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 19V6h8v13H3zm18 0h-8V6h8v13zm-7-9.5h6V11h-6zm0 2.5h6v1.5h-6zm0 2.5h6V16h-6z' } ) 
+					el( Path, { d:'M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 19V6h8v13H3zm18 0h-8V6h8v13zm-7-9.5h6V11h-6zm0 2.5h6v1.5h-6zm0 2.5h6V16h-6z' } )
 				),
 		category: 'product_blocks',
-		parent: [ 'getbowtied/lookbook-distortion' ],
+		parent: [ 'getbowtied/lookbook-reveal' ],
 		attributes: {
 			productIDs: {
 				type: 'string',
@@ -204,73 +204,73 @@
 					let class_prefix = 'gbt_18_editor_lookbook_product';
 
 					for ( let i = 0; i < products.length; i++ ) {
-						
+
 						if( products[i]['name'].length > 35 ) { dots = '...'; } else { dots = ''; }
 
 						productElements.push(
-							el( 'div', 
+							el( 'div',
 								{
 									key: 		class_prefix + '_content' + 'item-' + products[i].id,
-									className: 	class_prefix + '_content' 
+									className: 	class_prefix + '_content'
 								},
-								el( 'div', 
+								el( 'div',
 									{
 										key: 		class_prefix + '_content_left',
 										className: 	class_prefix + '_content_left'
 									},
-									el( 'div', 
+									el( 'div',
 										{
 											key: 		class_prefix + '_content_left_inner_top',
 											className: 	class_prefix + '_content_left_inner_top'
 										},
-										el( 'h2', 
+										el( 'h2',
 											{
-												key: 		class_prefix + '_title', 
+												key: 		class_prefix + '_title',
 												style: 		{ color: attributes.textColor },
-												className: 	class_prefix + '_title' 
-											}, 
-											products[i]['name'].substring(0,35) + dots 
+												className: 	class_prefix + '_title'
+											},
+											products[i]['name'].substring(0,35) + dots
 										),
 										el( 'div',
 											{
-												key: 						class_prefix + '_text', 
+												key: 						class_prefix + '_text',
 												style: 						{ color: attributes.textColor },
-												className: 					class_prefix + '_text', 
-												dangerouslySetInnerHTML: 	{ __html: products[i]['short_description'].substring(0,100) } 
-											} 
+												className: 					class_prefix + '_text',
+												dangerouslySetInnerHTML: 	{ __html: products[i]['short_description'].substring(0,100) }
+											}
 										),
 									),
-									el( 'div', 
-										{ 
+									el( 'div',
+										{
 											key: 		class_prefix + '_content_left_inner_bottom',
-											className: 	class_prefix + '_content_left_inner_bottom' 
+											className: 	class_prefix + '_content_left_inner_bottom'
 										},
 										el( 'p',
 											{
-												key: 						class_prefix + '_price', 
-												style: 						{ color: attributes.textColor }, 
-												className: 					class_prefix + '_price', 
-												dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+												key: 						class_prefix + '_price',
+												style: 						{ color: attributes.textColor },
+												className: 					class_prefix + '_price',
+												dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 											}
 										),
 										el( 'button',
 											{
-												key: 		class_prefix + '_button', 
+												key: 		class_prefix + '_button',
 												style: 		{ color: attributes.textColor, borderBottomColor: attributes.textColor },
 												className: 	class_prefix + '_button'
-											}, 
+											},
 											'Add To Cart'
 										),
 									),
 								),
-								el( 'div', 
-									{ 
+								el( 'div',
+									{
 										key: 		class_prefix + '_content_right',
 										className: 	class_prefix + '_content_right'
 									},
-									el( 'div', 
+									el( 'div',
 										{
-											key: 		class_prefix + '_image', 
+											key: 		class_prefix + '_image',
 											style: 		{ backgroundImage: 'url('+products[i]['images'][0]['src']+')' } ,
 											className: 	class_prefix + '_image'
 										}
@@ -282,8 +282,8 @@
 					wrapper.push(
 						el( 'div',
 							{
-								className: 	'gbt_18_lookbook_distortion_product_wrapper',
-								key: 		'gbt_18_lookbook_distortion_product_wrapper',
+								className: 	'gbt_18_lookbook_reveal_product_wrapper',
+								key: 		'gbt_18_lookbook_reveal_product_wrapper',
 								style: 		{ backgroundColor: attributes.bgColor }
 							},
 							productElements
@@ -295,23 +295,23 @@
 					var class_prefix = 'gbt_18_editor_placeholder_lookbook_product';
 
 					wrapper.push(
-						el( 'div', 
-							{ 
+						el( 'div',
+							{
 								key: 		class_prefix + '_wrapper',
 								className: 	'gbt_18_editor_lookbook_product_wrapper placeholder'
 							},
-							el( 'div', 
+							el( 'div',
 								{
 									key: 		class_prefix + '_content',
 									className: 	'gbt_18_editor_lookbook_product_content placeholder'
 								},
-								el( 'div', 
+								el( 'div',
 									{
 										key: 		class_prefix + '_content_left',
 										className: 	class_prefix + '_content_left'
 									},
-									el( 'div', 
-										{ 
+									el( 'div',
+										{
 											key: 		class_prefix + '_content_left_inner_top',
 											className: 	class_prefix + '_content_left_inner_top'
 										},
@@ -319,7 +319,7 @@
 										el('div', { className: class_prefix + '_text1', key: class_prefix + '_text1' } ),
 										el('div', { className: class_prefix + '_text2', key: class_prefix + '_text2' } ),
 									),
-									el( 'div', 
+									el( 'div',
 										{
 											key: 		class_prefix + '_content_left_inner_bottom',
 											className: 	class_prefix + '_content_left_inner_bottom'
@@ -328,7 +328,7 @@
 										el( 'button', { className: class_prefix + '_button', key: class_prefix + '_button' }, 'Add To Cart' ),
 									),
 								),
-								el( 'div', 
+								el( 'div',
 									{
 										key: 		class_prefix + '_content_right',
 										className: 	class_prefix + '_content_right'
@@ -361,16 +361,16 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								key: 		'item-' + products[i].id +i,
 								className: _searchResultClass(products[i].id) + ' ' + _searchDisabledClass(),
 								title: products[i].name,
 								'data-index': i,
-							}, 
+							},
 							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -390,7 +390,7 @@
 												qSR.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSR.join(',') });
-											
+
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -424,15 +424,15 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								key: 		'item-' + products[i].id,
-								className:'single-result', 
+								className:'single-result',
 								title: products[i].name,
-							}, 
-							img, 
+							},
+							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -455,7 +455,7 @@
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS.join(',') });
-											
+
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -485,7 +485,7 @@
 				el(
 					InspectorControls,
 					{
-						key: 'lookbook-distortion-inspector'
+						key: 'lookbook-reveal-inspector'
 					},
 					el(
 						'div',
@@ -527,7 +527,7 @@
 						),
 						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
-							{ 
+							{
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -565,39 +565,21 @@
 							_isLoadingText(),
 						),
 						el( 'hr', {}),
-					/* Animation Options */
-						el(
-							SelectControl,
-							{
-								key: 'lookbook-distortion-animation',
-								options:
-									[
-										{ value: 'animation-1',   label: 'Animation 1' },
-										{ value: 'animation-2',   label: 'Animation 2' },
-										{ value: 'animation-3',   label: 'Animation 3' },
-									],
-	              				label: i18n.__( 'Animation Type' ),
-	              				value: attributes.animation,
-	              				onChange: function( newAnimation ) {
-	              					props.setAttributes( { animation: newAnimation } );
-								},
-							}
-						),
 						el(
 							ColorSettings,
 							{
-								key: 'lookbook-distortion-colors',
+								key: 'lookbook-reveal-colors',
 								title: i18n.__( 'Colors' ),
 								colors: colors,
 								colorSettings: [
-									{ 
+									{
 										label: i18n.__( 'Background Color' ),
 										value: attributes.bgColor,
 										onChange: function( newColor) {
 											props.setAttributes( { bgColor: newColor } );
 										},
 									},
-									{ 
+									{
 										label: i18n.__( 'Text Color' ),
 										value: attributes.textColor,
 										onChange: function( newColor) {

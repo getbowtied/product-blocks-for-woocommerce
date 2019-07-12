@@ -1,18 +1,18 @@
-.editor-block-list__block[data-type="getbowtied/lookbook-distortion"] .editor-inner-blocks {
-    .editor-block-list__block[data-type="getbowtied/lookbook-distortion-product"]:nth-child(even) {
+.editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks {
+    .editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(even) {
         .gbt_18_editor_lookbook_product_content {
             flex-direction: row-reverse;
         }
     }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-distortion"][data-align="full"] {
+.editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] {
     .editor-block-list__block-edit {
         padding: 0 12px;
     }
 }
 
-.gbt_18_lookbook_distortion_topbar
+.gbt_18_lookbook_reveal_topbar
 {
 	background-color: #f3f3f3;
 	display: flex;
@@ -32,7 +32,7 @@
     	cursor: pointer;
     }
 
-	.gbt_18_lookbook_distortion_topbar_title
+	.gbt_18_lookbook_reveal_topbar_title
 	{
 	    display: flex;
 	    justify-content: center;
@@ -40,7 +40,7 @@
 	}
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-distortion"]
+.editor-block-list__block[data-type="getbowtied/lookbook-reveal"]
 {
     .editor-inner-blocks
     {

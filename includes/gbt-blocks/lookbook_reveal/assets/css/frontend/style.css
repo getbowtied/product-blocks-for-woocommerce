@@ -1,0 +1,138 @@
+@media screen and (min-width: 768px) {
+  .gbt_18_lookbook_reveal_wrapper .gbt_18_distorsion_lookbook:nth-child(even) .gbt_18_distorsion_lookbook_content {
+    left: 50%; }
+  .gbt_18_lookbook_reveal_wrapper .gbt_18_distorsion_lookbook:nth-child(even) .gbt_18_distorsion_image,
+  .gbt_18_lookbook_reveal_wrapper .gbt_18_distorsion_lookbook:nth-child(even) .gbt_18_fade_images {
+    left: 0; } }
+
+.gbt_18_lookbook_reveal_wrapper.aligncenter .gbt_18_description {
+  display: none; }
+
+@media screen and (max-width: 767px) {
+  .gbt_18_lookbook_reveal_wrapper .gbt_18_description {
+    display: none; } }
+
+.gbt_18_distorsion_lookbook {
+  height: 0;
+  position: relative; }
+  @media screen and (max-width: 767px) {
+    .gbt_18_distorsion_lookbook {
+      padding-bottom: 200%; }
+      .gbt_18_distorsion_lookbook .gbt_18_fade_images {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_image {
+        top: 0;
+        left: 0; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_content {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 50%; }
+      .gbt_18_distorsion_lookbook .gbt_18_text_wrapper {
+        padding: 10%; }
+        .gbt_18_distorsion_lookbook .gbt_18_text_wrapper h2,
+        .gbt_18_distorsion_lookbook .gbt_18_text_wrapper .gbt_18_product_price {
+          font-size: 1.2rem; }
+        .gbt_18_distorsion_lookbook .gbt_18_text_wrapper .button {
+          font-size: 1rem; } }
+  @media screen and (min-width: 768px) {
+    .gbt_18_distorsion_lookbook {
+      padding-bottom: calc(100% / 2); }
+      .gbt_18_distorsion_lookbook .gbt_18_fade_images,
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_image {
+        left: 50%;
+        top: 0;
+        width: 50%;
+        height: 100%; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_content {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 50%; } }
+  .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item:hover .gbt_18_distorsion_image img:nth-child(2) {
+      opacity: 1; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_fade_images {
+      position: absolute; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_fade_images img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: 50% 50% !important;
+        object-position: 50% 50% !important;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        -webkit-transition: all .5s ease-in-out;
+        -o-transition: all .5s ease-in-out;
+        transition: all .5s ease-in-out;
+        opacity: 1; }
+        .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_fade_images img:nth-child(2) {
+          opacity: 0;
+          -webkit-transition: all .85s ease-in-out;
+          -o-transition: all .85s ease-in-out;
+          transition: all .85s ease-in-out; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_fade_images:hover img:not(:only-child) {
+        opacity: 0; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_fade_images:hover img:nth-child(2) {
+        opacity: 1;
+        -webkit-filter: none;
+        filter: none; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image {
+      position: absolute; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: 50% 50% !important;
+        object-position: 50% 50% !important;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        display: none; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image .scene {
+        width: 410px;
+        height: 410px;
+        display: block; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_image canvas {
+        width: 100% !important;
+        height: auto !important; }
+    .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content {
+      position: absolute; }
+      .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper {
+        margin: 0 auto;
+        padding: 20%;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        color: #fff;
+        height: 60%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between; }
+        .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper .gbt_18_product_price {
+          margin-bottom: 20px;
+          display: inline-block; }
+          @media screen and (min-width: 768px) {
+            .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper .gbt_18_product_price {
+              font-size: 2rem; } }
+        .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper .button {
+          display: table;
+          color: #fff; }
+          @media screen and (min-width: 768px) {
+            .gbt_18_distorsion_lookbook .gbt_18_distorsion_lookbook_item .gbt_18_distorsion_lookbook_content .gbt_18_text_wrapper .button {
+              font-size: 18px; } }

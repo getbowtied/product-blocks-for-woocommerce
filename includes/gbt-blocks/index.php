@@ -48,20 +48,6 @@ function getbowtied_product_blocks_frontend_styles() {
 		true
 	);
 	wp_enqueue_script(
-		'three',
-		plugins_url( 'assets/frontend/js/three.min.js', dirname(dirname(__FILE__))),
-		array( 'jquery' ),
-		PBFW_VERSION,
-		true
-	);
-	wp_enqueue_script(
-		'tweenmax',
-		plugins_url( 'assets/frontend/js/tweenmax.min.js', dirname(dirname(__FILE__))),
-		array( 'jquery' ),
-		PBFW_VERSION,
-		true
-	);
-	wp_enqueue_script(
 		'getbowtied-swiper-scripts',
 		plugins_url( 'assets/frontend/js/swiper.min.js', dirname(dirname(__FILE__))),
 		array( 'jquery' ),
@@ -81,6 +67,5 @@ require_once 'products_slider/block.php';
 require_once 'categories_grid/block.php';
 require_once 'products_carousel/block.php';
 require_once 'scattered_product_list/block.php';
-require_once 'lookbook_distortion/block.php';
+require_once 'lookbook_reveal/block.php';
 require_once 'lookbook_shop_by_outfit/block.php';
-
