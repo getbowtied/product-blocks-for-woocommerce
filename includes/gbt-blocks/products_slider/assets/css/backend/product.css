@@ -9,77 +9,77 @@
   height: 100%;
   overflow: hidden; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide {
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    -webkit-transition: opacity .4s ease-in-out;
-    -o-transition: opacity .4s ease-in-out;
-    transition: opacity .4s ease-in-out; }
-    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide.selected {
-      opacity: 1;
-      height: 100%;
-      visibility: visible; }
-    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_left,
-    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_right {
-      width: 50%;
-      float: left; }
+	width: 100%;
+	overflow: hidden;
+	opacity: 0;
+	visibility: hidden;
+	height: 0;
+	-webkit-transition: opacity .4s ease-in-out;
+	-o-transition: opacity .4s ease-in-out;
+	transition: opacity .4s ease-in-out; }
+	.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide.selected {
+	  opacity: 1;
+	  height: 100%;
+	  visibility: visible; }
+	.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_left,
+	.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_right {
+	  width: 50%;
+	  float: left; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_image {
-    background-size: cover;
-    background-position: center;
-    padding-bottom: 100%;
-    height: 0;
-    width: 100%; }
+	background-size: cover;
+	background-position: center;
+	padding-bottom: 100%;
+	height: 0;
+	width: 100%; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart {
-    background: #eeeeee;
-    display: block;
-    color: #333;
-    cursor: pointer;
-    font-weight: 600;
-    border: none;
-    padding: 8px 17px;
-    outline: 0;
-    margin-top: 25px; }
-    .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart:hover {
-      background: #e4e4e4; }
+	background: #eeeeee;
+	display: block;
+	color: #333;
+	cursor: pointer;
+	font-weight: 600;
+	border: none;
+	padding: 8px 17px;
+	outline: 0;
+	margin-top: 25px; }
+	.editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart:hover {
+	  background: #e4e4e4; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
-    margin-left: 2%;
-    position: absolute;
-    bottom: 15px; }
+	margin-left: 2%;
+	position: absolute;
+	bottom: 15px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'product-blocks';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    border: none;
-    outline: 0;
-    display: inline;
-    padding: 3px;
-    cursor: pointer;
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; }
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'product-blocks';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	border: none;
+	outline: 0;
+	display: inline;
+	padding: 3px;
+	cursor: pointer;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev {
-    margin-right: 3px; }
+	margin-right: 3px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before {
-    content: '\e903';
-    color: #000; }
+	content: '\e903';
+	color: #000; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
-    content: '\e902';
-    color: #000; }
+	content: '\e902';
+	color: #000; }
 
 .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev,
 .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next {
   z-index: 100; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev:before,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next:before {
-    font-size: 18px; }
+	font-size: 18px; }
 
 .editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev {
   left: 7px; }
@@ -169,32 +169,32 @@
 
 @media screen and (max-width: 1024px) {
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
-    padding: 2%; }
+	padding: 2%; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
-    font-size: 16px; }
+	font-size: 16px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
-    font-size: 11px; }
+	font-size: 11px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
-    margin-left: 2%;
-    bottom: 0; }
+	margin-left: 2%;
+	bottom: 0; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
-    font-size: 15px; } }
+	font-size: 15px; } }
 
 @media screen and (min-width: 1025px) and (max-width: 1240px) {
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
-    font-size: 18px; }
+	font-size: 18px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
-    margin-left: 10px;
-    bottom: 2%; }
+	margin-left: 10px;
+	bottom: 2%; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
-    padding: 3%; }
+	padding: 3%; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
-    font-size: 12px; }
+	font-size: 12px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
-    font-size: 15px; } }
+	font-size: 15px; } }
