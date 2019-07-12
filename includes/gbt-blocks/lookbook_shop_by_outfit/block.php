@@ -36,7 +36,7 @@ function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
 
 	?>
 		<section class="gbt_18_look_book_item gbt_18_look_book_type_grid <?php echo $image_position; ?>">
-			<div class="gbt_18_look_image" 
+			<div class="gbt_18_look_image"
 			<?php
 			if ( ! empty( $imgURL ) ) {
 				echo 'style="background-image:url(' . esc_url( $imgURL ) . ')"';
@@ -50,7 +50,7 @@ function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
 						echo $thumb;
 					}
 					?>
-						
+
 				</div>
 				<div class="gbt_18_shop_this_book">
 					<h5><?php echo __( 'Shop this look', 'gbt-blocks' ); ?></h5>

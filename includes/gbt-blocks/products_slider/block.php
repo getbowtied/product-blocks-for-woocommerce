@@ -80,8 +80,8 @@ function pbfw_render_frontend_products_slider( $attributes ) {
 										$product
 									);
 									?>
-									<button type="submit" 
-											class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button" 
+									<button type="submit"
+											class="single_add_to_cart_button button alt ajax_add_to_cart add_to_cart_button"
 											value="<?php echo $product->get_id(); ?>"
 											data-product_id="<?php echo $product->get_id(); ?>"
 											data-quantity="1"
@@ -89,8 +89,8 @@ function pbfw_render_frontend_products_slider( $attributes ) {
 											<?php echo $product->add_to_cart_text(); ?>
 									</button>
 								<?php else : ?>
-									<a 		
-											class="single_add_to_cart_button button alt" 
+									<a
+											class="single_add_to_cart_button button alt"
 											href="<?php echo esc_url( $product->add_to_cart_url() ); ?>">
 											<?php echo $product->add_to_cart_text(); ?>
 									</a>
