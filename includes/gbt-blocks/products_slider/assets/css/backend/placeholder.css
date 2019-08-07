@@ -4,8 +4,8 @@
   min-height: 200px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_left,
   .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_right {
-	width: 50%;
-	float: left; }
+    width: 50%;
+    float: left; }
 
 .editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title {
   width: 80%;
@@ -113,28 +113,28 @@
 
 @media screen and (max-width: 1024px) {
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
-	padding: 8% 4% 4%; }
+    padding: 8% 4% 4%; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
-	height: 35px; }
+    height: 35px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
-	margin-top: 35px; }
+    margin-top: 35px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
-	margin-top: 12px; }
+    margin-top: 12px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
-	margin-top: 12px;
-	margin-bottom: 25px; }
+    margin-top: 12px;
+    margin-bottom: 25px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
-	width: 45%;
-	height: 30px; } }
+    width: 45%;
+    height: 30px; } }
 
 @media screen and (min-width: 1025px) and (max-width: 1240px) {
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
-	margin-top: 35px; }
+    margin-top: 35px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
-	margin-top: 15px; }
+    margin-top: 15px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
-	margin-top: 15px;
-	margin-bottom: 40px; }
+    margin-top: 15px;
+    margin-bottom: 40px; }
   .editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
-	width: 40%;
-	height: 35px; } }
+    width: 40%;
+    height: 35px; } }

@@ -1,39 +1,39 @@
 <?php
 
 /**
- * Plugin Name:             Product Blocks for WooCommerce
- * Plugin URI:              https://github.com/getbowtied/product-blocks-for-woocommerce
- * Description:             Advanced Blocks for WooCommerce.
- * Version:                 1.3
- * Author:                  GetBowtied
- * Author URI:              https://getbowtied.com
- * License:                 GPLv2
- * License URI:             http://www.gnu.org/licenses/gpl-2.0.html
- * Requires at least:       5.0
- * Tested up to:            5.2.1
- * WC requires at least:    3.5
- * WC tested up to:         3.6.5
+ * Plugin Name:       		Product Blocks for WooCommerce
+ * Plugin URI:        		https://github.com/getbowtied/product-blocks-for-woocommerce
+ * Description:       		Advanced Blocks for WooCommerce.
+ * Version:           		1.3.1
+ * Author:            		GetBowtied
+ * Author URI:        		https://getbowtied.com
+ * License: 				GPLv2
+ * License URI: 			http://www.gnu.org/licenses/gpl-2.0.html
+ * Requires at least: 		5.0
+ * Tested up to: 			5.2.1
+ * WC requires at least: 	3.5
+ * WC tested up to: 		3.6.5
  *
  * @package  Product Blocks for WooCommerce
  * @author   GetBowtied
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 } // Exit if accessed directly
 
-define( 'PBFW_VERSION', '1.3' );
+define('PBFW_VERSION', '1.3.1');
 
 if ( ! function_exists( 'is_plugin_active' ) ) {
-	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
 add_action( 'init', 'pbfw_includes' );
 function pbfw_includes() {
 
-	if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
+	if ( !is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 		add_action( 'admin_notices', 'pbfw_woocommerce_warning' );
-	} elseif ( ! ( is_plugin_active( 'gutenberg/gutenberg.php' ) || pbfw_wp_version( '>=', '5.0' ) ) ) {
+	} else if( ! (is_plugin_active( 'gutenberg/gutenberg.php' ) || pbfw_wp_version('>=', '5.0')) ) {
 		add_action( 'admin_notices', 'pbfw_gutenberg_warning' );
 	} else {
 		include_once 'includes/gbt-blocks/index.php';
@@ -43,7 +43,7 @@ function pbfw_includes() {
 function pbfw_woocommerce_warning() {
 	?>
 	<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-		<p><?php _e( 'Product Blocks for WooCommerce is enabled but not effective. It requires WooCommerce in order to work.', 'getbowtied' ); ?>.</p>
+		<p><?php _e("Product Blocks for WooCommerce is enabled but not effective. It requires WooCommerce in order to work.", "getbowtied"); ?>.</p>
 	</div>
 	<?php
 }
@@ -52,7 +52,7 @@ function pbfw_gutenberg_warning() {
 	?>
 
 	<div class="message error woocommerce-admin-notice woocommerce-st-inactive woocommerce-not-configured">
-		<p><?php _e( "Product Blocks for WooCommerce plugin couldn't find the Block Editor (Gutenberg) on this site. It requires WordPress 5+ or Gutenberg installed as a plugin.", 'getbowtied' ); ?></p>
+		<p><?php _e("Product Blocks for WooCommerce plugin couldn't find the Block Editor (Gutenberg) on this site. It requires WordPress 5+ or Gutenberg installed as a plugin.", "getbowtied"); ?></p>
 	</div>
 
 	<?php

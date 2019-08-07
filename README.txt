@@ -52,6 +52,9 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+= 1.3.1 =
+* Fixed a bug with Lookbook pagination
+
 = 1.3 =
 * Removed distortion effect from Lookbook - Distortion reveal due to GPL licensing issue
 * Renamed block to Lookbook - Product Reveal
