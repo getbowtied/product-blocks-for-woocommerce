@@ -19,7 +19,7 @@
 				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>'; //SLIDE COUNT ELEMENT
 				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON LEFT
 				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON RIGHT
-				var slideIndex = '<span class="gbt_18_current_slide">01</span>'; 
+				var slideIndex = '<span class="gbt_18_current_slide">01</span>';
 				var defaultItemActive = 1; // SET BY DEFAULT ACTIVE SLIDER ON PAGE LOAD;
 
 				//CURENT SLIDE INDEX
@@ -28,7 +28,7 @@
 				//APPEND SLIDE CONTROLS
 				$('.gbt_18_slide_controls', this).append(slideLeft, slideRight);
 				$('.gbt_18_img', this).append(`<div class="gbt_18_mobile_controls">${slideLeft + slideRight}</div>`);
-				
+
 				//APPEND SLIDE HEADER
 				$('.gbt_18_slide_header', this).append(slideCount);
 
@@ -49,7 +49,7 @@
 					}, 300);
 				};
 
-				//SET DEFAULT TEXT ANIMATION 
+				//SET DEFAULT TEXT ANIMATION
 				var activeContentSelector = $('.gbt_18_slide_content_item.gbt_18_active ', $this);
 
 				activeContentSelector.prev().find('.gbt_18_slide_content_wrapper').css({
@@ -184,7 +184,7 @@
 					else{
 						$(slideImage, $this).removeClass('gbt_18_active').eq(0).addClass('gbt_18_active');
 					}
-					
+
 					//CHANGE CONTENT
 					changeSlideContent('down');
 
@@ -196,8 +196,8 @@
 
 					$('.gbt_18_content .gbt_18_current_slide', $this).addClass('gbt_18_slide_up');
 
-					$('.gbt_18_content .gbt_18_current_slide', $this).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
-					   	function() {	
+					$('.gbt_18_content .gbt_18_current_slide', $this).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
+					   	function() {
 					    	$(this).removeClass('gbt_18_slide_up');
 						}
 					);
@@ -215,7 +215,7 @@
 					//CHANGE CONTENT
 					changeSlideContent('up');
 
-					//INFINITY SLIDE 
+					//INFINITY SLIDE
 					infinitySlide();
 
 					//SLIDE INDEX SHOW VALUE
@@ -223,7 +223,7 @@
 
 					$('.gbt_18_content .gbt_18_current_slide', $this).addClass('gbt_18_slide_down');
 
-					$('.gbt_18_content .gbt_18_current_slide', $this).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+					$('.gbt_18_content .gbt_18_current_slide', $this).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',
 					   	function() {
 					    	$(this).removeClass('gbt_18_slide_down');
 					});
@@ -237,7 +237,7 @@
 					else{
 						slideRightM();
 					}
-					
+
 				});
 
 				//CLICK PREV SLIDE, STOP CLICK WHEN ANIMATION RUN
@@ -253,6 +253,6 @@
 		}
 	};
 	$( document ).ready( function(){
-		contentSlider.init();		
+		contentSlider.init();
 	});
 }( jQuery ) );

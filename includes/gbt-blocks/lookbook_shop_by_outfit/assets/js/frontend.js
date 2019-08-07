@@ -62,15 +62,15 @@
 			      		i = (i + 1);
 
 			      		$(this).attr("data-section-name", i );
-			        	
+
 			        	getDataValue = $(this).attr("data-section-name",);
 
 			        	getItemIndex = (($(this).index() + 1) < 10) ? '0' + ($(this).index() + 1) : $(this).index() + 1;
-			        	
+
 			        	lookBookImage = $(this).find('.gbt_18_look_thumb img');
-                     
+
 			        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
-			        	
+
 			        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i - 1) : (i - 1) }</span>`);
 
 			        	if (lookBookImage.length == 0) {
@@ -96,7 +96,7 @@
 			        	}
 			      	});
 
-			      
+
 					$(".gbt_18_pagination a").on("click",function(e) {
 						e.preventDefault();
 						$.scrollify.move($(this).attr("href"));
@@ -138,15 +138,15 @@
       		console.log(i);
 
       		$(this).attr("data-section-name", i );
-        	
+
         	getDataValue = $(this).attr("data-section-name",);
 
         	getItemIndex = (($(this).index()) < 10) ? '0' + ($(this).index()) : $(this).index();
-        	
+
         	lookBookImage = $(this).find('.gbt_18_look_thumb img');
-         
+
         	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
-        	
+
         	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i) : (i) }</span>`);
 
         	if (lookBookImage.length == 0) {
@@ -174,7 +174,7 @@
 	   		// i++;
       	});
 
-      
+
 		$(".gbt_18_pagination a").on("click",function(e) {
 			e.preventDefault();
 			let section = $(this).attr('href').substr(1);
@@ -220,5 +220,5 @@
 	// };
 
 
-	
+
 }( jQuery ) );
