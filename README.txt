@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 5.2.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,6 +52,15 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+= 1.3.2 =
+* Products Carousel: Added a space between slider that will set the padding between products
+* Products Carousel: Fixed a bug with multiple Swipers and navigation
+* Scattered Products List: Removed Add to Cart button from backend to better reflect frontend
+* Scattered Products List: Fixed an issue with limiting the number of products when "All products" is chosen as source
+* Lookbook - Shop By Outfit: Changed backend with to full width to better reflect frontend
+* Vertical Slider: Fixed an issue with the "View Product Page" link
+* Various other bug fixes
+
 = 1.3.1 =
 * Fixed a bug with Lookbook pagination
 

@@ -12,7 +12,7 @@
 	const MediaUpload			= editor.MediaUpload;
 	const ColorSettings			= editor.PanelColorSettings;
 	const InspectorControls 	= editor.InspectorControls;
-	
+
 	const Button				= components.Button;
 	const SVG 					= components.SVG;
 	const Path 					= components.Path;
@@ -90,14 +90,14 @@
 								title: i18n.__( 'Colors' ),
 								colors: colors,
 								colorSettings: [
-									{ 
+									{
 										label: i18n.__( 'Background Color' ),
 										value: attributes.bgColor,
 										onChange: function( newColor) {
 											props.setAttributes( { bgColor: newColor } );
 										},
 									},
-									{ 
+									{
 										label: i18n.__( 'Text Color' ),
 										value: attributes.textColor,
 										onChange: function( newColor) {
@@ -134,19 +134,19 @@
 										imgAlt: img.alt,
 									} );
 								},
-		              			render: function( img ) { 
+		              			render: function( img ) {
 		              				return [
 			              				! attributes.imgID && el(
-			              					Button, 
-			              					{ 
+			              					Button,
+			              					{
 			              						key: 'gbt_18_hero_section_add_image_button',
 			              						className: 'button add_image',
 			              						onClick: img.open
 			              					},
 			              					i18n.__( 'Add Image' )
-		              					), 
+		              					),
 		              					!! attributes.imgID && el(
-		              						Button, 
+		              						Button,
 											{
 												key: 'gbt_18_hero_section_remove_image_button',
 												className: 'button remove_image',
@@ -160,7 +160,7 @@
 												}
 											},
 											i18n.__( 'Remove Image' )
-										), 
+										),
 		              				];
 		              			},
 							},
@@ -181,7 +181,7 @@
 								key: 		'gbt_18_hero_section_text',
 								className: 	'gbt_18_hero_section_text'
 							},
-							el( RichText, 
+							el( RichText,
 								{
 									key: 'gbt_18_hero_section_title',
 									className: 'gbt_18_hero_section_title',
@@ -199,7 +199,7 @@
 									}
 								}
 							),
-							el( RichText, 
+							el( RichText,
 								{
 									key: 'gbt_18_hero_section_subtitle',
 									className: 'gbt_18_hero_section_subtitle',
@@ -231,7 +231,7 @@
 								},
 								el( Path,
 									{
-										d:"M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" 
+										d:"M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
 									}
 								),
 						  	)
@@ -251,7 +251,7 @@
 
 			props.attributes.title = props.attributes.title || "";
 
-			props.attributes.subtitle 	= props.attributes.subtitle || ""; 
+			props.attributes.subtitle 	= props.attributes.subtitle || "";
 			props.attributes.imgURL 	= props.attributes.imgURL || "";
 	        props.attributes.bgColor 	= props.attributes.bgColor || "";
 	        props.attributes.textColor 	= props.attributes.textColor || "";
@@ -281,7 +281,7 @@
 							{
 								key: 		'gbt_18_hero_title',
 								className: 	'gbt_18_hero_title',
-								style: 
+								style:
 								{
 									color: props.attributes.textColor
 								}

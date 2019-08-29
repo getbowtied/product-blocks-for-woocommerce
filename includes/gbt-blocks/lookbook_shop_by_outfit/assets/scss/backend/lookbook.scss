@@ -1,203 +1,197 @@
 .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
-    
-    .gbt_18_lookbook_sts_hero_section_content {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        justify-content: center;
-        position: relative;
-    }
+  max-width: 100% !important;
+  padding: 0;
 
-    .gbt_18_lookbook_sts_hero_item
-    .gbt_18_lookbook_sts_hero_section_content {
-        min-height: 400px;
-    }
+  .editor-block-list__block-edit.block-editor-block-list__block-edit {
+    padding: 0;
+    margin: 0 -44px;
+  }
 
-    .gbt_18_lookbook_sts_hero_media_upload {
-        text-align: left;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 1;
-    }
+  .gbt_18_lookbook_sts_hero_section_content {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
 
-    .gbt_18_hero_section_text {
-        display: table-cell;
-        vertical-align: middle;
-        padding-left: 50px;
-        padding-right: 50px;
-        // position: relative;
-    }
+  .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
+    min-height: 400px;
+  }
 
-    .gbt_18_hero_section_title,
-    .gbt_18_hero_section_subtitle {
-        text-align: center;
-        line-height: 1.4;
-    }
+  .gbt_18_lookbook_sts_hero_media_upload {
+    text-align: left;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+  }
 
-    .gbt_18_hero_section_subtitle {
-        text-transform: uppercase;
-        margin-top: 10px;
-    }
+  .gbt_18_hero_section_text {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 50px;
+    padding-right: 50px;
+    // position: relative;
+  }
 
-    .gbt_18_hero_section_title {
-        font-size: 36px;
-    }
+  .gbt_18_hero_section_subtitle,
+  .gbt_18_hero_section_title {
+    text-align: center;
+    line-height: 1.4;
+  }
 
-    .gbt_18_hero_section_subtitle {
-        font-size: 12px;
-    }
+  .gbt_18_hero_section_subtitle {
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
 
-    .gbt_18_lookbook_sts_scroll_down_button {
-        width: 35px;
-        height: 35px;
-        padding: 5px 3px 3px;
-        border: 1px solid #000;
-        position: relative;
-        display: inline-block;
-        border-radius: 35px;
-        position: absolute;
-        bottom: 80px;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        cursor: pointer;
+  .gbt_18_hero_section_title {
+    font-size: 36px;
+  }
 
-        &:before {
-            content: '';
-            border: solid black;
-            border-width: 0 1px 1px 0;
-            display: inline-block;
-            padding: 5px;
-            position: absolute;
-            top: 23%;
-            transform: rotate(45deg);
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-            width: 0px;
-        }
+  .gbt_18_hero_section_subtitle {
+    font-size: 12px;
+  }
+
+  .gbt_18_lookbook_sts_scroll_down_button {
+    width: 35px;
+    height: 35px;
+    padding: 5px 3px 3px;
+    border: 1px solid #000;
+    position: relative;
+    display: inline-block;
+    border-radius: 35px;
+    position: absolute;
+    bottom: 80px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      border: solid black;
+      border-width: 0 1px 1px 0;
+      display: inline-block;
+      padding: 5px;
+      position: absolute;
+      top: 23%;
+      transform: rotate(45deg);
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      width: 0;
     }
+  }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="center"] {
-    
-}
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="center"] {}
 
 .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] {
-    
-    .gbt_18_lookbook_sts_hero_item
-    .gbt_18_lookbook_sts_hero_section_content {
-        min-height: 500px;
-    }
+  .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
+    min-height: 500px;
+  }
 
-    .gbt_18_hero_section_text {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
+  .gbt_18_hero_section_text {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 
-    .gbt_18_hero_section_title {
-        font-size: 44px;
-    }
+  .gbt_18_hero_section_title {
+    font-size: 44px;
+  }
 
-    .gbt_18_hero_section_subtitle {
-        font-size: 14px;
-    }
+  .gbt_18_hero_section_subtitle {
+    font-size: 14px;
+  }
 
-    .gbt_18_lookbook_sts_scroll_down_button {
-        width: 40px;
-        height: 40px;
-        border-radius: 40px;
+  .gbt_18_lookbook_sts_scroll_down_button {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
 
-        &:before {
-            padding: 6px;
-            top: 23%;
-        }
+    &:before {
+      padding: 6px;
+      top: 23%;
     }
+  }
 }
 
 .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
-    @media screen and (min-width: 1px) {
-        max-width: 100vw;
-        .editor-block-list__block-edit {
-            padding: 0 15px;
-        }
+  @media screen and (min-width: 1px) {
+    max-width: 100vw;
 
-        .gbt_18_lookbook_sts_hero_media_upload {
-            left: 35px;
-        }
-
-        .gbt_18_hero_section_text {
-            padding-left: 150px;
-            padding-right: 150px;
-        }
-        
-        .gbt_18_lookbook_sts_hero_item
-        .gbt_18_lookbook_sts_hero_section_content {
-            min-height: 600px;
-        }
-
-        .gbt_18_hero_section_title {
-            font-size: 48px;
-        }
-
-        .gbt_18_hero_section_subtitle {
-            font-size: 14px;
-        }
-
-        .gbt_18_lookbook_sts_scroll_down_button {
-            width: 46px;
-            height: 46px;
-            border-radius: 46px;
-
-            &:before {
-                padding: 7px;
-                top: 28%;
-            }
-        }
+    .editor-block-list__block-edit {
+      padding: 0 15px;
     }
+
+    .gbt_18_lookbook_sts_hero_media_upload {
+      left: 35px;
+    }
+
+    .gbt_18_hero_section_text {
+      padding-left: 150px;
+      padding-right: 150px;
+    }
+
+    .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
+      min-height: 600px;
+    }
+
+    .gbt_18_hero_section_title {
+      font-size: 48px;
+    }
+
+    .gbt_18_hero_section_subtitle {
+      font-size: 14px;
+    }
+
+    .gbt_18_lookbook_sts_scroll_down_button {
+      width: 46px;
+      height: 46px;
+      border-radius: 46px;
+
+      &:before {
+        padding: 7px;
+        top: 28%;
+      }
+    }
+  }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"]
-{
-    .editor-inner-blocks
-    {
-        .editor-rich-text p,
-        .editor-default-block-appender__content
-        {
-            opacity: 0;
-        }
-
-        .editor-block-list__empty-block-inserter
-        {
-            left: 49%;
-            right: 50%;
-            top: -7px;
-            opacity: 1 !important;
-            display: block !important;
-
-            button
-            {
-                margin: 0;
-            }
-        }
-
-        .editor-default-block-appender
-        {
-            max-width:100%;
-
-            > .editor-inserter
-            {
-                display: none;
-            }
-
-            .editor-default-block-appender__content
-            {
-                margin-top: 0;
-            }
-        }
+.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
+  .editor-inner-blocks {
+    .editor-default-block-appender__content,
+    .editor-rich-text p {
+      opacity: 0;
     }
+
+    .editor-block-list__empty-block-inserter {
+      left: 49%;
+      right: 50%;
+      top: -7px;
+      opacity: 1 !important;
+      display: block !important;
+
+      button {
+        margin: 0;
+      }
+    }
+
+    .editor-default-block-appender {
+      max-width: 100%;
+
+      > .editor-inserter {
+        display: none;
+      }
+
+      .editor-default-block-appender__content {
+        margin-top: 0;
+      }
+    }
+  }
 }

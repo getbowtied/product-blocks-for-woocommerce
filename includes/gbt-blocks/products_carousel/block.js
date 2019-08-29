@@ -98,6 +98,11 @@
 				type: 'int',
 				default: 3
 			},
+		/* Space Between */
+			spaceBetween: {
+				type: 'int',
+				default: 20
+			},
 		/* Limit */
 			limit: {
 				type: 'int',
@@ -118,7 +123,7 @@
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-		
+
 			function _categoryClassName(parent, value) {
 				if ( parent == 0) {
 					return 'parent parent-' + value;
@@ -288,10 +293,10 @@
 						}
 						productElements.push(
 							el( 'li',
-								{	
+								{
 									key: 		class_prefix,
 									className: 	class_prefix + _isVisible(i),
-									style: 		{ width: 100/products.length+"%"}
+									style: 		{ width: 100/products.length+"%", paddingRight: attributes.spaceBetween}
 								},
 								el( 'div',
 									{
@@ -316,14 +321,14 @@
 										{
 											key: 						class_prefix + '_price',
 											className: 					class_prefix + '_price',
-											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 										}
 									),
 									el( 'button',
 										{
 											key: 		class_prefix + '_button',
 											className: 	class_prefix + '_button'
-										}, 
+										},
 										i18n.__("Add To Cart")
 									)
 								)
@@ -335,7 +340,7 @@
 						el( 'div',
 						{
 							key: 		'gbt_18_product_carousel_wrapper',
-							className: 	'gbt_18_product_carousel_wrapper'	
+							className: 	'gbt_18_product_carousel_wrapper'
 						},
 							el(
 								'div',
@@ -412,7 +417,7 @@
 					for( let j = 0; j <= 2; j++ ) {
 						productElements.push(
 							el( 'li',
-								{	
+								{
 									key: 		class_prefix + '_item-' + j,
 									className: 	class_prefix + ' item-' + j,
 								},
@@ -443,7 +448,7 @@
 										{
 											key: 		class_prefix + '_button',
 											className: 	class_prefix + '_button'
-										}, 
+										},
 										i18n.__("Add To Cart")
 									)
 								)
@@ -455,7 +460,7 @@
 						el( 'div',
 							{
 								key: 		'gbt_18_product_carousel_placeholder_wrapper',
-								className: 	'gbt_18_product_carousel_placeholder_wrapper'	
+								className: 	'gbt_18_product_carousel_placeholder_wrapper'
 							},
 							el( 'ul',
 								{
@@ -501,7 +506,7 @@
 						),
 					);
 				}
-				
+
 				return wrapper;
 			}
 
@@ -512,7 +517,7 @@
 				let newQ;
 				buildQ = buildQ.replace('/wc/v2/products?', '');
 				buildQ = buildQ.split('&');
-				
+
 				let flag = false;
 				for ( let j = 0; j < buildQ.length; j++) {
 					let temp = [];
@@ -529,7 +534,7 @@
 				} else {
 					newQ = '/wc/v2/products?per_page=' + limit + '&' + buildQ.join('&');
 				}
-				
+
 				props.setAttributes({ queryProducts: newQ});
 				return newQ;
 			}
@@ -555,8 +560,8 @@
 					case 'title_asc':
 						query +='&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 				props.setAttributes({ queryProducts: query });
@@ -578,8 +583,8 @@
 					case 'title_asc':
 						order = '&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 
@@ -606,15 +611,15 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
-							}, 
+							},
 							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -633,7 +638,7 @@
 												qSR.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSR.join(',') });
-											
+
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -671,14 +676,14 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
-								className:'single-result', 
+								className:'single-result',
 								title: products[i].name,
-							}, 
-							img, 
+							},
+							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -690,7 +695,7 @@
 										onChange: function onChange(evt) {
 											const _this = evt.target;
 
-											
+
 											let qSS = toArray(attributes.selectedIDS);
 											console.log(qSS);
 
@@ -704,7 +709,7 @@
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS.join(',') });
-											
+
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -746,7 +751,7 @@
 										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
 									},
 									el(
-									'input', 
+									'input',
 										{
 											type:  'checkbox',
 											key:   'category-checkbox-' + catArr[i].value,
@@ -799,7 +804,7 @@
 													props.setAttributes({ queryProducts: '' });
 												}
 											},
-										}, 
+										},
 									),
 									catArr[i].label,
 									el(
@@ -813,11 +818,11 @@
 								renderCategories( catArr[i].value, level+1)
 							),
 						);
-					} 
-				}	
+					}
+				}
 				if (categoryElements.length > 0 ) {
 					let wrapper = el('ul', {className: 'level-' + level}, categoryElements);
-					return wrapper;		
+					return wrapper;
 				} else {
 					return;
 				}
@@ -836,7 +841,7 @@
 									className: 'attribute-label',
 								},
 								el(
-								'input', 
+								'input',
 									{
 										type:  'checkbox',
 										key:   'attribute-checkbox-' + attArr[i].value,
@@ -866,7 +871,7 @@
 												props.setAttributes({ queryProducts: '' });
 											}
 										},
-									}, 
+									},
 								),
 								attArr[i].label,
 								el(
@@ -876,9 +881,9 @@
 								),
 							),
 						);
-					} 
-				}	
-				return attributeElements;		
+					}
+				}
+				return attributeElements;
 			}
 
 			function renderOrderby() {
@@ -969,7 +974,7 @@
 			}
 
 		//==============================================================================
-		//	Main controls 
+		//	Main controls
 		//==============================================================================
 			return [
 				el(
@@ -1056,7 +1061,7 @@
 						),
 						attributes.queryDisplayType === 'specific' && attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
-							{ 
+							{
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -1141,7 +1146,7 @@
 						),
 						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected === 'attributes' && attributes.queryAttributesSelected !== '' && el (
 							'div',
-							{ 
+							{
 								className: 'attributes-results-wrapper'
 							},
 							renderAttributes(),
@@ -1191,6 +1196,20 @@
 								label: i18n.__( 'Columns' ),
 								onChange: function( newColumns ) {
 									props.setAttributes( { columns: newColumns } );
+								},
+							}
+						),
+						el(
+							RangeControl,
+							{
+								value: attributes.spaceBetween,
+								allowReset: false,
+								initialPosition: 20,
+								min: 0,
+								max: 50,
+								label: i18n.__( 'Space Between' ),
+								onChange: function( newSpace ) {
+									props.setAttributes( { spaceBetween: newSpace } );
 								},
 							}
 						),

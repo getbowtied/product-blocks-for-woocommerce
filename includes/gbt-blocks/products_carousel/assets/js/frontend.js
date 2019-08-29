@@ -13,6 +13,11 @@
 		$('.wp-block-getbowtied-carousel .gbt_18_swiper-container').each(function(i){
 			let _this = $(this);
 			columns.push($(this).attr('data-columns'));
+			const next = $(this).siblings('.swiper-button-next');
+			const prev = $(this).siblings('.swiper-button-prev');
+			const spacer = $(this).attr('data-spaceBetween')
+			console.log(next);
+			console.log(prev);
 
 			if ( $(window).width() < 768 ) {
 				mobile = true;
@@ -27,11 +32,11 @@
 				loop: false,
 				autoHeight: true,
 				slidesPerView: _columns,
-				spaceBetween: 50,
+				spaceBetween: spacer,
 				centerInsufficientSlides: true,
 			    navigation: {
-			    	nextEl: $('.swiper-button-next')[i],
-			    	prevEl: $('.swiper-button-prev')[i],
+			    	nextEl: next,
+			    	prevEl: prev,
 			    },
 			    pagination: {
 			        el: '.swiper-pagination',

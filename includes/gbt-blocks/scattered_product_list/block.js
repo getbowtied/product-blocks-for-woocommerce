@@ -31,7 +31,7 @@
 		/* Products source */
 			queryProducts: {
 				type: 'string',
-				default: 'wc/v2/products?per_page=10',
+				default: '/wc/v2/products?per_page=10',
 			},
 			queryProductsLast: {
 				type: 'string',
@@ -268,7 +268,7 @@
 						}
 						productElements.push(
 							el( 'li',
-								{	
+								{
 									key: 		class_prefix + '_item-' + products[i].id,
 									className: 	class_prefix + ' item-' + products[i].id,
 								},
@@ -295,15 +295,8 @@
 										{
 											key: 						class_prefix + '_price',
 											className: 					class_prefix + '_price',
-											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 										}
-									),
-									el( 'button',
-										{
-											key: 		class_prefix + '_button',
-											className: 	class_prefix + '_button'
-										}, 
-										i18n.__("Add To Cart")
 									)
 								)
 							)
@@ -314,7 +307,7 @@
 						el( 'div',
 						{
 							key: 		'gbt_18_expanding_grid_wrapper',
-							className: 	'gbt_18_expanding_grid_wrapper'	
+							className: 	'gbt_18_expanding_grid_wrapper'
 						},
 							el( 'ul',
 								{
@@ -325,7 +318,7 @@
 							)
 						),
 					);
-					
+
 				} else {
 
 					let class_prefix = 'gbt_18_placeholder_grid_product';
@@ -333,7 +326,7 @@
 					for ( let i = 0; i < 2; i++ ) {
 						productElements.push(
 							el( 'li',
-								{	
+								{
 									key: 		class_prefix + '_item-' + i,
 									className: 	class_prefix + ' item-' + i,
 								},
@@ -359,13 +352,6 @@
 											key: 						class_prefix + '_price',
 											className: 					class_prefix + '_price',
 										}
-									),
-									el( 'button',
-										{
-											key: 		class_prefix + '_button',
-											className: 	class_prefix + '_button'
-										}, 
-										i18n.__("Add To Cart")
 									)
 								)
 							)
@@ -376,7 +362,7 @@
 						el( 'div',
 						{
 							key: 		'gbt_18_placeholder_expanding_grid_wrapper',
-							className: 	'gbt_18_placeholder_expanding_grid_wrapper'	
+							className: 	'gbt_18_placeholder_expanding_grid_wrapper'
 						},
 							el( 'ul',
 								{
@@ -399,7 +385,7 @@
 				let newQ;
 				buildQ = buildQ.replace('/wc/v2/products?', '');
 				buildQ = buildQ.split('&');
-				
+
 				let flag = false;
 				for ( let j = 0; j < buildQ.length; j++) {
 					let temp = [];
@@ -416,7 +402,7 @@
 				} else {
 					newQ = '/wc/v2/products?per_page=' + limit + '&' + buildQ.join('&');
 				}
-				
+
 				props.setAttributes({ queryProducts: newQ});
 				return newQ;
 			}
@@ -442,8 +428,8 @@
 					case 'title_asc':
 						query +='&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 				props.setAttributes({ queryProducts: query });
@@ -465,8 +451,8 @@
 					case 'title_asc':
 						order = '&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 
@@ -492,15 +478,15 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
-							}, 
+							},
 							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -519,7 +505,7 @@
 												qSR.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSR.join(',') });
-											
+
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -557,14 +543,14 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
-								className:'single-result', 
+								className:'single-result',
 								title: products[i].name,
-							}, 
-							img, 
+							},
+							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -576,9 +562,8 @@
 										onChange: function onChange(evt) {
 											const _this = evt.target;
 
-											
+
 											let qSS = toArray(attributes.selectedIDS);
-											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
@@ -590,7 +575,7 @@
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS.join(',') });
-											
+
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -632,7 +617,7 @@
 										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
 									},
 									el(
-									'input', 
+									'input',
 										{
 											type:  'checkbox',
 											key:   'category-checkbox-' + catArr[i].value,
@@ -685,7 +670,7 @@
 													props.setAttributes({ queryProducts: '' });
 												}
 											},
-										}, 
+										},
 									),
 									catArr[i].label,
 									el(
@@ -699,11 +684,11 @@
 								renderCategories( catArr[i].value, level+1)
 							),
 						);
-					} 
-				}	
+					}
+				}
 				if (categoryElements.length > 0 ) {
 					let wrapper = el('ul', {className: 'level-' + level}, categoryElements);
-					return wrapper;		
+					return wrapper;
 				} else {
 					return;
 				}
@@ -722,7 +707,7 @@
 									className: 'attribute-label',
 								},
 								el(
-								'input', 
+								'input',
 									{
 										type:  'checkbox',
 										key:   'attribute-checkbox-' + attArr[i].value,
@@ -752,7 +737,7 @@
 												props.setAttributes({ queryProducts: '' });
 											}
 										},
-									}, 
+									},
 								),
 								attArr[i].label,
 								el(
@@ -762,9 +747,9 @@
 								),
 							),
 						);
-					} 
-				}	
-				return attributeElements;		
+					}
+				}
+				return attributeElements;
 			}
 
 			function renderOrderby() {
@@ -855,7 +840,7 @@
 			}
 
 		//==============================================================================
-		//	Main controls 
+		//	Main controls
 		//==============================================================================
 			return [
 				el(
@@ -942,7 +927,7 @@
 						),
 						attributes.queryDisplayType === 'specific' && attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
-							{ 
+							{
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -1027,7 +1012,7 @@
 						),
 						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected === 'attributes' && attributes.queryAttributesSelected !== '' && el (
 							'div',
-							{ 
+							{
 								className: 'attributes-results-wrapper'
 							},
 							renderAttributes(),
