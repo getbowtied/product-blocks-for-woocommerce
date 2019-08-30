@@ -52,6 +52,10 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 1.3.3 =
+* Fixed: Product carousel display fix
+
 = 1.3.2 =
 * Products Carousel: Added a space between slider that will set the padding between products
 * Products Carousel: Fixed a bug with multiple Swipers and navigation
@@ -60,12 +64,6 @@ The manual installation method involves downloading the plugin and uploading it 
 * Lookbook - Shop By Outfit: Changed backend with to full width to better reflect frontend
 * Vertical Slider: Fixed an issue with the "View Product Page" link
 * Various other bug fixes
-
-= 1.3.3 =
-* Fixed: Product carousel display fix
-
-= 1.3.2 =
-* Small maintenance updates
 
 = 1.3.1 =
 * Fixed a bug with Lookbook pagination
