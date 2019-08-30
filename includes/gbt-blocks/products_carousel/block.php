@@ -22,7 +22,7 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 				'columns'          => 3,
 				'queryDisplayType' => 'all_products',
 				'queryProducts'    => 'wc/v3/products?per_page=10',
-				'spaceBetween'		 => 20
+				'spaceBetween'		 => 20,
 			),
 			$attributes
 		)
@@ -118,9 +118,9 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 						<?php endwhile; ?>
 					</div>
 					<div class="swiper-pagination"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
 				</div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
 			</div>
 		</div>
 		<?php

@@ -57,7 +57,7 @@ function getbowtied_product_blocks_frontend_styles() {
 		true
 	);
 	wp_enqueue_script(
-		'getbowtied-swiper-scripts',
+		'swiper',
 		plugins_url( 'assets/frontend/js/swiper.min.js', dirname( dirname( __FILE__ ) ) ),
 		array( 'jquery' ),
 		'4.5.0',

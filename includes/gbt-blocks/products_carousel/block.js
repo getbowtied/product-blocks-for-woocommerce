@@ -296,7 +296,7 @@
 								{
 									key: 		class_prefix,
 									className: 	class_prefix + _isVisible(i),
-									style: 		{ width: 100/products.length+"%", paddingRight: attributes.spaceBetween}
+									style: 		{ width: 100/products.length+"%", paddingRight: attributes.spaceBetween+'px'}
 								},
 								el( 'div',
 									{
@@ -601,7 +601,6 @@
 					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
 				}
 				let products = attributes.querySearchResults;
-				console.log(products);
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
@@ -697,7 +696,6 @@
 
 
 											let qSS = toArray(attributes.selectedIDS);
-											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {

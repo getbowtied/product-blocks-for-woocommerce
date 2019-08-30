@@ -23,7 +23,7 @@
 	registerBlockType( 'getbowtied/lookbook-shop-by-outfit-product', {
 		title: i18n.__( 'Lookbook - Shop by Outfit Product' ),
 		icon: 	el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
-					el( Path, { d:'M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 19V6h8v13H3zm18 0h-8V6h8v13zm-7-9.5h6V11h-6zm0 2.5h6v1.5h-6zm0 2.5h6V16h-6z' } ) 
+					el( Path, { d:'M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 19V6h8v13H3zm18 0h-8V6h8v13zm-7-9.5h6V11h-6zm0 2.5h6v1.5h-6zm0 2.5h6V16h-6z' } )
 				),
 		category: 'product_blocks',
 		parent: [ 'getbowtied/lookbook-shop-by-outfit' ],
@@ -100,7 +100,7 @@
 		edit: function( props ) {
 
 			let attributes = props.attributes;
-			
+
 			attributes.result 						= attributes.result || [];
 			attributes.isLoading 					= attributes.isLoading || false;
 			attributes.querySearchString    		= attributes.querySearchString || '';
@@ -122,7 +122,7 @@
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-			
+
 			function toArray(s) {
 				let ret = [];
 				if ( s.length > 0 ) {
@@ -255,7 +255,7 @@
 					for ( let i = 0; i < products.length; i++ ) {
 						productElements.push(
 							el( 'li',
-								{	
+								{
 									key: 		class_prefix + '_' + i,
 									className: 	class_prefix
 								},
@@ -268,7 +268,7 @@
 										{
 											key: 		class_prefix + '_thumbnail_' + i,
 											className: 	class_prefix + '_thumbnail',
-											style: 
+											style:
 											{
 												backgroundImage: 'url(' + products[i]['images'][0]['src'] + ')'
 											}
@@ -285,14 +285,14 @@
 										{
 											key: 						class_prefix + '_price_' + i,
 											className: 					class_prefix + '_price',
-											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] } 
+											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 										}
 									),
 									el( 'button',
 										{
 											key: 		class_prefix + '_button_' + i,
 											className: 	class_prefix + '_button'
-										}, 
+										},
 										i18n.__("Add To Cart")
 									)
 								)
@@ -304,7 +304,7 @@
 						el( 'div',
 						{
 							key: 		'gbt_18_lookbook_sts_products_wrapper',
-							className: 	'gbt_18_lookbook_sts_products_wrapper'	
+							className: 	'gbt_18_lookbook_sts_products_wrapper'
 						},
 							el( 'ul',
 								{
@@ -315,7 +315,7 @@
 							)
 						),
 					);
-					
+
 				} else {
 
 					const class_prefix = 'gbt_18_placeholder_lookbook_sts_product';
@@ -323,7 +323,7 @@
 					for ( let i = 0; i < 2; i++ ) {
 						productElements.push(
 							el( 'li',
-								{	
+								{
 									key: 		class_prefix + '_' + i,
 									className: 	class_prefix
 								},
@@ -354,7 +354,7 @@
 										{
 											key: 		class_prefix + '_button_' + i,
 											className: 	class_prefix + '_button'
-										}, 
+										},
 										i18n.__("Add To Cart")
 									)
 								)
@@ -366,7 +366,7 @@
 						el( 'div',
 						{
 							key: 		'gbt_18_placeholder_lookbook_sts_products_wrapper',
-							className: 	'gbt_18_placeholder_lookbook_sts_products_wrapper'	
+							className: 	'gbt_18_placeholder_lookbook_sts_products_wrapper'
 						},
 							el( 'ul',
 								{
@@ -402,8 +402,8 @@
 					case 'title_asc':
 						query +='&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 				props.setAttributes({ queryProducts: query });
@@ -425,8 +425,8 @@
 					case 'title_asc':
 						order = '&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 
@@ -452,15 +452,15 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								className: _searchResultClass(products[i].id) + ' ' + _searchDisabledClass(),
 								title: products[i].name,
 								'data-index': i,
-							}, 
+							},
 							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -480,7 +480,7 @@
 												qSR.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSR.join(',') });
-											
+
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -517,14 +517,14 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
-								className:'single-result', 
+								className:'single-result',
 								title: products[i].name,
-							}, 
-							img, 
+							},
+							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -536,9 +536,8 @@
 										onChange: function onChange(evt) {
 											const _this = evt.target;
 
-											
+
 											let qSS = toArray(attributes.selectedIDS);
-											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
@@ -550,7 +549,7 @@
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS.join(',') });
-											
+
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -574,7 +573,7 @@
 			}
 
 		//==============================================================================
-		//	Main controls 
+		//	Main controls
 		//==============================================================================
 			return [
 				el(
@@ -622,7 +621,7 @@
 						),
 						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
-							{ 
+							{
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -683,12 +682,12 @@
 						),
 					),
 				),
-				el( 'div', 
+				el( 'div',
 					{
 						key: 		'gbt_18_editor_lookbook_sts_product_content',
-						className: 	'gbt_18_editor_lookbook_sts_product_content ' + attributes.image_position 
+						className: 	'gbt_18_editor_lookbook_sts_product_content ' + attributes.image_position
 					},
-					el( 'div', 
+					el( 'div',
 						{
 							key: 		'gbt_18_editor_lookbook_sts_product_content_left',
 							className: 	'gbt_18_editor_lookbook_sts_product_content_left'
@@ -696,8 +695,8 @@
 						attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 						renderResults(),
 					),
-					el( 'div', 
-						{ 
+					el( 'div',
+						{
 							key: 		'gbt_18_editor_lookbook_sts_product_content_right',
 							className: 	'gbt_18_editor_lookbook_sts_product_content_right'
 						},
@@ -721,19 +720,19 @@
 											imgAlt: img.alt,
 										} );
 									},
-			              			render: function( img ) { 
+			              			render: function( img ) {
 			              				return [
 				              				! attributes.imgID && el(
-				              					Button, 
-				              					{ 
+				              					Button,
+				              					{
 				              						key: 'gbt_18_lookbook_sts_product_add_image_button',
 				              						className: 'button add_image',
 				              						onClick: img.open
 				              					},
 				              					i18n.__( 'Add Image' )
-			              					), 
+			              					),
 			              					!! attributes.imgID && el(
-			              						Button, 
+			              						Button,
 												{
 													key: 'gbt_18_lookbook_sts_product_remove_image_button',
 													className: 'button remove_image',
@@ -747,15 +746,15 @@
 													}
 												},
 												i18n.__( 'Remove Image' )
-											), 
+											),
 			              				];
 			              			},
 								},
 							),
 						),
-						el( 'div', 
+						el( 'div',
 							{
-								key: 		'gbt_18_editor_lookbook_sts_product_content_image', 
+								key: 		'gbt_18_editor_lookbook_sts_product_content_image',
 								className: 	'gbt_18_editor_lookbook_sts_product_content_image',
 								style:
 								{

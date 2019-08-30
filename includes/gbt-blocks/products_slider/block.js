@@ -13,7 +13,7 @@
 	const Button 				= components.Button;
 	const SVG 				= components.SVG;
 	const Path 				= components.Path;
-	
+
 	const apiFetch 			= wp.apiFetch;
 
 	/* Register Block */
@@ -73,7 +73,7 @@
 		//==============================================================================
 		//	Helper functions
 		//==============================================================================
-			
+
 			function toArray(s) {
 				let ret = [];
 				if ( s.length > 0 ) {
@@ -215,70 +215,70 @@
 					}
 
 					productElements.push(
-						el( 
-							"div", 
+						el(
+							"div",
 							{
-								className: "gbt_18_editor_slide_content_item slide " + isSelectedSlide(i), 
+								className: "gbt_18_editor_slide_content_item slide " + isSelectedSlide(i),
 								key: "gbt_18_slide_content_item" + 'item-' + products[i].id
 							},
-							el( 
-								"div", 
+							el(
+								"div",
 								{
-									className: "gbt_18_editor_slide_content_left", 
+									className: "gbt_18_editor_slide_content_left",
 									key: "gbt_18_editor_slide_content_left"
 								},
-								el( 
-									"div", 
-									{ 
-										className: "gbt_18_editor_slide_content_left_inner", 
+								el(
+									"div",
+									{
+										className: "gbt_18_editor_slide_content_left_inner",
 										key: "gbt_18_editor_slide_content_left_inner"
 									},
 									el(
-										"h2", 
-										{ 
-											className: "gbt_18_editor_slide_title", 
+										"h2",
+										{
+											className: "gbt_18_editor_slide_title",
 											key: "gbt_18_slide_title"
-										}, 
+										},
 										name
 									),
 									el(
 										"p",
 										{
-											className:"gbt_18_editor_slide_price", 
-											key:"gbt_18_slide_price", 
-											dangerouslySetInnerHTML: { __html: products[i]['price_html'] } 
+											className:"gbt_18_editor_slide_price",
+											key:"gbt_18_slide_price",
+											dangerouslySetInnerHTML: { __html: products[i]['price_html'] }
 										},
 									),
 									el(
 										"div",
 										{
-											className:"gbt_18_editor_slide_text", 
-											key:"gbt_18_slide_text", 
-											dangerouslySetInnerHTML: { __html: description } 
+											className:"gbt_18_editor_slide_text",
+											key:"gbt_18_slide_text",
+											dangerouslySetInnerHTML: { __html: description }
 										},
 									),
 									el(
 										"button",
 										{
-											className:"gbt_18_editor_add_to_cart", 
+											className:"gbt_18_editor_add_to_cart",
 											key:"gbt_18_editor_add_to_cart"
-										}, 
+										},
 										i18n.__("Add To Cart"),
 									),
 								),
 							),
-							el( 
-								"div", 
-								{ 
-									className: "gbt_18_editor_slide_content_right", 
+							el(
+								"div",
+								{
+									className: "gbt_18_editor_slide_content_right",
 									key: "gbt_18_editor_slide_content_right"
 								},
-								el( 
-									"div", 
-									{ 
-										className: "gbt_18_editor_image", 
-										key: "gbt_18_image", 
-										style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"} 
+								el(
+									"div",
+									{
+										className: "gbt_18_editor_image",
+										key: "gbt_18_image",
+										style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"}
 									},
 								),
 							),
@@ -291,7 +291,7 @@
 									'i',
 									{
 										className: 'gbt_18_icon_right',
-									}	
+									}
 								),
 								i18n.__('View Product Page'),
 							),
@@ -313,19 +313,19 @@
 					));
 				}
 
-				wrapper.push(el( 
+				wrapper.push(el(
 							'div',
 							{
 								className: 'gbt_18_editor_content',
-								key: 'gbt_18_content',	
+								key: 'gbt_18_content',
 							},
-							el( 
+							el(
 								'div',
 								{
 									className: 'gbt_18_editor_content_wrapper',
-									key: 'gbt_18_content_wrapper',	
+									key: 'gbt_18_content_wrapper',
 								},
-								el( 
+								el(
 									'div',
 									{
 										className: 'gbt_18_editor_slide_content slider',
@@ -395,8 +395,8 @@
 					case 'title_asc':
 						query +='&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 				props.setAttributes({ queryProducts: query });
@@ -418,8 +418,8 @@
 					case 'title_asc':
 						order = '&orderby=title&order=asc';
 					break;
-					default: 
-						
+					default:
+
 					break;
 				}
 
@@ -445,16 +445,16 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								key: 		'item-' + products[i].id +i,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
-							}, 
+							},
 							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -473,7 +473,7 @@
 												qSR.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSR.join(',') });
-											
+
 											let query = getQuery('?include=' + qSR.join(',') + '&orderby=include');
 											if ( qSR.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -509,15 +509,15 @@
 					}
 					productElements.push(
 						el(
-							'span', 
+							'span',
 							{
 								key: 		'item-' + products[i].id,
-								className:'single-result', 
+								className:'single-result',
 								title: products[i].name,
-							}, 
-							img, 
+							},
+							img,
 							el(
-								'label', 
+								'label',
 								{
 									className: 'title-wrapper'
 								},
@@ -529,9 +529,8 @@
 										onChange: function onChange(evt) {
 											const _this = evt.target;
 
-											
+
 											let qSS = toArray(attributes.selectedIDS);
-											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {
@@ -543,7 +542,7 @@
 												qSS.splice(index,1);
 											}
 											props.setAttributes({ selectedIDS: qSS.join(',') });
-											
+
 											let query = getQuery('?include=' + qSS.join(',') + '&orderby=include');
 											if ( qSS.length > 0 ) {
 												props.setAttributes({queryProducts: query});
@@ -567,7 +566,7 @@
 			}
 
 		//==============================================================================
-		//	Main controls 
+		//	Main controls
 		//==============================================================================
 			return [
 				el(
@@ -613,7 +612,7 @@
 						),
 						attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
-							{ 
+							{
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -656,11 +655,11 @@
 					'div',
 					{
 					},
-					el( 
+					el(
 						'div',
 						{
 							className: 'gbt_18_editor_default_slider force-full',
-							key: 'gbt_18_default_slider',	
+							key: 'gbt_18_default_slider',
 						},
 						attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 						renderResults(),

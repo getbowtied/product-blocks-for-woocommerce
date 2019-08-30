@@ -443,7 +443,6 @@
 										value: i,
 										onChange: function onChange(evt) {
 											let qSS = toArray(attributes.selectedIDS);
-											console.log(qSS);
 
 											if ( qSS.length < 1 && attributes.querySearchSelected.length > 0) {
 												for ( let i = 0; i < attributes.querySearchSelected.length; i++ ) {

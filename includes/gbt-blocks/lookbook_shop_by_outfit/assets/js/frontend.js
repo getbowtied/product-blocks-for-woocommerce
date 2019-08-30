@@ -44,33 +44,20 @@
 			      	var lookBookImage;
 			      	var getItemIndex;
 
-			      	// $('.scroll-wrapper').on('scroll', function(){
- 			      // 		var scrollIsBottom = $(this).prop('scrollHeight') - $(this).innerHeight();
- 			      // 		// console.log($(this).scrollTop())
-			      	// 	if ($(this).scrollTop() == 0) {
-			      	// 		//console.log('move up');
-			      	// 		$.scrollify.previous();
-			      	// 	}
-			      	// 	else if( $(this).scrollTop() == scrollIsBottom ){
-			      	// 		//console.log('move down');
-			      	// 		$.scrollify.next();
-			      	// 	}
-			      	// });
-
 			      	$(".gbt_18_look_book_item").each(function(i) {
 
 			      		i = (i + 1);
 
 			      		$(this).attr("data-section-name", i );
-			        	
+
 			        	getDataValue = $(this).attr("data-section-name",);
 
 			        	getItemIndex = (($(this).index() + 1) < 10) ? '0' + ($(this).index() + 1) : $(this).index() + 1;
-			        	
+
 			        	lookBookImage = $(this).find('.gbt_18_look_thumb img');
-                     
+
 			        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
-			        	
+
 			        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i - 1) : (i - 1) }</span>`);
 
 			        	if (lookBookImage.length == 0) {
@@ -96,7 +83,7 @@
 			        	}
 			      	});
 
-			      
+
 					$(".gbt_18_pagination a").on("click",function(e) {
 						e.preventDefault();
 						$.scrollify.move($(this).attr("href"));
@@ -135,18 +122,16 @@
 
       	$(".gbt_18_look_book_item").each(function(i, el) {
 
-      		console.log(i);
-
       		$(this).attr("data-section-name", i );
-        	
+
         	getDataValue = $(this).attr("data-section-name",);
 
         	getItemIndex = (($(this).index()) < 10) ? '0' + ($(this).index()) : $(this).index();
-        	
+
         	lookBookImage = $(this).find('.gbt_18_look_thumb img');
-         
+
         	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
-        	
+
         	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i) : (i) }</span>`);
 
         	if (lookBookImage.length == 0) {
@@ -174,7 +159,7 @@
 	   		// i++;
       	});
 
-      
+
 		$(".gbt_18_pagination a").on("click",function(e) {
 			e.preventDefault();
 			let section = $(this).attr('href').substr(1);
@@ -207,18 +192,4 @@
 		gbt_18_lookbook_pagination();
 	});
 
-	// $(window).scroll( function() {
-	// 	$('.gbt_18_look_book_item').each(function() {
-	// 		console.log(gbt_18_isScrolledIntoView($(this)));
-	// 	})
-	// })
-
-	// let doit;
-	// window.onresize = function(){
-	//   clearTimeout(doit);
-	//   doit = setTimeout(centerLookbook, 100);
-	// };
-
-
-	
 }( jQuery ) );
