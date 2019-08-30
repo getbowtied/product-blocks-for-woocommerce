@@ -61,6 +61,12 @@ The manual installation method involves downloading the plugin and uploading it 
 * Vertical Slider: Fixed an issue with the "View Product Page" link
 * Various other bug fixes
 
+= 1.3.3 =
+* Fixed: Product carousel display fix
+
+= 1.3.2 =
+* Small maintenance updates
+
 = 1.3.1 =
 * Fixed a bug with Lookbook pagination
 
