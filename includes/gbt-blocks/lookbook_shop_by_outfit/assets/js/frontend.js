@@ -171,7 +171,7 @@
 		$('.gbt_18_scroll_down_button').on('click',function(){
 			if ($('.gbt_18_look_book_item[data-section-name="2"]').length) {
 				$('html, body').animate({
-					scrollTop: $('.gbt_18_look_book_item[data-section-name="2"]').offset().top
+					scrollTop: $('.gbt_18_look_book_item[data-section-name="1"]').offset().top
 				}, 500);
 			}
 		});
@@ -191,5 +191,19 @@
 	$( document ).ready( function(){
 		gbt_18_lookbook_pagination();
 	});
+
+	$('.gbt_18_snap_look_book .gbt_18_hero_look_book_item').each(function() {
+
+		var windowHeight = $(window).height();
+		var offsetTop = $(this).offset().top;
+		var fullHeight = 100-offsetTop/(windowHeight/100);
+
+		if( windowHeight && fullHeight ) {
+			$(this).css('max-height', fullHeight+"vh");
+			$(this).css('min-height', fullHeight+"vh");
+		}
+
+	});
+
 
 }( jQuery ) );
