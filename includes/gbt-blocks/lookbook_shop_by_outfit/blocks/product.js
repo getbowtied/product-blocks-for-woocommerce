@@ -27,6 +27,9 @@
 				),
 		category: 'product_blocks',
 		parent: [ 'getbowtied/lookbook-shop-by-outfit' ],
+		supports: {
+			align: ['full']
+		},
 		attributes: {
 			productIDs: {
 				type: 'string',
@@ -94,7 +97,11 @@
 			selectedSlide: {
 				type: 'int',
 				default: 0,
-			}
+			},
+			align: {
+				type: 'string',
+				default: 'full'
+			},
 		},
 
 		edit: function( props ) {
@@ -107,6 +114,8 @@
 			attributes.querySearchResults   		= attributes.querySearchResults || [];
 			attributes.querySearchNoResults 		= attributes.querySearchNoResults || false;
 			attributes.doneFirstLoad 				= attributes.doneFirstLoad || false;
+
+			if( 'full' != attributes.align ){ props.setAttributes({ align: 'full' }); }
 
 			const colors = [
 				{ name: 'red', 				color: '#d02e2e' },

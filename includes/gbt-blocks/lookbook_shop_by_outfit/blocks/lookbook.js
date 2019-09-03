@@ -27,6 +27,9 @@
 				el( Path, { d:"M5.88 19.75c0 1.1.9 2 2 2h1.45l-3.45-8.34v6.34z" })
 			  ),
 		category: 'product_blocks',
+		supports: {
+			align: ['full']
+		},
 		attributes: {
 			title: {
 				type: 'string',
@@ -56,6 +59,10 @@
 	        	type: 'string',
 	        	default: '#000'
 	        },
+			align: {
+				type: 'string',
+				default: 'full'
+			},
 		},
 
 		edit: function( props ) {
@@ -72,6 +79,8 @@
 				{ name: 'dark-gray', 		color: '#abb7c3' },
 				{ name: 'black', 			color: '#000' 	 },
 			];
+
+			if( 'full' != props.attributes.align ){ props.setAttributes({ align: 'full' }); }
 
 			return [
 				el(

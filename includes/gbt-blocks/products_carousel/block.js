@@ -296,7 +296,7 @@
 								{
 									key: 		class_prefix,
 									className: 	class_prefix + _isVisible(i),
-									style: 		{ width: 100/products.length+"%", paddingRight: attributes.spaceBetween+'px'}
+									style: 		{ width: 100/products.length+"%", paddingRight: (attributes.spaceBetween/2)+'px', paddingLeft: (attributes.spaceBetween/2)+'px'}
 								},
 								el( 'div',
 									{
