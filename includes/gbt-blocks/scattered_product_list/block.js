@@ -274,26 +274,26 @@
 								},
 								el( 'div',
 									{
-										key: 		class_prefix + '_content_wrapper',
+										key: 		class_prefix + '_content_wrapper' + i,
 										className: 	class_prefix + '_content_wrapper'
 									},
 									el( 'img',
 										{
-											key: 		class_prefix + '_thumbnail',
+											key: 		class_prefix + '_thumbnail' + i,
 											className: 	class_prefix + '_thumbnail',
 											src: 		img
 										}
 									),
 									el( 'h4',
 										{
-											key: 		class_prefix + '_title',
+											key: 		class_prefix + '_title' + i,
 											className: 	class_prefix + '_title'
 										},
 										products[i]['name']
 									),
 									el( 'span',
 										{
-											key: 						class_prefix + '_price',
+											key: 						class_prefix + '_price' + i,
 											className: 					class_prefix + '_price',
 											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 										}
@@ -332,24 +332,24 @@
 								},
 								el( 'div',
 									{
-										key: 		class_prefix + '_content_wrapper',
+										key: 		class_prefix + '_content_wrapper' + i,
 										className: 	class_prefix + '_content_wrapper'
 									},
 									el( 'div',
 										{
-											key: 		class_prefix + '_thumbnail',
+											key: 		class_prefix + '_thumbnail' + i,
 											className: 	class_prefix + '_thumbnail',
 										}
 									),
 									el( 'div',
 										{
-											key: 		class_prefix + '_title',
+											key: 		class_prefix + '_title' + i,
 											className: 	class_prefix + '_title'
 										},
 									),
 									el( 'div',
 										{
-											key: 						class_prefix + '_price',
+											key: 						class_prefix + '_price' + i,
 											className: 					class_prefix + '_price',
 										}
 									)
@@ -466,20 +466,21 @@
 				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
-					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+					return el('span', { key: 'gbt-scattered-list-search-results-noresults', className: 'no-results'}, i18n.__('No products matching.'));
 				}
 				let products = attributes.querySearchResults;
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( typeof products[i].images[0] !== 'undefined' && products[i].images[0].src != '' ) {
-						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						 img = el('span', { key: 'gbt-scattered-list-search-results-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-scattered-list-search-results-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
+								key: 'gbt-scattered-list-search-item-' + products[i].id,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -488,11 +489,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-scattered-list-search-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-scattered-list-search-item-input-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -519,8 +522,8 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'gbt-scattered-list-search-item-dashicon-yes-' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'gbt-scattered-list-search-item-dashicon-noalt-' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -537,14 +540,15 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( typeof products[i].images[0] !== 'undefined' && products[i].images[0].src != '' ) {
-						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						 img = el('span', { key: 'gbt-scattered-list-search-selected-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-scattered-list-search-selected-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
+								key: 'gbt-scattered-list-search-selected-item-' + products[i].id,
 								className:'single-result',
 								title: products[i].name,
 							},
@@ -552,11 +556,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-scattered-list-search-selected-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-scattered-list-search-selected-item-input-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -590,7 +596,7 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'gbt-scattered-list-search-selected-item-dashicon-no-alt-' + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
@@ -609,11 +615,13 @@
 							el(
 								'li',
 								{
+									key: 'gbt-scattered-list-category-item-' + catArr[i].value,
 									className: 'level-' + catArr[i].level,
 								},
 								el(
 								'label',
 									{
+										key: 'gbt-scattered-list-category-label-' + i,
 										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
 									},
 									el(
@@ -704,6 +712,7 @@
 							el(
 							'label',
 								{
+									key: 'gbt-scattered-list-attribute-item-' + attArr[i].value,
 									className: 'attribute-label',
 								},
 								el(
@@ -846,11 +855,12 @@
 				el(
 					InspectorControls,
 					{
-						key: 'products-main-inspector',
+						key: 'gbt-scattered-list-products-main-inspector',
 					},
 					el(
 						'div',
 						{
+							key: 'gbt-scattered-list-products-main-inspector-wrapper',
 							className: 'products-main-inspector-wrapper',
 						},
 						el(
@@ -1055,6 +1065,7 @@
 				el(
 					'div',
 					{
+						key: 'gbt-scattered-list-main-wrapper',
 					},
 					attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 					renderResults(),

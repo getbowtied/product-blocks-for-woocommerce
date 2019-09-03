@@ -22,8 +22,8 @@
 	/* Register Block */
 	registerBlockType( 'getbowtied/categories-grid', {
 		title: i18n.__( 'Product Categories Grid' ),
-		icon: el( SVG, { xmlns:"http://www.w3.org/2000/svg", viewBox:"0 0 24 24" },
-				el(Path, { d:"M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z" } )
+		icon: el( SVG, { key: 'getbowtied-categories-grid-icon', xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
+				el(Path, { key: 'getbowtied-categories-grid-icon-path', d:"M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z" } )
 			  ),
 		category: 'product_blocks',
 		supports: {
@@ -286,27 +286,31 @@
 					categoryElements.push(
 						el( 'div',
 							{
-								key: 		'item-' + categories[i].id,
+								key: 		'gbt-category-grid-item-' + categories[i].id,
 								className: 	class_prefix
 							},
 							el( 'a',
 								{
+									key: 'gbt-category-grid-item-a-' + i,
 									className: 	class_prefix + '_img'
 								},
 								el( 'img',
 									{
+										key: 'gbt-category-grid-item-img-' + i,
 										className: 	class_prefix + '_thumb',
 										src: 		img
 									}
 									),
 								el( 'h4',
 									{
+										key: 'gbt-category-grid-item-h4-' + i,
 										className: 	class_prefix + '_title'
 									},
 									categories[i]['name'].replace(/&amp;/g, '&'),
 									attributes.productCount === true && el( 'span',
 										{
-											className: 					class_prefix + '_count',
+											key: 'gbt-category-grid-item-count-' + i,
+											className: class_prefix + '_count',
 										},
 										categories[i]['count']
 									),
@@ -329,7 +333,7 @@
 							categoryElements,
 							el(	'div',
 							{
-								key: 	'clearfix',
+								key: 	'gbt_18_editor_categories_grid_clearfix',
 								className: 	'clearfix'
 							}
 							),
@@ -399,21 +403,21 @@
 				let categoryElements = [];
 
 				if ( attributes.querySearchNoResults == true) {
-					return el('span', {className: 'no-results'}, i18n.__('No categories matching.'));
+					return el('span', {key: 'gbt-categories-grid-noresults', className: 'no-results'}, i18n.__('No categories matching.'));
 				}
 				let categories = attributes.querySearchResults;
 				for ( let i = 0; i < categories.length; i++ ) {
 					let img;
 					if ( categories[i].image !== null && categories[i].image.src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
+						img = el('span', { key: 'gbt-categories-grid-img-wrapper'+i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-categories-grid-img-wrapper'+i,className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					categoryElements.push(
 						el(
 							'span',
 							{
-								key: 	   'item-' + categories[i].id,
+								key: 	   'gbt-categories-grid-cat-item-' + categories[i].id,
 								className: _searchResultClass(categories[i].id),
 								title: categories[i].name.replace(/&amp;/g, '&'),
 								'data-index': i,
@@ -422,11 +426,13 @@
 							el(
 								'label',
 								{
+									key: 	   'gbt-categories-grid-cat-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-categories-grid-cat-item-input-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -453,8 +459,8 @@
 									},
 								),
 								categories[i].name.replace(/&amp;/g, '&'),
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'gbt-categories-grid-cat-item-dashicon-yes-' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'gbt-categories-grid-cat-item-dashivon-noalt-' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -478,15 +484,15 @@
 				for ( let i = 0; i < categories.length; i++ ) {
 					let img ='';
 					if ( categories[i].image !== null && categories[i].image.src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
+						img = el('span', { key: 'gbt-categories-grid-search-item-' + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+categories[i].image.src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-categories-grid-search-item-' + i, className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					categoryElements.push(
 						el(
 							'span',
 							{
-								key 	 : 'item-' + categories[i].id,
+								key 	 : 'gbt-categories-grid-search-item-' + categories[i].id,
 								className:'single-result',
 								title: categories[i].name.replace(/&amp;/g, '&'),
 							},
@@ -494,11 +500,13 @@
 							el(
 								'label',
 								{
+									key 	 : 'gbt-categories-grid-search-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key 	 : 'gbt-categories-grid-search-item-checkbox-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -526,7 +534,7 @@
 									},
 								),
 								categories[i].name.replace(/&amp;/g, '&'),
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'gbt-categories-grid-search-item-dashicon-noalt-' + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
@@ -551,7 +559,7 @@
 						el(
 							SelectControl,
 							{
-								key: 'query-panel-select',
+								key: 'gbt-categories-grid-query-panel-select',
 								label: i18n.__('Source:'),
 								value: attributes.queryDisplayType,
 								options: [{
@@ -570,12 +578,13 @@
 						attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{
+								key: 'gbt-categories-grid-query-ajax-search-wrapper',
 								className: 'products-ajax-search-wrapper',
 							},
 							el(
 								TextControl,
 								{
-									key: 'query-panel-string',
+									key: 'gbt-categories-grid-query-panel-string',
 			          				type: 'search',
 			          				className: 'products-ajax-search',
 			          				value: attributes.querySearchString,
@@ -601,6 +610,7 @@
 						attributes.queryDisplayType === 'specific' && attributes.querySearchString != '' && el(
 							'div',
 							{
+								key: 'gbt-categories-grid-specific-ajax-search-results',
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -608,16 +618,20 @@
 						attributes.queryDisplayType === 'specific' && attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
+								key: 'gbt-categories-grid-specific-results-wrapper',
 								className: 'products-selected-results-wrapper',
 							},
 							el(
 								'label',
-								{},
+								{
+									key: 'gbt-categories-grid-specific-results-label',
+								},
 								i18n.__('Selected Products:'),
 							),
 							el(
 								'div',
 								{
+									key: 'gbt-categories-grid-specific-selected-results',
 									className: 'products-selected-results',
 								},
 								renderSearchSelected(),
@@ -627,7 +641,7 @@
 						el(
 							SelectControl,
 							{
-								key: 'categories-grid-order-by',
+								key: 'gbt-categories-grid-order-by',
 								options:
 									[
 										{ value: 'menu_order',  label: 'Menu Order' },
@@ -644,7 +658,7 @@
 						el(
 							TextControl,
 							{
-								key: 'categories-grid-display-number',
+								key: 'gbt-categories-grid-display-number',
 	              				label: i18n.__( 'How many product categories to display?' ),
 	              				type: 'number',
 	              				value: attributes.limit,
@@ -657,7 +671,7 @@
 							ToggleControl,
 							{
 								id: "categories-grid-display",
-								key: 'categories-grid-display',
+								key: 'gbt-categories-grid-display',
 	              				label: i18n.__( 'Parent Categories Only' ),
 	              				checked: attributes.parentOnly,
 	              				onChange: function( value ) {
@@ -668,7 +682,7 @@
 						el(
 							ToggleControl,
 							{
-								key: "categories-grid-hide-empty",
+								key: "gbt-categories-grid-hide-empty",
 	              				label: i18n.__( 'Hide Empty' ),
 	              				checked: attributes.hideEmpty,
 	              				onChange: function( value ) {
@@ -683,6 +697,7 @@
 						el(
 							'button',
 							{
+								key: 'gbt-categories-grid-load-button',
 								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
@@ -694,11 +709,11 @@
 							_isLoadingText(),
 						),
 					),
-					el('hr', {}),
+					el('hr', { key: 'gbt-categories-grid-hr' }),
 					el(
 						ToggleControl,
 						{
-							key: "categories-grid-product-count",
+							key: "gbt-categories-grid-product-count",
               				label: i18n.__( 'Product Count' ),
               				checked: attributes.productCount,
               				onChange: function( value ) {
@@ -711,7 +726,7 @@
 						el(
 							RangeControl,
 							{
-								key: "categories-grid-layout-1-columns",
+								key: "gbt-categories-grid-layout-1-columns",
 								value: attributes.columns,
 								allowReset: false,
 								initialPosition: 3,
@@ -727,6 +742,7 @@
 				el(
 					'div',
 					{
+						key: 'gbt-categories-grid-results',
 					},
 					attributes.result.length < 1 && attributes.doneFirstLoad === false && getResult(),
 					renderResults(),

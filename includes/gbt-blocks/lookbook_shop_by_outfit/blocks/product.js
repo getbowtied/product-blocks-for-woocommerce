@@ -22,7 +22,7 @@
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-shop-by-outfit-product', {
 		title: i18n.__( 'Lookbook - Shop by Outfit Product' ),
-		icon: 	el( SVG, { xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
+		icon: 	el( SVG, { key: 'getbowtied-lookbook-sbo-product-icon', xmlns:'http://www.w3.org/2000/svg', viewBox:'0 0 24 24' },
 					el( Path, { d:'M21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM3 19V6h8v13H3zm18 0h-8V6h8v13zm-7-9.5h6V11h-6zm0 2.5h6v1.5h-6zm0 2.5h6V16h-6z' } )
 				),
 		category: 'product_blocks',
@@ -265,17 +265,17 @@
 						productElements.push(
 							el( 'li',
 								{
-									key: 		class_prefix + '_' + i,
+									key: 		class_prefix + '_' + products[i].id,
 									className: 	class_prefix
 								},
 								el( 'div',
 									{
-										key: 		class_prefix + '_content_wrapper_' + i,
+										key: 		class_prefix + '_content_wrapper_' + products[i].id + '-' + i,
 										className: 	class_prefix + '_content_wrapper'
 									},
 									el( 'div',
 										{
-											key: 		class_prefix + '_thumbnail_' + i,
+											key: 		class_prefix + '_thumbnail_' + products[i].id + '-' + i,
 											className: 	class_prefix + '_thumbnail',
 											style:
 											{
@@ -285,21 +285,21 @@
 									),
 									el( 'h4',
 										{
-											key: 		class_prefix + '_title_' + i,
+											key: 		class_prefix + '_title_' + products[i].id + '-' + i,
 											className: 	class_prefix + '_title'
 										},
 										products[i]['name']
 									),
 									el( 'span',
 										{
-											key: 						class_prefix + '_price_' + i,
+											key: 						class_prefix + '_price_' + products[i].id + '-' + i,
 											className: 					class_prefix + '_price',
 											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 										}
 									),
 									el( 'button',
 										{
-											key: 		class_prefix + '_button_' + i,
+											key: 		class_prefix + '_button_' + products[i].id + '-' + i,
 											className: 	class_prefix + '_button'
 										},
 										i18n.__("Add To Cart")
@@ -449,20 +449,21 @@
 				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
-					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+					return el('span', {key: 'gbt-sbo-product-no-results', className: 'no-results'}, i18n.__('No products matching.'));
 				}
 				let products = attributes.querySearchResults;
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { key: 'gbt-sbo-product-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-sbo-product-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
+								key: 'gbt-sbo-product-search-result-item-' + i,
 								className: _searchResultClass(products[i].id) + ' ' + _searchDisabledClass(),
 								title: products[i].name,
 								'data-index': i,
@@ -471,11 +472,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-sbo-product-search-result-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-sbo-product-search-result-item-input-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -503,8 +506,8 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'gbt-sbo-product-search-result-item-dashicon-yes-' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'gbt-sbo-product-search-result-item-dashicon-noalt-' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -520,14 +523,15 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { key: 'gbt-sbo-product-search-result-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-sbo-product-search-result-img-wrapper',className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
+								key: 'gbt-sbo-product-search-result-item-' + i,
 								className:'single-result',
 								title: products[i].name,
 							},
@@ -535,11 +539,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-sbo-product-search-result-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-sbo-product-search-result-item-input-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -573,7 +579,7 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'gbt-sbo-product-search-result-item-dashicon-noalt' + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
@@ -588,7 +594,7 @@
 				el(
 					InspectorControls,
 					{
-						key: 'lookbook-shop-by-outfit-inspector'
+						key: 'lookbook-shop-by-outfit-product-inspector'
 					},
 					el(
 						'div',

@@ -22,7 +22,7 @@
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-carousel', {
 		title: i18n.__( 'Product Carousel' ),
-		icon: el(SVG,{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{d:"M 7 3 A 1.0001 1.0001 0 0 0 6 4 L 6 5 L 3 5 A 1.0001 1.0001 0 0 0 2 6 L 2 18 A 1.0001 1.0001 0 0 0 3 19 L 6 19 L 6 20 A 1.0001 1.0001 0 0 0 7 21 L 17 21 A 1.0001 1.0001 0 0 0 18 20 L 18 19 L 21 19 A 1.0001 1.0001 0 0 0 22 18 L 22 6 A 1.0001 1.0001 0 0 0 21 5 L 18 5 L 18 4 A 1.0001 1.0001 0 0 0 17 3 L 7 3 z M 8 5 L 16 5 L 16 5.8320312 A 1.0001 1.0001 0 0 0 16 6.1582031 L 16 17.832031 A 1.0001 1.0001 0 0 0 16 18.158203 L 16 19 L 8 19 L 8 18.167969 A 1.0001 1.0001 0 0 0 8 17.841797 L 8 6.1679688 A 1.0001 1.0001 0 0 0 8 5.8417969 L 8 5 z M 4 7 L 6 7 L 6 17 L 4 17 L 4 7 z M 18 7 L 20 7 L 20 17 L 18 17 L 18 7 z"})),
+		icon: el(SVG,{key: 'getbowtied-product-carousel-icon', xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"},el(Path,{key: 'getbowtied-product-carousel-icon-path', d:"M 7 3 A 1.0001 1.0001 0 0 0 6 4 L 6 5 L 3 5 A 1.0001 1.0001 0 0 0 2 6 L 2 18 A 1.0001 1.0001 0 0 0 3 19 L 6 19 L 6 20 A 1.0001 1.0001 0 0 0 7 21 L 17 21 A 1.0001 1.0001 0 0 0 18 20 L 18 19 L 21 19 A 1.0001 1.0001 0 0 0 22 18 L 22 6 A 1.0001 1.0001 0 0 0 21 5 L 18 5 L 18 4 A 1.0001 1.0001 0 0 0 17 3 L 7 3 z M 8 5 L 16 5 L 16 5.8320312 A 1.0001 1.0001 0 0 0 16 6.1582031 L 16 17.832031 A 1.0001 1.0001 0 0 0 16 18.158203 L 16 19 L 8 19 L 8 18.167969 A 1.0001 1.0001 0 0 0 8 17.841797 L 8 6.1679688 A 1.0001 1.0001 0 0 0 8 5.8417969 L 8 5 z M 4 7 L 6 7 L 6 17 L 4 17 L 4 7 z M 18 7 L 20 7 L 20 17 L 18 17 L 18 7 z"})),
 		category: 'product_blocks',
 		supports: {
 			align: [ 'center', 'wide', 'full' ],
@@ -294,39 +294,39 @@
 						productElements.push(
 							el( 'li',
 								{
-									key: 		class_prefix,
+									key: 		class_prefix + products[i].id,
 									className: 	class_prefix + _isVisible(i),
 									style: 		{ width: 100/products.length+"%", paddingRight: (attributes.spaceBetween/2)+'px', paddingLeft: (attributes.spaceBetween/2)+'px'}
 								},
 								el( 'div',
 									{
-										key: 		class_prefix + '_content_wrapper',
+										key: 		class_prefix + '_content_wrapper' + i,
 										className: 	class_prefix + '_content_wrapper'
 									},
 									el( 'div',
 										{
-											key: 		class_prefix + '_thumbnail',
+											key: 		class_prefix + '_thumbnail' + i,
 											className: 	class_prefix + '_thumbnail',
 											style: { backgroundImage: "url("+img+")" }
 										}
 									),
 									el( 'h4',
 										{
-											key: 		class_prefix + '_title',
+											key: 		class_prefix + '_title' + i,
 											className: 	class_prefix + '_title'
 										},
 										products[i]['name']
 									),
 									el( 'span',
 										{
-											key: 						class_prefix + '_price',
+											key: 						class_prefix + '_price' + i,
 											className: 					class_prefix + '_price',
 											dangerouslySetInnerHTML: 	{ __html: products[i]['price_html'] }
 										}
 									),
 									el( 'button',
 										{
-											key: 		class_prefix + '_button',
+											key: 		class_prefix + '_button' + i,
 											className: 	class_prefix + '_button'
 										},
 										i18n.__("Add To Cart")
@@ -345,11 +345,12 @@
 							el(
 								'div',
 								{
+									key: 'gbt_18_product_carousel_scrollable_wrapper',
 									className: 'scrollable_wrapper',
 								},
 								el( 'ul',
 									{
-										key: 		'gbt_18_carousel_products gbt_18_carousel_slider ',
+										key: 		'gbt_18_carousel_products gbt_18_carousel_slider',
 										className: 	'gbt_18_carousel_products gbt_18_carousel_slider columns-'+attributes.columns,
 										style: 		{ width: productElements.length*100/attributes.columns+"%", marginLeft: -attributes.selectedSlide*(100/attributes.columns)+"%"}
 									},
@@ -358,6 +359,7 @@
 							),
 							el( 'button',
 								{
+									key: 'gbt_18_carousel_toggle-prev-button',
 									className: 	'toggle-prev-button',
 									disabled: 	_isPrev(),
 									onClick: 	function onClick() {
@@ -371,12 +373,14 @@
 								},
 								el( SVG,
 									{
+										key: 'gbt_18_carousel_toggle-prev-button-svg',
 										className: 'gbt_18_carousel_products_placeholder_toggle toggle-prev',
 										xmlns:"http://www.w3.org/2000/svg",
 										viewBox:"0 0 24 24"
 									},
 									el( Path,
 										{
+											key: 'gbt_18_carousel_toggle-prev-button-svg-path',
 											d:"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
 										}
 									)
@@ -384,6 +388,7 @@
 							),
 							el( 'button',
 								{
+									key: 'gbt_18_carousel_toggle-next-button',
 									className: 	'toggle-next-button',
 									disabled:  _isNext(),
 									onClick: 	function onClick() {
@@ -397,12 +402,14 @@
 								},
 								el( SVG,
 									{
+										key: 'gbt_18_carousel_toggle-next-button-svg',
 										className: 'gbt_18_carousel_products_placeholder_toggle toggle-next',
 										xmlns:"http://www.w3.org/2000/svg",
 										viewBox:"0 0 24 24"
 									},
 									el( Path,
 										{
+											key: 'gbt_18_carousel_toggle-next-button-svg-path',
 											d:"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
 										}
 									)
@@ -423,30 +430,30 @@
 								},
 								el( 'div',
 									{
-										key: 		class_prefix + '_content_wrapper',
+										key: 		class_prefix + '_content_wrapper' + j,
 										className: 	class_prefix + '_content_wrapper'
 									},
 									el( 'div',
 										{
-											key: 		class_prefix + '_thumbnail',
+											key: 		class_prefix + '_thumbnail' + j,
 											className: 	class_prefix + '_thumbnail',
 										}
 									),
 									el( 'div',
 										{
-											key: 		class_prefix + '_title',
+											key: 		class_prefix + '_title' + j,
 											className: 	class_prefix + '_title'
 										},
 									),
 									el( 'div',
 										{
-											key: 		class_prefix + '_price',
+											key: 		class_prefix + '_price' + j,
 											className: 	class_prefix + '_price',
 										}
 									),
 									el( 'button',
 										{
-											key: 		class_prefix + '_button',
+											key: 		class_prefix + '_button' + j,
 											className: 	class_prefix + '_button'
 										},
 										i18n.__("Add To Cart")
@@ -471,16 +478,19 @@
 							),
 							el( 'button',
 								{
+									key: 'gbt_18_carousel_placeholder_toggle-prev-button',
 									className: 'toggle-prev-button',
 								},
 								el( SVG,
 									{
+										key: 'gbt_18_carousel_placeholder_toggle-prev-button-svg',
 										className: 'gbt_18_carousel_products_placeholder_toggle toggle-prev',
 										xmlns:"http://www.w3.org/2000/svg",
 										viewBox:"0 0 24 24"
 									},
 									el( Path,
 										{
+											key: 'gbt_18_carousel_placeholder_toggle-prev-button-svg-path',
 											d:"M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
 										}
 									)
@@ -488,16 +498,19 @@
 							),
 							el( 'button',
 								{
+									key: 'gbt_18_carousel_placeholder_toggle-next-button',
 									className: 'toggle-next-button',
 								},
 								el( SVG,
 									{
+										key: 'gbt_18_carousel_placeholder_toggle-next-button-svg',
 										className: 'gbt_18_carousel_products_placeholder_toggle toggle-next',
 										xmlns:"http://www.w3.org/2000/svg",
 										viewBox:"0 0 24 24"
 									},
 									el( Path,
 										{
+											key: 'gbt_18_carousel_placeholder_toggle-next-button-svg-path',
 											d:"M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
 										}
 									)
@@ -598,20 +611,21 @@
 				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
-					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+					return el('span', {key: 'gbt_18_carousel_search-no-results', className: 'no-results'}, i18n.__('No products matching.'));
 				}
 				let products = attributes.querySearchResults;
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						 img = el('span', { key: 'gbt_18_carousel_search-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt_18_carousel_search-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
+								key: 'gbt-carousel-search-result-item-' + products[i].id,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -620,11 +634,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-carousel-search-result-item-title-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-carousel-search-result-item-input-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -651,8 +667,8 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'gbt-carousel-search-result-item-dashicon-yes-' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'gbt-carousel-search-result-item-dashicon-noalt-' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -669,26 +685,28 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						 img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						 img = el('span', { key: 'gbt_18_carousel_search-selected-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt_18_carousel_search-selected-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
-								className:'single-result',
+								className:'single-result' + products[i].id,
 								title: products[i].name,
 							},
 							img,
 							el(
 								'label',
 								{
+									key: 'gbt-carousel-search-selected-item-label-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-carousel-search-selected-item-checkbox-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -722,7 +740,7 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'gbt-carousel-search-selected-item-dashicon-noalt-' + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
@@ -741,11 +759,13 @@
 							el(
 								'li',
 								{
+									key: 'gbt-carousel-category-item-' + catArr[i].id,
 									className: 'level-' + catArr[i].level,
 								},
 								el(
 								'label',
 									{
+										key: 'gbt-carousel-category-item-label-' + i,
 										className: _categoryClassName( catArr[i].parent, catArr[i].value ) + ' ' + catArr[i].level,
 									},
 									el(
@@ -808,7 +828,7 @@
 									el(
 										'sup',
 										{
-											// className: 'category-count',
+											key: 'gbt-carousel-category-item-count-' + i,
 										},
 										catArr[i].count,
 									),
@@ -819,7 +839,7 @@
 					}
 				}
 				if (categoryElements.length > 0 ) {
-					let wrapper = el('ul', {className: 'level-' + level}, categoryElements);
+					let wrapper = el('ul', {key: 'gbt-product-carousel-category-ul', className: 'level-' + level}, categoryElements);
 					return wrapper;
 				} else {
 					return;
@@ -836,6 +856,7 @@
 							el(
 							'label',
 								{
+									key: 'gbt-attribute-' + attArr[i].value,
 									className: 'attribute-label',
 								},
 								el(
@@ -874,7 +895,9 @@
 								attArr[i].label,
 								el(
 									'sup',
-									{},
+									{
+										key: 'gbt-attribute-count',
+									},
 									attArr[i].count,
 								),
 							),
@@ -978,17 +1001,18 @@
 				el(
 					InspectorControls,
 					{
-						key: 'products-main-inspector',
+						key: 'gbt-product-carousel-inspector'
 					},
 					el(
 						'div',
 						{
+							key: 'gbt-product-carousel-inspector-wrapper',
 							className: 'products-main-inspector-wrapper',
 						},
 						el(
 							SelectControl,
 							{
-								key: 'query-panel-select',
+								key: 'gbt-product-carousel-query-panel-select',
 								label: i18n.__('Source:'),
 								value: attributes.queryDisplayType,
 								options: [{
@@ -1029,12 +1053,13 @@
 						attributes.queryDisplayType === 'specific' && el(
 							'div',
 							{
+								key: 'gbt-product-carousel-products-ajax-search-wrapper',
 								className: 'products-ajax-search-wrapper',
 							},
 							el(
 								TextControl,
 								{
-									key: 'query-panel-string',
+									key: 'gbt-product-carousel-query-panel-string',
 			          				type: 'search',
 			          				className: 'products-ajax-search',
 			          				value: attributes.querySearchString,
@@ -1060,6 +1085,7 @@
 						attributes.queryDisplayType === 'specific' && attributes.querySearchResults.length > 0 && attributes.querySearchString != '' && el(
 							'div',
 							{
+								key: 'gbt-product-carousel-products-ajax-search-results',
 								className: 'products-ajax-search-results',
 							},
 							renderSearchResults(),
@@ -1067,16 +1093,20 @@
 						attributes.queryDisplayType === 'specific' && attributes.querySearchSelected.length > 0 && el(
 							'div',
 							{
+								key: 'gbt-product-carousel-products-selected-results-wrapper',
 								className: 'products-selected-results-wrapper',
 							},
 							el(
 								'label',
-								{},
+								{
+									key: 'gbt-product-carousel-products-selected-results-label',
+								},
 								i18n.__('Selected Products:'),
 							),
 							el(
 								'div',
 								{
+									key: 'gbt-product-carousel-products-selected-results',
 									className: 'products-selected-results',
 								},
 								renderSearchSelected(),
@@ -1086,6 +1116,7 @@
 						attributes.queryDisplayType === 'by_category' && el(
 							'div',
 							{
+								key: 'gbt-product-carousel-category-result-wrapper',
 								className: 'category-result-wrapper',
 							},
 							renderCategories(),
@@ -1095,7 +1126,7 @@
 						attributes.queryDisplayType === 'filter_by'  && el (
 							SelectControl,
 							{
-								key: 'query-panel-filter',
+								key: 'gbt-product-carousel-query-panel-filter',
 								// label: i18n.__('Pick one or more categories'),
 								value: attributes.queryFilterSelected,
 								options: [{
@@ -1131,7 +1162,7 @@
 						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected === 'attributes' && el (
 							SelectControl,
 							{
-								key: 'query-panel-attributes',
+								key: 'gbt-product-carousel-query-panel-attributes',
 								// label: i18n.__('Pick one or more categories'),
 								value: attributes.queryAttributesSelected,
 								options: attributes.queryAttributesOptions,
@@ -1145,6 +1176,7 @@
 						attributes.queryDisplayType === 'filter_by' && attributes.queryFilterSelected === 'attributes' && attributes.queryAttributesSelected !== '' && el (
 							'div',
 							{
+								key: 'gbt-product-carousel-attributes-results-wrapper',
 								className: 'attributes-results-wrapper'
 							},
 							renderAttributes(),
@@ -1156,6 +1188,7 @@
  						attributes.queryDisplayType !== 'specific' && el(
 							RangeControl,
 							{
+								key: 'gbt-product-carousel-number-of-products',
 								value: attributes.limit,
 								allowReset: false,
 								initialPosition: 10,
@@ -1172,6 +1205,7 @@
 						el(
 							'button',
 							{
+								key: 'gbt-product-carousel-load-button',
 								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
@@ -1182,10 +1216,11 @@
 							},
 							_isLoadingText(),
 						),
-						el('hr',{},),
+						el('hr',{ key: 'gbt-product-carousel-hr', },),
 						el(
 							RangeControl,
 							{
+								key: 'gbt-product-carousel-columns',
 								value: attributes.columns,
 								allowReset: false,
 								initialPosition: 3,
@@ -1200,6 +1235,7 @@
 						el(
 							RangeControl,
 							{
+								key: 'gbt-product-carousel-space-between',
 								value: attributes.spaceBetween,
 								allowReset: false,
 								initialPosition: 20,
@@ -1216,7 +1252,8 @@
 				el(
 					'div',
 					{
-						className: 'gbt_18_product_carousel'
+						key: 		'gbt_18_product_carousel_main_wrapper',
+						className: 	'gbt_18_product_carousel'
 					},
 					attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 					renderResults(),

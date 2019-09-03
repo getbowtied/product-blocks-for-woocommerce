@@ -228,25 +228,25 @@
 							"div",
 							{
 								className: "gbt_18_editor_slide_content_item slide " + isSelectedSlide(i),
-								key: "gbt_18_slide_content_item" + 'item-' + products[i].id
+								key: "gbt_18_slide_content_item" + products[i].id
 							},
 							el(
 								"div",
 								{
 									className: "gbt_18_editor_slide_content_left",
-									key: "gbt_18_editor_slide_content_left"
+									key: "gbt_18_editor_slide_content_left" + i,
 								},
 								el(
 									"div",
 									{
 										className: "gbt_18_editor_slide_content_left_inner",
-										key: "gbt_18_editor_slide_content_left_inner"
+										key: "gbt_18_editor_slide_content_left_inner" + i,
 									},
 									el(
 										"h2",
 										{
 											className: "gbt_18_editor_slide_title",
-											key: "gbt_18_slide_title"
+											key: "gbt_18_slide_title" + i,
 										},
 										name
 									),
@@ -254,7 +254,7 @@
 										"p",
 										{
 											className:"gbt_18_editor_slide_price",
-											key:"gbt_18_slide_price",
+											key:"gbt_18_slide_price" + i,
 											dangerouslySetInnerHTML: { __html: products[i]['price_html'] }
 										},
 									),
@@ -262,7 +262,7 @@
 										"div",
 										{
 											className:"gbt_18_editor_slide_text",
-											key:"gbt_18_slide_text",
+											key:"gbt_18_slide_text" + i,
 											dangerouslySetInnerHTML: { __html: description }
 										},
 									),
@@ -270,7 +270,7 @@
 										"button",
 										{
 											className:"gbt_18_editor_add_to_cart",
-											key:"gbt_18_editor_add_to_cart"
+											key:"gbt_18_editor_add_to_cart" + i,
 										},
 										i18n.__("Add To Cart"),
 									),
@@ -280,13 +280,13 @@
 								"div",
 								{
 									className: "gbt_18_editor_slide_content_right",
-									key: "gbt_18_editor_slide_content_right"
+									key: "gbt_18_editor_slide_content_right" + i,
 								},
 								el(
 									"div",
 									{
 										className: "gbt_18_editor_image",
-										key: "gbt_18_image",
+										key: "gbt_18_image" + i,
 										style:{backgroundImage: "url("+products[i]['images'][0]['src']+")"}
 									},
 								),
@@ -294,11 +294,13 @@
 							el(
 								'div',
 								{
+									key: "gbt_18_editor_slide_link" + i,
 									className: 'gbt_18_editor_slide_link',
 								},
 								el(
 									'i',
 									{
+										key: "gbt_18_icon_right" + i,
 										className: 'gbt_18_icon_right',
 									}
 								),
@@ -442,21 +444,21 @@
 				let productElements = [];
 
 				if ( attributes.querySearchNoResults === true) {
-					return el('span', {className: 'no-results'}, i18n.__('No products matching.'));
+					return el('span', {key: 'gbt-vertical-slider-search-results-no-results', className: 'no-results'}, i18n.__('No products matching.'));
 				}
 				let products = attributes.querySearchResults;
 				for (let i = 0; i < products.length; i++ ) {
 					let img = '';
 					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { key: 'gbt-vertical-slider-search-results-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-vertical-slider-search-results-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
-								key: 		'item-' + products[i].id +i,
+								key: 'gbt-vertical-slider-search-result-item-' + products[i].id,
 								className: _searchResultClass(products[i].id),
 								title: products[i].name,
 								'data-index': i,
@@ -465,11 +467,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-vertical-slider-search-result-item-title-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-vertical-slider-search-result-item-checkbox-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -496,8 +500,8 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-yes'}),
-								el('span',{ className: 'dashicons dashicons-no-alt'}),
+								el('span',{ key: 'gbt-vertical-slider-search-result-item-dashicon-yes-' + i, className: 'dashicons dashicons-yes'}),
+								el('span',{ key: 'gbt-vertical-slider-search-result-item-dashicon-no-alt-' + i, className: 'dashicons dashicons-no-alt'}),
 							),
 						)
 					);
@@ -512,15 +516,15 @@
 				for ( let i = 0; i < products.length; i++ ) {
 					let img= '';
 					if ( products[i].images.length && typeof products[i].images[0].src !== 'undefined' && products[i].images[0].src != '' ) {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
+						img = el('span', { key: 'gbt-vertical-slider-search-selected-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+products[i].images[0].src+'\')"></span>'}});
 					} else {
-						img = el('span', { className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
+						img = el('span', { key: 'gbt-vertical-slider-search-selected-img-wrapper', className: 'img-wrapper', dangerouslySetInnerHTML: { __html: '<span class="img" style="background-image: url(\''+getbowtied_pbw.woo_placeholder_image+'\')"></span>'}});
 					}
 					productElements.push(
 						el(
 							'span',
 							{
-								key: 		'item-' + products[i].id,
+								key: 'gbt-vertical-slider-search-selected-item-' + products[i].id,
 								className:'single-result',
 								title: products[i].name,
 							},
@@ -528,11 +532,13 @@
 							el(
 								'label',
 								{
+									key: 'gbt-vertical-slider-search-selected-item-title-' + i,
 									className: 'title-wrapper'
 								},
 								el(
 									'input',
 									{
+										key: 'gbt-vertical-slider-search-selected-item-checkbox-' + i,
 										type: 'checkbox',
 										value: i,
 										onChange: function onChange(evt) {
@@ -566,7 +572,7 @@
 									},
 								),
 								products[i].name,
-								el('span',{ className: 'dashicons dashicons-no-alt'})
+								el('span',{ key: 'gbt-vertical-slider-search-selected-item-dashicon-no-alt-' + i, className: 'dashicons dashicons-no-alt'})
 							),
 						)
 					);
@@ -581,10 +587,12 @@
 				el(
 					InspectorControls,
 					{
+						key: 'gbt-product-slider-inspector'
 					},
 					el(
 						'div',
 						{
+							key: 'gbt-product-slider-inspector-wrapper',
 							className: 'products-main-inspector-wrapper',
 						},
 					/* Pick specific producs */
@@ -663,12 +671,13 @@
 				el(
 					'div',
 					{
+						key: 'gbt_18_default_slider_main_wrapper',
 					},
 					el(
 						'div',
 						{
 							className: 'gbt_18_editor_default_slider',
-							key: 'gbt_18_default_slider',
+							key: 'gbt_18_default_slider_products_wrapper',
 						},
 						attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
 						renderResults(),
