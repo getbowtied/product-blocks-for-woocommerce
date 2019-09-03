@@ -12,6 +12,10 @@
 	padding: 0;
 	margin: 0;
 
+	.gbt_18_editor_content_wrapper {
+		margin: 0 14px;
+	}
+
 	.gbt_18_editor_default_slider {
 		width: 100%;
 		height: 100%;
@@ -75,7 +79,7 @@
     		text-transform: uppercase;
     		font-size: 14px;
     		line-height: 14px;
-    		
+
     		i {
     			margin: 0 10px 0 6px;
 				font-size: 12px;
@@ -203,58 +207,6 @@
 
 	.toggle-next {
 		left: 60px;
-	}
-}
-
-//==============================================================================
-//	Full Alignment Specific Styles
-//==============================================================================
-.editor-block-list__block[data-type="getbowtied/products-slider"] {
-
-    .gbt_18_editor_default_slider.force-full {
-    	padding: 0 16px;
-
-	    .gbt_18_editor_slide_content_left {
-	        padding: 5%;
-	    }
-
-	    .gbt_18_editor_slide_title {
-		   line-height: 1.5;
-	       font-size: 24px;
-		}
-
-		.gbt_18_editor_slide_text {
-			margin: 2rem 0;
-			font-size: 16px;
-		}
-
-		.gbt_18_slide_content_arrows {
-			margin-left: 4%;
-		    position: absolute;
-			bottom: 10%;
-		}
-
-		.gbt_18_editor_add_to_cart,
-		.gbt_18_editor_slide_price,
-		.gbt_18_editor_slide_text p {
-			font-size: 16px;
-		}
-
-		.toggle-prev,
-		.toggle-next {
-
-			&:before {
-				font-size: 20px;
-			}
-		}
-
-		.toggle-prev {
-			left: 35px;
-		}
-
-		.toggle-next {
-			left: 60px;
-		}
 	}
 }
 

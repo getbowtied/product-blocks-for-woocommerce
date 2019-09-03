@@ -63,7 +63,7 @@ function pbfw_render_frontend_products_slider( $attributes ) {
 			);
 			// Product Stock
 			if ( $product->is_in_stock() === false ) : ?>
-									<p class="stock <?php echo $product->get_availability()['class']; ?>"><?php echo $product->get_availability()['availability']; ?></p><br/>
+									<p class="stock <?php echo $product->get_availability()['class']; ?>"><?php echo $product->get_availability()['availability']; ?></p>
 											<?php
 								endif;
 			// Product add to cart button

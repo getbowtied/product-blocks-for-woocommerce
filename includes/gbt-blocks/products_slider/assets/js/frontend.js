@@ -34,7 +34,7 @@
 
 				//SET THE FIRST SLIDE AS DEFAULT SLIDE
 				$('.gbt_18_image_link', this).eq(defaultItemActive - 1).addClass('gbt_18_active');
-				$('.gbt_18_slide_content_item', this).eq(defaultItemActive - 1).addClass('gbt_18_active',);
+				$('.gbt_18_slide_content_item', this).eq(defaultItemActive - 1).addClass('gbt_18_active');
 				$('.gbt_18_slide_link a').attr('href', $('.gbt_18_active input[name="slide-link"]').val());
 
 				//SLIDE INDEX NUMBER
