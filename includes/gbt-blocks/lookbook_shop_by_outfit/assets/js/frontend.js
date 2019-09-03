@@ -169,7 +169,7 @@
 		});
 
 		$('.gbt_18_scroll_down_button').on('click',function(){
-			if ($('.gbt_18_look_book_item[data-section-name="2"]').length) {
+			if ($('.gbt_18_look_book_item[data-section-name="1"]').length) {
 				$('html, body').animate({
 					scrollTop: $('.gbt_18_look_book_item[data-section-name="1"]').offset().top
 				}, 500);
