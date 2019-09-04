@@ -320,6 +320,106 @@
 				el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
 			);
 		},
+		deprecated: [
+	        {
+				attributes: {
+					title: {
+	 	   				type: 'string',
+	 	   				default: 'Lookbook Title',
+	 	   			},
+	 	   			subtitle: {
+	 	   				type: 'string',
+	 	   				default: 'Lookbook Subtitle',
+	 	   			},
+	 	   			imgURL: {
+	 	   	            type: 'string',
+	 	   	            attribute: 'src',
+	 	   	            default: '',
+	 	   	        },
+	 	   	        imgID: {
+	 	   	            type: 'number',
+	 	   	        },
+	 	   	        imgAlt: {
+	 	   	            type: 'string',
+	 	   	            attribute: 'alt',
+	 	   	        },
+	 	   	        bgColor: {
+	 	   	        	type: 'string',
+	 	   	        	default: '#d3d5d9'
+	 	   	        },
+	 	   	        textColor: {
+	 	   	        	type: 'string',
+	 	   	        	default: '#000'
+	 	   	        },
+	            },
+				supports: {
+					align: false
+				},
+
+	            save: function( props ) {
+					props.attributes.title = props.attributes.title || "";
+
+					props.attributes.subtitle 	= props.attributes.subtitle || "";
+					props.attributes.imgURL 	= props.attributes.imgURL || "";
+			        props.attributes.bgColor 	= props.attributes.bgColor || "";
+			        props.attributes.textColor 	= props.attributes.textColor || "";
+
+					return el( 'div',
+						{
+							key: 		'gbt_18_snap_look_book',
+							className: 	'gbt_18_snap_look_book'
+						},
+						el( 'section',
+							{
+								key: 		'gbt_18_hero_look_book_item',
+								className: 	'gbt_18_look_book_item gbt_18_hero_look_book_item',
+								style:
+								{
+									backgroundImage: 'url(' + (props.attributes.imgURL || "") + ')',
+									backgroundColor: props.attributes.bgColor,
+									color: props.attributes.textColor
+								}
+							},
+							el( 'div',
+								{
+									key: 		'gbt_18_hero_section_content',
+									className: 	'gbt_18_hero_section_content'
+								},
+								el( 'h1',
+									{
+										key: 		'gbt_18_hero_title',
+										className: 	'gbt_18_hero_title',
+										style:
+										{
+											color: props.attributes.textColor
+										}
+									},
+									props.attributes.title
+								),
+								el( 'p',
+									{
+										key: 		'gbt_18_hero_subtitle',
+										className: 	'gbt_18_hero_subtitle'
+									},
+									props.attributes.subtitle
+								),
+							),
+							el( 'span',
+								{
+									key: 		'gbt_18_scroll_down_button',
+									className: 	'gbt_18_scroll_down_button',
+									style:
+									{
+										borderColor: props.attributes.textColor
+									}
+								},
+							)
+						),
+						el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
+					);
+	            },
+	        }
+	    ],
 	} );
 
 } )(
