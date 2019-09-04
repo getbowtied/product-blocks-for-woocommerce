@@ -101,7 +101,7 @@
 		/* Space Between */
 			spaceBetween: {
 				type: 'int',
-				default: 20
+				default: 30
 			},
 		/* Limit */
 			limit: {
@@ -1238,10 +1238,10 @@
 								key: 'gbt-product-carousel-space-between',
 								value: attributes.spaceBetween,
 								allowReset: false,
-								initialPosition: 20,
+								initialPosition: 30,
 								min: 0,
 								max: 50,
-								label: i18n.__( 'Space Between' ),
+								label: i18n.__( 'Space Between Products' ),
 								onChange: function( newSpace ) {
 									props.setAttributes( { spaceBetween: newSpace } );
 								},
