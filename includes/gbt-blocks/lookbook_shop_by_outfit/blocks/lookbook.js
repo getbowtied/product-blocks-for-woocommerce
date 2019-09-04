@@ -241,7 +241,7 @@
 								},
 								el( Path,
 									{
-										d:"M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+										d:"M 11 3 L 11 17.070312 L 6.4296875 12.5 L 4.9296875 14 L 12 21.070312 L 19.070312 14 L 17.570312 12.5 L 13 17.070312 L 13 3 L 11 3 z"
 									}
 								),
 						  	)
@@ -315,6 +315,23 @@
 								borderColor: props.attributes.textColor
 							}
 						},
+						el( SVG,
+							{
+								key: 'gbt_18_scroll_down_button-svg',
+								xmlns:"http://www.w3.org/2000/svg",
+								viewBox:"0 0 24 24",
+								style:
+								{
+									fill: props.attributes.textColor,
+								}
+							},
+							el( Path,
+								{
+									key: 'gbt_18_scroll_down_button-svg-path',
+									d:"M 11 3 L 11 17.070312 L 6.4296875 12.5 L 4.9296875 14 L 12 21.070312 L 19.070312 14 L 17.570312 12.5 L 13 17.070312 L 13 3 L 11 3 z",
+								}
+							)
+						),
 					)
 				),
 				el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )

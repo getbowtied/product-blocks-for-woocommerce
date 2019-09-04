@@ -47,55 +47,19 @@
   font-size: 12px; }
 
 .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button {
-  width: 35px;
-  height: 35px;
-  padding: 5px 3px 3px;
+  width: 46px;
+  height: 46px;
+  border-radius: 46px;
+  padding: 10px;
   border: 1px solid #000;
   position: relative;
   display: inline-block;
-  border-radius: 35px;
   position: absolute;
   bottom: 80px;
   margin: 0 auto;
   left: 0;
   right: 0;
   cursor: pointer; }
-  .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button:before {
-    content: '';
-    border: solid black;
-    border-width: 0 1px 1px 0;
-    display: inline-block;
-    padding: 5px;
-    position: absolute;
-    top: 23%;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    width: 0; }
-
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
-  min-height: 500px; }
-
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_hero_section_text {
-  padding-left: 100px;
-  padding-right: 100px; }
-
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_hero_section_title {
-  font-size: 44px; }
-
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_hero_section_subtitle {
-  font-size: 14px; }
-
-.editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_lookbook_sts_scroll_down_button {
-  width: 40px;
-  height: 40px;
-  border-radius: 40px; }
-  .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_lookbook_sts_scroll_down_button:before {
-    padding: 6px;
-    top: 23%; }
 
 @media screen and (min-width: 1px) {
   .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
@@ -112,14 +76,7 @@
     .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
       font-size: 48px; }
     .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
-      font-size: 14px; }
-    .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button {
-      width: 46px;
-      height: 46px;
-      border-radius: 46px; }
-      .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button:before {
-        padding: 7px;
-        top: 28%; } }
+      font-size: 14px; } }
 
 .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender__content,
 .editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-rich-text p {
