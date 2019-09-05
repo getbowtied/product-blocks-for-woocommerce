@@ -194,15 +194,17 @@
 
 	$('.gbt_18_snap_look_book .gbt_18_hero_look_book_item').each(function() {
 
-		var windowHeight = $(window).height();
-		var offsetTop = $(this).offset().top;
-		var fullHeight = 100-offsetTop/(windowHeight/100);
+		if( $(this).parent().is(':first-child') ) {
 
-		if( windowHeight && fullHeight ) {
-			$(this).css('max-height', fullHeight+"vh");
-			$(this).css('min-height', fullHeight+"vh");
+			var windowHeight = $(window).height();
+			var offsetTop = $(this).offset().top;
+			var fullHeight = 100-offsetTop/(windowHeight/100);
+
+			if( windowHeight && fullHeight ) {
+				$(this).css('min-height', fullHeight+"vh");
+				$(this).css('max-height', fullHeight+"vh");
+			}
 		}
-
 	});
 
 
