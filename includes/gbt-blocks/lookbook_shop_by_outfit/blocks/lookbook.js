@@ -18,6 +18,37 @@
 	const Path 					= components.Path;
 	const Circle				= components.Circle;
 
+	var attributes = {
+		title: {
+			type: 'string',
+			default: 'Lookbook Title',
+		},
+		subtitle: {
+			type: 'string',
+			default: 'Lookbook Subtitle',
+		},
+		imgURL: {
+			type: 'string',
+			attribute: 'src',
+			default: '',
+		},
+		imgID: {
+			type: 'number',
+		},
+		imgAlt: {
+			type: 'string',
+			attribute: 'alt',
+		},
+		bgColor: {
+			type: 'string',
+			default: '#d3d5d9'
+		},
+		textColor: {
+			type: 'string',
+			default: '#000'
+		},
+	};
+
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-shop-by-outfit', {
 		title: i18n.__( 'Lookbook - Shop by Outfit' ),
@@ -30,40 +61,7 @@
 		supports: {
 			align: ['full']
 		},
-		attributes: {
-			title: {
-				type: 'string',
-				default: 'Lookbook Title',
-			},
-			subtitle: {
-				type: 'string',
-				default: 'Lookbook Subtitle',
-			},
-			imgURL: {
-	            type: 'string',
-	            attribute: 'src',
-	            default: '',
-	        },
-	        imgID: {
-	            type: 'number',
-	        },
-	        imgAlt: {
-	            type: 'string',
-	            attribute: 'alt',
-	        },
-	        bgColor: {
-	        	type: 'string',
-	        	default: '#d3d5d9'
-	        },
-	        textColor: {
-	        	type: 'string',
-	        	default: '#000'
-	        },
-			align: {
-				type: 'string',
-				default: 'full'
-			},
-		},
+		attributes: attributes,
 
 		edit: function( props ) {
 
@@ -339,36 +337,8 @@
 		},
 		deprecated: [
 	        {
-				attributes: {
-					title: {
-	 	   				type: 'string',
-	 	   				default: 'Lookbook Title',
-	 	   			},
-	 	   			subtitle: {
-	 	   				type: 'string',
-	 	   				default: 'Lookbook Subtitle',
-	 	   			},
-	 	   			imgURL: {
-	 	   	            type: 'string',
-	 	   	            attribute: 'src',
-	 	   	            default: '',
-	 	   	        },
-	 	   	        imgID: {
-	 	   	            type: 'number',
-	 	   	        },
-	 	   	        imgAlt: {
-	 	   	            type: 'string',
-	 	   	            attribute: 'alt',
-	 	   	        },
-	 	   	        bgColor: {
-	 	   	        	type: 'string',
-	 	   	        	default: '#d3d5d9'
-	 	   	        },
-	 	   	        textColor: {
-	 	   	        	type: 'string',
-	 	   	        	default: '#000'
-	 	   	        },
-	            },
+				attributes: attributes,
+
 				supports: {
 					align: false
 				},
