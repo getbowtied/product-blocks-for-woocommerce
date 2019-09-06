@@ -125,9 +125,6 @@ body.admin-bar {
 							.cart{
 								display: none;
 							}
-							.gbt_18_slide_text{
-								display: none;
-							}
 							.stock{
 								display: none;
 							}
@@ -221,7 +218,7 @@ body.admin-bar {
 			.gbt_18_content_wrapper{
 				height: calc(100% - 92px);
 				max-width: 450px;
-				margin: 46px auto 0 auto;
+				margin: 46px auto 46px auto;
 				> * {
 					max-width: 450px;
 				}
@@ -255,7 +252,7 @@ body.admin-bar {
 					position: relative;
 					overflow-x: hidden;
 					overflow-y: auto;
-					height: 440px;
+					height: 450px;
 					max-height: 50vh;
 					padding-right: 20px;
 					box-sizing: content-box;
@@ -286,6 +283,7 @@ body.admin-bar {
 							padding: 20px 0;
 							.summary {
 								margin: 0 !important;
+                                padding: 0;
 								.product-title{
 									font-size: 1.65rem;
 									margin-bottom: 32px;
@@ -297,10 +295,6 @@ body.admin-bar {
 								.cart{
 									display: flex;
 								}
-								.gbt_18_slide_text{
-									display: block;
-									margin-bottom: 1.475rem;
-								}
 								.stock{
 									display: flex;
 								}
@@ -310,6 +304,7 @@ body.admin-bar {
 				}
 				.gbt_18_slide_link {
 					margin-top: 30px;
+                    margin-bottom: 0;
 					font-size: 12px;
 					text-transform: uppercase;
 					font-weight: 500;

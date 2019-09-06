@@ -54,8 +54,7 @@ function pbfw_render_frontend_products_slider( $attributes ) {
 								 			<div class="gbt_18_slide_content_wrapper">
 								 				<div class="summary entry-summary">
 								 					<h2 class="product-title entry-title gbt_18_slide_title"><a href="%s">%s</a></h2>
-													<p class="price">%s</p>
-													<div class="gbt_18_slide_text"><span class="gbt_18_p_wrapper">%s</span></div>',
+													<p class="price">%s</p>',
 				esc_url( get_permalink( $product->get_id() ) ),
 				$product->get_name(),
 				$product->get_price_html(),
@@ -97,11 +96,11 @@ function pbfw_render_frontend_products_slider( $attributes ) {
 								<?php endif; ?>
 								</div>
 								<input type="hidden" name="slide-link" value="<?php echo esc_url(get_permalink($product->get_id())); ?>" />
+								<?php printf( '<div class="gbt_18_slide_link"><a href="#"><i class="gbt_18_icon_right"></i>%s</a></div>', __( 'View Product Page', 'block-shop' ) ); ?>
 						<?php
 						printf( '</div></div></div>' );
 						endforeach;
 				   printf( '</div>' );
-				   printf( '<div class="gbt_18_slide_link"><a href="#"><i class="gbt_18_icon_right"></i>%s</a></div>', __( 'View Product Page', 'block-shop' ) );
 				   printf( '<div class="gbt_18_slide_controls"></div>' );
 			   printf( '</div>' );
 		   printf( '</div>' );
