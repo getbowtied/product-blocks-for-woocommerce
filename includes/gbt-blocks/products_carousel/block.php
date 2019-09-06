@@ -104,7 +104,7 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 	if ( $lc->have_posts() ) { ?>
 		<div class="wp-block-getbowtied-carousel align<?php echo $align; ?>">
 			<div class="swiper-navigation-container">
-				<div class="gbt_18_swiper-container" data-columns="<?php echo $columns; ?>" data-spaceBetween="<?php echo $spaceBetween; ?>">
+				<div class="swiper-container gbt_18_swiper-container" data-columns="<?php echo $columns; ?>" data-spaceBetween="<?php echo $spaceBetween; ?>">
 					<div class="swiper-wrapper">
 						<?php
 						while ( $lc->have_posts() ) :

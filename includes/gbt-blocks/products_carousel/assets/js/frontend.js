@@ -43,6 +43,8 @@
 			    	}
 			    }
 			}));
+
+			$(this).find('.swiper-wrapper').css('height', 'auto');
 		})
   });
 
