@@ -693,7 +693,8 @@
 						el(
 							'span',
 							{
-								className:'single-result' + products[i].id,
+								key: 'single-result-' + products[i].id,
+								className: 'single-result',
 								title: products[i].name,
 							},
 							img,
