@@ -51,7 +51,7 @@ function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 							$iobj2  = wp_get_attachment_image( $gallery_ids[0], array( 1000, 1000 ) );
 						}
 						?>
-						<a href="<?php echo $product->get_permalink(); ?>">
+						<a class="gbt_18_fade_images_link" href="<?php echo $product->get_permalink(); ?>">
 								<div class="gbt_18_fade_images">
 									<?php echo isset( $iobj ) ? $iobj : wc_placeholder_img(); ?>
 									<?php echo isset( $iobj2 ) ? $iobj2 : ''; ?>
