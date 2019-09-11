@@ -216,9 +216,9 @@ body.admin-bar {
 			order: 0;
 			height: 100%;
 			.gbt_18_content_wrapper{
-				height: calc(100% - 92px);
+				height: calc(100% - 120px);
 				max-width: 450px;
-				margin: 46px auto 46px auto;
+				margin: 60px auto 60px auto;
 				> * {
 					max-width: 450px;
 				}
@@ -327,7 +327,6 @@ body.admin-bar {
 					display: inline-block;
 					width: auto;
 					margin-top: 34px;
-					margin-bottom: 26px;
 					position: relative;
 					span{
 						font-size: 16px;
