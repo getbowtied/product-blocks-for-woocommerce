@@ -53,6 +53,18 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
+= 1.3.4 =
+* Fixed: Key warnings in backend console
+* Lookbook - Shop by Outfit: Fixed scroll to first product issue
+* Lookbook - Shop by Outfit: Backend style improvements
+* Lookbook - Shop by Outfit: Scroll button icon change
+* Vertical Slider: Frontend style improvements
+* Vertical Slider: Backend style improvements
+* Vertical Slider: Removed product description to avoid display issues
+* Lookbook - Product Reveal: Frontend style improvements
+* Products Carousel: Renamed Space Between option
+* Products Carousel: Fixed initial height
+
 = 1.3.3 =
 * Fixed: Product carousel display fix
 
