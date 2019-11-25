@@ -39,7 +39,7 @@ function getbowtied_product_blocks_frontend_styles() {
 		'swiper',
 		plugins_url( 'assets/frontend/css/swiper.min.css', dirname( dirname( __FILE__ ) ) ),
 		array(),
-		'4.5.0'
+		'5.2.0'
 	);
 	wp_enqueue_style(
 		'getbowtied-product-blocks-frontend-styles',
@@ -60,7 +60,7 @@ function getbowtied_product_blocks_frontend_styles() {
 		'swiper',
 		plugins_url( 'assets/frontend/js/swiper.min.js', dirname( dirname( __FILE__ ) ) ),
 		array( 'jquery' ),
-		'4.5.0',
+		'5.2.0',
 		true
 	);
 	wp_enqueue_script(
