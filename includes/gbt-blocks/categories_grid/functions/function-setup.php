@@ -17,12 +17,6 @@ function pbfw_categories_grid_editor_assets() {
 	);
 	wp_localize_script( 'getbowtied-categories-grid-editor-scripts', 'getbowtied_pbw',
             array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'woo_placeholder_image'	=>	function_exists('wc_placeholder_img_src')? wc_placeholder_img_src() : '' ));
-	wp_register_style(
-		'getbowtied-categories-grid-editor-styles',
-		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
-		array( 'wp-edit-blocks' ),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor'.PBFW_SUFFIX.'.css' )
-	);
 }
 
 /**
@@ -33,7 +27,7 @@ function pbfw_categories_grid_assets() {
 	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/categories-grid', get_the_ID() ) ) {
 
 		wp_enqueue_script( 'imagesloaded' );
-		
+
 		wp_enqueue_script(
 			'getbowtied-categories-grid-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
@@ -53,7 +47,6 @@ function pbfw_categories_grid_assets() {
  * Register Block
  */
 register_block_type( 'getbowtied/categories-grid', array(
-	'editor_style'  	=> 'getbowtied-categories-grid-editor-styles',
 	'editor_script'		=> 'getbowtied-categories-grid-editor-scripts',
 	'attributes'      	=> array(
 		'queryDisplayType'				=> array(

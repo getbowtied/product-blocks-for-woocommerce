@@ -22,13 +22,6 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 		plugins_url( 'blocks/product.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 	);
-
-	wp_register_style(
-		'getbowtied-lookbook-shop-by-outfit-editor-styles',
-		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
-		array( 'wp-edit-blocks' ),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor'.PBFW_SUFFIX.'.css' )
-	);
 }
 
 /**
@@ -37,7 +30,7 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 add_action( 'enqueue_block_assets', 'pbfw_lookbook_snap_to_scroll_assets' );
 function pbfw_lookbook_snap_to_scroll_assets() {
 	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-shop-by-outfit-product', get_the_ID() ) ) {
-		
+
 		wp_enqueue_script(
 			'jquery-scrollify',
 			plugins_url( 'assets/frontend/vendor/scrollify/js/jquery.scrollify.js', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
@@ -65,7 +58,6 @@ function pbfw_lookbook_snap_to_scroll_assets() {
  * Register Block
  */
 register_block_type( 'getbowtied/lookbook-shop-by-outfit-product', array(
-	'editor_style'  	=> 'getbowtied-lookbook-shop-by-outfit-editor-styles',
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',

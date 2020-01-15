@@ -15,12 +15,6 @@ function pbfw_products_carousel_editor_assets() {
 		plugins_url( 'block.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 	);
-	wp_register_style(
-		'getbowtied-products-carousel-editor-styles',
-		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname( __FILE__ ) ),
-		array( 'wp-edit-blocks' ),
-		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/css/backend/editor'.PBFW_SUFFIX.'.css' )
-	);
 }
 
 /**
@@ -70,7 +64,6 @@ function pbfw_products_carousel_assets() {
  * Register Block
  */
 register_block_type( 'getbowtied/products-carousel', array(
-	'editor_style'  	=> 'getbowtied-products-carousel-editor-styles',
 	'editor_script'		=> 'getbowtied-products-carousel-editor-scripts',
 	'attributes'      => array(
 		'productIDs'       => array(
