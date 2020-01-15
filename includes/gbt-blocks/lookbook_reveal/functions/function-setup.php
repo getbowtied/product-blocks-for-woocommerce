@@ -1,9 +1,13 @@
 <?php
+/**
+ * LookBook - Product Reveal Setup
+ */
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-//==============================================================================
-//	Enqueue Editor Assets
-//==============================================================================
+/**
+ * Enqueue Editor Assets
+ */
 add_action( 'admin_init', 'pbfw_lookbook_reveal_editor_assets' );
 function pbfw_lookbook_reveal_editor_assets() {
 	wp_enqueue_script(
@@ -18,15 +22,31 @@ function pbfw_lookbook_reveal_editor_assets() {
 	);
 	wp_enqueue_style(
 		'getbowtied-lookbook-reveal-editor-styles',
-		plugins_url( 'assets/css/backend/editor.css', dirname(__FILE__) ),
+		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
 		array( 'wp-edit-blocks' ),
-		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor.css' )
+		filemtime( plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor'.PBFW_SUFFIX.'.css' )
 	);
 }
-	
-//==============================================================================
-//	Register Block
-//==============================================================================
+
+/**
+ * Enqueue Frontend Assets
+ */
+add_action( 'enqueue_block_assets', 'pbfw_lookbook_reveal_assets' );
+function pbfw_lookbook_reveal_assets() {
+	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-reveal-product', get_the_ID() ) ) {
+
+		wp_enqueue_style(
+			'getbowtied-lookbook-reveal-styles',
+			plugins_url( 'assets/css/frontend/style'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
+			array(),
+			filemtime(plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style'.PBFW_SUFFIX.'.css')
+		);
+	}
+}
+
+/**
+ * Register Block
+ */
 register_block_type( 'getbowtied/lookbook-reveal-product', array(
 
 	'attributes'      	=> array(

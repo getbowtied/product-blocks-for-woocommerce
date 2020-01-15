@@ -1,6 +1,7 @@
 <?php
-
-// Categories Grid
+/**
+ * LookBook - Product Reveal
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -8,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once 'functions/function-setup.php';
 
-//==============================================================================
-//	Frontend Output
-//==============================================================================
+/**
+ * Frontend Output
+ */
 function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 
 	extract(
