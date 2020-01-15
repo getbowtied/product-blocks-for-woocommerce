@@ -27,7 +27,7 @@
 
 				//APPEND SLIDE CONTROLS
 				$('.gbt_18_slide_controls', this).append(slideLeft, slideRight);
-				$('.gbt_18_img', this).append(`<div class="gbt_18_mobile_controls">${slideLeft + slideRight}</div>`);
+				$('.gbt_18_img', this).append('<div class="gbt_18_mobile_controls">${slideLeft + slideRight}</div>');
 
 				//APPEND SLIDE HEADER
 				$('.gbt_18_slide_header', this).append(slideCount);

@@ -1,15 +1,15 @@
 <?php
-// Products Slider
+/**
+ * Products Slider
+ */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once 'functions/function-setup.php';
 
-//==============================================================================
-//	Frontend Output
-//==============================================================================
+/**
+ * Frontend Output
+ */
 function pbfw_render_frontend_products_slider( $attributes ) {
 	extract(
 		shortcode_atts(
