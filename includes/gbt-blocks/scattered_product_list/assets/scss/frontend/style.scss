@@ -9,7 +9,7 @@ body{
 	position: relative;
 	.gbt_18_grid{
 		width: 100%;
-		margin: 100px auto;
+		margin: 0 auto 1.25rem auto;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
@@ -28,15 +28,15 @@ body{
 				cursor: pointer;
 				&:first-child{
 					width: 41.5%;
-					
+
 				}
 				&:nth-child(4n+4){
 					width: 41.5%;
-					
+
 				}
 				&:nth-child(4n+5){
 					width: 41.5%;
-					
+
 					}
 				> a {
 					display: flex;
@@ -51,7 +51,7 @@ body{
 					margin-top: 20px;
 				}
 				.gbt_18_feature_image{
-					
+
 					display: block;
 					position: relative;
 					img{
