@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 add_action( 'enqueue_block_assets', 'pbfw_lookbook_reveal_assets' );
 function pbfw_lookbook_reveal_assets() {
-	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-reveal-product', get_the_ID() ) ) {
+	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-reveal', get_the_ID() ) ) {
 
 		wp_enqueue_style(
 			'getbowtied-lookbook-reveal-styles',

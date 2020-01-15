@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 add_action( 'enqueue_block_assets', 'pbfw_lookbook_snap_to_scroll_assets' );
 function pbfw_lookbook_snap_to_scroll_assets() {
-	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-shop-by-outfit-product', get_the_ID() ) ) {
+	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-shop-by-outfit', get_the_ID() ) ) {
 
 		wp_enqueue_script(
 			'jquery-scrollify',
