@@ -6,18 +6,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Enqueue Editor Assets
- */
-add_action( 'enqueue_block_editor_assets', 'pbfw_products_slider_editor_assets' );
-function pbfw_products_slider_editor_assets() {
-	wp_register_script(
-		'getbowtied-products-slider-editor-scripts',
-		plugins_url( 'block.js', dirname(__FILE__) ),
-		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
-	);
-}
-
-/**
  * Enqueue Frontend Assets
  */
 add_action( 'enqueue_block_assets', 'pbfw_products_slider_assets' );

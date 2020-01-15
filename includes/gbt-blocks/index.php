@@ -15,10 +15,18 @@ add_action( 'enqueue_block_editor_assets', function() {
 	);
 	wp_enqueue_script(
 		'getbowtied-product-blocks-editor-scripts',
-		plugins_url( 'assets/backend/js/main.js', dirname( dirname( __FILE__ ) ) ),
-		array( 'wp-blocks', 'jquery' ),
+		plugins_url( 'assets/backend/js/blocks'.PBFW_SUFFIX.'.js', dirname( dirname( __FILE__ ) ) ),
+		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
 		PBFW_VERSION
 	);
+
+	wp_localize_script( 'getbowtied-product-blocks-editor-scripts', 'getbowtied_pbw',
+		array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'woo_placeholder_image'	=>	function_exists('wc_placeholder_img_src')? wc_placeholder_img_src() : ''
+		)
+	);
+
 } );
 
 require_once dirname( __FILE__ ) . '/products_slider/block.php';

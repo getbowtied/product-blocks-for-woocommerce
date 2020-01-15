@@ -6,23 +6,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Enqueue Editor Assets
- */
-add_action( 'enqueue_block_editor_assets', 'pbfw_lookbook_reveal_editor_assets' );
-function pbfw_lookbook_reveal_editor_assets() {
-	wp_enqueue_script(
-		'getbowtied-lookbook-reveal-editor-lookbook-scripts',
-		plugins_url( 'blocks/lookbook.js', dirname(__FILE__) ),
-		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
-	);
-	wp_enqueue_script(
-		'getbowtied-lookbook-reveal-editor-lookbook-product-scripts',
-		plugins_url( 'blocks/product.js', dirname(__FILE__) ),
-		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
-	);
-}
-
-/**
  * Enqueue Frontend Assets
  */
 add_action( 'enqueue_block_assets', 'pbfw_lookbook_reveal_assets' );

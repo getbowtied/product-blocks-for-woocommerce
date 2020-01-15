@@ -6,20 +6,6 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- * Enqueue Editor Assets
- */
-add_action( 'enqueue_block_editor_assets', 'pbfw_categories_grid_editor_assets' );
-function pbfw_categories_grid_editor_assets() {
-	wp_register_script(
-		'getbowtied-categories-grid-editor-scripts',
-		plugins_url( 'block.js', dirname(__FILE__) ),
-		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
-	);
-	wp_localize_script( 'getbowtied-categories-grid-editor-scripts', 'getbowtied_pbw',
-            array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'woo_placeholder_image'	=>	function_exists('wc_placeholder_img_src')? wc_placeholder_img_src() : '' ));
-}
-
-/**
  * Enqueue Frontend Assets
  */
 add_action( 'enqueue_block_assets', 'pbfw_categories_grid_assets' );
