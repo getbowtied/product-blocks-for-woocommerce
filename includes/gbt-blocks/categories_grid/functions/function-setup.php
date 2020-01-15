@@ -31,6 +31,9 @@ function pbfw_categories_grid_editor_assets() {
 add_action( 'enqueue_block_assets', 'pbfw_categories_grid_assets' );
 function pbfw_categories_grid_assets() {
 	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/categories-grid', get_the_ID() ) ) {
+
+		wp_enqueue_script( 'imagesloaded' );
+		
 		wp_enqueue_script(
 			'getbowtied-categories-grid-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),

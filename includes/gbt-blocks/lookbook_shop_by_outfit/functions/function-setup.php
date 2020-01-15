@@ -37,7 +37,7 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 add_action( 'enqueue_block_assets', 'pbfw_lookbook_snap_to_scroll_assets' );
 function pbfw_lookbook_snap_to_scroll_assets() {
 	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-shop-by-outfit-product', get_the_ID() ) ) {
-		wp_enqueue_script( 'imagesloaded' );
+		
 		wp_enqueue_script(
 			'jquery-scrollify',
 			plugins_url( 'assets/frontend/vendor/scrollify/js/jquery.scrollify.js', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
