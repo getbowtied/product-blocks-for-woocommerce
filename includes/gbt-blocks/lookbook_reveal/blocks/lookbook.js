@@ -1,4 +1,4 @@
-( function( blocks, components, editor, i18n, element ) {
+( function( blocks, components, blockEditor, i18n, element ) {
 
 	"use strict";
 

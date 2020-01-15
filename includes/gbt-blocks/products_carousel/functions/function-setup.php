@@ -29,6 +29,28 @@ function pbfw_products_carousel_editor_assets() {
 add_action( 'enqueue_block_assets', 'pbfw_products_carousel_assets' );
 function pbfw_products_carousel_assets() {
 	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/products-carousel', get_the_ID() ) ) {
+		wp_enqueue_style(
+			'swiper',
+			plugins_url( 'assets/frontend/vendor/swiper/css/swiper.min.css', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
+			array(),
+			'5.2.0'
+		);
+
+		wp_enqueue_script(
+			'swiper',
+			plugins_url( 'assets/frontend/vendor/swiper/js/swiper.min.js', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
+			array( 'jquery' ),
+			'5.2.0',
+			true
+		);
+
+		wp_enqueue_style(
+			'getbowtied-product-blocks-frontend-styles',
+			plugins_url( 'assets/frontend/css/fonts.css', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
+			array(),
+			PBFW_VERSION
+		);
+
 		wp_enqueue_script(
 			'getbowtied-products-carousel-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
