@@ -10,13 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 add_action( 'enqueue_block_editor_assets', 'pbfw_products_slider_editor_assets' );
 function pbfw_products_slider_editor_assets() {
-	wp_enqueue_script(
+	wp_register_script(
 		'getbowtied-products-slider-editor-scripts',
 		plugins_url( 'block.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 	);
 
-	wp_enqueue_style(
+	wp_register_style(
 		'getbowtied-products-slider-editor-styles',
 		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
 		array( 'wp-edit-blocks' ),
@@ -49,6 +49,8 @@ function pbfw_products_slider_assets() {
  * Register Block
  */
 register_block_type( 'getbowtied/products-slider', array(
+	'editor_style'  	=> 'getbowtied-products-slider-editor-styles',
+	'editor_script'		=> 'getbowtied-products-slider-editor-scripts',
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',

@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 add_action( 'enqueue_block_editor_assets', 'pbfw_expanding_grid_editor_assets' );
 function pbfw_expanding_grid_editor_assets() {
-	wp_enqueue_script(
+	wp_register_script(
 		'getbowtied-scattered-product-list-editor-scripts',
 		plugins_url( 'block.js', dirname( __FILE__ ) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
 	);
-	wp_enqueue_style(
+	wp_register_style(
 		'getbowtied-scattered-product-list-editor-styles',
 		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname( __FILE__ ) ),
 		array( 'wp-edit-blocks' ),
@@ -41,36 +41,35 @@ function pbfw_expanding_grid_assets() {
 /**
  * Register Block
  */
-register_block_type(
-	'getbowtied/scattered-product-list',
-	array(
-		'attributes'      => array(
-			'productIDs'       => array(
-				'type'    => 'string',
-				'default' => '',
-			),
-			'align'            => array(
-				'type'    => 'string',
-				'default' => 'center',
-			),
-			'queryOrder'       => array(
-				'type'    => 'string',
-				'default' => '',
-			),
-			'queryDisplayType' => array(
-				'type'    => 'string',
-				'default' => 'all_products',
-			),
-			'queryProducts'    => array(
-				'type'    => 'string',
-				'default' => 'wc/v3/products?per_page=10',
-			),
-			'limit'            => array(
-				'type'    => 'int',
-				'default' => '10',
-			),
+register_block_type( 'getbowtied/scattered-product-list', array(
+	'editor_style'  	=> 'getbowtied-scattered-product-list-editor-styles',
+	'editor_script'		=> 'getbowtied-scattered-product-list-editor-scripts',
+	'attributes'      => array(
+		'productIDs'       => array(
+			'type'    => 'string',
+			'default' => '',
 		),
+		'align'            => array(
+			'type'    => 'string',
+			'default' => 'center',
+		),
+		'queryOrder'       => array(
+			'type'    => 'string',
+			'default' => '',
+		),
+		'queryDisplayType' => array(
+			'type'    => 'string',
+			'default' => 'all_products',
+		),
+		'queryProducts'    => array(
+			'type'    => 'string',
+			'default' => 'wc/v3/products?per_page=10',
+		),
+		'limit'            => array(
+			'type'    => 'int',
+			'default' => '10',
+		),
+	),
 
-		'render_callback' => 'pbfw_render_frontend_expanding_grid',
-	)
-);
+	'render_callback' => 'pbfw_render_frontend_expanding_grid',
+) );

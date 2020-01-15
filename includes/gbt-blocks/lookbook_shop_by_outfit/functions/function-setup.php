@@ -23,7 +23,7 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element' )
 	);
 
-	wp_enqueue_style(
+	wp_register_style(
 		'getbowtied-lookbook-shop-by-outfit-editor-styles',
 		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
 		array( 'wp-edit-blocks' ),
@@ -56,6 +56,7 @@ function pbfw_lookbook_snap_to_scroll_assets() {
  * Register Block
  */
 register_block_type( 'getbowtied/lookbook-shop-by-outfit-product', array(
+	'editor_style'  	=> 'getbowtied-lookbook-shop-by-outfit-editor-styles',
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',
