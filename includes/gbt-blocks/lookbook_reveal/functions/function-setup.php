@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Enqueue Editor Assets
  */
-add_action( 'admin_init', 'pbfw_lookbook_reveal_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'pbfw_lookbook_reveal_editor_assets' );
 function pbfw_lookbook_reveal_editor_assets() {
 	wp_enqueue_script(
 		'getbowtied-lookbook-reveal-editor-lookbook-scripts',
