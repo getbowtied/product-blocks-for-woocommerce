@@ -5,7 +5,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-include_once 'functions/function-setup.php';
+include_once dirname( __FILE__ ) . '/functions/function-setup.php';
 
 /**
  * Frontend Output

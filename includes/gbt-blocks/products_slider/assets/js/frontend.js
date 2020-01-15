@@ -255,7 +255,7 @@
 			});
 		}
 	};
-	$( document ).ready( function(){
+	$( function(){
 		contentSlider.init();
 	});
 }( jQuery ) );

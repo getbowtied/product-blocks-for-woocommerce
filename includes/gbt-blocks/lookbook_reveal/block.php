@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-require_once 'functions/function-setup.php';
+require_once dirname( __FILE__ ) . '/functions/function-setup.php';
 
 /**
  * Frontend Output

@@ -37,7 +37,7 @@ function pbfw_includes() {
 	} else if( ! (is_plugin_active( 'gutenberg/gutenberg.php' ) || pbfw_wp_version('>=', '5.0')) ) {
 		add_action( 'admin_notices', 'pbfw_gutenberg_warning' );
 	} else {
-		include_once 'includes/gbt-blocks/index.php';
+		include_once dirname( __FILE__ ) . '/includes/gbt-blocks/index.php';
 	}
 }
 

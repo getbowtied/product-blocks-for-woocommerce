@@ -6,7 +6,7 @@
 	var columns = [];
 	var mobile;
 
-	$(document).ready(function () {
+	$(function () {
 		var _columns;
 
 
