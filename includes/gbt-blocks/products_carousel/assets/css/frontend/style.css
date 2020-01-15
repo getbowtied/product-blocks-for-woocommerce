@@ -71,9 +71,13 @@
   .wp-block-getbowtied-carousel .swiper-button-prev {
     left: -50px;
     text-align: left; }
+    .wp-block-getbowtied-carousel .swiper-button-prev:after {
+      content: none; }
   .wp-block-getbowtied-carousel .swiper-button-next {
     right: -50px;
     text-align: right; }
+    .wp-block-getbowtied-carousel .swiper-button-next:after {
+      content: none; }
   .wp-block-getbowtied-carousel.alignfull .swiper-navigation-container {
     margin: 0; }
     .wp-block-getbowtied-carousel.alignfull .swiper-navigation-container .gbt_18_swiper-container {

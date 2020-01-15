@@ -89,11 +89,17 @@
 	.swiper-button-prev {
 		left: -50px;
 		text-align: left;
+		&:after {
+			content: none;
+		}
 	}
 
 	.swiper-button-next {
 		right: -50px;
 		text-align: right;
+		&:after {
+			content: none;
+		}
 	}
 
 	&.alignfull {
