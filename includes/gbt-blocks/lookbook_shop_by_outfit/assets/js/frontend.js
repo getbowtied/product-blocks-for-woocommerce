@@ -10,13 +10,10 @@
 		snapScrollFunction: function(){
 			$.scrollify({
 				section:".gbt_18_look_book_item",
-			    // scrollbars: false,
 			    overflowScroll: true,
-			   	// standardScrollElements: ".scroll-wrapper",
-			   	// updateHash: false,
 			    before:function(idx, panels) {
 
-			    	for ( let j = 0; j < panels.length; j++) {
+			    	for ( var j = 0; j < panels.length; j++) {
 			    		$(panels[j]).removeClass('active');
 
 			    	}
@@ -25,12 +22,12 @@
 
 					$(".gbt_18_pagination .gbt_18_active").removeClass("gbt_18_active");
 
-					$(".gbt_18_pagination").find(`a[href="#${ref}"]`).addClass("gbt_18_active");
+					$(".gbt_18_pagination").find('a[href="#' + ref + '"]').addClass("gbt_18_active");
 
 					//SET DATA SECTION NAME VALUE
 			    },
 			    after: function(idx, panels){
-			    	for ( let j = 0; j < panels.length; j++) {
+			    	for ( var j = 0; j < panels.length; j++) {
 			    		$(panels[j]).scrollTop(0);
 			    	}
 			    	$(panels[idx]).addClass('active');
@@ -50,36 +47,22 @@
 
 			      		$(this).attr("data-section-name", i );
 
-			        	getDataValue = $(this).attr("data-section-name",);
+			        	getDataValue = $(this).attr("data-section-name");
 
 			        	getItemIndex = (($(this).index() + 1) < 10) ? '0' + ($(this).index() + 1) : $(this).index() + 1;
 
 			        	lookBookImage = $(this).find('.gbt_18_look_thumb img');
 
 			        	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
-
-			        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i - 1) : (i - 1) }</span>`);
+						var num = i - 1;
+						(i < 10) ? num = '0' + (i - 1) : num = i - 1;
+			        	$('.gbt_18_shop_this_book', $(this)).prepend('<span class="gbt_18_current_book">' + num + '</span>');
 
 			        	if (lookBookImage.length == 0) {
-			        		$(".gbt_18_pagination").append(
-				        		`<div class="gbt_18_snap_page">
-					        		<a class="${activeClass}" href="#${getDataValue}">
-					        			<span> ${getItemIndex}</span>
-					        		</a>
-					        	</div>`
-				        	);
+			        		$(".gbt_18_pagination").append('<div class="gbt_18_snap_page"><a class="' + activeClass + '" href="#' + getDataValue + '"><span> ' + getItemIndex + '</span></a></div>');
 			        	}
 			        	else{
-			        		$(".gbt_18_pagination").append(
-				        		`<div class="gbt_18_snap_page">
-					        		<a class="${activeClass}" href="#${getDataValue}">
-					        			<span> ${getItemIndex}</span>
-					        		</a>
-					        		<div class="gbt_18_hover_image">
-					        			<img src="${lookBookImage.attr('src')}" alt="">
-					        		</div>
-					        	</div>`
-				        	);
+			        		$(".gbt_18_pagination").append('<div class="gbt_18_snap_page"><a class="' + activeClass + '" href="#' + getDataValue + '"><span> ' + getItemIndex + '</span></a><div class="gbt_18_hover_image"><img src="' + lookBookImage.attr('src') + '}" alt=""></div></div>');
 			        	}
 			      	});
 
@@ -124,7 +107,7 @@
 
       		$(this).attr("data-section-name", i );
 
-        	getDataValue = $(this).attr("data-section-name",);
+        	getDataValue = $(this).attr("data-section-name");
 
         	getItemIndex = (($(this).index()) < 10) ? '0' + ($(this).index()) : $(this).index();
 
@@ -132,37 +115,23 @@
 
         	(i===0) ? activeClass = "gbt_18_active" : activeClass = "";
 
-        	$('.gbt_18_shop_this_book', this).prepend(`<span class="gbt_18_current_book">${(i < 10) ? '0' + (i) : (i) }</span>`);
+			var num = i;
+			(i < 10) ? num = '0' + i : num = i;
+
+        	$('.gbt_18_shop_this_book', $(this)).prepend('<span class="gbt_18_current_book">' + num + '</span>');
 
         	if (lookBookImage.length == 0) {
-        		$(".gbt_18_pagination").append(
-	        		`<div class="gbt_18_snap_page">
-		        		<a class="${activeClass}" href="#${getDataValue}">
-		        			<span> ${getItemIndex}</span>
-		        		</a>
-		        	</div>`
-	        	);
+        		$(".gbt_18_pagination").append('<div class="gbt_18_snap_page"><a class="' + activeClass + '" href="#' + getDataValue + '"><span> ' + getItemIndex + '</span></a></div>');
         	}
         	else{
-        		$(".gbt_18_pagination").append(
-	        		`<div class="gbt_18_snap_page">
-		        		<a class="${activeClass}" href="#${getDataValue}">
-		        			<span> ${getItemIndex}</span>
-		        		</a>
-		        		<div class="gbt_18_hover_image">
-		        			<img src="${lookBookImage.attr('src')}" alt="">
-		        		</div>
-		        	</div>`
-	        	);
+        		$(".gbt_18_pagination").append('<div class="gbt_18_snap_page"><a class="' + activeClass + '" href="#' + getDataValue + '"><span> ' + getItemIndex + '</span></a><div class="gbt_18_hover_image"><img src="' + lookBookImage.attr('src') + '" alt=""></div></div>');
         	}
-
-	   		// i++;
       	});
 
 
 		$(".gbt_18_pagination a").on("click",function(e) {
 			e.preventDefault();
-			let section = $(this).attr('href').substr(1);
+			var section = $(this).attr('href').substr(1);
 			$('html, body').animate({
 				scrollTop: $('.gbt_18_look_book_item[data-section-name="'+section+'"]').offset().top
 			}, 500);
@@ -188,7 +157,7 @@
 	    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 	}
 
-	$( document ).ready( function(){
+	$(function() {
 		gbt_18_lookbook_pagination();
 	});
 

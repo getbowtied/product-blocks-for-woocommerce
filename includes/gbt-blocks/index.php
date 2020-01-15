@@ -41,12 +41,12 @@ function getbowtied_product_blocks_frontend_styles() {
 		array(),
 		'5.2.0'
 	);
-	wp_enqueue_style(
-		'getbowtied-product-blocks-frontend-styles',
-		plugins_url( 'assets/frontend/css/styles.css', dirname( dirname( __FILE__ ) ) ),
-		array(),
-		PBFW_VERSION
-	);
+	// wp_enqueue_style(
+	// 	'getbowtied-product-blocks-frontend-styles',
+	// 	plugins_url( 'assets/frontend/css/styles.css', dirname( dirname( __FILE__ ) ) ),
+	// 	array(),
+	// 	PBFW_VERSION
+	// );
 
 	wp_enqueue_script( 'imagesloaded' );
 	wp_enqueue_script(
@@ -63,13 +63,13 @@ function getbowtied_product_blocks_frontend_styles() {
 		'5.2.0',
 		true
 	);
-	wp_enqueue_script(
-		'getbowtied-product-blocks-frontend-scripts',
-		plugins_url( 'assets/frontend/js/scripts.min.js', dirname( dirname( __FILE__ ) ) ),
-		array( 'jquery', 'imagesloaded' ),
-		PBFW_VERSION,
-		true
-	);
+	// wp_enqueue_script(
+	// 	'getbowtied-product-blocks-frontend-scripts',
+	// 	plugins_url( 'assets/frontend/js/scripts.min.js', dirname( dirname( __FILE__ ) ) ),
+	// 	array( 'jquery', 'imagesloaded' ),
+	// 	PBFW_VERSION,
+	// 	true
+	// );
 }
 
 require_once 'products_slider/block.php';
