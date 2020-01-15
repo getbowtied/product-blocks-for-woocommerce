@@ -1,16 +1,15 @@
 <?php
+/**
+ * Product Carousel
+ */
 
-// Categories Grid
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once 'functions/function-setup.php';
 
-//==============================================================================
-//	Frontend Output
-//==============================================================================
+/**
+ * Frontend Output
+ */
 function pbfw_render_frontend_products_carousel( $attributes ) {
 
 	extract(

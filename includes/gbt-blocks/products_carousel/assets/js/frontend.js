@@ -7,11 +7,11 @@
 	var mobile;
 
 	$(document).ready(function () {
-		let _columns;
+		var _columns;
 
 
 		$('.wp-block-getbowtied-carousel .gbt_18_swiper-container').each(function(i){
-			let _this = $(this);
+			var _this = $(this);
 			columns.push($(this).attr('data-columns'));
 
 			if ( $(window).width() < 768 ) {
@@ -51,7 +51,7 @@
 	$(window).resize(function(){
 		if ( $(window).width() < 768 ) {
 			if (mobile !== true) {
-				for ( let i = 0; i < swiper.length; i++) {
+				for ( var i = 0; i < swiper.length; i++) {
 					swiper[i].params.slidesPerView = 2;
 					swiper[i].update();
 				}
@@ -59,7 +59,7 @@
 			}
 		} else {
 			if ( mobile !== false ) {
-				for ( let i = 0; i < swiper.length; i++) {
+				for ( var i = 0; i < swiper.length; i++) {
 					swiper[i].params.slidesPerView = columns[i];
 					swiper[i].update();
 				}
