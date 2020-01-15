@@ -52,6 +52,7 @@ function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 							$iobj2  = wp_get_attachment_image( $gallery_ids[0], array( 1000, 1000 ) );
 						}
 						?>
+						<style>.product-<?php echo $product->get_id(); ?> a.added_to_cart.wc-forward { color: <?php echo $textColor; ?>; } ?> </style>
 						<a class="gbt_18_fade_images_link" href="<?php echo $product->get_permalink(); ?>">
 								<div class="gbt_18_fade_images">
 									<?php echo isset( $iobj ) ? $iobj : wc_placeholder_img(); ?>
@@ -101,6 +102,7 @@ function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 											$body_rgb = getbowtied_hex2rgb( $bgColor );
 											$text_rgb = getbowtied_hex2rgb( $textColor );
 											?>
+
 										<style type="text/css">
 										.product-<?php echo $product->get_id(); ?> a.blockshop_add_to_cart.single_add_to_cart_button.button.alt,
 										.product-<?php echo $product->get_id(); ?> a.added_to_cart.wc-forward,
@@ -111,7 +113,7 @@ function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 											background-image: -o-linear-gradient(to top, rgb(<?php echo esc_attr( $text_rgb ); ?>) 1px, rgb(<?php echo esc_attr( $text_rgb ); ?>) 1px, rgba(<?php echo esc_attr( $body_rgb ); ?>, 0) 1px, rgba(<?php echo esc_attr( $body_rgb ); ?>, 0) 1px);
 											background-image: -ms-linear-gradient(to top, rgb(<?php echo esc_attr( $text_rgb ); ?>) 1px, rgb(<?php echo esc_attr( $text_rgb ); ?>) 1px, rgba(<?php echo esc_attr( $body_rgb ); ?>, 0) 1px, rgba(<?php echo esc_attr( $body_rgb ); ?>, 0) 1px);
 											border: none;
-											 color: <?php echo $textColor; ?>;
+											color: <?php echo $textColor; ?>;
 										}
 										.product-<?php echo $product->get_id(); ?> a.blockshop_add_to_cart.single_add_to_cart_button.button.alt.loading {
 											border-color: <?php echo $textColor; ?>;
@@ -121,6 +123,7 @@ function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 										}
 
 										</style>
+
 										<?php endif; ?>
 									<?php endif; ?>
 								</div>
