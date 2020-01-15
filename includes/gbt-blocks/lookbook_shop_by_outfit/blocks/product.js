@@ -7,10 +7,10 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InspectorControls 	= editor.InspectorControls;
-	const MediaUpload			= editor.MediaUpload;
+	const InspectorControls = blockEditor.InspectorControls;
+	const MediaUpload		= blockEditor.MediaUpload;
 
-	const Button				= components.Button;
+	const Button			= components.Button;
 	const TextControl 		= components.TextControl;
 	const SelectControl		= components.SelectControl;
 	const RangeControl		= components.RangeControl;

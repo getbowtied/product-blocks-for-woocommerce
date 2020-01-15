@@ -7,10 +7,10 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InspectorControls 	= editor.InspectorControls;
+	const InspectorControls = blockEditor.InspectorControls;
 
 	const TextControl 		= components.TextControl;
-	const Button 				= components.Button;
+	const Button 			= components.Button;
 	const SVG 				= components.SVG;
 	const Path 				= components.Path;
 

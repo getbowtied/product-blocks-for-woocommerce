@@ -7,7 +7,7 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InnerBlock 			= editor.InnerBlocks;
+	const InnerBlock 		= blockEditor.InnerBlocks;
 
 	const SVG 				= components.SVG;
 	const Path 				= components.Path;

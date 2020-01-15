@@ -7,11 +7,11 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InnerBlock 			= editor.InnerBlocks;
-	const RichText				= editor.RichText;
-	const MediaUpload			= editor.MediaUpload;
-	const ColorSettings			= editor.PanelColorSettings;
-	const InspectorControls 	= editor.InspectorControls;
+	const InnerBlock 			= blockEditor.InnerBlocks;
+	const RichText				= blockEditor.RichText;
+	const MediaUpload			= blockEditor.MediaUpload;
+	const ColorSettings			= blockEditor.PanelColorSettings;
+	const InspectorControls 	= blockEditor.InspectorControls;
 
 	const Button				= components.Button;
 	const SVG 					= components.SVG;
@@ -132,7 +132,7 @@
 							{
 								key: 'gbt_18_hero_section_image',
 								allowedTypes: [ 'image' ],
-								formattingControls: [ 'align' ],
+								allowedFormats: [ 'align' ],
 								buttonProps: { className: 'components-button button button-large' },
 		              			value: attributes.imgID,
 								onSelect: function( img ) {

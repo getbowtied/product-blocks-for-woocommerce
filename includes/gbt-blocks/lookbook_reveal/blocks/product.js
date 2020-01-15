@@ -7,12 +7,12 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InspectorControls 	= editor.InspectorControls;
+	const InspectorControls = blockEditor.InspectorControls;
 
 	const TextControl 		= components.TextControl;
 	const SelectControl		= components.SelectControl;
 	const RangeControl		= components.RangeControl;
-	const ColorSettings		= editor.PanelColorSettings;
+	const ColorSettings		= components.PanelColorSettings;
 	const SVG 				= components.SVG;
 	const Path 				= components.Path;
 

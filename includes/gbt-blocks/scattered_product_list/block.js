@@ -5,15 +5,15 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   = blocks.registerBlockType;
+	const registerBlockType = blocks.registerBlockType;
 
-	const InspectorControls 	= editor.InspectorControls;
+	const InspectorControls = blockEditor.InspectorControls;
 
 	const TextControl 		= components.TextControl;
 	const SelectControl		= components.SelectControl;
 	const ToggleControl		= components.ToggleControl;
 	const RangeControl		= components.RangeControl;
-	const Button 				= components.Button;
+	const Button 			= components.Button;
 	const SVG 				= components.SVG;
 	const Path 				= components.Path;
 
