@@ -1,16 +1,15 @@
 <?php
+/**
+ * Scattered Product List
+ */
 
-// Categories Grid
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 require_once 'functions/function-setup.php';
 
-//==============================================================================
-//	Frontend Output
-//==============================================================================
+/**
+ * Frontend Output
+ */
 function pbfw_render_frontend_expanding_grid( $attributes ) {
 
 	extract(

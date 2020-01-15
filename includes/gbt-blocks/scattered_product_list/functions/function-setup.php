@@ -1,12 +1,14 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+/**
+ * Scattered Product List Setup
+ */
 
-//==============================================================================
-//	Enqueue Editor Assets
-//==============================================================================
-add_action( 'admin_init', 'pbfw_expanding_grid_editor_assets' );
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+/**
+ * Enqueue Editor Assets
+ */
+add_action( 'enqueue_block_editor_assets', 'pbfw_expanding_grid_editor_assets' );
 function pbfw_expanding_grid_editor_assets() {
 	wp_enqueue_script(
 		'getbowtied-scattered-product-list-editor-scripts',
@@ -15,15 +17,30 @@ function pbfw_expanding_grid_editor_assets() {
 	);
 	wp_enqueue_style(
 		'getbowtied-scattered-product-list-editor-styles',
-		plugins_url( 'assets/css/backend/editor.css', dirname( __FILE__ ) ),
+		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname( __FILE__ ) ),
 		array( 'wp-edit-blocks' ),
-		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/css/backend/editor.css' )
+		filemtime( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/css/backend/editor'.PBFW_SUFFIX.'.css' )
 	);
 }
 
-//==============================================================================
-//	Register Block
-//==============================================================================
+/**
+ * Enqueue Frontend Assets
+ */
+add_action( 'enqueue_block_assets', 'pbfw_expanding_grid_assets' );
+function pbfw_expanding_grid_assets() {
+	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/scattered-product-list', get_the_ID() ) ) {
+		wp_enqueue_style(
+			'getbowtied-scattered-product-list-styles',
+			plugins_url( 'assets/css/frontend/style'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
+			array(),
+			filemtime(plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style'.PBFW_SUFFIX.'.css')
+		);
+	}
+}
+
+/**
+ * Register Block
+ */
 register_block_type(
 	'getbowtied/scattered-product-list',
 	array(
