@@ -17,7 +17,8 @@ function pbfw_categories_grid_assets() {
 		wp_enqueue_script(
 			'getbowtied-categories-grid-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' )
+			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
+			PBFW_VERSION
 		);
 
 		wp_enqueue_style(
