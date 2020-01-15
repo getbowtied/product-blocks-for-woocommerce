@@ -53,6 +53,10 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
+= 1.3.6 =
+* Fixed: Lookbook Shop by Outfit - pagination display
+* Upcoming WooCommerce 3.9 compatibility updates
+
 = 1.3.5 =
 * WordPress 5.3 compatibility updates
 * WooCommerce 3.8.0 compatibility updates
