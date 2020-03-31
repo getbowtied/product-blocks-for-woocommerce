@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-define('PBFW_VERSION', '1.3.6');
+define('PBFW_VERSION', '1.3.9');
 define('PBFW_SUFFIX', SCRIPT_DEBUG ? '' : '.min');
 
 if ( ! function_exists( 'is_plugin_active' ) ) {
