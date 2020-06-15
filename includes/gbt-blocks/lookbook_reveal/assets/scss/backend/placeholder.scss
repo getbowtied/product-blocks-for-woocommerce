@@ -78,7 +78,7 @@
     }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-reveal"] {
+.wp-block[data-type="getbowtied/lookbook-reveal"] {
 
     .editor-inner-blocks {
 
@@ -119,8 +119,8 @@
     }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"],
-.editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"],
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] {
 
     .editor-inner-blocks {
 

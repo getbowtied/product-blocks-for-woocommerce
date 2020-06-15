@@ -6,7 +6,7 @@
 	padding: 0;
 	margin: 0;
 }
-.editor-block-list__block[data-type="getbowtied/products-slider"] {
+.wp-block[data-type="getbowtied/products-slider"] {
 
 	max-width: 100%;
 	padding: 0;
@@ -170,7 +170,7 @@
 //==============================================================================
 //	Wide Alignment Specific Styles
 //==============================================================================
-.editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] {
 
 	.gbt_18_editor_slide_content_left {
         padding: 5%;
@@ -213,7 +213,7 @@
 //==============================================================================
 @media screen and (max-width: 1024px) {
 
-	.editor-block-list__block[data-type="getbowtied/products-slider"] {
+	.wp-block[data-type="getbowtied/products-slider"] {
 		.gbt_18_editor_default_slider {
 
 			.gbt_18_editor_slide_content_left {
@@ -248,7 +248,7 @@
 
 @media screen and (min-width: 1025px) and (max-width: 1240px) {
 
-	.editor-block-list__block[data-type="getbowtied/products-slider"] {
+	.wp-block[data-type="getbowtied/products-slider"] {
 		.gbt_18_editor_default_slider {
 
 			.gbt_18_editor_slide_title {

@@ -1,7 +1,7 @@
 //==============================================================================
 //	Placeholder Content Styles
 //==============================================================================
-.editor-block-list__block[data-type="getbowtied/scattered-product-list"] {
+.wp-block[data-type="getbowtied/scattered-product-list"] {
 	.gbt_18_placeholder_expanding_grid_wrapper {
 		overflow: auto;
 
@@ -70,12 +70,12 @@
 //==============================================================================
 //	Product Grid Styles
 //==============================================================================
-.editor-block-list__block[data-type="getbowtied/scattered-product-list"] {
+.wp-block[data-type="getbowtied/scattered-product-list"] {
 
 	.gbt_18_expanding_grid_wrapper {
 
 		overflow: auto;
-		   
+
 		ul.gbt_18_expanding_grid_products {
 
 			position: relative;
@@ -151,15 +151,15 @@
 				    	background: #e4e4e4;
 				    }
 		    	}
-			}			
+			}
 		}
 	}
 }
 
-.editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="wide"] {
+.wp-block[data-type="getbowtied/scattered-product-list"][data-align="wide"] {
 
 	.gbt_18_expanding_grid_wrapper {
-		   
+
 		ul.gbt_18_expanding_grid_products {
 
 			li.gbt_18_grid_product {
@@ -176,12 +176,12 @@
 	}
 }
 
-.editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="full"] {
+.wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] {
 
 	.gbt_18_expanding_grid_wrapper {
 
 	    padding: 0 5px;
-		   
+
 		ul.gbt_18_expanding_grid_products {
 
 			li.gbt_18_grid_product {

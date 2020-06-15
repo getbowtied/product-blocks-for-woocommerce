@@ -1,4 +1,4 @@
-body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"] {
+body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"] {
     max-width: 100%;
 }
 
@@ -64,7 +64,7 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
     }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-reveal"] {
+.wp-block[data-type="getbowtied/lookbook-reveal"] {
 
     .gbt_18_lookbook_reveal_product_wrapper {
 
@@ -101,8 +101,8 @@ body.block-editor-page .editor-block-list__block[data-type="getbowtied/lookbook-
     }
 }
 
-.editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"],
-.editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"],
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] {
 
     .gbt_18_lookbook_reveal_product_wrapper {
 
