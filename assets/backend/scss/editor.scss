@@ -174,7 +174,8 @@
     }
     .products-selected-results-wrapper
     {
-        margin-top: 16px;
+        margin-top: 20px;
+        margin-bottom: 24px;
         label {
             display: block;
             margin-bottom: 7px;
@@ -359,7 +360,7 @@
         }
     }
     button.render-results {
-        margin-top:20px;
+        margin: 0 0 9px;
 
         &.disabled {
             color: #4daacf;
@@ -368,6 +369,10 @@
             box-shadow: none;
             text-shadow: 0 -1px 0 rgba(0,0,0,.1);
             pointer-events: none;
+        }
+
+        + .components-panel__body {
+            margin-top: 15px;
         }
     }
 

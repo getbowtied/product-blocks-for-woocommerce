@@ -2517,7 +2517,6 @@
 							},
 							_isLoadingText(),
 						),
-						el( 'hr', {}),
 						el(
 							ColorSettings,
 							{
