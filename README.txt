@@ -54,7 +54,8 @@ The manual installation method involves downloading the plugin and uploading it 
 == Changelog ==
 
 = 1.4.0 =
-* Fixed a block editor issue causing the product blocks to display incorrectly
+* Fixed: Block editor issue causing the product blocks to display incorrectly
+* Product Categories Grid - Fixed incorrect categories order in block editor
 * Retested for compatibility with WordPress 5.4.2 and WooCommerce 4.2.0
 
 = 1.3.9 =
