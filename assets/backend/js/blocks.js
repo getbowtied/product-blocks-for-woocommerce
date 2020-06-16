@@ -249,7 +249,7 @@
 				if (query != '') {
 					apiFetch({ path: query }).then(function (categories) {
 						if ( attributes.orderby == 'menu_order' && attributes.queryDisplayType == 'all_categories') {
-							categories = _sortCategories(0, categories);
+							categories.sort((a, b) => (a.menu_order > b.menu_order) ? 1 : -1)
 						}
 						props.setAttributes({ result: categories});
 						props.setAttributes({ isLoading: false});
@@ -726,19 +726,23 @@
 							_isLoadingText(),
 						),
 					),
-					el('hr', { key: 'gbt-categories-grid-hr' }),
 					el(
-						ToggleControl,
+						'div',
 						{
-							key: "gbt-categories-grid-product-count",
-              				label: i18n.__( 'Product Count' ),
-              				checked: attributes.productCount,
-              				onChange: function( value ) {
-              					props.setAttributes({ productCount: value });
-							},
-						}
-					),
-					/* Columns */
+							className: 'products-main-inspector-wrapper',
+						},
+						el(
+							ToggleControl,
+							{
+								key: "gbt-categories-grid-product-count",
+	              				label: i18n.__( 'Product Count' ),
+	              				checked: attributes.productCount,
+	              				onChange: function( value ) {
+	              					props.setAttributes({ productCount: value });
+								},
+							}
+						),
+						/* Columns */
 						props.className.indexOf('is-style-layout-1') !== -1 &&
 						el(
 							RangeControl,
@@ -755,6 +759,7 @@
 								},
 							}
 						),
+					),
 				),
 				el(
 					'div',
