@@ -70,34 +70,29 @@
   .gbt_18_snap_look_book a {
     text-decoration: none; }
   .gbt_18_snap_look_book .gbt_18_hero_section_content {
-    max-width: 860px;
+    display: block;
     text-align: center;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%); }
+    margin: 0;
+    width: 100%;
+    margin-bottom: 4rem; }
     .gbt_18_snap_look_book .gbt_18_hero_section_content .gbt_18_hero_title {
-      font-size: 72px; }
+      font-size: 72px;
+      max-width: 860px;
+      margin: 0 auto; }
     .gbt_18_snap_look_book .gbt_18_hero_section_content .gbt_18_hero_subtitle {
       text-transform: uppercase;
-      font-size: 14px; }
+      font-size: 14px;
+      max-width: 860px;
+      margin: 0 auto; }
   .gbt_18_snap_look_book .gbt_18_scroll_down_button {
     width: 46px;
     height: 46px;
     border-style: solid;
     border-width: 1px;
     position: relative;
-    display: inline-block;
+    display: block;
     border-radius: 46px;
-    position: absolute;
-    bottom: 150px;
     margin: 0 auto;
-    left: 0;
-    right: 0;
     cursor: pointer; }
     .gbt_18_snap_look_book .gbt_18_scroll_down_button svg {
       width: 24px;
@@ -105,10 +100,6 @@
       position: relative;
       top: 11px;
       left: 10px; }
-  .gbt_18_snap_look_book .gbt_18_hero_look_book_item {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; }
   .gbt_18_snap_look_book .gbt_18_look_book_item {
     width: 100vw;
     min-height: 90vh;
@@ -192,3 +183,20 @@
           width: 50%; } }
       .gbt_18_snap_look_book .gbt_18_look_book_item .gbt_18_look_product_box > .woocommerce {
         width: 100%; }
+  .gbt_18_snap_look_book .gbt_18_hero_look_book_item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }

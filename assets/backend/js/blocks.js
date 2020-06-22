@@ -2854,23 +2854,23 @@
 							key: 		'gbt_18_hero_section_content',
 							className: 	'gbt_18_hero_section_content'
 						},
-						el( 'h1',
+						el( 'h2',
 							{
 								key: 		'gbt_18_hero_title',
 								className: 	'gbt_18_hero_title',
 								style:
 								{
 									color: props.attributes.textColor
-								}
+								},
+								dangerouslySetInnerHTML: { __html: props.attributes.title },
 							},
-							props.attributes.title
 						),
 						el( 'p',
 							{
 								key: 		'gbt_18_hero_subtitle',
-								className: 	'gbt_18_hero_subtitle'
+								className: 	'gbt_18_hero_subtitle',
+								dangerouslySetInnerHTML: { __html: props.attributes.subtitle }
 							},
-							props.attributes.subtitle
 						),
 					),
 					el( 'span',
