@@ -400,6 +400,14 @@
 
 body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"] {
   max-width: 98%; }
+  body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_right {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1; }
+  body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2; }
 
 .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content {
   width: 100%;
@@ -420,8 +428,10 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
     .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top,
     .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom {
       text-align: left; }
-    .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
-      line-height: 1.3; }
+    .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top {
+      margin-bottom: 100px; }
+      .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
+        line-height: 1.3; }
     .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom {
       position: absolute;
       width: 38%;
@@ -440,13 +450,15 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
     background-size: cover;
     background-position: center;
     padding-bottom: 100%;
-    height: 0;
+    height: 100%;
     width: 100%; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left {
   padding: 10%; }
   .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
     font-size: 18px; }
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text * {
+    color: inherit; }
   .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p {
     display: none;
     font-size: 12px; }
@@ -473,6 +485,18 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button,
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button {
   font-size: 16px; }
+
+div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-product"]:not([data-align="wide"]):not([data-align="full"]) .block-editor-block-mover.is-visible {
+  -webkit-animation: none;
+  animation: none;
+  border-radius: 0;
+  display: inherit;
+  opacity: 1;
+  position: relative;
+  left: 0;
+  top: 0; }
+  div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-product"]:not([data-align="wide"]):not([data-align="full"]) .block-editor-block-mover.is-visible .block-editor-block-mover__control {
+    height: auto; }
 
 .gbt_18_editor_lookbook_product_wrapper.placeholder {
   background-color: #d3d5d9; }
@@ -1413,7 +1437,8 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
     max-height: 183px;
     overflow-y: auto;
     overflow-x: hidden;
-    margin-top: -9px; }
+    margin-top: -9px;
+    margin-bottom: 1.5rem; }
     .products-main-inspector-wrapper .products-ajax-search-results .no-results {
       display: inline-block;
       margin: 20px 12px; }

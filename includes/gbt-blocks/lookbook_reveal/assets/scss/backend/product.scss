@@ -1,5 +1,18 @@
 body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"] {
     max-width: 98%;
+
+    &:nth-child(odd) {
+        .gbt_18_lookbook_reveal_product_wrapper {
+            .gbt_18_editor_lookbook_product_content {
+                .gbt_18_editor_lookbook_product_content_right {
+                    order: 1;
+                }
+                .gbt_18_editor_lookbook_product_content_left {
+                    order: 2;
+                }
+            }
+        }
+    }
 }
 
 .gbt_18_lookbook_reveal_product_wrapper {
@@ -26,6 +39,7 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
             }
 
             .gbt_18_editor_lookbook_product_content_left_inner_top {
+                margin-bottom: 100px;
 
                 .gbt_18_editor_lookbook_product_title {
                     line-height: 1.3;
@@ -57,7 +71,7 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
                 background-size: cover;
                 background-position: center;
                 padding-bottom: 100%;
-                height: 0;
+                height: 100%;
                 width: 100%;
             }
         }
@@ -79,9 +93,15 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
                         font-size: 18px;
                     }
 
-                    .gbt_18_editor_lookbook_product_text p {
-                        display: none;
-                        font-size: 12px;
+                    .gbt_18_editor_lookbook_product_text {
+                        * {
+                            color: inherit;
+                        }
+
+                        p {
+                            display: none;
+                            font-size: 12px;
+                        }
                     }
                 }
 
@@ -135,5 +155,19 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
                 }
             }
         }
+    }
+}
+
+div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-product"]:not([data-align="wide"]):not([data-align="full"]) .block-editor-block-mover.is-visible {
+    animation: none;
+    border-radius: 0;
+    display: inherit;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    top: 0;
+
+    .block-editor-block-mover__control {
+        height: auto;
     }
 }

@@ -236,7 +236,7 @@
 												key: 						class_prefix + '_text',
 												style: 						{ color: attributes.textColor },
 												className: 					class_prefix + '_text',
-												dangerouslySetInnerHTML: 	{ __html: products[i]['short_description'].substring(0,100) }
+												dangerouslySetInnerHTML: 	{ __html: products[i]['short_description'] }
 											}
 										),
 									),
