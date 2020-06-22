@@ -68,19 +68,6 @@
 		transition: all 0.35s ease-in-out;
 		display: none;
 
-		&:before {
-			/* use !important to prevent issues with browser extensions that change fonts */
-			font-family: 'product-blocks' !important;
-			speak: none;
-			font-style: normal;
-			font-weight: normal;
-			font-variant: normal;
-			text-transform: none;
-			line-height: 1;
-			/* Better Font Rendering =========== */
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
 		@media screen and (min-width: 769px) {
 			display: block;
 		}
@@ -112,14 +99,9 @@
 		}
 	}
 
-	.swiper-button-prev:before {
-		content: '\e900';
-		color: #000;
-	}
-
-	.swiper-button-next:before {
-		content: '\e901';
-		color: #000;
+	.swiper-button-prev,
+	.swiper-button-next {
+		fill: #000;
 	}
 
 	.swiper-pagination-bullet-active {
@@ -130,7 +112,6 @@
 		background: transparent;
 		border: solid 1px #000;
 		opacity: 1;
-		// transform: none;
 		&.swiper-pagination-bullet-active {
 			border: none;
 			background: #000;

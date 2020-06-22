@@ -96,7 +96,7 @@ function pbfw_render_frontend_products_slider( $attributes ) {
 								<?php endif; ?>
 								</div>
 								<input type="hidden" name="slide-link" value="<?php echo esc_url(get_permalink($product->get_id())); ?>" />
-								<?php printf( '<div class="gbt_18_slide_link"><a href="#"><i class="gbt_18_icon_right"></i>%s</a></div>', __( 'View Product Page', 'block-shop' ) ); ?>
+								<?php printf( '<div class="gbt_18_slide_link"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024"><path d="M596.301 749.895c-9.999 9.996-10.001 26.205-0.005 36.204s26.205 10.001 36.204 0.005l307.2-307.107c9.999-9.996 10.001-26.205 0.005-36.204l-307.2-307.293c-9.996-9.999-26.205-10.001-36.204-0.005s-10.001 26.205-0.005 36.204l289.101 289.188-289.095 289.008zM921.6 486.4c14.138 0 25.6-11.462 25.6-25.6s-11.462-25.6-25.6-25.6h-819.2c-14.138 0-25.6 11.462-25.6 25.6s11.462 25.6 25.6 25.6h819.2z"></path></svg>%s</a></div>', __( 'View Product Page', 'block-shop' ) ); ?>
 						<?php
 						printf( '</div></div></div>' );
 						endforeach;

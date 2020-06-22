@@ -1282,38 +1282,21 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
       .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link i {
         margin: 0 10px 0 6px;
         font-size: 12px; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev,
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next {
-      /* use !important to prevent issues with browser extensions that change fonts */
-      font-family: 'product-blocks' !important;
-      speak: none;
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      border: none;
-      outline: 0;
-      display: inline;
-      padding: 3px;
-      cursor: pointer;
-      /* Better Font Rendering =========== */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; }
     .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev {
       margin-right: 3px; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before {
-      content: '\e903';
-      color: #000; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
-      content: '\e902';
-      color: #000; }
   .wp-block[data-type="getbowtied/products-slider"] .toggle-prev,
   .wp-block[data-type="getbowtied/products-slider"] .toggle-next {
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    outline: 0;
     z-index: 100; }
-    .wp-block[data-type="getbowtied/products-slider"] .toggle-prev:before,
-    .wp-block[data-type="getbowtied/products-slider"] .toggle-next:before {
-      font-size: 18px; }
+  .wp-block[data-type="getbowtied/products-slider"] .toggle-prev-icon,
+  .wp-block[data-type="getbowtied/products-slider"] .toggle-next-icon {
+    width: 18px;
+    height: 18px; }
   .wp-block[data-type="getbowtied/products-slider"] .toggle-prev {
     left: 7px; }
   .wp-block[data-type="getbowtied/products-slider"] .toggle-next {
@@ -1390,12 +1373,6 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
     font-size: 15px; } }
-
-@font-face {
-  font-family: 'product-blocks';
-  src: url("../../frontend/fonts/product-blocks.woff2?f6hoyl") format("woff2"), url("../../frontend/fonts/product-blocks.ttf?f6hoyl") format("truetype"), url("../../frontend/fonts/product-blocks.woff?f6hoyl") format("woff"), url("../../frontend/fonts/product-blocks.svg?f6hoyl#product-blocks") format("svg");
-  font-weight: normal;
-  font-style: normal; }
 
 .products-main-inspector-wrapper {
   border-top: 1px solid #e2e4e7;

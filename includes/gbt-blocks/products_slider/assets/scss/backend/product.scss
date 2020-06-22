@@ -84,51 +84,24 @@
     		}
 		}
 
-
-		.toggle-prev,
-		.toggle-next {
-
-			/* use !important to prevent issues with browser extensions that change fonts */
-			font-family: 'product-blocks' !important;
-			speak: none;
-			font-style: normal;
-			font-weight: normal;
-			font-variant: normal;
-			text-transform: none;
-			line-height: 1;
-			border: none;
-			outline: 0;
-		    display: inline;
-    		padding: 3px;
-    		cursor: pointer;
-
-			/* Better Font Rendering =========== */
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
-
 		.toggle-prev {
 			margin-right: 3px;
-		}
-
-		.toggle-prev:before {
-			content: '\e903';
-			color: #000;
-		}
-
-		.toggle-next:before {
-			content: '\e902';
-			color: #000;
 		}
 	}
 
 	.toggle-prev,
 	.toggle-next {
+	    display: inline-block;
+		appearance: none;
+		border: 0;
+		outline: 0;
 		z-index: 100;
+	}
 
-		&:before {
-			font-size: 18px;
-		}
+	.toggle-prev-icon,
+	.toggle-next-icon {
+		width: 18px;
+		height: 18px;
 	}
 
 	.toggle-prev {

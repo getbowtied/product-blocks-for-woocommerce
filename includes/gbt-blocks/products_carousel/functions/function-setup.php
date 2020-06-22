@@ -25,14 +25,7 @@ function pbfw_products_carousel_assets() {
 			'5.2.0',
 			true
 		);
-
-		wp_enqueue_style(
-			'getbowtied-product-blocks-frontend-styles',
-			plugins_url( 'assets/frontend/css/fonts.css', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
-			array(),
-			PBFW_VERSION
-		);
-
+ 
 		wp_enqueue_script(
 			'getbowtied-products-carousel-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),

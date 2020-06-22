@@ -51,19 +51,6 @@
     -o-transition: all 0.35s ease-in-out;
     transition: all 0.35s ease-in-out;
     display: none; }
-    .wp-block-getbowtied-carousel .swiper-button-next:before,
-    .wp-block-getbowtied-carousel .swiper-button-prev:before {
-      /* use !important to prevent issues with browser extensions that change fonts */
-      font-family: 'product-blocks' !important;
-      speak: none;
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      /* Better Font Rendering =========== */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; }
     @media screen and (min-width: 769px) {
       .wp-block-getbowtied-carousel .swiper-button-next,
       .wp-block-getbowtied-carousel .swiper-button-prev {
@@ -82,12 +69,9 @@
     margin: 0; }
     .wp-block-getbowtied-carousel.alignfull .swiper-navigation-container .gbt_18_swiper-container {
       margin: 0 0 50px; }
-  .wp-block-getbowtied-carousel .swiper-button-prev:before {
-    content: '\e900';
-    color: #000; }
-  .wp-block-getbowtied-carousel .swiper-button-next:before {
-    content: '\e901';
-    color: #000; }
+  .wp-block-getbowtied-carousel .swiper-button-prev,
+  .wp-block-getbowtied-carousel .swiper-button-next {
+    fill: #000; }
   .wp-block-getbowtied-carousel .swiper-pagination-bullet-active {
     background: #000; }
   .wp-block-getbowtied-carousel .swiper-pagination-bullet {

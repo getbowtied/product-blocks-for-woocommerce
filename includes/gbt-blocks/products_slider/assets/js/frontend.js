@@ -17,8 +17,8 @@
 				var slideImage = '.gbt_18_img .gbt_18_image_link'; // ALL IMAGE SELECTOR
 				var slideLength = $('.gbt_18_img_wrapper a', this).length < 9 ? '0' + ($('.gbt_18_img_wrapper a', this).length) : $('.gbt_18_img_wrapper a', this).length; //ADD 0 BEFORE SLIDE COUNT
 				var slideCount = '<span class="gbt_18_number_of_items">' + slideLength + '</span>'; //SLIDE COUNT ELEMENT
-				var slideLeft = '<span class="gbt_18_prev_slide"><i class="gbt_18_icon_down"></i></span>'; //BUTTON LEFT
-				var slideRight = '<span class="gbt_18_next_slide"><i class="gbt_18_icon_up"></i></span>'; //BUTTON RIGHT
+				var slideLeft = '<span class="gbt_18_prev_slide"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024"><path d="M512.088 87.404l289.008 289.095c9.996 9.999 26.205 10.001 36.204 0.005s10.001-26.205 0.005-36.204l-307.107-307.2c-9.996-9.999-26.205-10.001-36.204-0.005l-307.293 307.2c-9.999 9.996-10.001 26.205-0.005 36.204s26.205 10.001 36.204 0.005l289.188-289.101zM537.601 51.2c0-14.138-11.462-25.6-25.6-25.6s-25.6 11.462-25.6 25.6v819.2c0 14.138 11.462 25.6 25.6 25.6s25.6-11.462 25.6-25.6v-819.2z"></path></svg></span>'; //BUTTON LEFT
+				var slideRight = '<span class="gbt_18_next_slide"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 1024 1024"><path d="M222.905 545.101c-9.996-9.999-26.205-10.001-36.204-0.005s-10.001 26.205-0.005 36.204l307.107 307.2c9.996 9.999 26.205 10.001 36.204 0.005l307.293-307.2c9.999-9.996 10.001-26.205 0.005-36.204s-26.205-10.001-36.204-0.005l-289.188 289.101-289.008-289.095zM486.4 870.4c0 14.138 11.462 25.6 25.6 25.6s25.6-11.462 25.6-25.6v-819.2c0-14.138-11.462-25.6-25.6-25.6s-25.6 11.462-25.6 25.6v819.2z"></path></svg></span>'; //BUTTON RIGHT
 				var slideIndex = '<span class="gbt_18_current_slide">01</span>';
 				var defaultItemActive = 1; // SET BY DEFAULT ACTIVE SLIDER ON PAGE LOAD;
 
