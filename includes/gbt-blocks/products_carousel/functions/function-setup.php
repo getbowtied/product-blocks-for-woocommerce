@@ -25,11 +25,11 @@ function pbfw_products_carousel_assets() {
 			'5.2.0',
 			true
 		);
- 
+
 		wp_enqueue_script(
 			'getbowtied-products-carousel-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
-			array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
+			array( 'jquery' ),
 			PBFW_VERSION
 		);
 
