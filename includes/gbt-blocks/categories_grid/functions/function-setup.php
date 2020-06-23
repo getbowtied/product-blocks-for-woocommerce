@@ -8,16 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Enqueue Frontend Assets
  */
-add_action( 'enqueue_block_assets', 'pbfw_categories_grid_assets' );
+add_action( 'wp_enqueue_scripts', 'pbfw_categories_grid_assets' );
 function pbfw_categories_grid_assets() {
-	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/categories-grid', get_the_ID() ) ) {
-
-		wp_enqueue_script( 'imagesloaded' );
-
+	if( has_block( 'getbowtied/categories-grid' ) ) {
 		wp_enqueue_script(
 			'getbowtied-categories-grid-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
-			array( 'jquery' ),
+			array( 'jquery', 'imagesloaded' ),
 			PBFW_VERSION
 		);
 

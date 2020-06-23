@@ -8,9 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Enqueue Frontend Assets
  */
-add_action( 'enqueue_block_assets', 'pbfw_expanding_grid_assets' );
+add_action( 'wp_enqueue_scripts', 'pbfw_expanding_grid_assets' );
 function pbfw_expanding_grid_assets() {
-	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/scattered-product-list', get_the_ID() ) ) {
+	if ( has_block( 'getbowtied/scattered-product-list' ) ) {
 		wp_enqueue_style(
 			'getbowtied-scattered-product-list-styles',
 			plugins_url( 'assets/css/frontend/style'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),

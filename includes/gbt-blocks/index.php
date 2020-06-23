@@ -26,8 +26,37 @@ add_action( 'enqueue_block_editor_assets', function() {
 			'woo_placeholder_image'	=>	function_exists('wc_placeholder_img_src')? wc_placeholder_img_src() : ''
 		)
 	);
-
 } );
+
+add_action( 'wp_enqueue_scripts', 'getbowtied_register_external_libraries', 0 );
+function getbowtied_register_external_libraries() {
+	if ( has_block( 'getbowtied/lookbook-shop-by-outfit' ) ) {
+		wp_register_script(
+			'jquery-scrollify',
+			plugins_url( 'assets/frontend/scrollify/js/jquery.scrollify.js', dirname( dirname( __FILE__ ) ) ),
+			array( 'jquery' ),
+			PBFW_VERSION,
+			true
+		);
+	}
+
+	if ( has_block( 'getbowtied/products-slider' ) || has_block( 'getbowtied/products-carousel' ) ) {
+		wp_register_style(
+			'swiper',
+			plugins_url( 'assets/frontend/swiper/css/swiper.min.css', dirname( dirname( __FILE__ ) ) ),
+			array(),
+			'5.2.0'
+		);
+
+		wp_register_script(
+			'swiper',
+			plugins_url( 'assets/frontend/swiper/js/swiper.min.js', dirname( dirname( __FILE__ ) ) ),
+			array( 'jquery' ),
+			'5.2.0',
+			true
+		);
+	}
+}
 
 require_once dirname( __FILE__ ) . '/products_slider/block.php';
 require_once dirname( __FILE__ ) . '/categories_grid/block.php';

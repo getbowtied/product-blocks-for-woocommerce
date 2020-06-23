@@ -8,22 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Enqueue Frontend Assets
  */
-add_action( 'enqueue_block_assets', 'pbfw_lookbook_snap_to_scroll_assets' );
+add_action( 'wp_enqueue_scripts', 'pbfw_lookbook_snap_to_scroll_assets' );
 function pbfw_lookbook_snap_to_scroll_assets() {
-	if ( ! is_admin() && is_singular() && has_block( 'getbowtied/lookbook-shop-by-outfit', get_the_ID() ) ) {
-
-		wp_enqueue_script(
-			'jquery-scrollify',
-			plugins_url( 'assets/frontend/vendor/scrollify/js/jquery.scrollify.js', dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) ),
-			array( 'jquery' ),
-			PBFW_VERSION,
-			true
-		);
-
+	if ( has_block( 'getbowtied/lookbook-shop-by-outfit' ) ) {
 		wp_enqueue_script(
 			'getbowtied-lookbook-shop-by-outfit-scripts',
 			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
-			array( 'jquery' ),
+			array( 'jquery', 'jquery-scrollify' ),
 			PBFW_VERSION
 		);
 
