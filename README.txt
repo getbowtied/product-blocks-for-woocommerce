@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 5.4.2
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,6 +52,12 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 1.4.1 =
+* Improved plugin's performance by updating frontend script dependencies
+* Lookbook - Shop by Outfit: Small maintenance updates
+* Lookbook - Product Reveal: Backend style improvements
+* Retested for compatibility with WooCommerce 4.3.0
 
 = 1.4.0 =
 * Fixed: Block editor issue causing the product blocks to display incorrectly
