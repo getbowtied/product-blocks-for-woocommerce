@@ -2862,7 +2862,7 @@
 								{
 									color: props.attributes.textColor
 								},
-								dangerouslySetInnerHTML: { __html: props.attributes.title },
+								dangerouslySetInnerHTML: { __html: props.attributes.title }
 							},
 						),
 						el( 'p',
@@ -2969,6 +2969,23 @@
 										borderColor: props.attributes.textColor
 									}
 								},
+								el( SVG,
+									{
+										key: 'gbt_18_scroll_down_button-svg',
+										xmlns:"http://www.w3.org/2000/svg",
+										viewBox:"0 0 24 24",
+										style:
+										{
+											fill: props.attributes.textColor,
+										}
+									},
+									el( Path,
+										{
+											key: 'gbt_18_scroll_down_button-svg-path',
+											d:"M 11 3 L 11 17.070312 L 6.4296875 12.5 L 4.9296875 14 L 12 21.070312 L 19.070312 14 L 17.570312 12.5 L 13 17.070312 L 13 3 L 11 3 z",
+										}
+									)
+								),
 							)
 						),
 						el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
