@@ -1166,32 +1166,12 @@
 				return wrapper;
 			}
 
-			function _queryLimit(limit){
+			function _queryLimit(old_limit, limit){
 				let query = attributes.queryProducts;
-
-				let buildQ = query;
-				let newQ;
-				buildQ = buildQ.replace('/wc/v2/products?', '');
-				buildQ = buildQ.split('&');
-
-				let flag = false;
-				for ( let j = 0; j < buildQ.length; j++) {
-					let temp = [];
-					temp = buildQ[j].split('=');
-					if (temp[0] === 'per_page'){
-						buildQ[j] = 'per_page='+limit;
-						flag= true;
-						break;
-					}
-				}
-
-				if ( flag === true) {
-					newQ = '/wc/v2/products?' + buildQ.join('&');
-				} else {
-					newQ = '/wc/v2/products?per_page=' + limit + '&' + buildQ.join('&');
-				}
+				let newQ = query.replace('per_page='+old_limit, 'per_page='+limit);
 
 				props.setAttributes({ queryProducts: newQ});
+				
 				return newQ;
 			}
 
@@ -1829,8 +1809,9 @@
 								max: 20,
 								label: i18n.__( 'Number of Products' ),
 								onChange: function( value ) {
+									let old_value = attributes.limit;
 									props.setAttributes( { limit: value } );
-									_queryLimit(value);
+									_queryLimit(old_value, value);
 								},
 							}
 						),
