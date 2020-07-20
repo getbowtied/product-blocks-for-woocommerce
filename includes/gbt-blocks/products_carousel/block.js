@@ -531,6 +531,7 @@
 				let newQ = query.replace('per_page='+old_limit, 'per_page='+limit);
 
 				props.setAttributes({ queryProducts: newQ});
+				
 				return newQ;
 			}
 
