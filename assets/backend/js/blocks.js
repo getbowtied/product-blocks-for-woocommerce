@@ -3809,8 +3809,7 @@
 
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
-
-	const InspectorControls = blockEditor.InspectorControls;
+	const InspectorControls   = blockEditor.InspectorControls;
 
 	const TextControl 		= components.TextControl;
 	const SelectControl		= components.SelectControl;
