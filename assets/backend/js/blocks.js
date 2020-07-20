@@ -4035,7 +4035,7 @@
 		//	Show products functions
 		//==============================================================================
 			function getQuery( query ) {
-				return '/wc/v2/products' + query;
+				return 'wc/v2/products' + query;
 			}
 
 			function getProducts() {
@@ -4334,7 +4334,7 @@
 				let newQ = query.replace('per_page='+old_limit, 'per_page='+limit);
 
 				props.setAttributes({ queryProducts: newQ});
-				
+
 				return newQ;
 			}
 

@@ -27,7 +27,7 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 		)
 	);
 
-	$queryProducts = str_replace( '/wc/v2/products?', '', $queryProducts );
+	$queryProducts = str_replace( 'wc/v2/products?', '', $queryProducts );
 	$query         = explode( '&', $queryProducts );
 	$a             = [];
 	foreach ( $query as $q ) {
