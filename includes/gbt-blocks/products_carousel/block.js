@@ -30,7 +30,7 @@
 		/* Products source */
 			queryProducts: {
 				type: 'string',
-				default: 'wc/v2/products?per_page=10',
+				default: 'wc/v3/products?per_page=10',
 			},
 			queryProductsLast: {
 				type: 'string',
@@ -232,16 +232,24 @@
 		//	Show products functions
 		//==============================================================================
 			function getQuery( query ) {
-				return 'wc/v2/products' + query;
+				return 'wc/v3/products' + query;
 			}
 
 			function getProducts() {
 				let query = attributes.queryProducts;
 				props.setAttributes({ queryProductsLast: query});
 
-
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
+						let products_final = [];
+						let index = 0;
+						for ( let i = 0; i < products.length; i++) {
+							if( products[i].catalog_visibility != 'hidden' ) {
+								products_final[index] = products[i];
+								index++;
+							}
+						}
+						products = products_final;
 						props.setAttributes({ result: products});
 						props.setAttributes({ isLoading: false});
 						if ( attributes.doneFirstLoad === false ) {
@@ -250,7 +258,9 @@
 						props.setAttributes({ doneFirstLoad: true});
 						let IDs = '';
 						for ( let i = 0; i < products.length; i++) {
-							IDs += products[i].id + ',';
+							if( products[i].catalog_visibility != 'hidden' ) {
+								IDs += products[i].id + ',';
+							}
 						}
 						props.setAttributes({ productIDs: IDs});
 						props.setAttributes({ selectedSlide: 0});
@@ -1137,7 +1147,6 @@
 										getAttributes();
 									} else {
 										let query = getQuery('?per_page=' + attributes.limit + '&' +value+'=1');
-										// query = query + _getQueryOrder();
 										props.setAttributes({ queryProducts: query });
 									}
 								}
@@ -1147,7 +1156,6 @@
 							SelectControl,
 							{
 								key: 'gbt-product-carousel-query-panel-attributes',
-								// label: i18n.__('Pick one or more categories'),
 								value: attributes.queryAttributesSelected,
 								options: attributes.queryAttributesOptions,
 								onChange: function onChange(value) {
