@@ -41,20 +41,26 @@
         margin-left: 10px;
         text-align: left; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid {
   padding: 0 4px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title {
     font-size: 1.15rem;
     padding: 0 32px 24px; }
-    .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+    .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+    .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
       font-size: 1.15rem; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid {
   padding: 0 4px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title {
     font-size: 1.15rem;
     padding: 0 32px 24px; }
-    .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+    .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+    .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
       font-size: 1.15rem; }
 
 @media screen and (min-width: 768px) {
@@ -105,40 +111,52 @@
         left: 0;
         width: 95%; } }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title {
   font-size: 1rem;
   padding: 0 25px 22px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
     font-size: 0.75rem; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title {
   font-size: 1rem;
   padding: 0 20px 22px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
     font-size: 0.75rem; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title {
   font-size: 0.9rem;
   padding: 0 20px 15px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="wide"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
     font-size: 0.75rem; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title {
   font-size: 1.15rem;
   padding: 0 32px 24px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-4 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
     font-size: 1rem; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title {
   font-size: 1rem;
   padding: 0 25px 22px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-5 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
     font-size: 0.75rem; }
 
-.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title {
+.wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title,
+.block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title {
   font-size: 1rem;
   padding: 0 25px 22px; }
-  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
+  .wp-block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count,
+  .block-editor-block-list__block[data-type="getbowtied/categories-grid"][data-align="full"] .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper.is-style-layout-1 .gbt_18_editor_categories_grid.columns-6 .gbt_18_editor_category_grid_item_title .gbt_18_editor_category_grid_item_count {
     font-size: 0.75rem; }
 
 @media screen and (min-width: 768px) {
@@ -202,36 +220,44 @@
   .editor-block-styles__item-preview .wp-block-getbowtied-categories-grid.gbt_18_editor_categories_grid_wrapper .gbt_18_editor_categories_grid .gbt_18_editor_category_grid_item_title {
     display: none; }
 
-.wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper {
+.wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper,
+.block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper {
   overflow: auto; }
-  .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product {
+  .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product,
+  .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product {
     float: left;
     width: 50%;
     list-style-type: none;
     text-align: center;
     margin-bottom: 0; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product:first-child {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product:first-child,
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product:first-child {
       padding: 40px;
       clear: both; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product:nth-child(2) {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product:nth-child(2),
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product:nth-child(2) {
       padding: 0 10px 10px; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_thumbnail {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_thumbnail,
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_thumbnail {
       background-color: #eeeeee;
       background-position: center;
       padding-bottom: 100%;
       height: 0;
       width: 100%; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_title {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_title,
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_title {
       height: 15px;
       width: 70%;
       margin: 15px auto 0;
       background-color: #eeeeee; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_price {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_price,
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_price {
       height: 10px;
       width: 30%;
       margin: 15px auto;
       background-color: #eeeeee; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_button {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_button,
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_button {
       background: #eeeeee;
       display: block;
       color: #333;
@@ -242,12 +268,15 @@
       margin: 10px auto 0;
       font-size: 13px;
       outline: 0; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_button:hover {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_button:hover,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_placeholder_expanding_grid_wrapper ul.gbt_18_placeholder_expanding_grid_products li.gbt_18_placeholder_grid_product .gbt_18_placeholder_grid_product_button:hover {
         background: #e4e4e4; }
 
-.wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper {
+.wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper,
+.block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper {
   overflow: auto; }
-  .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products {
+  .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products,
+  .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products {
     position: relative;
     -webkit-transition: opacity .2s ease-in-out;
     -o-transition: opacity .2s ease-in-out;
@@ -257,20 +286,25 @@
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap; }
-    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product {
+    .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product,
+    .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product {
       float: left;
       width: 50%;
       list-style-type: none;
       text-align: center;
       margin-bottom: 25px;
       padding: 0 10px 10px; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(odd) {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(odd),
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(odd) {
         clear: both; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1) {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1),
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1) {
         padding: 40px; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4) {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4),
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4) {
         padding: 40px; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_content_wrapper {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_content_wrapper,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_content_wrapper {
         cursor: pointer;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -284,21 +318,27 @@
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_thumbnail {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_thumbnail,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_thumbnail {
         width: 100%; }
       .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_title,
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_price {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_price,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_title,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_price {
         font-size: 16px;
         color: #000;
         cursor: pointer;
         font-weight: normal;
         display: block; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_price {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_price,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_price {
         margin: 0; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_title {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_title,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_title {
         margin: 10px 0 10px;
         line-height: 1.5; }
-      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_button {
+      .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_button,
+      .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_button {
         background: #eeeeee;
         display: block;
         color: #333;
@@ -309,29 +349,39 @@
         margin: 10px auto 0;
         font-size: 13px;
         outline: 0; }
-        .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_button:hover {
+        .wp-block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_button:hover,
+        .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product .gbt_18_grid_product_button:hover {
           background: #e4e4e4; }
 
-.wp-block[data-type="getbowtied/scattered-product-list"][data-align="wide"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1) {
+.wp-block[data-type="getbowtied/scattered-product-list"][data-align="wide"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1),
+.block-editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="wide"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1) {
   padding: 55px; }
 
-.wp-block[data-type="getbowtied/scattered-product-list"][data-align="wide"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4) {
+.wp-block[data-type="getbowtied/scattered-product-list"][data-align="wide"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4),
+.block-editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="wide"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4) {
   padding: 55px; }
 
-.wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper {
+.wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper,
+.block-editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper {
   padding: 0 5px; }
-  .wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1) {
+  .wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1),
+  .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+1) {
     padding: 65px; }
-  .wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4) {
+  .wp-block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4),
+  .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"][data-align="full"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products li.gbt_18_grid_product:nth-child(4n+4) {
     padding: 65px; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(even) .gbt_18_editor_lookbook_product_content {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(even) .gbt_18_editor_lookbook_product_content,
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(even) .gbt_18_editor_lookbook_product_content,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(even) .gbt_18_editor_lookbook_product_content,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(even) .gbt_18_editor_lookbook_product_content {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .wp-block-edit {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .wp-block-edit,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .wp-block-edit {
   padding: 0 12px; }
 
 .gbt_18_lookbook_reveal_topbar {
@@ -379,32 +429,42 @@
       top: -1px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-rich-text p,
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender__content {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender__content,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-rich-text p,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender__content {
   opacity: 0; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter {
   left: 49%;
   right: 50%;
   top: -7px;
   opacity: 1 !important;
   display: block !important; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter button {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter button,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter button {
     margin: 0; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender {
   max-width: 100%; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter {
     display: none; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content {
     margin-top: 0; }
 
-body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"] {
+body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"],
+body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"] {
   max-width: 98%; }
-  body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_right {
+  body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_right,
+  body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_right {
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
     order: 1; }
-  body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left {
+  body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left,
+  body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"]:nth-child(odd) .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left {
     -webkit-box-ordinal-group: 3;
     -ms-flex-order: 2;
     order: 2; }
@@ -453,37 +513,51 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-reveal-product"]
     height: 100%;
     width: 100%; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left {
   padding: 10%; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
     font-size: 18px; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text * {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text *,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text * {
     color: inherit; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p {
     display: none;
     font-size: 12px; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price {
     font-size: 14px;
     margin-bottom: 10px; }
-  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button {
+  .wp-block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button {
     font-size: 12px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_title {
   font-size: 30px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_top .gbt_18_editor_lookbook_product_text p {
   display: block;
   font-size: 16px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_price {
   font-size: 28px;
   margin: 10px 0 15px 0; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .gbt_18_lookbook_reveal_product_wrapper .gbt_18_editor_lookbook_product_content .gbt_18_editor_lookbook_product_content_left .gbt_18_editor_lookbook_product_content_left_inner_bottom .gbt_18_editor_lookbook_product_button {
   font-size: 16px; }
 
 div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-product"]:not([data-align="wide"]):not([data-align="full"]) .block-editor-block-mover.is-visible {
@@ -556,48 +630,64 @@ div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-
       height: 0;
       width: 100%; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title {
   height: 45px; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1 {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1 {
   height: 10px;
   margin-top: 25px; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2 {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2 {
   height: 10px;
   margin-top: 10px; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price {
   height: 25px; }
 
-.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button {
+.wp-block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button {
   font-size: 12px;
   margin-top: 15px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_title {
   height: 60px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1 {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text1 {
   height: 15px;
   margin-top: 40px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2 {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_top .gbt_18_editor_placeholder_lookbook_product_text2 {
   height: 15px;
   margin-top: 15px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_price {
   height: 40px; }
 
 .wp-block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button,
-.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button {
+.wp-block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="wide"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"][data-align="full"] .editor-inner-blocks .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_left_inner_bottom .gbt_18_editor_placeholder_lookbook_product_button {
   font-size: 16px;
   margin-top: 25px; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_section_content {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_section_content,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_section_content {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -614,38 +704,47 @@ div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-
   justify-content: center;
   position: relative; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
   min-height: 400px; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_media_upload {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_media_upload,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_media_upload {
   text-align: left;
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 1; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_text {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_text,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_text {
   display: table-cell;
   vertical-align: middle;
   padding-left: 50px;
   padding-right: 50px; }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
   text-align: center;
   line-height: 1.4; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
   text-transform: uppercase;
   margin-top: 10px; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
   font-size: 36px; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
   font-size: 12px; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_scroll_down_button {
   width: 46px;
   height: 46px;
   border-radius: 46px;
@@ -661,43 +760,58 @@ div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-
   cursor: pointer; }
 
 @media screen and (min-width: 1px) {
-  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] {
+  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"],
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
     max-width: 100vw; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .wp-block-edit {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .wp-block-edit,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .wp-block-edit {
       padding: 0 15px; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_media_upload {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_media_upload,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_media_upload {
       left: 35px; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_text {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_text,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_text {
       padding-left: 150px;
       padding-right: 150px; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_lookbook_sts_hero_item .gbt_18_lookbook_sts_hero_section_content {
       min-height: 600px; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
       font-size: 48px; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
       font-size: 14px; } }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender__content,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-rich-text p {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-rich-text p,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender__content,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-rich-text p {
   opacity: 0; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-block-list__empty-block-inserter {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-block-list__empty-block-inserter,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-block-list__empty-block-inserter {
   left: 49%;
   right: 50%;
   top: -7px;
   opacity: 1 !important;
   display: block !important; }
-  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-block-list__empty-block-inserter button {
+  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-block-list__empty-block-inserter button,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-block-list__empty-block-inserter button {
     margin: 0; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender {
   max-width: 100%; }
-  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter {
+  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter {
     display: none; }
-  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content {
+  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content {
     margin-top: 0; }
 
-body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] {
+body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"],
+body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] {
   margin-left: 0;
   margin-right: 0; }
 
@@ -808,49 +922,64 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_price,
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_price {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_price {
   font-size: 14px;
   line-height: 1.5; }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_title {
   margin: 10px 0 10px; }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_button,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_button {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper .gbt_18_lookbook_sts_product_button {
   display: block; }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper {
   overflow: auto;
   display: table;
   width: 100%; }
-  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products {
+  .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products {
     display: table-cell;
     vertical-align: middle; }
-    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product {
+    .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product,
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product {
       float: left;
       width: 50%;
       list-style-type: none;
       text-align: center;
       margin-bottom: 0;
       padding: 0 10px; }
-      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_thumbnail {
+      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_thumbnail,
+      .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_thumbnail {
         background-color: #eeeeee;
         background-position: center;
         padding-bottom: 100%;
         height: 0;
         width: 100%; }
-      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title {
+      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title,
+      .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title {
         height: 12px;
         width: 70%;
         margin: 10px auto 0;
         background-color: #eeeeee; }
-      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price {
+      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price,
+      .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price {
         height: 12px;
         width: 30%;
         margin: 10px auto 0;
         background-color: #eeeeee; }
-      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button {
+      .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button,
+      .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button {
         background: #eeeeee;
         display: none;
         color: #333;
@@ -861,21 +990,28 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
         margin: 15px auto 0;
         font-size: 13px;
         outline: 0; }
-        .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button:hover {
+        .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button:hover,
+        .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button:hover {
           background: #e4e4e4; }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_title {
   height: 15px;
   margin: 15px auto 0; }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_price {
   height: 10px;
   margin: 15px auto 0; }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button,
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button,
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product .gbt_18_placeholder_lookbook_sts_product_button {
   display: block; }
 
 .gbt_18_product_carousel {
@@ -1025,38 +1161,49 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
           .gbt_18_product_carousel .gbt_18_product_carousel_wrapper ul.gbt_18_carousel_products li.gbt_18_carousel_product .gbt_18_carousel_product_button:hover {
             background: #e4e4e4; }
 
-.wp-block[data-type="getbowtied/products-carousel"][data-align="full"] .gbt_18_product_carousel_wrapper .toggle-prev-button {
+.wp-block[data-type="getbowtied/products-carousel"][data-align="full"] .gbt_18_product_carousel_wrapper .toggle-prev-button,
+.block-editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] .gbt_18_product_carousel_wrapper .toggle-prev-button {
   left: 0px; }
 
-.wp-block[data-type="getbowtied/products-carousel"][data-align="full"] .gbt_18_product_carousel_wrapper .toggle-next-button {
+.wp-block[data-type="getbowtied/products-carousel"][data-align="full"] .gbt_18_product_carousel_wrapper .toggle-next-button,
+.block-editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] .gbt_18_product_carousel_wrapper .toggle-next-button {
   right: 0px; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item {
   width: 100%;
   overflow: auto;
   min-height: 200px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_left,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_right {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_right,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_item .gbt_18_editor_slide_placeholder_content_right {
     width: 50%;
     float: left; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title {
   width: 80%;
   background-color: #eeeeee; }
 
 .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
 .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3 {
   background-color: #eeeeee; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_placeholder_image {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_placeholder_image,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_placeholder_image {
   background-color: #eeeeee;
   background-position: center;
   padding-bottom: 100%;
   height: 0;
   width: 100%; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button {
   background: #eeeeee;
   display: block;
   border: none;
@@ -1064,94 +1211,126 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
   height: 30px;
   margin-top: 25px; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title {
   height: 30px; }
 
 .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
 .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3 {
   height: 10px; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1 {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1 {
   width: 70%;
   margin-top: 30px; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2 {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2 {
   width: 50%;
   margin-top: 10px; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3 {
   width: 60%;
   margin-top: 10px;
   margin-bottom: 30px; }
 
-.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left {
+.wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left {
   padding: 7% 3% 3%; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left {
   padding: 8% 5% 5%; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title {
   height: 40px; }
 
 .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
 .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3 {
   height: 15px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1 {
   width: 70%;
   margin-top: 50px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2 {
   width: 50%;
   margin-top: 20px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3 {
   width: 60%;
   margin-top: 20px;
   margin-bottom: 50px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button {
   width: 150px;
   height: 40px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
   padding: 9% 5% 5%; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
   height: 40px; }
 
 .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
 .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
   height: 15px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
   width: 70%;
   margin-top: 50px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
   width: 50%;
   margin-top: 20px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
   width: 60%;
   margin-top: 20px;
   margin-bottom: 70px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
+.wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
   width: 150px;
   height: 40px; }
 
 @media screen and (max-width: 1024px) {
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
     padding: 5% 3% 3%; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
     height: 30px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
@@ -1161,24 +1340,45 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
   .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
   .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
     height: 10px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
     margin-top: 35px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
     margin-top: 12px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
     margin-top: 12px;
     margin-bottom: 25px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
     width: 45%;
     height: 30px; } }
 
@@ -1191,51 +1391,83 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
   .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
   .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
     height: 12px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_content_left {
     padding: 5% 3% 3%; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_title {
     height: 40px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p1,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p1 {
     margin-top: 35px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p2,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p2 {
     margin-top: 15px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_p3,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_p3 {
     margin-top: 15px;
     margin-bottom: 40px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button,
   .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button,
-  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
+  .wp-block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_placeholder_button,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_placeholder_button,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="full"] .gbt_18_editor_slide_placeholder_button {
     width: 40%;
     height: 35px; } }
 
-.editor-styles-wrapper .wp-block[data-type="getbowtied/products-slider"] {
+.editor-styles-wrapper .wp-block[data-type="getbowtied/products-slider"],
+.editor-styles-wrapper .block-editor-block-list__block[data-type="getbowtied/products-slider"] {
   max-width: 100%;
   padding: 0;
   margin: 0; }
 
-.wp-block[data-type="getbowtied/products-slider"] {
+.wp-block[data-type="getbowtied/products-slider"],
+.block-editor-block-list__block[data-type="getbowtied/products-slider"] {
   max-width: 100%;
   padding: 0;
   margin: 0; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_content_wrapper {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_content_wrapper,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_content_wrapper {
     margin: 0 14px; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider {
     width: 100%;
     height: 100%;
     overflow: hidden; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide {
+    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide,
+    .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide {
       width: 100%;
       overflow: hidden;
       opacity: 0;
@@ -1244,21 +1476,26 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
       -webkit-transition: opacity .4s ease-in-out;
       -o-transition: opacity .4s ease-in-out;
       transition: opacity .4s ease-in-out; }
-      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide.selected {
+      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide.selected,
+      .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide.selected {
         opacity: 1;
         height: 100%;
         visibility: visible; }
       .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_left,
-      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_right {
+      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_right,
+      .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_left,
+      .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_item.slide .gbt_18_editor_slide_content_right {
         width: 50%;
         float: left; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_image {
+    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_image,
+    .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_image {
       background-size: cover;
       background-position: center;
       padding-bottom: 100%;
       height: 0;
       width: 100%; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart {
+    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
+    .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart {
       background: #eeeeee;
       display: block;
       color: #333;
@@ -1268,24 +1505,31 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
       padding: 8px 17px;
       outline: 0;
       margin-top: 25px; }
-      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart:hover {
+      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart:hover,
+      .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart:hover {
         background: #e4e4e4; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
+    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows,
+    .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
       margin-left: 2%;
       position: absolute;
       bottom: 15px; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link {
+    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link,
+    .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link {
       margin-top: 25px;
       text-transform: uppercase;
       font-size: 14px;
       line-height: 14px; }
-      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link i {
+      .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link i,
+      .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_link i {
         margin: 0 10px 0 6px;
         font-size: 12px; }
-    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev {
+    .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev,
+    .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev {
       margin-right: 3px; }
   .wp-block[data-type="getbowtied/products-slider"] .toggle-prev,
-  .wp-block[data-type="getbowtied/products-slider"] .toggle-next {
+  .wp-block[data-type="getbowtied/products-slider"] .toggle-next,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next {
     display: inline-block;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1294,84 +1538,121 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
     outline: 0;
     z-index: 100; }
   .wp-block[data-type="getbowtied/products-slider"] .toggle-prev-icon,
-  .wp-block[data-type="getbowtied/products-slider"] .toggle-next-icon {
+  .wp-block[data-type="getbowtied/products-slider"] .toggle-next-icon,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev-icon,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next-icon {
     width: 18px;
     height: 18px; }
-  .wp-block[data-type="getbowtied/products-slider"] .toggle-prev {
+  .wp-block[data-type="getbowtied/products-slider"] .toggle-prev,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-prev {
     left: 7px; }
-  .wp-block[data-type="getbowtied/products-slider"] .toggle-next {
+  .wp-block[data-type="getbowtied/products-slider"] .toggle-next,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .toggle-next {
     left: 30px; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left {
     text-align: left; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title {
     line-height: 1.5;
     font-size: 18px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_title {
     margin: 0.5em 0; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_text {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_text,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_text {
     font-size: 14px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_add_to_cart,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_add_to_cart,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_price {
     font-size: 13px; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_slide_content_left {
     padding: 2%; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_content_left {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_content_left,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_content_left {
   padding: 5%; }
 
 .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_add_to_cart,
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_price {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_price,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_add_to_cart,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_price {
   font-size: 14px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_text {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_text,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_editor_slide_text {
   font-size: 16px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_slide_content_arrows {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_slide_content_arrows,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .gbt_18_slide_content_arrows {
   margin-left: 5%;
   position: absolute;
   bottom: 58px; }
 
 .wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev:before,
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next:before {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next:before,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev:before,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next:before {
   font-size: 20px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-prev {
   left: 35px; }
 
-.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next {
+.wp-block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next,
+.block-editor-block-list__block[data-type="getbowtied/products-slider"][data-align="wide"] .toggle-next {
   left: 60px; }
 
 @media screen and (max-width: 1024px) {
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
     padding: 2%; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
     font-size: 16px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
     font-size: 11px; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
     margin-left: 2%;
     bottom: 0; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
     font-size: 15px; } }
 
 @media screen and (min-width: 1025px) and (max-width: 1240px) {
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_title {
     font-size: 18px; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_slide_content_arrows {
     margin-left: 10px;
     bottom: 2%; }
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_content_left {
     padding: 3%; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_text,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_add_to_cart,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .gbt_18_editor_slide_price {
     font-size: 12px; }
   .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
-  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
+  .wp-block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-prev:before,
+  .block-editor-block-list__block[data-type="getbowtied/products-slider"] .gbt_18_editor_default_slider .toggle-next:before {
     font-size: 15px; } }
 
 .products-main-inspector-wrapper {

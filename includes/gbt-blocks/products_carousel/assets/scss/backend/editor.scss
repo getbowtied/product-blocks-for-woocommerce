@@ -118,7 +118,7 @@
 			transition: opacity .2s ease-in-out;
 			width: 100%;
 			transition: margin .3s ease-in-out;
-			
+
 			&:after {
 				clear: both;
 				content: '';
@@ -142,7 +142,7 @@
 		    	opacity: 0;
 		    	visibility: hidden;
 		    	transition: all .6s ease-in-out;
-		    	
+
 		    	&.is-visible {
 		    		opacity: 1;
 		    		visibility: visible;
@@ -206,7 +206,8 @@
 }
 
 
-.wp-block[data-type="getbowtied/products-carousel"][data-align="full"] {
+.wp-block[data-type="getbowtied/products-carousel"][data-align="full"],
+.block-editor-block-list__block[data-type="getbowtied/products-carousel"][data-align="full"] {
 	.gbt_18_product_carousel_wrapper {
 		.toggle-prev-button {
 			left: 0px;

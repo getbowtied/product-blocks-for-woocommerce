@@ -1,4 +1,5 @@
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"],
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
 
   .gbt_18_lookbook_sts_hero_section_content {
     background-size: cover;
@@ -66,7 +67,8 @@
   }
 }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"],
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
   @media screen and (min-width: 1px) {
     max-width: 100vw;
 
@@ -97,7 +99,8 @@
   }
 }
 
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"] {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"],
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] {
   .editor-inner-blocks {
     .editor-default-block-appender__content,
     .editor-rich-text p {

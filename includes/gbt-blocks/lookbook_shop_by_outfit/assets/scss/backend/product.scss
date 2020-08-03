@@ -1,4 +1,5 @@
-body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"] {
+body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-product"],
+body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] {
     margin-left: 0;
     margin-right: 0;
 }
@@ -161,7 +162,9 @@ body.block-editor-page .wp-block[data-type="getbowtied/lookbook-shop-by-outfit-p
 }
 
 .wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"],
-.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] {
+.wp-block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"],
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="wide"],
+.block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"][data-align="full"] {
     .gbt_18_editor_lookbook_sts_product_content {
         .gbt_18_lookbook_sts_products_wrapper {
 
