@@ -1932,8 +1932,8 @@
 				),
 				el( InnerBlock,
 					{
-						key: 				'gbt_18_lookbook_reveal_inner_product',
-						allowedBlocksNames: [ 'getbowtied/lookbook-reveal-product' ],
+						key: 			'gbt_18_lookbook_reveal_inner_product',
+						allowedBlocks: [ 'getbowtied/lookbook-reveal-product' ],
 					},
 				),
 			];
@@ -2817,8 +2817,8 @@
 				),
 				el( InnerBlock,
 					{
-						key: 				'gbt_18_lookbook_reveal_inner_product',
-						allowedBlocksNames: [ 'getbowtied/lookbook-shop-by-outfit-product' ],
+						key: 		   'gbt_18_lookbook_reveal_inner_product',
+						allowedBlocks: [ 'getbowtied/lookbook-shop-by-outfit-product' ],
 					},
 				),
 			];
