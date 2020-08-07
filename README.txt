@@ -2,8 +2,8 @@
 Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
-Tested up to: 5.4.2
-Stable tag: 1.4.1
+Tested up to: 5.5
+Stable tag: 1.4.2
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,6 +52,11 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 1.4.2 =
+* Product Carousel: Exclude hidden products from carousel
+* Product Carousel: Fixed number of products option issue
+* Retested for compatibility with WordPress 5.5 and WooCommerce 4.4.0
 
 = 1.4.1 =
 * Improved plugin's performance by updating frontend script dependencies
