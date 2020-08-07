@@ -2904,15 +2904,13 @@
 				el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
 			);
 		},
+
 		deprecated: [
-	        {
+			{
 				attributes: attributes,
 
-				supports: {
-					align: false
-				},
+				save: function( props ) {
 
-	            save: function( props ) {
 					props.attributes.title = props.attributes.title || "";
 
 					props.attributes.subtitle 	= props.attributes.subtitle || "";
@@ -2941,23 +2939,23 @@
 									key: 		'gbt_18_hero_section_content',
 									className: 	'gbt_18_hero_section_content'
 								},
-								el( 'h1',
+								el( 'h2',
 									{
 										key: 		'gbt_18_hero_title',
 										className: 	'gbt_18_hero_title',
 										style:
 										{
 											color: props.attributes.textColor
-										}
+										},
+										dangerouslySetInnerHTML: { __html: props.attributes.title }
 									},
-									props.attributes.title
 								),
 								el( 'p',
 									{
 										key: 		'gbt_18_hero_subtitle',
-										className: 	'gbt_18_hero_subtitle'
+										className: 	'gbt_18_hero_subtitle',
+										dangerouslySetInnerHTML: { __html: props.attributes.subtitle }
 									},
-									props.attributes.subtitle
 								),
 							),
 							el( 'span',
@@ -2973,6 +2971,7 @@
 									{
 										key: 'gbt_18_scroll_down_button-svg',
 										xmlns:"http://www.w3.org/2000/svg",
+										Focusable: 'false',
 										viewBox:"0 0 24 24",
 										style:
 										{
@@ -2990,9 +2989,10 @@
 						),
 						el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
 					);
-	            },
-	        }
-	    ],
+				},
+			}
+		]
+
 	} );
 
 } )(
