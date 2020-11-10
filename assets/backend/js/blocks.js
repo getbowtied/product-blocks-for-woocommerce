@@ -71,7 +71,7 @@
 			},
 		/* loader */
 			isLoading: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 		/* Manually pick products */
@@ -84,7 +84,7 @@
 				default: [],
 			},
 			querySearchNoResults: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			querySearchSelected: {
@@ -97,11 +97,11 @@
 				default: '',
 			},
 			parentOnly: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			hideEmpty: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			orderby: {
@@ -109,21 +109,21 @@
 				default: 'menu_order',
 			},
 			productCount: {
-				type: 'bool',
+				type: 'boolean',
 				default: true,
 			},
 		/* First Load */
 			firstLoad: {
-				type: 'bool',
+				type: 'boolean',
 				default: true,
 			},
 			limit: {
-				type: 'int',
+				type: 'integer',
 				default: 8,
 			},
 		/* Columns */
 			columns: {
-				type: 'int',
+				type: 'integer',
 				default: 3,
 			}
 
@@ -883,7 +883,7 @@
 			},
 		/* Limit */
 			limit: {
-				type: 'int',
+				type: 'integer',
 				default: 10
 			}
 		},
@@ -2008,7 +2008,7 @@
 			},
 		/* loader */
 			isLoading: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 		/* Manually pick products */
@@ -2025,7 +2025,7 @@
 				default: [],
 			},
 			querySearchNoResults: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			querySearchSelected: {
@@ -3051,7 +3051,7 @@
 	            default: '',
 	        },
 	        imgID: {
-	            type: 'int',
+	            type: 'integer',
 	        },
 	        imgAlt: {
 	            type: 'string',
@@ -3072,7 +3072,7 @@
 			},
 		/* loader */
 			isLoading: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 		/* Manually pick products */
@@ -3089,7 +3089,7 @@
 				default: [],
 			},
 			querySearchNoResults: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			querySearchSelected: {
@@ -3101,7 +3101,7 @@
 				default: '',
 			},
 			selectedSlide: {
-				type: 'int',
+				type: 'integer',
 				default: 0,
 			},
 			align: {
@@ -3897,17 +3897,17 @@
 			},
 		/* Columns */
 			columns: {
-				type: 'int',
+				type: 'integer',
 				default: 3
 			},
 		/* Space Between */
 			spaceBetween: {
-				type: 'int',
+				type: 'integer',
 				default: 30
 			},
 		/* Limit */
 			limit: {
-				type: 'int',
+				type: 'integer',
 				default: 10
 			}
 		},
@@ -5117,7 +5117,7 @@
 			},
 		/* loader */
 			isLoading: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 		/* Manually pick products */
