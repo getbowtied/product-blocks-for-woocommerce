@@ -94,17 +94,17 @@
 			},
 		/* Columns */
 			columns: {
-				type: 'int',
+				type: 'integer',
 				default: 3
 			},
 		/* Space Between */
 			spaceBetween: {
-				type: 'int',
+				type: 'integer',
 				default: 30
 			},
 		/* Limit */
 			limit: {
-				type: 'int',
+				type: 'integer',
 				default: 10
 			}
 		},

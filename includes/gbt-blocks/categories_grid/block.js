@@ -54,7 +54,7 @@
 			},
 		/* loader */
 			isLoading: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 		/* Manually pick products */
@@ -67,7 +67,7 @@
 				default: [],
 			},
 			querySearchNoResults: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			querySearchSelected: {
@@ -80,11 +80,11 @@
 				default: '',
 			},
 			parentOnly: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			hideEmpty: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 			orderby: {
@@ -92,21 +92,21 @@
 				default: 'menu_order',
 			},
 			productCount: {
-				type: 'bool',
+				type: 'boolean',
 				default: true,
 			},
 		/* First Load */
 			firstLoad: {
-				type: 'bool',
+				type: 'boolean',
 				default: true,
 			},
 			limit: {
-				type: 'int',
+				type: 'integer',
 				default: 8,
 			},
 		/* Columns */
 			columns: {
-				type: 'int',
+				type: 'integer',
 				default: 3,
 			}
 

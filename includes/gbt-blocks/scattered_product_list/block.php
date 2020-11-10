@@ -20,7 +20,7 @@ function pbfw_render_frontend_expanding_grid( $attributes ) {
 				'queryOrder'       => '',
 				'queryDisplayType' => 'all_products',
 				'queryProducts'    => 'wc/v3/products?per_page=10',
-				'limit'						=> 10
+				'limit'			   => 10
 			),
 			$attributes
 		)

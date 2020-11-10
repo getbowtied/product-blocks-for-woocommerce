@@ -95,7 +95,7 @@
 			},
 		/* Limit */
 			limit: {
-				type: 'int',
+				type: 'integer',
 				default: 10
 			}
 		},

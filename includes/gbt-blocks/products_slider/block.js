@@ -44,7 +44,7 @@
 			},
 		/* loader */
 			isLoading: {
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 			},
 		/* Manually pick products */
