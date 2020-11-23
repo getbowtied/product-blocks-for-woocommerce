@@ -108,12 +108,19 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 						<?php
 						while ( $lc->have_posts() ) :
 							$lc->the_post();
+
+							$product = wc_get_product( get_the_ID() );
+
+							if( $product->is_in_stock() || ( !$product->is_in_stock() && ( 'no' === get_option('woocommerce_hide_out_of_stock_items') ) ) ) {
+								?>
+								<div class="swiper-slide">
+									<ul class="products">
+										<?php wc_get_template_part( 'content', 'product' ); ?>
+									</ul>
+								</div>
+								<?php
+							}
 							?>
-							<div class="swiper-slide">
-								<ul class="products">
-									<?php wc_get_template_part( 'content', 'product' ); ?>
-								</ul>
-							</div>
 						<?php endwhile; ?>
 					</div>
 					<div class="swiper-pagination"></div>

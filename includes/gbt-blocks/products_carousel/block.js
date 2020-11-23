@@ -1135,7 +1135,7 @@
 										},
 										{
 											label: i18n.__('On sale'),
-											value: 'on_sale'
+											value: 'sale'
 										},
 										{
 											label: i18n.__('Attributes'),
