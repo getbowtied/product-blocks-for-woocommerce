@@ -16,7 +16,7 @@ add_action( 'enqueue_block_editor_assets', function() {
 	wp_enqueue_script(
 		'getbowtied-product-blocks-editor-scripts',
 		plugins_url( 'assets/backend/js/blocks'.PBFW_SUFFIX.'.js', dirname( dirname( __FILE__ ) ) ),
-		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
+		array( 'wp-blocks' ),
 		PBFW_VERSION
 	);
 

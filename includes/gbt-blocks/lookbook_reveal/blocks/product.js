@@ -78,10 +78,6 @@
 	        	type: 'string',
 	        	default: '#ffffff'
 	        },
-	        animation: {
-	        	type: 'string',
-	        	default: 'animation-1'
-	        },
 		},
 
 		edit: function( props ) {

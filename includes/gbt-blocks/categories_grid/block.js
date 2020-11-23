@@ -2,6 +2,8 @@
 
 	"use strict";
 
+	console.log(i18n.__( 'Product Categories Grid' ));
+
 	const el = element.createElement;
 
 	/* Blocks */

@@ -8,23 +8,41 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Enqueue Frontend Assets
  */
-add_action( 'wp_enqueue_scripts', 'pbfw_products_carousel_assets' );
+add_action( 'enqueue_block_assets', 'pbfw_products_carousel_assets' );
 function pbfw_products_carousel_assets() {
-	if ( has_block( 'getbowtied/products-carousel' ) ) {
-		wp_enqueue_script(
-			'getbowtied-products-carousel-scripts',
-			plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
-			array( 'jquery', 'swiper' ),
-			PBFW_VERSION
-		);
+	wp_register_script(
+		'getbowtied-products-carousel-scripts',
+		plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
+		array( 'jquery', 'swiper' ),
+		PBFW_VERSION
+	);
 
-		wp_enqueue_style(
-			'getbowtied-products-carousel-styles',
-			plugins_url( 'assets/css/frontend/style'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
-			array( 'swiper' ),
-			filemtime(plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style'.PBFW_SUFFIX.'.css')
-		);
-	}
+	wp_register_style(
+		'getbowtied-products-carousel-styles',
+		plugins_url( 'assets/css/frontend/style'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
+		array( 'swiper' ),
+		filemtime(plugin_dir_path( dirname(__FILE__) ) . 'assets/css/frontend/style'.PBFW_SUFFIX.'.css')
+	);
+}
+
+/**
+ * Enqueue Editor Assets
+ */
+add_action( 'enqueue_block_editor_assets', 'pbfw_products_carousel_editor_assets' );
+function pbfw_products_carousel_editor_assets() {
+	wp_register_script(
+		'getbowtied-products-carousel-editor-scripts',
+		plugins_url( 'block'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
+		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
+		PBFW_VERSION
+	);
+
+	wp_register_style(
+		'getbowtied-products-carousel-editor-styles',
+		plugins_url( 'assets/css/backend/editor'.PBFW_SUFFIX.'.css', dirname(__FILE__) ),
+		array(),
+		filemtime(plugin_dir_path( dirname(__FILE__) ) . 'assets/css/backend/editor'.PBFW_SUFFIX.'.css')
+	);
 }
 
 /**
@@ -32,6 +50,9 @@ function pbfw_products_carousel_assets() {
  */
 register_block_type( 'getbowtied/products-carousel', array(
 	'editor_script'		=> 'getbowtied-products-carousel-editor-scripts',
+	'editor_style'		=> 'getbowtied-products-carousel-editor-styles',
+	'script'			=> 'getbowtied-products-carousel-scripts',
+	'style'				=> 'getbowtied-products-carousel-styles',
 	'attributes'      => array(
 		'productIDs'       => array(
 			'type'    => 'string',
