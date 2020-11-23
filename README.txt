@@ -53,6 +53,9 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
+= 1.4.3 =
+* Retested for compatibility with WordPress 5.5.3 and WooCommerce 4.7.0
+
 = 1.4.2 =
 * Product Carousel: Exclude hidden products from carousel
 * Product Carousel: Fixed number of products option issue
