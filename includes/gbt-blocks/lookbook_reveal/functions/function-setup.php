@@ -56,6 +56,7 @@ register_block_type( 'getbowtied/lookbook-reveal-product', array(
 	'editor_script'		=> 'getbowtied-lookbook-reveal-product-editor-scripts',
 	'editor_style'		=> 'getbowtied-lookbook-reveal-editor-styles',
 	'style'				=> 'getbowtied-lookbook-reveal-styles',
+	'parent'			=> 'getbowtied/lookbook-reveal',
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',

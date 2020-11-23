@@ -93,6 +93,7 @@ register_block_type( 'getbowtied/lookbook-shop-by-outfit', array(
 
 register_block_type( 'getbowtied/lookbook-shop-by-outfit-product', array(
 	'editor_script'		=> 'getbowtied-lookbook-shop-by-outfit-product-editor-scripts',
+	'parent'			=> 'getbowtied/lookbook-shop-by-outfit',
 	'attributes'      	=> array(
 		'productIDs' 					=> array(
 			'type'						=> 'string',
