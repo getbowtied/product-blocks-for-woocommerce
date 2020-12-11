@@ -67,8 +67,8 @@ register_block_type( 'getbowtied/scattered-product-list', array(
 			'default' => 'wc/v3/products?per_page=10',
 		),
 		'limit'            => array(
-			'type'    => 'int',
-			'default' => '10',
+			'type'    => 'integer',
+			'default' => 10,
 		),
 	),
 

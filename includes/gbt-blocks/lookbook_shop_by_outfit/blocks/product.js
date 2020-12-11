@@ -45,7 +45,8 @@
 	            default: '',
 	        },
 	        imgID: {
-	            type: 'integer',
+	            type: 'number',
+				default: 0,
 	        },
 	        imgAlt: {
 	            type: 'string',

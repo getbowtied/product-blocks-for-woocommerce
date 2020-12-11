@@ -15,7 +15,7 @@ function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
 	extract( shortcode_atts( array(
 		'productIDs'					=> '',
 		'imgURL'						=> '',
-		'imgID'							=> '',
+		'imgID'							=> 0,
 		'image_position'				=> 'image-right',
 		'align'							=> 'center',
 	), $attributes ) );

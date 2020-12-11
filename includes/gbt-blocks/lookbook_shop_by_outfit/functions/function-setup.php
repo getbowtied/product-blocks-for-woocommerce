@@ -75,6 +75,7 @@ register_block_type( 'getbowtied/lookbook-shop-by-outfit', array(
 		),
 		'imgID'							=> array(
 			'type'						=> 'number',
+			'default'					=> 0,
 		),
 		'imgAlt'						=> array(
 			'type'						=> 'string',
@@ -104,7 +105,8 @@ register_block_type( 'getbowtied/lookbook-shop-by-outfit-product', array(
 			'default'					=>  '',
 		),
 		'imgID'							=> array(
-			'type'						=> 'int',
+			'type'						=> 'number',
+			'default'					=> 0,
 		),
 		'image_position'				=> array(
 			'type'						=> 'string',
