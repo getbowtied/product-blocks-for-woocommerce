@@ -48,7 +48,7 @@
 		})
   });
 
-	$(window).resize(function(){
+	$(window).on( 'resize', function(){
 		if ( $(window).width() < 768 ) {
 			if (mobile !== true) {
 				for ( var i = 0; i < swiper.length; i++) {
@@ -66,6 +66,6 @@
 			mobile = false;
 			}
 		}
-	})
+	});
 
 } )(jQuery);
