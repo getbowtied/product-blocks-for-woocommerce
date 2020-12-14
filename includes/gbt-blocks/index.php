@@ -45,14 +45,14 @@ function getbowtied_register_external_libraries() {
 			'swiper',
 			plugins_url( 'assets/frontend/swiper/css/swiper.min.css', dirname( dirname( __FILE__ ) ) ),
 			array(),
-			'5.2.0'
+			'6.4.1'
 		);
 
 		wp_register_script(
 			'swiper',
 			plugins_url( 'assets/frontend/swiper/js/swiper.min.js', dirname( dirname( __FILE__ ) ) ),
 			array( 'jquery' ),
-			'5.2.0',
+			'6.4.1',
 			true
 		);
 	}

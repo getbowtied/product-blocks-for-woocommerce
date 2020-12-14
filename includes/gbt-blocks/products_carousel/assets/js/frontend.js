@@ -22,7 +22,9 @@
 				_columns = columns[i];
 			}
 
-			swiper.push(new Swiper ($(this), {
+			var data_id = $(this).attr('data-id');
+
+			swiper.push( new Swiper ( '.swiper-' + data_id, {
 				direction: 'horizontal',
 				loop: false,
 				autoHeight: true,
@@ -30,11 +32,11 @@
 				spaceBetween: parseInt($(this).attr('data-spaceBetween')),
 				centerInsufficientSlides: true,
 			    navigation: {
-			    	nextEl: $(this).find('.swiper-button-next'),
-			    	prevEl: $(this).find('.swiper-button-prev'),
+			    	nextEl: '.swiper-' + data_id + ' .swiper-button-next',
+			    	prevEl: '.swiper-' + data_id + ' .swiper-button-prev',
 			    },
 			    pagination: {
-			        el: $(this).find('.swiper-pagination'),
+			        el: '.swiper-' + data_id + ' .swiper-pagination',
 			        dynamicBullets: true,
 			    },
 			    on: {

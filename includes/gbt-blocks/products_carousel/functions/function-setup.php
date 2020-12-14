@@ -67,7 +67,7 @@ register_block_type( 'getbowtied/products-carousel', array(
 			'default' => '',
 		),
 		'columns'          => array(
-			'type'    => 'int',
+			'type'    => 'integer',
 			'default' => 3,
 		),
 		'queryDisplayType' => array(
@@ -79,7 +79,7 @@ register_block_type( 'getbowtied/products-carousel', array(
 			'default' => 'wc/v3/products?per_page=10',
 		),
 		'spaceBetween'     => array(
-			'type'    => 'int',
+			'type'    => 'integer',
 			'default' => 20,
 		),
 	),
