@@ -3,7 +3,7 @@ Contributors: getbowtied, vanesareinerth, traians, adrianlbs
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 5.6
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,9 +53,11 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
+= 1.4.6 =
+* Retested for compatibility with WooCommerce 4.9.1
+
 = 1.4.5 =
 - Maintenance: Updated Swiper library to its latest version
-
 
 = 1.4.4 =
 * Retested for compatibility with WordPress 5.6 and WooCommerce 4.8.0
