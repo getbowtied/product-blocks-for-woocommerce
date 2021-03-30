@@ -221,7 +221,6 @@ div.block-editor-block-contextual-toolbar[data-type="getbowtied/lookbook-reveal-
           outline: 0; }
     .gbt_18_editor_lookbook_product_wrapper.placeholder .gbt_18_editor_lookbook_product_content.placeholder .gbt_18_editor_placeholder_lookbook_product_content_right .gbt_18_editor_placeholder_lookbook_product_image {
       background-size: cover;
-      background: url("../../images/placeholder.png");
       background-position: center;
       background-repeat: no-repeat;
       background-color: #fff;

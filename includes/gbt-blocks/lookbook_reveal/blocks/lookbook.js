@@ -7,10 +7,15 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InnerBlock 		= blockEditor.InnerBlocks;
+	const {
+		InspectorControls,
+		InnerBlocks
+	} = wp.blockEditor;
 
-	const SVG 				= components.SVG;
-	const Path 				= components.Path;
+	const {
+		SVG,
+		Path,
+	} = components;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-reveal', {
@@ -55,7 +60,7 @@
 						i18n.__('Lookbook - Product Reveal')
 					),
 				),
-				el( InnerBlock,
+				el( InnerBlocks,
 					{
 						key: 			'gbt_18_lookbook_reveal_inner_product',
 						allowedBlocks: [ 'getbowtied/lookbook-reveal-product' ],
@@ -71,7 +76,7 @@
 					key: 		'gbt_18_lookbook_reveal_wrapper',
 					className: 	'gbt_18_lookbook_reveal_wrapper'
 				},
-				el( InnerBlock.Content, { key: 'gbt_18_lookbook_reveal_wrapper' } )
+				el( InnerBlocks.Content, { key: 'gbt_18_lookbook_reveal_wrapper' } )
 			);
 		},
 	} );
