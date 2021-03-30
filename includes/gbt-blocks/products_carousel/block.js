@@ -36,7 +36,7 @@
 			},
 			queryProductsLast: {
 				type: 'string',
-				default: '',
+				default: 'wc/v3/products?per_page=10',
 			},
 			queryDisplayType: {
 				type: 'string',
@@ -239,9 +239,12 @@
 
 			function getProducts() {
 				let query = attributes.queryProducts;
-				props.setAttributes({ queryProductsLast: query});
 
-				if (query != '') {
+				if( query != attributes.queryProductsLast ) {
+					props.setAttributes({ queryProductsLast: query});
+				}
+
+				if (query !== '') {
 					apiFetch({ path: query }).then(function (products) {
 						let products_final = [];
 						let index = 0;
