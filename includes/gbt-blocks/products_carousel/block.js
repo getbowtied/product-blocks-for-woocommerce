@@ -5,18 +5,23 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   = blocks.registerBlockType;
-	const InspectorControls   = blockEditor.InspectorControls;
+	const registerBlockType = blocks.registerBlockType;
 
-	const TextControl 		= components.TextControl;
-	const SelectControl		= components.SelectControl;
-	const ToggleControl		= components.ToggleControl;
-	const RangeControl		= components.RangeControl;
-	const Button 			= components.Button;
-	const SVG 				= components.SVG;
-	const Path 				= components.Path;
+	const {
+		TextControl,
+		SelectControl,
+		ToggleControl,
+		Button,
+		RangeControl,
+		SVG,
+		Path,
+	} = components;
 
-	const apiFetch 			= wp.apiFetch;
+	const {
+		InspectorControls,
+	} = wp.blockEditor;
+
+	const apiFetch = wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-carousel', {
