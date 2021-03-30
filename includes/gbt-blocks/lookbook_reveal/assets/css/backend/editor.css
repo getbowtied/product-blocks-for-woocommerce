@@ -51,25 +51,25 @@
       position: relative;
       top: -1px; }
 
-.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-rich-text p,
-.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender__content {
-  opacity: 0; }
-
-.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter {
-  left: 49%;
-  right: 50%;
-  top: -7px;
-  opacity: 1 !important;
-  display: block !important; }
-  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-block-list__empty-block-inserter button {
-    margin: 0; }
-
-.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender {
-  max-width: 100%; }
-  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender > .editor-inserter {
-    display: none; }
-  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .editor-inner-blocks .editor-default-block-appender .editor-default-block-appender__content {
-    margin-top: 0; }
+.block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks {
+  padding: 20px 0; }
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .editor-rich-text p,
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .editor-default-block-appender__content {
+    opacity: 0; }
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .editor-block-list__empty-block-inserter {
+    left: 49%;
+    right: 50%;
+    top: -7px;
+    opacity: 1 !important;
+    display: block !important; }
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .editor-block-list__empty-block-inserter button {
+      margin: 0; }
+  .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .block-list-appender {
+    max-width: 100%; }
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .block-list-appender > .editor-inserter {
+      display: none; }
+    .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"] .block-editor-inner-blocks .block-list-appender .editor-default-block-appender__content {
+      margin-top: 0; }
 
 body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal-product"] {
   max-width: 98%; }
