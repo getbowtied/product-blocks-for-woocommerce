@@ -40,9 +40,9 @@ function pbfw_render_frontend_lookbook_snap_to_scroll_product( $attributes ) {
                     <h5><?php echo __( 'Shop this look', 'gbt-blocks'); ?></h5>
                 </div>
             </div>
-            <?php if (!empty($productIDs)):?>
+            <?php if (!empty($productIDs)): var_dump($productIDs); ?>
             <div class="gbt_18_look_product_box <?php echo $row; ?>">
-        		<?php echo do_shortcode('[products columns="'.$columns.'" ids="'.$productIDs.'"]'); ?>
+        		<?php echo do_shortcode('[products columns="'.$columns.'" ids="'.$productIDs.'" orderby="post__in"]'); ?>
 			</div>
 			<?php endif; ?>
 		</section>
