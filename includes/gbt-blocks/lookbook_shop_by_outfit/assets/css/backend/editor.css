@@ -34,7 +34,9 @@
 .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle,
 .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_title {
   text-align: center;
-  line-height: 1.4; }
+  line-height: 1.4;
+  max-width: 860px;
+  margin: 0 auto; }
 
 .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit"] .gbt_18_hero_section_subtitle {
   text-transform: uppercase;

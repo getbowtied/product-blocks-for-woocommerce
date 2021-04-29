@@ -7,17 +7,22 @@
 	/* Blocks */
 	const registerBlockType = blocks.registerBlockType;
 
-	const InspectorControls = blockEditor.InspectorControls;
+	const {
+		TextControl,
+		SelectControl,
+		ToggleControl,
+		RangeControl,
+		Button,
+		SVG,
+		Path,
+	} = components;
 
-	const TextControl 		= components.TextControl;
-	const SelectControl		= components.SelectControl;
-	const ToggleControl		= components.ToggleControl;
-	const RangeControl		= components.RangeControl;
-	const Button 			= components.Button;
-	const SVG 				= components.SVG;
-	const Path 				= components.Path;
+	const {
+		InspectorControls,
+	} = wp.blockEditor;
 
-	const apiFetch 			= wp.apiFetch;
+	const apiFetch  = wp.apiFetch;
+	const useEffect = wp.element.useEffect;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/scattered-product-list', {
@@ -228,10 +233,14 @@
 				return '/wc/v2/products' + query;
 			}
 
-			function getProducts() {
-				let query = attributes.queryProducts;
-				props.setAttributes({ queryProductsLast: query});
+			function getProducts( query ) {
+				if( query === null ) {
+					query = attributes.queryProducts;
 
+					useEffect( function() {
+						props.setAttributes({ queryProductsLast: query});
+					});
+				}
 
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
@@ -1055,9 +1064,13 @@
 								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
+									let query = attributes.queryProducts;
+
 									props.setAttributes({ isLoading: true });
 									_destroyTempAtts();
-									getProducts();
+
+									props.setAttributes({ queryProductsLast: query});
+									getProducts(query);
 								},
 							},
 							_isLoadingText(),
@@ -1069,7 +1082,7 @@
 					{
 						key: 'gbt-scattered-list-main-wrapper',
 					},
-					attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
+					attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(null),
 					renderResults(),
 				),
 			];

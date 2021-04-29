@@ -5,18 +5,23 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   = blocks.registerBlockType;
+	const registerBlockType = blocks.registerBlockType;
 
-	const InspectorControls = blockEditor.InspectorControls;
-	const ColorSettings		= blockEditor.PanelColorSettings;
+	const {
+		TextControl,
+		SelectControl,
+		RangeControl,
+		SVG,
+		Path,
+	} = components;
 
-	const TextControl 		= components.TextControl;
-	const SelectControl		= components.SelectControl;
-	const RangeControl		= components.RangeControl;
-	const SVG 				= components.SVG;
-	const Path 				= components.Path;
+	const {
+		InspectorControls,
+		PanelColorSettings,
+	} = wp.blockEditor;
 
-	const apiFetch 			= wp.apiFetch;
+	const apiFetch  = wp.apiFetch;
+	const useEffect = wp.element.useEffect;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/lookbook-reveal-product', {
@@ -166,9 +171,14 @@
 				return '/wc/v2/products' + query;
 			}
 
-			function getProducts() {
-				const query = attributes.queryProducts;
-				props.setAttributes({ queryProductsLast: query});
+			function getProducts( query ) {
+				if( query === null ) {
+					query = attributes.queryProducts;
+
+					useEffect( function() {
+						props.setAttributes({ queryProductsLast: query});
+					});
+				}
 
 				if (query != '') {
 					apiFetch({ path: query }).then(function (products) {
@@ -549,15 +559,19 @@
 								className: 'render-results components-button is-button is-default is-primary is-large ' + _isLoading(),
 								disabled: _isDonePossible(),
 								onClick: function onChange(e) {
+									let query = attributes.queryProducts;
+
 									props.setAttributes({ isLoading: true });
 									_destroyTempAtts();
-									getProducts();
+
+									props.setAttributes({ queryProductsLast: query});
+									getProducts(query);
 								},
 							},
 							_isLoadingText(),
 						),
 						el(
-							ColorSettings,
+							PanelColorSettings,
 							{
 								key: 'lookbook-reveal-colors',
 								title: i18n.__( 'Colors' ),
@@ -582,7 +596,7 @@
 						),
 					),
 				),
-				attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(),
+				attributes.result.length < 1 && attributes.doneFirstLoad === false && getProducts(null),
 				renderResults(),
 			];
 		},

@@ -7,16 +7,22 @@
 	/* Blocks */
 	const registerBlockType   = blocks.registerBlockType;
 
-	const InnerBlock 			= blockEditor.InnerBlocks;
-	const RichText				= blockEditor.RichText;
-	const MediaUpload			= blockEditor.MediaUpload;
-	const ColorSettings			= blockEditor.PanelColorSettings;
-	const InspectorControls 	= blockEditor.InspectorControls;
+	const {
+		Button,
+		SVG,
+		Path,
+		Circle,
+	} = components;
 
-	const Button				= components.Button;
-	const SVG 					= components.SVG;
-	const Path 					= components.Path;
-	const Circle				= components.Circle;
+	const {
+		InspectorControls,
+		PanelColorSettings,
+		MediaUpload,
+		RichText,
+		InnerBlocks,
+	} = wp.blockEditor;
+
+	const useEffect = wp.element.useEffect;
 
 	var attributes = {
 		title: {
@@ -81,7 +87,11 @@
 				{ name: 'black', 			color: '#000' 	 },
 			];
 
-			if( 'full' != props.attributes.align ){ props.setAttributes({ align: 'full' }); }
+			if( 'full' != props.attributes.align ){
+				useEffect( function() {
+					props.setAttributes({ align: 'full' });
+				});
+			}
 
 			return [
 				el(
@@ -95,7 +105,7 @@
 							key: 'lookbook-shop-by-outfit-inspector'
 						},
 						el(
-							ColorSettings,
+							PanelColorSettings,
 							{
 								key: 'lookbook-shop-by-outfit-colors',
 								title: i18n.__( 'Colors' ),
@@ -196,7 +206,7 @@
 								{
 									key: 'gbt_18_hero_section_title',
 									className: 'gbt_18_hero_section_title',
-									formattingControls: [],
+									allowedFormats: [],
 									tagName: 'h2',
 									format: 'string',
 									value: attributes.title,
@@ -214,7 +224,7 @@
 								{
 									key: 'gbt_18_hero_section_subtitle',
 									className: 'gbt_18_hero_section_subtitle',
-									formattingControls: [],
+									allowedFormats: [],
 									tagName: 'p',
 									format: 'string',
 									value: attributes.subtitle,
@@ -249,7 +259,7 @@
 						),
 					),
 				),
-				el( InnerBlock,
+				el( InnerBlocks,
 					{
 						key: 		   'gbt_18_lookbook_reveal_inner_product',
 						allowedBlocks: [ 'getbowtied/lookbook-shop-by-outfit-product' ],
@@ -335,7 +345,7 @@
 						),
 					)
 				),
-				el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
+				el( InnerBlocks.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
 			);
 		},
 
@@ -421,7 +431,7 @@
 								),
 							)
 						),
-						el( InnerBlock.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
+						el( InnerBlocks.Content, { key: 'gbt_18_lookbook_snap_to_scroll_wrapper' } )
 					);
 				},
 			}

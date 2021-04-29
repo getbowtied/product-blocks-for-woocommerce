@@ -5,18 +5,23 @@
 	const el = element.createElement;
 
 	/* Blocks */
-	const registerBlockType   = blocks.registerBlockType;
-	const InspectorControls   = blockEditor.InspectorControls;
+	const registerBlockType = blocks.registerBlockType;
 
-	const TextControl 		= components.TextControl;
-	const SelectControl		= components.SelectControl;
-	const ToggleControl		= components.ToggleControl;
-	const RangeControl		= components.RangeControl;
-	const Button 			= components.Button;
-	const SVG 				= components.SVG;
-	const Path 				= components.Path;
+	const {
+		TextControl,
+		SelectControl,
+		ToggleControl,
+		Button,
+		RangeControl,
+		SVG,
+		Path,
+	} = components;
 
-	const apiFetch 			= wp.apiFetch;
+	const {
+		InspectorControls,
+	} = wp.blockEditor;
+
+	const apiFetch = wp.apiFetch;
 
 	/* Register Block */
 	registerBlockType( 'getbowtied/products-carousel', {
@@ -36,7 +41,7 @@
 			},
 			queryProductsLast: {
 				type: 'string',
-				default: '',
+				default: 'wc/v3/products?per_page=10',
 			},
 			queryDisplayType: {
 				type: 'string',
@@ -239,9 +244,12 @@
 
 			function getProducts() {
 				let query = attributes.queryProducts;
-				props.setAttributes({ queryProductsLast: query});
 
-				if (query != '') {
+				if( query != attributes.queryProductsLast ) {
+					props.setAttributes({ queryProductsLast: query});
+				}
+
+				if (query !== '') {
 					apiFetch({ path: query }).then(function (products) {
 						let products_final = [];
 						let index = 0;

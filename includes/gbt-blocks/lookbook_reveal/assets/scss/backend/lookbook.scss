@@ -54,8 +54,10 @@
 
 .block-editor-block-list__block[data-type="getbowtied/lookbook-reveal"]
 {
-    .editor-inner-blocks
+    .block-editor-inner-blocks
     {
+        padding: 20px 0;
+
         .editor-rich-text p,
         .editor-default-block-appender__content
         {
@@ -76,7 +78,7 @@
             }
         }
 
-        .editor-default-block-appender
+        .block-list-appender
         {
             max-width:100%;
 
