@@ -60,7 +60,7 @@ function pbfw_render_frontend_lookbook_reveal_product( $attributes ) {
 								</div>
 						</a>
 						<div class="gbt_18_distorsion_lookbook_content product-<?php echo $product->get_id(); ?>" style="background-color: <?php echo $bgColor; ?>;">
-							<div class="gbt_18_text_wrapper">
+							<div class="gbt_18_text_wrapper" style="color:<?php echo $textColor; ?>">
 								<div class="gbt_18_content_top">
 									<h2 style="color:<?php echo $textColor; ?>"><?php echo $product->get_name(); ?></h2>
 									<div class="gbt_18_description" style="color:<?php echo $textColor; ?>"><?php echo $product->get_short_description(); ?></div>
