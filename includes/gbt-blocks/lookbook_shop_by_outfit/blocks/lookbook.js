@@ -206,7 +206,6 @@
 								{
 									key: 'gbt_18_hero_section_title',
 									className: 'gbt_18_hero_section_title',
-									allowedFormats: [],
 									tagName: 'h2',
 									format: 'string',
 									value: attributes.title,
@@ -224,7 +223,6 @@
 								{
 									key: 'gbt_18_hero_section_subtitle',
 									className: 'gbt_18_hero_section_subtitle',
-									allowedFormats: [],
 									tagName: 'p',
 									format: 'string',
 									value: attributes.subtitle,
@@ -298,7 +296,7 @@
 							key: 		'gbt_18_hero_section_content',
 							className: 	'gbt_18_hero_section_content'
 						},
-						el( 'h2',
+						attributes.title != '' && el( 'h2',
 							{
 								key: 		'gbt_18_hero_title',
 								className: 	'gbt_18_hero_title',
@@ -307,14 +305,14 @@
 									color: props.attributes.textColor
 								},
 							},
-							el( RichText.Content, { tag: 'h2', value: i18n.__( attributes.title ) } )
+							el( RichText.Content, { tag: 'h2', value: props.attributes.title } ),
 						),
-						el( 'p',
+						attributes.subtitle != '' && el( 'p',
 							{
 								key: 		'gbt_18_hero_subtitle',
 								className: 	'gbt_18_hero_subtitle',
 							},
-							el( RichText.Content, { tag: 'p', value: i18n.__( attributes.subtitle ) } )
+							el( RichText.Content, { tag: 'p', value: props.attributes.subtitle } ),
 						),
 					),
 					el( 'span',
