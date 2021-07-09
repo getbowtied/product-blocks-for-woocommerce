@@ -21,10 +21,6 @@
 		InspectorControls,
 	} = wp.blockEditor;
 
-	const {
-		ServerSideRender,
-	} = wp.editor;
-
 	const apiFetch = wp.apiFetch;
 	const useEffect = wp.element.useEffect;
 
@@ -135,6 +131,14 @@
 		//==============================================================================
 			if( className.indexOf('is-style-layout') == -1 ) { className += ' is-style-layout-2'; }
 
+			function _categoryClassName(parent, value) {
+				if ( parent == 0) {
+					return 'parent parent-' + value;
+				} else {
+					return 'child child-' + parent;
+				}
+			}
+
 			function _searchResultClass(theID){
 				const index = attributes.selectedIDS.indexOf(theID);
 				if ( index == -1) {
@@ -156,9 +160,43 @@
 				return newarr;
 			}
 
+			function _sortByKeys(keys, products) {
+				let sorted =[];
+				for ( let i = 0; i < keys.length; i++ ) {
+					for ( let j = 0; j < products.length; j++ ) {
+						if ( keys[i] == products[j].id ) {
+							sorted.push(products[j]);
+							break;
+						}
+					}
+				}
+
+				return sorted;
+			}
+
+			function _destroyQuery() {
+				props.setAttributes({ queryOrder: ''});
+				props.setAttributes({ queryCategories: ''});
+				props.setAttributes({ querySearchString: ''});
+				props.setAttributes({ querySearchResults: []});
+				props.setAttributes({ querySearchSelected: []});
+				props.setAttributes({ selectedIDS: []});
+				props.setAttributes({ queryAttributesOptionsSelected: [] });
+				props.setAttributes({ queryCategorySelected: [] });
+				props.setAttributes({result: []});
+			}
+
 			function _destroyTempAtts() {
 				props.setAttributes({ querySearchString: ''});
 				props.setAttributes({ querySearchResults: []});
+			}
+
+			function _isChecked( needle, haystack ) {
+				const idx = haystack.indexOf(needle.toString());
+				if ( idx != - 1) {
+					return true;
+				}
+				return false;
 			}
 
 			function _isDonePossible() {
@@ -221,6 +259,100 @@
 				}
 			}
 
+			function renderResults() {
+				if ( attributes.firstLoad === true ) {
+					let query = _buildQuery(attributes.limit, attributes.orderby, attributes.parentOnly, attributes.hideEmpty);
+					apiFetch({ path: query }).then(function (categories) {
+						categories = _sortCategories(0, categories);
+						props.setAttributes({ result: categories });
+						props.setAttributes({ firstLoad: false });
+						props.setAttributes({queryCategories: query});
+						props.setAttributes({queryCategoriesLast: query});
+
+						let IDs = '';
+						for ( let i = 0; i < categories.length; i++) {
+							IDs += categories[i].id + ',';
+						}
+						props.setAttributes({ categoryIDs: IDs});
+					});
+				}
+
+				function getColumns() {
+					if ( props.className.indexOf('is-style-layout-1') !== -1)  {
+						return 'columns-' + attributes.columns;
+					} else {
+						return '';
+					}
+				}
+				let categories = attributes.result;
+				let categoryElements = [];
+				let wrapper = [];
+
+				const class_prefix = 'gbt_18_editor_category_grid_item';
+
+				for ( let i = 0; i < categories.length; i++ ) {
+					let img = '';
+					if ( categories[i].image !== null ) { img = categories[i]['image']['src'] } else { img= getbowtied_pbw.woo_placeholder_image };
+					categoryElements.push(
+						el( 'div',
+							{
+								key: 		'gbt-category-grid-item-' + categories[i].id,
+								className: 	class_prefix
+							},
+							el( 'a',
+								{
+									key: 'gbt-category-grid-item-a-' + i,
+									className: 	class_prefix + '_img'
+								},
+								el( 'img',
+									{
+										key: 'gbt-category-grid-item-img-' + i,
+										className: 	class_prefix + '_thumb',
+										src: 		img
+									}
+									),
+								el( 'h4',
+									{
+										key: 'gbt-category-grid-item-h4-' + i,
+										className: 	class_prefix + '_title'
+									},
+									categories[i]['name'].replace(/&amp;/g, '&'),
+									attributes.productCount === true && el( 'span',
+										{
+											key: 'gbt-category-grid-item-count-' + i,
+											className: class_prefix + '_count',
+										},
+										categories[i]['count']
+									),
+								),
+							)
+						));
+				}
+
+				wrapper.push(
+					el(	'div',
+					{
+						key: 'gbt_18_editor_categories_grid_wrapper',
+						className: className + ' gbt_18_editor_categories_grid_wrapper'
+					},
+						el( 'div',
+						{
+							key: 		'gbt_18_editor_categories_grid',
+							className: 	'gbt_18_editor_categories_grid ' + props.className + ' ' + getColumns()  // add columns class name
+						},
+							categoryElements,
+							el(	'div',
+							{
+								key: 	'gbt_18_editor_categories_grid_clearfix',
+								className: 	'clearfix'
+							}
+							),
+						),
+					)
+				);
+				return wrapper;
+			}
+
 			function _buildQuery(limit = 10, orderby='menu_order', parentOnly=true, hideEmpty=true) {
 				if ( attributes.queryDisplayType === 'specific' ) {
 					return attributes.queryCategories;
@@ -248,6 +380,30 @@
 					query+= '&hide_empty=true';
 				}
 				return query;
+			}
+
+			function _getQueryOrder() {
+				if ( attributes.queryOrder.length < 1) return '';
+				let order = '';
+				switch ( attributes.queryOrder ) {
+					case 'date_desc':
+						order = '&orderby=date&order=desc';
+					break;
+					case 'date_asc':
+						order = '&orderby=date&order=asc';
+					break;
+					case 'title_desc':
+						order = '&orderby=title&order=desc';
+					break;
+					case 'title_asc':
+						order = '&orderby=title&order=asc';
+					break;
+					default:
+
+					break;
+				}
+
+				return order;
 			}
 
 		//==============================================================================
@@ -614,30 +770,12 @@
 					),
 				),
 				el(
-					ServerSideRender,
+					'div',
 					{
-						key: 'gbt-categories-grid-render',
-						block: 'getbowtied/categories-grid',
-						attributes: {
-							categoryIDs: attributes.categoryIDs,
-							queryCategories: attributes.queryCategories,
-							queryCategoriesLast: attributes.queryCategoriesLast,
-							queryDisplayType: attributes.queryDisplayType,
-							isLoading: attributes.isLoading,
-							querySearchString: attributes.querySearchString,
-							querySearchNoResults: attributes.querySearchNoResults,
-							queryOrder: attributes.queryOrder,
-							parentOnly: attributes.parentOnly,
-							hideEmpty: attributes.hideEmpty,
-							orderby: attributes.orderby,
-							productCount: attributes.productCount,
-							firstLoad: attributes.firstLoad,
-							limit: attributes.limit,
-							columns: attributes.columns,
-							align: attributes.align,
-							className: className
-						}
-					}
+						key: 'gbt-categories-grid-results',
+					},
+					attributes.result.length < 1 && attributes.doneFirstLoad === false && getResult(null),
+					renderResults(),
 				),
 			];
 		},
