@@ -306,15 +306,15 @@
 								{
 									color: props.attributes.textColor
 								},
-								dangerouslySetInnerHTML: { __html: props.attributes.title }
 							},
+							el( RichText.Content, { tag: 'h2', value: i18n.__( attributes.title ) } )
 						),
 						el( 'p',
 							{
 								key: 		'gbt_18_hero_subtitle',
 								className: 	'gbt_18_hero_subtitle',
-								dangerouslySetInnerHTML: { __html: props.attributes.subtitle }
 							},
+							el( RichText.Content, { tag: 'p', value: i18n.__( attributes.subtitle ) } )
 						),
 					),
 					el( 'span',
@@ -415,7 +415,6 @@
 									{
 										key: 'gbt_18_scroll_down_button-svg',
 										xmlns:"http://www.w3.org/2000/svg",
-										Focusable: 'false',
 										viewBox:"0 0 24 24",
 										style:
 										{
