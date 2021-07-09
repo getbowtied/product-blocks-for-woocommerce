@@ -44,6 +44,8 @@
 .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper {
   overflow: auto; }
   .block-editor-block-list__block[data-type="getbowtied/scattered-product-list"] .gbt_18_expanding_grid_wrapper ul.gbt_18_expanding_grid_products {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     position: relative;
     -webkit-transition: opacity .2s ease-in-out;
     -o-transition: opacity .2s ease-in-out;
