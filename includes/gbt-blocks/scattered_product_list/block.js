@@ -295,7 +295,7 @@
 											src: 		img
 										}
 									),
-									el( 'h4',
+									el( 'h2',
 										{
 											key: 		class_prefix + '_title' + i,
 											className: 	class_prefix + '_title'

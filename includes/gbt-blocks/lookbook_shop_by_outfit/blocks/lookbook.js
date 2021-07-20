@@ -206,7 +206,6 @@
 								{
 									key: 'gbt_18_hero_section_title',
 									className: 'gbt_18_hero_section_title',
-									allowedFormats: [],
 									tagName: 'h2',
 									format: 'string',
 									value: attributes.title,
@@ -224,7 +223,6 @@
 								{
 									key: 'gbt_18_hero_section_subtitle',
 									className: 'gbt_18_hero_section_subtitle',
-									allowedFormats: [],
 									tagName: 'p',
 									format: 'string',
 									value: attributes.subtitle,
@@ -298,7 +296,7 @@
 							key: 		'gbt_18_hero_section_content',
 							className: 	'gbt_18_hero_section_content'
 						},
-						el( 'h2',
+						attributes.title != '' && el( 'h2',
 							{
 								key: 		'gbt_18_hero_title',
 								className: 	'gbt_18_hero_title',
@@ -306,15 +304,15 @@
 								{
 									color: props.attributes.textColor
 								},
-								dangerouslySetInnerHTML: { __html: props.attributes.title }
 							},
+							el( RichText.Content, { tag: 'h2', value: props.attributes.title } ),
 						),
-						el( 'p',
+						attributes.subtitle != '' && el( 'p',
 							{
 								key: 		'gbt_18_hero_subtitle',
 								className: 	'gbt_18_hero_subtitle',
-								dangerouslySetInnerHTML: { __html: props.attributes.subtitle }
 							},
+							el( RichText.Content, { tag: 'p', value: props.attributes.subtitle } ),
 						),
 					),
 					el( 'span',
@@ -415,7 +413,6 @@
 									{
 										key: 'gbt_18_scroll_down_button-svg',
 										xmlns:"http://www.w3.org/2000/svg",
-										Focusable: 'false',
 										viewBox:"0 0 24 24",
 										style:
 										{

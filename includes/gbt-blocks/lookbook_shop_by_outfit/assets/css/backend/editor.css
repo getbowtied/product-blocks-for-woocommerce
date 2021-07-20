@@ -149,6 +149,8 @@ body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/loo
     height: 100%;
     display: table; }
     .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper ul.gbt_18_lookbook_sts_products {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
       display: table-cell;
       vertical-align: middle; }
       .gbt_18_editor_lookbook_sts_product_content .gbt_18_lookbook_sts_products_wrapper ul.gbt_18_lookbook_sts_products .gbt_18_lookbook_sts_product {
@@ -228,6 +230,8 @@ body.block-editor-page .block-editor-block-list__block[data-type="getbowtied/loo
   display: table;
   width: 100%; }
   .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
     display: table-cell;
     vertical-align: middle; }
     .block-editor-block-list__block[data-type="getbowtied/lookbook-shop-by-outfit-product"] .gbt_18_placeholder_lookbook_sts_products_wrapper ul.gbt_18_placeholder_lookbook_sts_products li.gbt_18_placeholder_lookbook_sts_product {

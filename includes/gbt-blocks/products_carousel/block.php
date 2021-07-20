@@ -114,7 +114,7 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 
 							if( $product->is_in_stock() || ( !$product->is_in_stock() && ( 'no' === get_option('woocommerce_hide_out_of_stock_items') ) ) ) {
 								?>
-								<div class="swiper-slide">
+								<div class="swiper-slide woocommerce">
 									<ul class="products">
 										<?php wc_get_template_part( 'content', 'product' ); ?>
 									</ul>

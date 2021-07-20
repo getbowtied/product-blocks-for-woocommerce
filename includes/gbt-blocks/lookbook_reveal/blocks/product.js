@@ -77,7 +77,7 @@
 			},
 			bgColor: {
 	        	type: 'string',
-	        	default: '#d3d5d9'
+	        	default: '#abb7c3'
 	        },
 	        textColor: {
 	        	type: 'string',
