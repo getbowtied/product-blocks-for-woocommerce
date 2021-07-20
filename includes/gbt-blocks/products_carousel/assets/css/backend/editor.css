@@ -7,42 +7,45 @@
     .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper .toggle-prev-button,
     .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper .toggle-next-button {
       cursor: default; }
-    .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product {
-      float: left;
-      width: 33.3333333%;
-      list-style-type: none;
-      text-align: center;
-      margin-bottom: 0;
-      padding: 5px 10px 0; }
-      .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_thumbnail {
-        background-color: #eeeeee;
-        background-position: center;
-        padding-bottom: 100%;
-        height: 0;
-        width: 100%; }
-      .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_title {
-        height: 15px;
-        width: 70%;
-        margin: 15px auto 0;
-        background-color: #eeeeee; }
-      .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_price {
-        height: 10px;
-        width: 30%;
-        margin: 15px auto;
-        background-color: #eeeeee; }
-      .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_button {
-        background: #eeeeee;
-        display: block;
-        color: #333;
-        cursor: pointer;
-        font-weight: 600;
-        border: none;
-        padding: 8px 17px;
-        margin: 10px auto 0;
-        font-size: 13px;
-        outline: 0; }
-        .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_button:hover {
-          background: #e4e4e4; }
+    .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; }
+      .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product {
+        float: left;
+        width: 33.3333333%;
+        list-style-type: none;
+        text-align: center;
+        margin-bottom: 0;
+        padding: 5px 10px 0; }
+        .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_thumbnail {
+          background-color: #eeeeee;
+          background-position: center;
+          padding-bottom: 100%;
+          height: 0;
+          width: 100%; }
+        .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_title {
+          height: 15px;
+          width: 70%;
+          margin: 15px auto 0;
+          background-color: #eeeeee; }
+        .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_price {
+          height: 10px;
+          width: 30%;
+          margin: 15px auto;
+          background-color: #eeeeee; }
+        .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_button {
+          background: #eeeeee;
+          display: block;
+          color: #333;
+          cursor: pointer;
+          font-weight: 600;
+          border: none;
+          padding: 8px 17px;
+          margin: 10px auto 0;
+          font-size: 13px;
+          outline: 0; }
+          .gbt_18_product_carousel .gbt_18_product_carousel_placeholder_wrapper ul.gbt_18_carousel_products_placeholder li.gbt_18_carousel_placeholder_product .gbt_18_carousel_placeholder_product_button:hover {
+            background: #e4e4e4; }
   .gbt_18_product_carousel .toggle-prev-button,
   .gbt_18_product_carousel .toggle-next-button {
     position: absolute;
@@ -75,6 +78,8 @@
       width: 100%;
       overflow: hidden; }
     .gbt_18_product_carousel .gbt_18_product_carousel_wrapper ul.gbt_18_carousel_products {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
       position: relative;
       -webkit-transition: opacity .2s ease-in-out;
       -o-transition: opacity .2s ease-in-out;

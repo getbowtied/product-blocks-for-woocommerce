@@ -12,6 +12,7 @@
 		}
 
 		ul.gbt_18_carousel_products_placeholder {
+			box-sizing: border-box;
 
 			li.gbt_18_carousel_placeholder_product {
 
@@ -113,7 +114,7 @@
 			overflow: hidden;
 		}
 		ul.gbt_18_carousel_products {
-
+			box-sizing: border-box;
 			position: relative;
 			transition: opacity .2s ease-in-out;
 			width: 100%;
