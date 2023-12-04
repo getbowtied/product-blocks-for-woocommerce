@@ -4,15 +4,15 @@
  * Plugin Name:       		Product Blocks for WooCommerce
  * Plugin URI:        		https://github.com/getbowtied/product-blocks-for-woocommerce
  * Description:       		Advanced Blocks for WooCommerce.
- * Version:           		1.6
- * Author:            		GetBowtied
+ * Version:           		1.7
+ * Author:            		Get Bowtied
  * Author URI:        		https://getbowtied.com
  * License: 				GPLv2
  * License URI: 			http://www.gnu.org/licenses/gpl-2.0.html
  * Requires at least: 		5.0
- * Tested up to: 			6.1.1
- * WC requires at least: 	3.5
- * WC tested up to: 		7.4.0
+ * Tested up to: 			6.4
+ * WC requires at least: 	7.0
+ * WC tested up to: 		8.4
  *
  * @package  Product Blocks for WooCommerce
  * @author   GetBowtied
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-define('PBFW_VERSION', '1.6');
+define('PBFW_VERSION', '1.7');
 define('PBFW_SUFFIX', SCRIPT_DEBUG ? '' : '.min');
 
 if ( ! function_exists( 'is_plugin_active' ) ) {

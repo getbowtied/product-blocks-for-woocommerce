@@ -16,12 +16,12 @@ Product Blocks for WooCommerce helps you create beautiful product display for yo
 
 == Available Blocks ==
 
-1. [Lookbook — Shop by Outfit](https://product-blocks.getbowtied.com/lookbook-shop-by-outfit/)
-2. [Lookbook — Product Reveal](https://product-blocks.getbowtied.com/lookbook-product-reveal/)
-3. [Vertical Product Slider](https://product-blocks.getbowtied.com/vertical-product-slider/)
-4. [Product Categories Grid](https://product-blocks.getbowtied.com/product-categories-grid/)
-5. [Scattered Product List](https://product-blocks.getbowtied.com/scattered-product-list/)
-6. [Product Carousel](https://product-blocks.getbowtied.com/product-carousel/)
+1. [Lookbook — Shop by Outfit](https://blockshop.wp-theme.design/pages/lookbook-shop-by-outfit/)
+2. [Lookbook — Product Reveal](https://blockshop.wp-theme.design/pages/lookbook-product-reveal/)
+3. [Vertical Product Slider](https://blockshop.wp-theme.design/pages/vertical-product-slider/)
+4. [Product Categories Grid](https://blockshop.wp-theme.design/pages/product-categories-grid/)
+5. [Scattered Product List](https://blockshop.wp-theme.design/pages/scattered-product-list/)
+6. [Product Carousel](https://blockshop.wp-theme.design/pages/product-carousel/)
 
 == Installation ==
 
@@ -39,8 +39,8 @@ The manual installation method involves downloading the plugin and uploading it 
 
 * WordPress 5.0.x
 * WooCommerce 3.5.1 or greater
-* PHP version 5.2.4 or greater (PHP 7.2 or greater is recommended)
-* MySQL version 5.0 or greater (MySQL 5.6 or greater is recommended)
+* PHP version 5.2.4 or greater
+* MySQL version 5.0 or greater
 
 == Screenshots ==
 
@@ -52,6 +52,10 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 1.7 =
+* Retested for compatibility with WordPress 6.4
+* Retested for compatibility with WooCommerce 8.4
 
 = 1.6 =
 * Retested for compatibility with WordPress 6.1.1
