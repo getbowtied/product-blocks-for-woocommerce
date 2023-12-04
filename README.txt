@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: woocommerce, product, blocks, block, store, gutenberg
 Requires at least: 5.0
 Tested up to: 6.4
-Stable tag: 1.7
+Stable tag: 1.7.5
 Requires PHP: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,7 +53,7 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
-= 1.7 =
+= 1.7.5 =
 * Retested for compatibility with WordPress 6.4
 * Retested for compatibility with WooCommerce 8.4
 
