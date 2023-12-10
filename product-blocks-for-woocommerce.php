@@ -4,12 +4,12 @@
  * Plugin Name:       		Product Blocks for WooCommerce
  * Plugin URI:        		https://github.com/getbowtied/product-blocks-for-woocommerce
  * Description:       		Advanced Blocks for WooCommerce.
- * Version:           		1.7.5
+ * Version:           		1.8
  * Author:            		Get Bowtied
  * Author URI:        		https://getbowtied.com
  * License: 				GPLv2
  * License URI: 			http://www.gnu.org/licenses/gpl-2.0.html
- * Requires at least: 		5.0
+ * Requires at least: 		6.0
  * Tested up to: 			6.4
  * WC requires at least: 	7.0
  * WC tested up to: 		8.4
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
-define('PBFW_VERSION', '1.7.5');
+define('PBFW_VERSION', '1.8');
 define('PBFW_SUFFIX', SCRIPT_DEBUG ? '' : '.min');
 
 if ( ! function_exists( 'is_plugin_active' ) ) {
@@ -63,3 +63,12 @@ function pbfw_wp_version( $operator = '>', $version = '4.0' ) {
 	global $wp_version;
 	return version_compare( $wp_version, $version, $operator );
 }
+
+
+// WooCommerce HPOS Compatibility
+add_action('before_woocommerce_init', function() {
+    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+
+    }
+});
