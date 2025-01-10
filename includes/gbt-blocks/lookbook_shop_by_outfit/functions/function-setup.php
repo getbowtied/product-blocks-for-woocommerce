@@ -14,7 +14,8 @@ function pbfw_lookbook_snap_to_scroll_assets() {
 		'getbowtied-lookbook-shop-by-outfit-scripts',
 		plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'jquery', 'jquery-scrollify' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_style(
@@ -34,14 +35,16 @@ function pbfw_lookbook_snap_to_scroll_editor_assets() {
 		'getbowtied-lookbook-shop-by-outfit-editor-scripts',
 		plugins_url( 'blocks/lookbook'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_script(
 		'getbowtied-lookbook-shop-by-outfit-product-editor-scripts',
 		plugins_url( 'blocks/product'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_style(

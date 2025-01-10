@@ -102,9 +102,9 @@ function pbfw_render_frontend_products_carousel( $attributes ) {
 	$unique = uniqid();
 	ob_start();
 	if ( $lc->have_posts() ) { ?>
-		<div class="wp-block-getbowtied-carousel align<?php echo $align; ?>">
+		<div class="wp-block-getbowtied-carousel align<?php echo esc_attr( $align ); ?>">
 			<div class="swiper-navigation-container">
-				<div class="swiper-container gbt_18_swiper-container swiper-<?php echo esc_attr($unique); ?>" data-columns="<?php echo $columns; ?>" data-spaceBetween="<?php echo $spaceBetween; ?>" data-id="<?php echo esc_attr($unique); ?>">
+				<div class="swiper-container gbt_18_swiper-container swiper-<?php echo esc_attr($unique); ?>" data-columns="<?php echo esc_attr($columns); ?>" data-spaceBetween="<?php echo esc_attr($spaceBetween); ?>" data-id="<?php echo esc_attr($unique); ?>">
 					<div class="swiper-wrapper">
 						<?php
 						while ( $lc->have_posts() ) :

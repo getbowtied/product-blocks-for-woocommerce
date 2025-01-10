@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: woocommerce, product, blocks, store, gutenberg
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 1.9.1
+Stable tag: 2.0
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,6 +52,12 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 2.0 =
+* Fixed some security warnings
+* Improved plugin's performance
+* Retested for compatibility with WordPress 6.7.1
+* Retested for compatibility with WooCommerce 9.5.2
 
 = 1.9 =
 * Retested for compatibility with WordPress 6.7

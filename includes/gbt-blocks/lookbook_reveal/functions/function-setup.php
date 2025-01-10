@@ -27,14 +27,16 @@ function pbfw_lookbook_reveal_editor_assets() {
 		'getbowtied-lookbook-reveal-editor-scripts',
 		plugins_url( 'blocks/lookbook'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_script(
 		'getbowtied-lookbook-reveal-product-editor-scripts',
 		plugins_url( 'blocks/product'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_style(

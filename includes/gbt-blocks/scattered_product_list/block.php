@@ -112,21 +112,21 @@ function pbfw_render_frontend_expanding_grid( $attributes ) {
 
 	if ( $products ) :
 		?>
-		<div class="wp-block-getbowtied-scattered-product-list gbt_18_expanding_grid align<?php echo $align; ?>">
+		<div class="wp-block-getbowtied-scattered-product-list gbt_18_expanding_grid align<?php echo esc_attr( $align ); ?>">
 			<div class="gbt_18_grid">
 				<?php foreach ( $products as $product ) : ?>
-					<div id="product-<?php echo $product->get_id(); ?>" class="gbt_18_expanding_grid_item">
-						<a href="<?php echo $product->get_permalink(); ?>">
+					<div id="product-<?php echo esc_attr( $product->get_id() ); ?>" class="gbt_18_expanding_grid_item">
+						<a href="<?php echo esc_url( $product->get_permalink() ); ?>">
 							<?php $image = wp_get_attachment_image( $product->get_image_id(), 'large' ); ?>
 							<div class="gbt_18_feature_image">
-								<?php echo ! $image ? wc_placeholder_img() : $image; ?>
+								<?php echo ! $image ? wp_kses_post( wc_placeholder_img() ) : wp_kses_post( $image ); ?>
 							</div>
 							<div class="gbt_18_product-info">
 								<h2 class="gbt_18_product_title">
-									<span><?php echo $product->get_name(); ?></span>
+									<span><?php echo esc_html( $product->get_name() ); ?></span>
 								</h2>
 								<span class="gbt_18_product_price">
-									<?php echo $product->get_price_html(); ?>
+									<?php echo wp_kses_post( $product->get_price_html() ); ?>
 								</span>
 							</div>
 						</a>

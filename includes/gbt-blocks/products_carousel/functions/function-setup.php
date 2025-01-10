@@ -14,7 +14,8 @@ function pbfw_products_carousel_assets() {
 		'getbowtied-products-carousel-scripts',
 		plugins_url( 'assets/js/frontend'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'jquery', 'swiper' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_style(
@@ -34,7 +35,8 @@ function pbfw_products_carousel_editor_assets() {
 		'getbowtied-products-carousel-editor-scripts',
 		plugins_url( 'block'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_style(

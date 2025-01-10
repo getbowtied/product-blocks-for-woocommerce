@@ -27,7 +27,8 @@ function pbfw_expanding_grid_editor_assets() {
 		'getbowtied-scattered-product-list-editor-scripts',
 		plugins_url( 'block'.PBFW_SUFFIX.'.js', dirname(__FILE__) ),
 		array( 'wp-blocks', 'wp-components', 'wp-editor', 'wp-i18n', 'wp-element', 'jquery' ),
-		PBFW_VERSION
+		PBFW_VERSION,
+		true
 	);
 
 	wp_register_style(

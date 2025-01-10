@@ -63,14 +63,14 @@ function pbfw_render_frontend_categories_grid( $attributes ) {
 
 	ob_start();
 	if ( $product_categories ) :
-		printf( '<section class="wp-block-getbowtied-categories-grid gbt_18_categories_grid_wrapper %s align%s"><div class="gbt_18_categories_grid %s">', $className, $align, $columns );
+		printf( '<section class="wp-block-getbowtied-categories-grid gbt_18_categories_grid_wrapper %s align%s"><div class="gbt_18_categories_grid %s">', esc_attr( $className ), esc_attr( $align ), esc_attr( $columns ) );
 		foreach ( $product_categories as $cat ) : ?>
 			<div class="gbt_18_category_grid_item">
-				<a class="gbt_18_category_grid_item_img" href="<?php echo get_term_link( $cat->slug, 'product_cat' ); ?>">
+				<a class="gbt_18_category_grid_item_img" href="<?php echo esc_url( get_term_link( $cat->slug, 'product_cat' ) ); ?>">
 					<?php
 						$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
 						$image        = wp_get_attachment_image( $thumbnail_id, 'large' );
-						echo ! $image ? wc_placeholder_img() : $image;
+						echo ! $image ? wp_kses_post( wc_placeholder_img() ) : wp_kses_post( $image );
 					?>
 				</a>
 				<h4 class="gbt_18_category_grid_item_title">
