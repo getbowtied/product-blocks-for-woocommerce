@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: woocommerce, product, blocks, store, gutenberg
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 2.0
+Stable tag: 2.1
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,79 +53,83 @@ The manual installation method involves downloading the plugin and uploading it 
 
 == Changelog ==
 
+= 2.1 =
+* Compatibility updates for WordPress 6.7.2
+* Compatibility updates for WooCommerce 9.7.0
+
 = 2.0 =
 * Fixed some security warnings
 * Improved plugin's performance
-* Retested for compatibility with WordPress 6.7.1
-* Retested for compatibility with WooCommerce 9.5.2
+* Compatibility updates for WordPress 6.7.1
+* Compatibility updates for WooCommerce 9.5.2
 
 = 1.9 =
-* Retested for compatibility with WordPress 6.7
-* Retested for compatibility with WooCommerce 9.4
+* Compatibility updates for WordPress 6.7
+* Compatibility updates for WooCommerce 9.4
 
 = 1.8 =
 * WooCommerce HPOS Compatibility
 
 = 1.7.5 =
-* Retested for compatibility with WordPress 6.4
-* Retested for compatibility with WooCommerce 8.4
+* Compatibility updates for WordPress 6.4
+* Compatibility updates for WooCommerce 8.4
 
 = 1.6 =
-* Retested for compatibility with WordPress 6.1.1
-* Retested for compatibility with WooCommerce 7.4.0
+* Compatibility updates for WordPress 6.1.1
+* Compatibility updates for WooCommerce 7.4.0
 
 = 1.5.1 =
-* Retested for compatibility with WooCommerce 5.6.0
+* Compatibility updates for WooCommerce 5.6.0
 
 = 1.5.0 =
-* Retested for compatibility with WordPress 5.8 and WooCommerce 5.5.1
+* Compatibility updates for WordPress 5.8 and WooCommerce 5.5.1
 
 = 1.4.9 =
-* Retested for compatibility with WooCommerce 5.4.1
+* Compatibility updates for WooCommerce 5.4.1
 
 = 1.4.8 =
-* Retested for compatibility with WordPress 5.7.2 and WooCommerce 5.3.0
+* Compatibility updates for WordPress 5.7.2 and WooCommerce 5.3.0
 
 = 1.4.7 =
-* Retested for compatibility with WordPress 5.7.1 and WooCommerce 5.2.2
+* Compatibility updates for WordPress 5.7.1 and WooCommerce 5.2.2
 * Maintenance: Various fixes and improvements were made for consistency
 
 = 1.4.6 =
-* Retested for compatibility with WooCommerce 4.9.1
+* Compatibility updates for WooCommerce 4.9.1
 
 = 1.4.5 =
 - Maintenance: Updated Swiper library to its latest version
 
 = 1.4.4 =
-* Retested for compatibility with WordPress 5.6 and WooCommerce 4.8.0
+* Compatibility updates for WordPress 5.6 and WooCommerce 4.8.0
 
 = 1.4.3 =
-* Retested for compatibility with WordPress 5.5.3 and WooCommerce 4.7.0
+* Compatibility updates for WordPress 5.5.3 and WooCommerce 4.7.0
 
 = 1.4.2 =
 * Product Carousel: Exclude hidden products from carousel
 * Product Carousel: Fixed number of products option issue
-* Retested for compatibility with WordPress 5.5 and WooCommerce 4.4.0
+* Compatibility updates for WordPress 5.5 and WooCommerce 4.4.0
 
 = 1.4.1 =
 * Improved plugin's performance by updating frontend script dependencies
 * Lookbook - Shop by Outfit: Small maintenance updates
 * Lookbook - Product Reveal: Backend style improvements
-* Retested for compatibility with WooCommerce 4.3.0
+* Compatibility updates for WooCommerce 4.3.0
 
 = 1.4.0 =
 * Fixed: Block editor issue causing the product blocks to display incorrectly
 * Product Categories Grid - Fixed incorrect categories order in block editor
-* Retested for compatibility with WordPress 5.4.2 and WooCommerce 4.2.0
+* Compatibility updates for WordPress 5.4.2 and WooCommerce 4.2.0
 
 = 1.3.9 =
-* Retested for compatibility with WordPress 5.4 and WooCommerce 4.0.1
+* Compatibility updates for WordPress 5.4 and WooCommerce 4.0.1
 
 = 1.3.8 =
-* Retested for compatibility with WooCommerce 4.0.0
+* Compatibility updates for WooCommerce 4.0.0
 
 = 1.3.7 =
-* Retested for compatibility with WooCommerce 3.9.3
+* Compatibility updates for WooCommerce 3.9.3
 
 = 1.3.6 =
 * Fixed: Lookbook Shop by Outfit - pagination display
