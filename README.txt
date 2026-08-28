@@ -2,11 +2,13 @@
 Contributors: getbowtied
 Tags: woocommerce, product, blocks, store, gutenberg
 Requires at least: 6.0
-Tested up to: 6.7
-Stable tag: 2.1
+Tested up to: 7.1
+Stable tag: 3.0
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+WC requires at least: 10.0
+WC tested up to: 11.0.1
 
 Product Blocks for WooCommerce helps you create beautiful product display for your products.
 
@@ -52,6 +54,11 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 3.0 =
+* Add fallback theme updater for older GetBowtied theme versions
+* Update Compatibility with WordPress 7.1.0
+* Update Compatibility with WooCommerce 11.0.1
 
 = 2.1 =
 * Compatibility updates for WordPress 6.7.2
