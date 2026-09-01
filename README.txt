@@ -3,7 +3,7 @@ Contributors: getbowtied
 Tags: woocommerce, product, blocks, store, gutenberg
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.0
+Stable tag: 3.1
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -54,6 +54,9 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 3.1 =
+* Add option to enable theme auto-updates from the update notice
 
 = 3.0 =
 * Add fallback theme updater for older GetBowtied theme versions
