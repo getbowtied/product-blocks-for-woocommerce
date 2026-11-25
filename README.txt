@@ -3,12 +3,12 @@ Contributors: getbowtied
 Tags: woocommerce, product, blocks, store, gutenberg
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 3.3
+Stable tag: 3.4
 Requires PHP: 7.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC requires at least: 10.0
-WC tested up to: 11.0.1
+WC tested up to: 11.3.1
 
 Product Blocks for WooCommerce helps you create beautiful product display for your products.
 
@@ -54,6 +54,10 @@ The manual installation method involves downloading the plugin and uploading it 
 6. Scattered Product List
 
 == Changelog ==
+
+= 3.4 =
+* Update Compatibility with WordPress 7.1.5
+* Update Compatibility with WooCommerce 11.3.1
 
 = 3.3 =
 * Newer theme updater always wins via versioned loader and GBT_Extender_Theme_Updater_Core; detach legacy direct-require hooks
